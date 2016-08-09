@@ -8,7 +8,7 @@
        http://www.springframework.org/schema/context
        http://www.springframework.org/schema/context/spring-context-3.2.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-       <context:component-scan base-package="com.iviettech.andyvn"/>
+       <context:component-scan base-package="com.iviettech.bus"/>
 
        <mvc:resources mapping="/webjars/**" location="/webjars/"/>
 
