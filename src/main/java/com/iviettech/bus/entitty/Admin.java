@@ -7,15 +7,14 @@ import javax.persistence.Id;
 /**
  * Created by tran on 14/08/2016.
  */
-public class Busstation {
-
+public class Admin {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private String name;
+    private String username;
 
-    private String city;
+    private String password;
 
-    private String address;
+    private Role role;
 }

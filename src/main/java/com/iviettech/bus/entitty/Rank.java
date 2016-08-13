@@ -7,15 +7,12 @@ import javax.persistence.Id;
 /**
  * Created by tran on 14/08/2016.
  */
-public class Busstation {
-
+public class Rank {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private String name;
+    private BusServices busServices;
 
-    private String city;
-
-    private String address;
+    private float point;
 }
