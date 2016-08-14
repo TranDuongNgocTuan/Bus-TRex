@@ -1,4 +1,4 @@
-package config;
+package com.iviettech.bus.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,8 +20,10 @@ public class SpringConfig {
     @Bean
     DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
+        // Thay cho dung voi co so du lieu minh dung nghe
+//        dataSource.setDriverClassName("com.mysql.jdbc.Driver");
         dataSource.setDriverClassName("org.mariadb.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/bus");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/BusTRex");
         dataSource.setUsername("myuser");
         dataSource.setPassword("123456");
         return  dataSource;
@@ -35,7 +37,7 @@ public class SpringConfig {
         // initialize our configuration with the default settings that are compatible with Hibernate
         entityManager.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
         // base package to scan for entity classess
-        entityManager.setPackagesToScan("entity");
+        entityManager.setPackagesToScan("com.iviettech.bus.entity");
 
         // JPA properties
         Properties jpaProperties = new Properties();

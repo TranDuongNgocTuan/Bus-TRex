@@ -56,6 +56,14 @@
             <version>${hibernate.entity.version}</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/org.mariadb.jdbc/mariadb-java-client -->
+        <dependency>
+            <groupId>org.mariadb.jdbc</groupId>
+            <artifactId>mariadb-java-client</artifactId>
+            <version>1.4.6</version>
+        </dependency>
+
+
     </dependencies>
 
     <build>
