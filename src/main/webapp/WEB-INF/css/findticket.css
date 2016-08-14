@@ -1,0 +1,371 @@
+*{margin:0;padding:0; }
+
+.navbar > .container .navbar-brand, .navbar > .container-fluid .navbar-brand {color: white;}
+
+input.form-control {
+    border: 0px solid;
+    box-shadow: 0 0 0 transparent;
+    border-bottom: 1px solid #E6E4E4;
+    display: block;
+    font-size: small;
+    border-radius: 0px;
+}
+
+form.info-form {
+    padding-left: 12px;
+}
+
+.info-form .form-control {
+    padding-right: 100px;
+}
+
+.info .row{
+    margin-bottom: 10px;
+}
+
+h2.number-mobile {
+    margin-top: 11px;
+    font-size: 30px;
+    color: #f9af00;
+}
+
+.contact i.glyphicon.glyphicon-phone-alt {
+    margin-right: 12px;
+}
+
+.contact {
+    margin-left: 50px;
+}
+
+.categorize-chair {
+    margin-left: 84px;
+}
+
+td.info-table-ticket {
+    width: 70%;
+    font-weight: bold;
+}
+
+.like p.like-text {
+    font-size: inherit;
+    color: #03A9F4;
+    margin-top: 4px;
+}
+
+.like i.fa.fa-thumbs-o-up {
+    border-radius: 35%;
+    border: 2px solid #03A9F4;
+    padding: 7px;
+    color: #03A9F4;
+    font-size: xx-large;
+}
+
+.dislike p.dislike-text {
+    font-size: inherit;
+    color: rgba(231, 76, 60,1.0);
+    margin-top: 4px;
+}
+
+.dislike i.fa.fa-thumbs-o-down {
+    border-radius: 35%;
+    border: 2px solid rgba(231, 76, 60,1.0);
+    padding: 7px;
+    color: rgba(231, 76, 60,1.0);
+    font-size: xx-large;
+}
+
+.like {font-weight: 700;}
+
+.info-chair {
+    padding-top: 20px;
+}
+
+.info-wapper {
+    border: 2px solid #1867aa;
+}
+
+.info-end {
+    background: #1867aa;
+    padding: 15px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+
+.info-tilte h4 {
+    font-size: small;
+    font-weight: 600;
+    /* width: 70%; */
+}
+
+.info-tilte {
+    background: #1867aa;
+    color: white;
+    padding-top: 10px;
+    text-transform: uppercase;
+}
+
+.table-borderless tbody tr td.info {
+    padding: 1px;
+    background: none;
+    border-bottom: 1px solid #C9C6C6;
+}
+
+span.tooltiphover.tooltipstered {
+    margin-left: 0px;
+    font-size: small;
+    text-transform: none;
+    color: #b2b0b0;
+}
+
+.tooltipster-sidetip.tooltipster-bottom .tooltipster-arrow-background {
+    border-bottom-color: #1867aa;
+}
+
+.tooltipster-sidetip.tooltipster-noir.tooltipster-bottom .tooltipster-arrow-background,
+.tooltipster-sidetip.tooltipster-noir.tooltipster-top .tooltipster-arrow-background {
+    border-bottom-color: #1867aa;
+}
+
+.tooltipster-sidetip.tooltipster-bottom .tooltipster-arrow-border {
+    border-bottom-color: #1867aa;
+}
+
+.tooltipster-sidetip.tooltipster-top .tooltipster-arrow-background {
+    border-top-color: #1867aa;
+}
+
+.tooltipster-sidetip.tooltipster-top .tooltipster-arrow-border {
+    border-top-color: #1867aa;
+}
+
+/* .ticket span.tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0px;
+    position: absolute;
+    z-index: 1;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -60px;
+}
+
+.tooltiplocal:hover .tooltiptext {
+    visibility: visible;
+}
+
+.tooltiplocal {
+    position: relative;
+    display: inline-block;
+} */
+
+.barsearch span {
+    font-style: normal;
+    font-weight: 600;
+}
+
+.help {
+    color: #1867aa;
+    padding-top: 15px;
+}
+
+footer {
+    padding: 5px 0px;
+}
+
+footer p {
+    display: inline-block;
+    font-size: small;
+}
+
+.about h3 {
+    color: #1867aa;
+}
+
+.about ul li a {
+    text-decoration: none;
+    color: black;
+}
+
+.about ul {
+    list-style: none;
+}
+
+.about {
+    background: #f5f5f5;
+}
+
+.distance p {
+    padding-top: 10px;
+}
+
+.distance a.btn.btn-default {
+    border-color: #1867aa;
+    border-radius: 0%;
+    padding: 6px 9px;
+    color: #1867aa;
+}
+
+.distance {
+    padding: 25px 0px;
+}
+
+.barsearch span {
+    margin-left: 10px;
+    padding-right: 25px;
+}
+
+.ticket span {
+    margin-left: 15px;
+    color: black;
+    text-transform: uppercase;
+}
+
+.container-ticket {
+    box-sizing: content-box;
+    display: inline-block;
+    position: relative;
+    padding: 10px 0 5px 0;
+    color: #684d18;
+    font-weight: bold;
+    font-size: 18px;
+    background-size: 90% 100%;
+    background-repeat: no-repeat;
+    background-image: -webkit-radial-gradient(circle at 0 50%,rgba(255,255,224,0) .4em,#ffffe0 .5em),-webkit-radial-gradient(circle at 100% 50%,rgba(255,255,224,0) .4em,#ffffe0 .5em);
+    background-image: -webkit-radial-gradient(0 50% circle,rgba(255,255,224,0) .4em,#ffffe0 .5em),-webkit-radial-gradient(100% 50% circle,rgba(255,255,224,0) .4em,#ffffe0 .5em);
+    background-image: radial-gradient(circle at 0 50%,rgba(255,255,224,0) .4em,#f9af00 .5em),radial-gradient(circle at 100% 50%,rgba(255,255,224,0) .4em,#f9af00 .5em);
+    background-position: top left,top right;
+    background-position-x: left, right;
+    background-position-y: top, top;
+    background-color: #fff;
+    width: 100%;
+    border: none;
+    box-shadow: none;
+}
+
+button.btn.btn-primary.pull-right.container-ticket.text-center {
+    margin-top: 17px;
+}
+
+button.container-ticket:hover {background: rgba(249, 175, 0, 0.78);}
+
+.container-ticket.text-center i.fa.fa-bus {
+    border-right: 1px solid black;
+}
+
+.ticket p {
+    font-size: 13px;
+    color: #b2b0b0;
+    margin-bottom: 0px;
+}
+
+.ticket i.glyphicon.glyphicon-time {
+    font-size: 20px;
+    color: #b2b0b0;
+    padding-right: 7px;
+}
+
+.container-time {
+    display: inline-block;
+    width: 89%;
+}
+
+.container-bus i {
+    font-size: 18px;
+    margin-right: 5px;
+    color: #b2b0b0;
+}
+
+.ticket i.fa.fa-bus {
+    font-size: 20px;
+    color: #b2b0b0;
+    position: relative;
+    padding-right: 10px;
+}
+
+.container-ticket i.fa.fa-bus {
+    color: #1867aa;
+}
+
+.ticket h4 {
+    margin-top: 0px;
+}
+
+h4.name-from {
+    font-size: larger;
+    font-weight: 700;
+    color: #1867aa;
+}
+
+h4.name-car {
+    font-size: medium;
+}
+
+h4.money {
+    text-align: right;
+    font-weight: 700;
+}
+
+.container-bus {
+    display: inline-block;
+}
+
+.table-borderless tbody tr td, .table-borderless tbody tr th, .table-borderless thead tr th {
+    border: none;
+}
+
+.ticket {
+    margin-top: 10px;
+}
+
+.barsearch {
+    background: #e3e1e1;
+    margin-top: 15px;
+}
+
+.barsearch .container {height: 36px;}
+
+.localtion p {
+    color: #8d8a8a;
+}
+
+.localtion {
+    margin-top: 15px;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: white;
+}
+
+nav.navbar.navbar-default {
+    background: #1867aa;
+    border-bottom: 1px solid #2799d5;
+    padding: 6px 0px;
+}
+
+.title{
+    text-transform: uppercase;
+    font-size: 17px;
+}
+
+.localgo{
+    background-color: #6FB6DC;
+    margin-top: 5px;
+    padding: 20px 10px;
+/*     border-radius: 6px; */
+}
+
+.date-picker .input-group.date {
+    width: 33%;
+    /* display: inline-table; */
+}
+
+.date-picker {
+}
+
+.date-wapper {
+    display: inline-flex;
+}

@@ -1,0 +1,58 @@
+#holder{
+    height: 276px;
+    width: 91%;
+    background-color:#F5F5F5;
+    border:1px solid #A4A4A4;
+    margin-left: 39px;
+    border-radius: 25px;
+    /* margin-right: 0px; */
+}
+#place {
+    position:relative;
+    margin:7px;
+    margin-top: 23px;
+    margin-left: 93px;
+    width: 100%;
+}
+#place a{
+    font-size: 17px;
+    text-align: center;
+    position: relative;
+    top: 10px;
+    color: #1867aa;
+}
+#place li
+{
+   list-style: none outside none;
+   position: absolute;
+}    
+#place li:hover
+{
+    background-color:yellow;      
+} 
+#place .seat{
+    background:url("images/seat-white.svg") no-repeat scroll 0 0 transparent;
+    height: 43px;
+    width: 46px;
+    display:block;
+    /* border: 1px solid black; */
+    text-align: center;
+}
+#place .selectedSeat
+{ 
+    background-image:url("images/seat-gray.svg");          
+}
+#place .selectingSeat
+{ 
+    background-image:url("images/seat-green.svg");        
+}
+#place .row-2, #place .row-3{
+    margin-top:40px;
+}
+#seatDescription li{
+    verticle-align:middle;
+    list-style: none outside none;
+    padding-left:35px;
+    height:35px;
+    float:left;
+}

@@ -1,0 +1,13 @@
+/* This is how you would create a custom secondary theme on top of tooltipster-noir: */
+
+.tooltipster-sidetip.tooltipster-noir.tooltipster-noir-customized .tooltipster-box {
+	background: #1867aa;
+	border: none;
+	border-radius: 6px;
+	/* box-shadow: 5px 5px 2px 0 rgba(0,0,0,0.4); */
+}
+
+.tooltipster-sidetip.tooltipster-noir.tooltipster-noir-customized .tooltipster-content {
+	color: white;
+	padding: 5px 5px;
+}

@@ -1,0 +1,105 @@
+.point1, .point2 {
+    height: 15px;
+    width: 15px;
+    border: 3px solid red;
+    border-radius: 50%;
+    background: white;
+    margin-top: 16px;
+}
+
+.point2 {
+    margin-top: 190px;
+}
+
+.line {
+    width: 2px;
+    background: red;
+    height: 89%;
+    position: absolute;
+    top: 10%;
+    left: 29%;
+}
+
+.time {
+    height: 100px;
+}
+
+
+.map-chair {
+    margin-top: 30px;
+}
+
+.map-chair .info-buses {
+    border: 1px solid hsla(0,0%,43%,0.28);
+    border-radius: 10px;
+    box-shadow: 1px 1px 1px #8b8b8b;
+}
+
+.map-chair a.btn.btn-default.go {background: #2f9e6c;color: white;padding: 0px;padding-right: 15px;}
+
+.go i.fa.fa-arrow-right {background: #298a5f;padding: 12px;margin-right: 10px;}
+
+a.btn.btn-default.back {
+    background: #F44336;
+    color: white;
+    padding: 0px;
+    padding-right: 15px;
+}
+
+.back i.fa.fa-arrow-left {
+    background: #ed1717;
+    padding: 12px;
+    margin-right: 10px;
+}
+
+.col-xs-4.col-sm-4.col-md-4.col-lg-4.info-buses {
+    padding-bottom: 15px;
+}
+
+.from {
+    /* padding: 13px 0px; */
+    height: 127px;
+}
+
+.to {
+    height: 80px;
+}
+
+.available-seat, .booked-seat, .selected-seat {
+    display: inline-block;
+    padding: 6px;
+    border-radius: 50%;
+    border: 1px solid #373636;
+}
+
+.available-seat {
+    background: #ffffff;
+}
+
+#seatDescription  p {
+    float: right;
+    margin-left: 10px;
+}
+
+.booked-seat {
+    background-color: #dddddd;
+}
+
+.selected-seat {
+    background: #badf41;
+}
+
+.choose-chair {
+    padding-top: 15px;
+    padding-bottom: 23px;
+    border: 1px solid #d5d5d5;
+    border-radius: 17px;
+    box-shadow: 1px 1px 1px #8b8b8b;
+}
+
+.choose-chair h3 {
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-top: 40px;
+    color: rgba(244, 67, 54, 0.92);
+}

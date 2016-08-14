@@ -1,0 +1,28 @@
+.table-borderless tbody tr td, .table-borderless tbody tr th, .table-borderless thead tr th {
+    border: none;
+    border-bottom: 1px solid #ddd;
+}
+
+.payment {
+    padding-top: 50px;
+}
+
+.bill .form-group {
+    border: 1px solid #ddd;
+    padding: 25px 0px;
+}
+
+.container-ticket.text-center {
+    width: 50%;
+    color: black;
+    margin-left: 13px;
+}
+
+.container-ticket.text-center:hover {
+    color: white;
+    background: rgba(249, 175, 0, 0.78);
+}
+
+.transfer i.fa.fa-credit-card {
+    margin-right: 10px;
+}
