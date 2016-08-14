@@ -24,10 +24,6 @@ public class ScheduleEntity {
 
     private Date arriveTime;
 
-    @ManyToOne
-    @JoinColumn(name = "promotionId")
-    private PromotionEntity promotionEntity;
-
     @OneToMany(mappedBy = "scheduleEntity")
     private List<BusesEntity> busesEntityList;
 
@@ -72,14 +68,6 @@ public class ScheduleEntity {
 
     public void setArriveTime(Date arriveTime) {
         this.arriveTime = arriveTime;
-    }
-
-    public PromotionEntity getPromotionEntity() {
-        return promotionEntity;
-    }
-
-    public void setPromotionEntity(PromotionEntity promotionEntity) {
-        this.promotionEntity = promotionEntity;
     }
 
     public List<BusesEntity> getBusesEntityList() {

@@ -20,12 +20,11 @@ public class PromotionEntity {
     @JoinColumn(name = "busservicesId")
     private BusServicesEntity busServicesEntity;
 
-    @OneToMany (mappedBy = "promotionEntity")
-    private List<ScheduleEntity> scheduleEntityList;
-
     private Date start;
 
     private Date end;
+
+    private int sale;
 
     public PromotionEntity() {
     }
@@ -54,14 +53,6 @@ public class PromotionEntity {
         this.busServicesEntity = busServicesEntity;
     }
 
-    public List<ScheduleEntity> getScheduleEntityList() {
-        return scheduleEntityList;
-    }
-
-    public void setScheduleEntityList(List<ScheduleEntity> scheduleEntityList) {
-        this.scheduleEntityList = scheduleEntityList;
-    }
-
     public Date getStart() {
         return start;
     }
@@ -76,5 +67,13 @@ public class PromotionEntity {
 
     public void setEnd(Date end) {
         this.end = end;
+    }
+
+    public int getSale() {
+        return sale;
+    }
+
+    public void setSale(int sale) {
+        this.sale = sale;
     }
 }
