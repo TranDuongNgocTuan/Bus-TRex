@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,14 +6,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">  
   <link href='https://fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,900,700italic,900italic' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="../../../../../../../Java/Project/template/vendor/bootstrap.css">
-  <link rel="stylesheet" href="1.css">
-  <link rel="stylesheet" href="2.css">
-  <link rel="stylesheet" href="3.css">
-  <link rel="stylesheet" type="text/css" href="chair.css">
-  <script type="text/javascript" src="../../../../../../../Java/Project/template/vendor/bootstrap.js"></script>
-  <script type="text/javascript" src="1.js"></script>
-  <script type="text/javascript" src="chair.js"></script>
+  <link rel="stylesheet" href="webjars/vendor/bootstrap.css">
+  <link rel="stylesheet" href="webjars/css/findticket.css">
+  <link rel="stylesheet" href="webjars/css/choosechair.css">
+  <link rel="stylesheet" href="webjars/css/transfer.css">
+  <link rel="stylesheet" type="text/css" href="webjars/css/chair.css">
+  <script type="text/javascript" src="webjars/vendor/bootstrap.js"></script>
+  <script type="text/javascript" src="webjars/js/findticket.js"></script>
+  <script type="text/javascript" src="webjars/js/chair.js"></script>
   <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
 </head>
 <body>
@@ -43,7 +44,7 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <img src="../../../../../../../Java/Project/template/img/Banner_Trang_Chu_(PC)_-_With_Clock.png" class="img-reponsive">
+        <img src="webjars/img/Banner_Trang_Chu_(PC)_-_With_Clock.png" class="img-reponsive">
       </div>
     </div>
   </div> <!-- end poster -->
@@ -69,7 +70,7 @@
                     2. Nhập thông tin trên thẻ
 
                     3. Sau khi thanh toán, bạn sẽ nhận được vé điện tử qua tin nhắn và Email thay cho vé giấy để lên xe</p>
-                    <img src="../../../../../../../Java/Project/template/img/nganluong-logo.jpg" class="pull-left" width="100%">
+                    <img src="webjars/img/nganluong-logo.jpg" class="pull-left" width="100%">
                     <div class="container-ticket text-center" >
                       <span>Thanh Toán</span>
                     </div>
@@ -79,10 +80,10 @@
               <div class="panel panel-default">
                 <div class="panel-heading">
                   <h4 class="panel-title">
-                  <a data-toggle="collapse" data-parent="#accordion" href="#collapse1"><i class="fa fa-credit-card" aria-hidden="true"></i>Thanh Toán Ngân Lưọng</a>
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapse"><i class="fa fa-credit-card" aria-hidden="true"></i>Thanh Toán Ngân Lưọng</a>
                 </h4>
               </div>
-              <div id="collapse1" class="panel-collapse collapse">
+              <div id="collapse" class="panel-collapse collapse">
                 <div class="panel-body">
                   <p> Thanh toán bằng thẻ quốc tế Visa, Master, JCB <br>
                     Trên thẻ của bạn phải có các ký hiệu Visa, Master hay JCB để thanh toán được bằng hình thức này
@@ -92,7 +93,7 @@
                     2. Nhập thông tin trên thẻ
 
                     3. Sau khi thanh toán, bạn sẽ nhận được vé điện tử qua tin nhắn và Email thay cho vé giấy để lên xe</p>
-                    <img src="../../../../../../../Java/Project/template/img/nganluong-logo.jpg" class="img-reponsive" width="100%">
+                    <img src="webjars/img/nganluong-logo.jpg" class="img-reponsive" width="100%">
                     <div class="container-ticket text-center" >
                       <span>Thanh Toán</span>
                     </div>

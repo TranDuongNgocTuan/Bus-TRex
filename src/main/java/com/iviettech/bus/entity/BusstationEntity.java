@@ -20,11 +20,11 @@ public class BusstationEntity {
 
     private String address;
 
-    @OneToMany(mappedBy = "to")
-    private List<ScheduleEntity> scheduleToEntityList;
+    @OneToMany(mappedBy = "arrival")
+    private List<ScheduleEntity> scheduleArrivalEntityList;
 
-    @OneToMany(mappedBy = "from")
-    private List<ScheduleEntity> scheduleFromEntityList;
+    @OneToMany(mappedBy = "departure")
+    private List<ScheduleEntity> scheduleDepartureEntityList;
 
     public BusstationEntity() {
     }
@@ -61,19 +61,19 @@ public class BusstationEntity {
         this.address = address;
     }
 
-    public List<ScheduleEntity> getScheduleToEntityList() {
-        return scheduleToEntityList;
+    public List<ScheduleEntity> getScheduleArrivalEntityList() {
+        return scheduleArrivalEntityList;
     }
 
-    public void setScheduleToEntityList(List<ScheduleEntity> scheduleToEntityList) {
-        this.scheduleToEntityList = scheduleToEntityList;
+    public void setScheduleArrivalEntityList(List<ScheduleEntity> scheduleArrivalEntityList) {
+        this.scheduleArrivalEntityList = scheduleArrivalEntityList;
     }
 
-    public List<ScheduleEntity> getScheduleFromEntityList() {
-        return scheduleFromEntityList;
+    public List<ScheduleEntity> getScheduleDepartureEntityList() {
+        return scheduleDepartureEntityList;
     }
 
-    public void setScheduleFromEntityList(List<ScheduleEntity> scheduleFromEntityList) {
-        this.scheduleFromEntityList = scheduleFromEntityList;
+    public void setScheduleDepartureEntityList(List<ScheduleEntity> scheduleDepartureEntityList) {
+        this.scheduleDepartureEntityList = scheduleDepartureEntityList;
     }
 }

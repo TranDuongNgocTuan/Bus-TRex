@@ -1,6 +1,7 @@
 package com.iviettech.bus.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by tran on 14/08/2016.
@@ -23,8 +24,8 @@ public class BusEntity {
     @JoinColumn(name = "busservicesId")
     private BusServicesEntity busServicesEntity;
 
-    @OneToOne(mappedBy = "busEntity")
-    private BusesEntity busesEntity;
+    @OneToMany(mappedBy = "busEntity")
+    private List<BusesEntity> busesEntity;
 
     public BusEntity() {
     }
@@ -69,11 +70,11 @@ public class BusEntity {
         this.busServicesEntity = busServicesEntity;
     }
 
-    public BusesEntity getBusesEntity() {
+    public List<BusesEntity> getBusesEntity() {
         return busesEntity;
     }
 
-    public void setBusesEntity(BusesEntity busesEntity) {
+    public void setBusesEntity(List<BusesEntity> busesEntity) {
         this.busesEntity = busesEntity;
     }
 }

@@ -1,7 +1,7 @@
 package com.iviettech.bus.entity;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -13,12 +13,12 @@ public class ScheduleEntity {
     private int id;
 
     @ManyToOne
-    @JoinColumn(name = "fromId")
-    private BusstationEntity from;
+    @JoinColumn(name = "departureId")
+    private BusstationEntity departure;
 
     @ManyToOne
-    @JoinColumn(name = "toId")
-    private BusstationEntity to;
+    @JoinColumn(name = "arrivalId")
+    private BusstationEntity arrival;
 
     private Date departureTime;
 
@@ -38,20 +38,20 @@ public class ScheduleEntity {
         this.id = id;
     }
 
-    public BusstationEntity getFrom() {
-        return from;
+    public BusstationEntity getDeparture() {
+        return departure;
     }
 
-    public void setFrom(BusstationEntity from) {
-        this.from = from;
+    public void setDeparture(BusstationEntity departure) {
+        this.departure = departure;
     }
 
-    public BusstationEntity getTo() {
-        return to;
+    public BusstationEntity getArrival() {
+        return arrival;
     }
 
-    public void setTo(BusstationEntity to) {
-        this.to = to;
+    public void setArrival(BusstationEntity arrival) {
+        this.arrival = arrival;
     }
 
     public Date getDepartureTime() {

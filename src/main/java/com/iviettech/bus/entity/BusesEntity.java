@@ -26,8 +26,8 @@ public class BusesEntity {
     @OneToMany(mappedBy = "busesEntity")
     private List<TicketEntity> ticketEntityList;
 
-    @OneToOne(cascade = {CascadeType.ALL})
-    @PrimaryKeyJoinColumn
+    @ManyToOne
+    @JoinColumn(name = "busId")
     private BusEntity busEntity;
 
     public BusesEntity() {
