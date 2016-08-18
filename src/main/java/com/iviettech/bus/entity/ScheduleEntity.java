@@ -24,8 +24,19 @@ public class ScheduleEntity {
 
     private Date arriveTime;
 
+    private int distance;
+
+    @Column(name = "numbertrip")
+    private int numberTrip;
+
+    @Column(name = "numberday")
+    private int numberDay;
+
     @OneToMany(mappedBy = "scheduleEntity", fetch = FetchType.EAGER)
     private List<BusesEntity> busesEntityList;
+
+    @OneToMany(mappedBy = "scheduleEntity")
+    private List<PromotionTimeEntity> promotionTimeEntityList;
 
     public ScheduleEntity() {
     }
@@ -77,4 +88,37 @@ public class ScheduleEntity {
     public void setBusesEntityList(List<BusesEntity> busesEntityList) {
         this.busesEntityList = busesEntityList;
     }
+
+    public int getDistance() {
+        return distance;
+    }
+
+    public void setDistance(int distance) {
+        this.distance = distance;
+    }
+
+    public int getNumberTrip() {
+        return numberTrip;
+    }
+
+    public void setNumberTrip(int numberTrip) {
+        this.numberTrip = numberTrip;
+    }
+
+    public int getNumberDay() {
+        return numberDay;
+    }
+
+    public void setNumberDay(int numberDay) {
+        this.numberDay = numberDay;
+    }
+
+    public List<PromotionTimeEntity> getPromotionTimeEntityList() {
+        return promotionTimeEntityList;
+    }
+
+    public void setPromotionTimeEntityList(List<PromotionTimeEntity> promotionTimeEntityList) {
+        this.promotionTimeEntityList = promotionTimeEntityList;
+    }
+
 }

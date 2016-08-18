@@ -20,9 +20,8 @@ public class PromotionEntity {
     @JoinColumn(name = "busservicesId")
     private BusServicesEntity busServicesEntity;
 
-    private Date start;
-
-    private Date end;
+    @OneToMany(mappedBy = "promotionEntity")
+    private List<PromotionTimeEntity> promotionTimeEntityList;
 
     private int sale;
 
@@ -53,27 +52,17 @@ public class PromotionEntity {
         this.busServicesEntity = busServicesEntity;
     }
 
-    public Date getStart() {
-        return start;
-    }
-
-    public void setStart(Date start) {
-        this.start = start;
-    }
-
-    public Date getEnd() {
-        return end;
-    }
-
-    public void setEnd(Date end) {
-        this.end = end;
-    }
-
-    public int getSale() {
-        return sale;
-    }
+    public int getSale() { return sale; }
 
     public void setSale(int sale) {
         this.sale = sale;
+    }
+
+    public List<PromotionTimeEntity> getPromotionTimeEntityList() {
+        return promotionTimeEntityList;
+    }
+
+    public void setPromotionTimeEntityList(List<PromotionTimeEntity> promotionTimeEntityList) {
+        this.promotionTimeEntityList = promotionTimeEntityList;
     }
 }

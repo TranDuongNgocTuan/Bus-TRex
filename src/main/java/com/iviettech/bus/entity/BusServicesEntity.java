@@ -107,4 +107,6 @@ public class BusServicesEntity {
     public void setPromotionEntityList(List<PromotionEntity> promotionEntityList) {
         this.promotionEntityList = promotionEntityList;
     }
+
+
 }

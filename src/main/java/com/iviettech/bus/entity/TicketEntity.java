@@ -19,20 +19,20 @@ public class TicketEntity {
     @Column(name = "totalprice")
     private int totalprice;
 
-    @ManyToOne
-    @JoinColumn(name = "scheduleID")
-    private ScheduleEntity scheduleEntity;
-
     @Column(name = "fullname")
     private String fullName;
 
-    @Column(name ="identitycard")
+    @Column(name = "identitycard")
     private String identityCard;
 
-    @Column(name ="status")
+    @Column(name = "status")
     private int status;
 
     private int seat;
+
+    @ManyToOne
+    @JoinColumn(name = "busesId")
+    private BusesEntity busesEntity;
 
     public TicketEntity() {
     }
@@ -59,14 +59,6 @@ public class TicketEntity {
 
     public void setTotalprice(int totalprice) {
         this.totalprice = totalprice;
-    }
-
-    public ScheduleEntity getScheduleEntity() {
-        return scheduleEntity;
-    }
-
-    public void setScheduleEntity(ScheduleEntity scheduleEntity) {
-        this.scheduleEntity = scheduleEntity;
     }
 
     public String getFullName() {
