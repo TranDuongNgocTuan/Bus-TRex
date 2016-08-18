@@ -31,6 +31,10 @@ public class BusesEntity {
     @JoinColumn(name = "busId")
     private BusEntity busEntity;
 
+    @ManyToOne
+    @JoinColumn(name = "timetablescheduleId")
+    private TimeTableScheduleEntity timeTableScheduleEntity;
+
     private Date date;
 
     public BusesEntity() {

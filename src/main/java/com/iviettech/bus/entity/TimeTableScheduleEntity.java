@@ -2,6 +2,7 @@ package com.iviettech.bus.entity;
 
 import javax.persistence.*;
 import java.sql.Time;
+import java.util.List;
 
 /**
  * Created by tran on 18/08/2016.
@@ -22,6 +23,9 @@ public class TimeTableScheduleEntity {
     @ManyToOne
     @JoinColumn(name = "scheduleId")
     private ScheduleEntity scheduleEntity;
+
+    @OneToMany(mappedBy = "timeTableScheduleEntity")
+    private List<BusesEntity> busesEntityList;
 
     private Time duration; // Thoi gian di
 

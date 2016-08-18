@@ -33,9 +33,6 @@ public class ScheduleEntity {
     @PrimaryKeyJoinColumn
     private BusServicesEntity busServicesEntity;
 
-    @OneToMany(mappedBy = "scheduleEntity", fetch = FetchType.EAGER)
-    private List<BusesEntity> busesEntityList;
-
     @OneToMany(mappedBy = "scheduleEntity")
     private List<PromotionTimeEntity> promotionTimeEntityList;
 
@@ -68,14 +65,6 @@ public class ScheduleEntity {
 
     public void setArrival(BusstationEntity arrival) {
         this.arrival = arrival;
-    }
-
-    public List<BusesEntity> getBusesEntityList() {
-        return busesEntityList;
-    }
-
-    public void setBusesEntityList(List<BusesEntity> busesEntityList) {
-        this.busesEntityList = busesEntityList;
     }
 
     public float getDistance() {
