@@ -6,6 +6,8 @@ import java.sql.Time;
 /**
  * Created by tran on 18/08/2016.
  */
+@Entity
+@Table(name = "timetableschedule")
 public class TimeTableScheduleEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,6 +22,8 @@ public class TimeTableScheduleEntity {
     @ManyToOne
     @JoinColumn(name = "scheduleId")
     private ScheduleEntity scheduleEntity;
+
+    private Time duration; // Thoi gian di
 
     public int getId() {
         return id;
@@ -51,5 +55,13 @@ public class TimeTableScheduleEntity {
 
     public void setScheduleEntity(ScheduleEntity scheduleEntity) {
         this.scheduleEntity = scheduleEntity;
+    }
+
+    public Time getDuration() {
+        return duration;
+    }
+
+    public void setDuration(Time duration) {
+        this.duration = duration;
     }
 }

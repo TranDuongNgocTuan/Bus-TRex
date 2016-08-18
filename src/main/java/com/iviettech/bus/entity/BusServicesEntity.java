@@ -25,6 +25,9 @@ public class BusServicesEntity {
     private String description;
 
     @OneToOne(mappedBy = "busServicesEntity")
+    private ScheduleEntity scheduleEntity;
+
+    @OneToOne(mappedBy = "busServicesEntity")
     private RankEntity rankEntity;
 
     @OneToMany(mappedBy = "busServicesEntity")
@@ -108,5 +111,11 @@ public class BusServicesEntity {
         this.promotionEntityList = promotionEntityList;
     }
 
+    public ScheduleEntity getScheduleEntity() {
+        return scheduleEntity;
+    }
 
+    public void setScheduleEntity(ScheduleEntity scheduleEntity) {
+        this.scheduleEntity = scheduleEntity;
+    }
 }

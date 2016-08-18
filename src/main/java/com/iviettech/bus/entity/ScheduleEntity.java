@@ -21,7 +21,7 @@ public class ScheduleEntity {
     @JoinColumn(name = "arrivalId")
     private BusstationEntity arrival;
 
-    private int distance;
+    private float distance;
 
     @Column(name = "numbertrip")
     private int numberTrip;
@@ -29,11 +29,19 @@ public class ScheduleEntity {
     @Column(name = "numberday")
     private int numberDay;
 
+    @OneToOne(cascade = {CascadeType.ALL})
+    @PrimaryKeyJoinColumn
+    private BusServicesEntity busServicesEntity;
+
     @OneToMany(mappedBy = "scheduleEntity", fetch = FetchType.EAGER)
     private List<BusesEntity> busesEntityList;
 
     @OneToMany(mappedBy = "scheduleEntity")
     private List<PromotionTimeEntity> promotionTimeEntityList;
+
+    @OneToMany(mappedBy = "scheduleEntity")
+    private List<TimeTableScheduleEntity> timeTableScheduleEntityList;
+
 
     public ScheduleEntity() {
     }
@@ -70,11 +78,11 @@ public class ScheduleEntity {
         this.busesEntityList = busesEntityList;
     }
 
-    public int getDistance() {
+    public float getDistance() {
         return distance;
     }
 
-    public void setDistance(int distance) {
+    public void setDistance(float distance) {
         this.distance = distance;
     }
 
@@ -102,4 +110,19 @@ public class ScheduleEntity {
         this.promotionTimeEntityList = promotionTimeEntityList;
     }
 
+    public List<TimeTableScheduleEntity> getTimeTableScheduleEntityList() {
+        return timeTableScheduleEntityList;
+    }
+
+    public void setTimeTableScheduleEntityList(List<TimeTableScheduleEntity> timeTableScheduleEntityList) {
+        this.timeTableScheduleEntityList = timeTableScheduleEntityList;
+    }
+
+    public BusServicesEntity getBusServicesEntity() {
+        return busServicesEntity;
+    }
+
+    public void setBusServicesEntity(BusServicesEntity busServicesEntity) {
+        this.busServicesEntity = busServicesEntity;
+    }
 }

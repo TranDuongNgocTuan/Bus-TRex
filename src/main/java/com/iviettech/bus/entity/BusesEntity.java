@@ -3,6 +3,7 @@ package com.iviettech.bus.entity;
 import sun.security.krb5.internal.Ticket;
 
 import javax.persistence.*;
+import java.sql.Date;
 import java.util.List;
 
 /**
@@ -29,6 +30,8 @@ public class BusesEntity {
     @ManyToOne
     @JoinColumn(name = "busId")
     private BusEntity busEntity;
+
+    private Date date;
 
     public BusesEntity() {
     }
@@ -71,5 +74,13 @@ public class BusesEntity {
 
     public void setBusEntity(BusEntity busEntity) {
         this.busEntity = busEntity;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }
