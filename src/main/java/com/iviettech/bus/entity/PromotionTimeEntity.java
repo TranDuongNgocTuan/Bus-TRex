@@ -22,7 +22,7 @@ public class PromotionTimeEntity {
     private ScheduleEntity scheduleEntity;
 
     @ManyToOne
-    @JoinColumn(name = "promotionID")
+    @JoinColumn(name = "promotionId")
     private PromotionEntity promotionEntity;
 
     public int getId() {

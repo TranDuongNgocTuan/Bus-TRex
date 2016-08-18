@@ -36,8 +36,8 @@ public class ScheduleShowController {
      */
     @RequestMapping(value = "/schedule")
     public String showTicketList(Model model) {
-        BusstationEntity busstationEntityFrom = busstationRepository.findOne(3); // Form
-        BusstationEntity busstationEntityTo = busstationRepository.findOne(1);   // To
+        BusstationEntity busstationEntityFrom = busstationRepository.findOne(1); // Form
+        BusstationEntity busstationEntityTo = busstationRepository.findOne(3);   // To
         model.addAttribute("from", busstationEntityFrom);
         model.addAttribute("to", busstationEntityTo);
 
@@ -52,7 +52,7 @@ public class ScheduleShowController {
 
         List<ScheduleEntity> scheduleEntityList =
                 scheduleRepository.findByFromAndToAndDepartureTimeEqual(busstationEntityFrom.getId(), busstationEntityTo.getId(), new java.sql.Date(date.getTime()) );
-        model.addAttribute("ticketList", scheduleEntityList);
+       model.addAttribute("ticketList", scheduleEntityList);
 
 
 

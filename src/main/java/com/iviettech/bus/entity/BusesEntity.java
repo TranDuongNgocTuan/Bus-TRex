@@ -17,10 +17,6 @@ public class BusesEntity {
     private int id;
 
     @ManyToOne
-    @JoinColumn(name = "scheduleId")
-    private ScheduleEntity scheduleEntity;
-
-    @ManyToOne
     @JoinColumn(name = "statusbusesId")
     private StatusBusesEntity statusBusesEntity;
 
@@ -46,14 +42,6 @@ public class BusesEntity {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public ScheduleEntity getScheduleEntity() {
-        return scheduleEntity;
-    }
-
-    public void setScheduleEntity(ScheduleEntity scheduleEntity) {
-        this.scheduleEntity = scheduleEntity;
     }
 
     public StatusBusesEntity getStatusBusesEntity() {
