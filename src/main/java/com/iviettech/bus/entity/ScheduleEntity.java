@@ -24,7 +24,7 @@ public class ScheduleEntity {
 
     private Date arriveTime;
 
-    @OneToMany(mappedBy = "scheduleEntity")
+    @OneToMany(mappedBy = "scheduleEntity", fetch = FetchType.EAGER)
     private List<BusesEntity> busesEntityList;
 
     public ScheduleEntity() {

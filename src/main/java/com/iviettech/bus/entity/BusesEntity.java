@@ -23,7 +23,7 @@ public class BusesEntity {
     @JoinColumn(name = "statusbusesId")
     private StatusBusesEntity statusBusesEntity;
 
-    @OneToMany(mappedBy = "busesEntity")
+    @OneToMany(mappedBy = "busesEntity", fetch = FetchType.EAGER)
     private List<TicketEntity> ticketEntityList;
 
     @ManyToOne

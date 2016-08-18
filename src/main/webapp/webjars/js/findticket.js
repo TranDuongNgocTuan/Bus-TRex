@@ -2,6 +2,8 @@
 	$(".barsearch i.bar").click(function(){
 		$(this).toggleClass('fa-sort-desc');
 		$(this).toggleClass('fa-sort-asc');
+		var chao = '${to.Id}';
+		alert(chao);
 		return false;
 	})
 

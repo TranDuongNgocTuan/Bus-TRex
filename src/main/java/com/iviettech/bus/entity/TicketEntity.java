@@ -13,13 +13,26 @@ public class TicketEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Column(name = "bookedtime")
+    private Date bookTime;
+
+    @Column(name = "totalprice")
+    private int totalprice;
+
     @ManyToOne
-    @JoinColumn(name = "busesID")
-    private BusesEntity busesEntity;
+    @JoinColumn(name = "scheduleID")
+    private ScheduleEntity scheduleEntity;
 
-    private int price;
+    @Column(name = "fullname")
+    private String fullName;
 
-    private Date dob;
+    @Column(name ="identitycard")
+    private String identityCard;
+
+    @Column(name ="status")
+    private int status;
+
+    private int seat;
 
     public TicketEntity() {
     }
@@ -32,27 +45,59 @@ public class TicketEntity {
         this.id = id;
     }
 
-    public BusesEntity getBusesEntity() {
-        return busesEntity;
+    public Date getBookTime() {
+        return bookTime;
     }
 
-    public void setBusesEntity(BusesEntity busesEntity) {
-        this.busesEntity = busesEntity;
+    public void setBookTime(Date bookTime) {
+        this.bookTime = bookTime;
     }
 
-    public int getPrice() {
-        return price;
+    public int getTotalprice() {
+        return totalprice;
     }
 
-    public void setPrice(int price) {
-        this.price = price;
+    public void setTotalprice(int totalprice) {
+        this.totalprice = totalprice;
     }
 
-    public Date getDob() {
-        return dob;
+    public ScheduleEntity getScheduleEntity() {
+        return scheduleEntity;
     }
 
-    public void setDob(Date dob) {
-        this.dob = dob;
+    public void setScheduleEntity(ScheduleEntity scheduleEntity) {
+        this.scheduleEntity = scheduleEntity;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public String getIdentityCard() {
+        return identityCard;
+    }
+
+    public void setIdentityCard(String identityCard) {
+        this.identityCard = identityCard;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public int getSeat() {
+        return seat;
+    }
+
+    public void setSeat(int seat) {
+        this.seat = seat;
     }
 }

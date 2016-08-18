@@ -36,12 +36,15 @@ public class ScheduleShowController {
      */
     @RequestMapping(value = "/schedule")
     public String showTicketList(Model model) {
-        BusstationEntity busstationEntityFrom = busstationRepository.findOne(1); // Form
+        BusstationEntity busstationEntityFrom = busstationRepository.findOne(3); // Form
         BusstationEntity busstationEntityTo = busstationRepository.findOne(1);   // To
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
+        model.addAttribute("from", busstationEntityFrom);
+        model.addAttribute("to", busstationEntityTo);
+
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Date date = null;
         try {
-            date = dateFormat.parse("2016-08-18");
+            date = dateFormat.parse("2016-08-17");
 //            System.out.println(dateFormat.format(date));
         } catch (ParseException e) {
             e.printStackTrace();
@@ -49,12 +52,9 @@ public class ScheduleShowController {
 
         List<ScheduleEntity> scheduleEntityList =
                 scheduleRepository.findByFromAndToAndDepartureTimeEqual(busstationEntityFrom.getId(), busstationEntityTo.getId(), new java.sql.Date(date.getTime()) );
-        model.addAttribute("TicketList", scheduleEntityList);
+        model.addAttribute("ticketList", scheduleEntityList);
 
-        List<BusesEntity> busesEntityList =
-                busesRepository.findByScheduleEntityId(scheduleEntityList.get(0).getId());
 
-        System.out.println(busesEntityList.get(0).getBusEntity());
 
         return "findticket";
     }

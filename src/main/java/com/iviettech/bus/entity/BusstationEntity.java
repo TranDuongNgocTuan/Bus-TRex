@@ -20,6 +20,10 @@ public class BusstationEntity {
 
     private String address;
 
+    private int longitude;
+
+    private int lattifude;
+
     @OneToMany(mappedBy = "arrival")
     private List<ScheduleEntity> scheduleArrivalEntityList;
 

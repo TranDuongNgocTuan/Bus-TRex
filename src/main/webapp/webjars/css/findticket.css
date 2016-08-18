@@ -369,3 +369,13 @@ nav.navbar.navbar-default {
 .date-wapper {
     display: inline-flex;
 }
+
+#imagesvg {
+    background-image: url("../img/icon-vxr.svg");
+}
+
+p.space {
+    font-size: medium;
+    margin-top: 5px;
+    color: black;
+}
