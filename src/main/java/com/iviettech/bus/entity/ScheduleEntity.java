@@ -1,6 +1,7 @@
 package com.iviettech.bus.entity;
 
 import javax.persistence.*;
+import java.sql.Time;
 import java.util.Date;
 import java.util.List;
 
@@ -19,10 +20,6 @@ public class ScheduleEntity {
     @ManyToOne
     @JoinColumn(name = "arrivalId")
     private BusstationEntity arrival;
-
-    private Date departureTime;
-
-    private Date arriveTime;
 
     private int distance;
 
@@ -63,22 +60,6 @@ public class ScheduleEntity {
 
     public void setArrival(BusstationEntity arrival) {
         this.arrival = arrival;
-    }
-
-    public Date getDepartureTime() {
-        return departureTime;
-    }
-
-    public void setDepartureTime(Date departureTime) {
-        this.departureTime = departureTime;
-    }
-
-    public Date getArriveTime() {
-        return arriveTime;
-    }
-
-    public void setArriveTime(Date arriveTime) {
-        this.arriveTime = arriveTime;
     }
 
     public List<BusesEntity> getBusesEntityList() {
