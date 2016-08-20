@@ -11,13 +11,16 @@ public class InfoTicket{
 
     private TimeTableScheduleEntity timeTableScheduleEntity;
 
+    private int numberSeat;
+
     public InfoTicket() {
     }
 
-    public InfoTicket(ScheduleEntity scheduleEntity, int numberTicket, TimeTableScheduleEntity timeTableScheduleEntity) {
+    public InfoTicket(ScheduleEntity scheduleEntity, int numberTicket, TimeTableScheduleEntity timeTableScheduleEntity, int numberSeat) {
         this.scheduleEntity = scheduleEntity;
         this.numberTicket = numberTicket;
         this.timeTableScheduleEntity = timeTableScheduleEntity;
+        this.numberSeat = numberSeat;
     }
 
     public ScheduleEntity getScheduleEntity() {
@@ -43,4 +46,14 @@ public class InfoTicket{
     public void setTimeTableScheduleEntity(TimeTableScheduleEntity timeTableScheduleEntity) {
         this.timeTableScheduleEntity = timeTableScheduleEntity;
     }
+
+    public int getNumberSeat() {
+        return numberSeat;
+    }
+
+    public void setNumberSeat(int numberSeat) {
+        this.numberSeat = numberSeat;
+    }
+
+
 }

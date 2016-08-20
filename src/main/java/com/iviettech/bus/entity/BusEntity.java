@@ -71,4 +71,11 @@ public class BusEntity {
         this.busServicesEntity = busServicesEntity;
     }
 
+    public List<TimeTableScheduleEntity> getTimeTableScheduleEntityList() {
+        return timeTableScheduleEntityList;
+    }
+
+    public void setTimeTableScheduleEntityList(List<TimeTableScheduleEntity> timeTableScheduleEntityList) {
+        this.timeTableScheduleEntityList = timeTableScheduleEntityList;
+    }
 }

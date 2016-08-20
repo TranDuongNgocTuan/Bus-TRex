@@ -42,7 +42,7 @@ public class SpringConfig {
         // JPA properties
         Properties jpaProperties = new Properties();
         jpaProperties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
-        jpaProperties.setProperty("hibernate.hbm2ddl.auto", "create");
+        jpaProperties.setProperty("hibernate.hbm2ddl.auto", "update");
         entityManager.setJpaProperties(jpaProperties);
 
         return entityManager;

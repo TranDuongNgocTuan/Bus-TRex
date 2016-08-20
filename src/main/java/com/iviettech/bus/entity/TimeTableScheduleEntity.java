@@ -73,6 +73,14 @@ public class TimeTableScheduleEntity {
         this.duration = duration;
     }
 
+    public BusEntity getBusEntity() {
+        return busEntity;
+    }
+
+    public void setBusEntity(BusEntity busEntity) {
+        this.busEntity = busEntity;
+    }
+
     public List<BusesEntity> getBusesEntityList() {
         return busesEntityList;
     }

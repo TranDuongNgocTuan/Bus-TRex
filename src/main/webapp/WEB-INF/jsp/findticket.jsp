@@ -219,22 +219,6 @@
                                                              pattern="HH:mm"/>→
                                     <fmt:formatDate value="${schedule.timeTableScheduleEntity.arriveTime}" type="time"
                                                     pattern="HH:mm"/></h4>
-                                    <%--<c:set var="periodHours">--%>
-                                    <%--<fmt:formatNumber--%>
-                                    <%--value="${(schedule.arriveTime.time - schedule.departureTime.time)/3600000}"--%>
-                                    <%--minFractionDigits="0" maxFractionDigits="0"/>--%>
-                                    <%--</c:set>--%>
-
-                                    <%--<c:set var="periodMinute">--%>
-                                    <%--<fmt:formatNumber--%>
-                                    <%--value="${(schedule.arriveTime.time - schedule.departureTime.time)/3600000 - periodHours}"--%>
-                                    <%--minFractionDigits="0" maxFractionDigits="0"/>--%>
-                                    <%--</c:set>--%>
-
-                                    <%--<c:set value="${Interger(periodHours)}" var="periodMinute"/>--%>
-                                    <%--<fmt:parseDate value="${periodTime}" var="dateObject"--%>
-                                    <%--pattern="yyyy-MM-dd HH:mm:ss"/>--%>
-                                    <%--<fmt:formatDate value="${periodDay}" pattern="time" />--%>
                                 <p>Thời
                                     gian: ${schedule.timeTableScheduleEntity.duration.hours}h${schedule.timeTableScheduleEntity.duration.minutes}'</p>
                             <span class="tooltiphover"
@@ -250,9 +234,9 @@
                         <!-- end time from to -->
                         <td class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
                             <div class="container-chair text-center">
-                                <p class="">Giường nằm 40 chỗ</p>
+                                <p class="">Giường nằm ${schedule.numberSeat} chỗ</p>
 
-                                <p class="space">Còn trống: ${schedule.timeTableScheduleEntity.busesEntityList.get()}</p>
+                                <p class="space">Còn trống: ${schedule.numberSeat - schedule.numberTicket}</p>
                             </div>
                         </td>
                         <td class="col-xs-2 col-sm-2 col-md-2 col-lg-2">

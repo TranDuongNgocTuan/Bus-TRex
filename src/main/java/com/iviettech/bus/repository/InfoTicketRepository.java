@@ -52,6 +52,7 @@ public class InfoTicketRepository{
 
     public  List<InfoTicket> findAllInfoTicket(int fromId, int toId, Date datePay){
         String sql = "SELECT schedule.* , timetableschedule.*" +
+                ", case when bus.seats is null then 0 else bus.seats END as 'seat'" +
                 ", case when buses.id is null then 0 else count(ticket.id) END as 'Quantity'" +
                 " from schedule" +
                 " inner join timetableschedule" +
@@ -62,6 +63,8 @@ public class InfoTicketRepository{
                 " on buses.timetablescheduleId = timetableschedule.id" +
                 " left join ticket" +
                 " on buses.id = ticket.busesId" +
+                " left join bus" +
+                " on timetableschedule.busId = bus.id"+
                 " where schedule.departureId = " + fromId + " and schedule.arrivalId = " + toId + " and datediff('" +  datePay  + "', busservices.dob)%schedule.numberday = 0" +
                 " group by timetableschedule.id";
         List<InfoTicket> infoTicketList = jdbcTemplate.query(sql, new RowMapper<InfoTicket>() {
@@ -90,7 +93,8 @@ public class InfoTicketRepository{
 
                 aInfoTicket.setScheduleEntity(scheduleEntity);
                 aInfoTicket.setTimeTableScheduleEntity(timeTableScheduleEntity);
-                aInfoTicket.setNumberTicket(rs.getInt(13));
+                aInfoTicket.setNumberSeat(rs.getInt(14));
+                aInfoTicket.setNumberTicket(rs.getInt("Quantity"));
 
                 return aInfoTicket;
             }

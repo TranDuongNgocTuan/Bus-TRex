@@ -44,7 +44,7 @@ public class ScheduleShowController {
     @RequestMapping(value = "/schedule")
     public String showTicketList(Model model) {
         BusstationEntity busstationEntityFrom = busstationRepository.findOne(1); // Form
-        BusstationEntity busstationEntityTo = busstationRepository.findOne(3);   // To
+        BusstationEntity busstationEntityTo = busstationRepository.findOne(2);   // To
         model.addAttribute("from", busstationEntityFrom);
         model.addAttribute("to", busstationEntityTo);
 
@@ -60,7 +60,7 @@ public class ScheduleShowController {
         ScheduleService scheduleService = new ScheduleService();
 
         List<InfoTicket> scheduleEntityList =
-                infoTicketRepository.findAllInfoTicket(1, 3, new java.sql.Date(date.getTime()));
+                infoTicketRepository.findAllInfoTicket(1, 2, new java.sql.Date(date.getTime()));
 
         model.addAttribute("scheduleList",scheduleEntityList);
         model.addAttribute("dayStartMove",new java.sql.Date(date.getTime()));
