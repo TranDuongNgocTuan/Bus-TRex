@@ -355,7 +355,7 @@ nav.navbar.navbar-default {
     background-color: #6FB6DC;
     margin-top: 5px;
     padding: 20px 10px;
-/*     border-radius: 6px; */
+    /*     border-radius: 6px; */
 }
 
 .date-picker .input-group.date {
@@ -378,4 +378,16 @@ p.space {
     font-size: medium;
     margin-top: 5px;
     color: black;
+}
+
+.ticket span.tooltiphover.tooltipstered {
+    display: inline-flex;
+}
+
+.ticket p.adress {
+    /* border: 1px solid #cc0000; */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 137px;
 }

@@ -22,8 +22,8 @@ public class TicketEntity {
     @Column(name = "fullname")
     private String fullName;
 
-    @Column(name = "identitycard")
-    private String identityCard;
+    @Column(name = "numberphone")
+    private String numberphone;
 
     @Column(name = "status")
     private int status;
@@ -69,12 +69,20 @@ public class TicketEntity {
         this.fullName = fullName;
     }
 
-    public String getIdentityCard() {
-        return identityCard;
+    public String getNumberphone() {
+        return numberphone;
     }
 
-    public void setIdentityCard(String identityCard) {
-        this.identityCard = identityCard;
+    public void setNumberphone(String numberphone) {
+        this.numberphone = numberphone;
+    }
+
+    public BusesEntity getBusesEntity() {
+        return busesEntity;
+    }
+
+    public void setBusesEntity(BusesEntity busesEntity) {
+        this.busesEntity = busesEntity;
     }
 
     public int getStatus() {

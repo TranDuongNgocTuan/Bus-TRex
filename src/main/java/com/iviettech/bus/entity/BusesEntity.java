@@ -24,10 +24,6 @@ public class BusesEntity {
     private List<TicketEntity> ticketEntityList;
 
     @ManyToOne
-    @JoinColumn(name = "busId")
-    private BusEntity busEntity;
-
-    @ManyToOne
     @JoinColumn(name = "timetablescheduleId")
     private TimeTableScheduleEntity timeTableScheduleEntity;
 
@@ -58,14 +54,6 @@ public class BusesEntity {
 
     public void setTicketEntityList(List<TicketEntity> ticketEntityList) {
         this.ticketEntityList = ticketEntityList;
-    }
-
-    public BusEntity getBusEntity() {
-        return busEntity;
-    }
-
-    public void setBusEntity(BusEntity busEntity) {
-        this.busEntity = busEntity;
     }
 
     public Date getDate() {

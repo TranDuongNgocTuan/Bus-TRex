@@ -80,4 +80,20 @@ public class BusstationEntity {
     public void setScheduleDepartureEntityList(List<ScheduleEntity> scheduleDepartureEntityList) {
         this.scheduleDepartureEntityList = scheduleDepartureEntityList;
     }
+
+    public int getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(int longitude) {
+        this.longitude = longitude;
+    }
+
+    public int getLattifude() {
+        return lattifude;
+    }
+
+    public void setLattifude(int lattifude) {
+        this.lattifude = lattifude;
+    }
 }

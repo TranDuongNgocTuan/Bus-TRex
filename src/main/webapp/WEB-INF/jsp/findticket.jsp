@@ -1,3 +1,4 @@
+<%@ page import="com.iviettech.bus.repository.ScheduleRepository" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="b" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -191,223 +192,232 @@
 
 <div class="ticket">
     <div class="container">
-        <c:forEach var="schedule" items="${ticketList}">
-            <b:forEach var="buses" items="${schedule.busesEntityList}">
-                <div class="row">
-                    <table class="table table-borderless">
-                        <tr>
-                            <td class="col-xs-2 col-sm-2 col-md-2 col-lg-2 fix-border">
-                                <div class="container-bus">
-                                    <h4 class="">${buses.busEntity.busServicesEntity.name}</h4>
-                                    <i class="glyphicon glyphicon-align-left"></i>
-                                    <i class="glyphicon glyphicon-picture"></i>
-                                    <i class="glyphicon glyphicon-plus-sign"></i>
-                                </div>
-                                <div class="pull-left">
-                                    <i class="fa fa-bus"></i>
-                                </div>
-                            </td>
-                            <!-- end ìnformation bus -->
-                            <td class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                                <div class="pull-left">
-                                    <i class="glyphicon glyphicon-time"></i>
-                                </div>
-                                <div class="container-time">
-                                    <h4 class=""><fmt:formatDate value="${schedule.departureTime}" type="time"/>→
-                                        <fmt:formatDate value="${schedule.arriveTime}" type="time"/></h4>
-                                    <c:set var="periodHours">
-                                        <fmt:formatNumber
-                                                value="${(schedule.arriveTime.time - schedule.departureTime.time)/3600000}"
-                                                minFractionDigits="0" maxFractionDigits="0"/>
-                                    </c:set>
+        <c:forEach var="schedule" items="${scheduleList}">
+            <div class="row">
+                <table class="table table-borderless">
+                    <tr>
+                        <td class="col-xs-2 col-sm-2 col-md-2 col-lg-2 fix-border">
+                            <div class="container-bus">
+                                <h4 class="">${schedule.scheduleEntity.busServicesEntity.name}</h4>
+                                <i class="glyphicon glyphicon-align-left"></i>
+                                <i class="glyphicon glyphicon-picture"></i>
+                                <i class="glyphicon glyphicon-plus-sign"></i>
+                            </div>
+                            <div class="pull-left">
+                                <i class="fa fa-bus"></i>
+                            </div>
+                        </td>
+                        <!-- end ìnformation bus -->
+                        <td class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                            <div class="pull-left">
+                                <i class="glyphicon glyphicon-time"></i>
+                            </div>
+                            <div class="container-time">
+                                    <%--time arrvial and departure`--%>
+                                <h4 class=""><fmt:formatDate value="${schedule.timeTableScheduleEntity.departureTime}"
+                                                             type="time"
+                                                             pattern="HH:mm"/>→
+                                    <fmt:formatDate value="${schedule.timeTableScheduleEntity.arriveTime}" type="time"
+                                                    pattern="HH:mm"/></h4>
+                                    <%--<c:set var="periodHours">--%>
+                                    <%--<fmt:formatNumber--%>
+                                    <%--value="${(schedule.arriveTime.time - schedule.departureTime.time)/3600000}"--%>
+                                    <%--minFractionDigits="0" maxFractionDigits="0"/>--%>
+                                    <%--</c:set>--%>
 
-                                    <c:set var="periodMinute">
-                                        <fmt:formatNumber
-                                                value="${(schedule.arriveTime.time - schedule.departureTime.time)/3600000 - periodHours}"
-                                                minFractionDigits="0" maxFractionDigits="0"/>
-                                    </c:set>
+                                    <%--<c:set var="periodMinute">--%>
+                                    <%--<fmt:formatNumber--%>
+                                    <%--value="${(schedule.arriveTime.time - schedule.departureTime.time)/3600000 - periodHours}"--%>
+                                    <%--minFractionDigits="0" maxFractionDigits="0"/>--%>
+                                    <%--</c:set>--%>
 
-                                        <%--<c:set value="${Interger(periodHours)}" var="periodMinute"/>--%>
-                                        <%--<fmt:parseDate value="${periodTime}" var="dateObject"--%>
-                                        <%--pattern="yyyy-MM-dd HH:mm:ss"/>--%>
-                                        <%--<fmt:formatDate value="${periodDay}" pattern="time" />--%>
-                                    <p>Thời gian: ${periodHours}h${periodMinute}'</p>
-                            <span class="tooltiphover" data-tooltip-content="#tooltip_${buses.id}_from">${from.name}<i
+                                    <%--<c:set value="${Interger(periodHours)}" var="periodMinute"/>--%>
+                                    <%--<fmt:parseDate value="${periodTime}" var="dateObject"--%>
+                                    <%--pattern="yyyy-MM-dd HH:mm:ss"/>--%>
+                                    <%--<fmt:formatDate value="${periodDay}" pattern="time" />--%>
+                                <p>Thời
+                                    gian: ${schedule.timeTableScheduleEntity.duration.hours}h${schedule.timeTableScheduleEntity.duration.minutes}'</p>
+                            <span class="tooltiphover"
+                                  data-tooltip-content="#tooltip_${schedule.scheduleEntity.departure.id}_from">
+                            <p class="adress">${schedule.scheduleEntity.departure.name}</p><i
                                     class="fa fa-sort-desc"></i></span>
-                            <span class="tooltiphover" data-tooltip-content="#tooltip_${buses.id}_to">→${to.name}<i
-                                    class="fa fa-sort-desc"></i></span>
-                                </div>
-                            </td>
-                            <!-- end time from to -->
-                            <td class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                                <div class="container-chair text-center">
-                                    <p class="">Giường nằm 40 chỗ</p>
+                            <span class="tooltiphover"
+                                  data-tooltip-content="#tooltip_${schedule.scheduleEntity.arrival.id}_to">→
+                                <p class="adress">${schedule.scheduleEntity.arrival.name}</p><i
+                                        class="fa fa-sort-desc"></i></span>
+                            </div>
+                        </td>
+                        <!-- end time from to -->
+                        <td class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                            <div class="container-chair text-center">
+                                <p class="">Giường nằm 40 chỗ</p>
 
-                                    <p class="space">Còn
-                                        trống:${buses.busEntity.seats-buses.ticketEntityList.size()}</p>
-                                </div>
-                            </td>
-                            <td class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                                <div class="container-start text-center">
+                                <p class="space">Còn trống: ${schedule.timeTableScheduleEntity.busesEntityList.get()}</p>
+                            </div>
+                        </td>
+                        <td class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                            <div class="container-start text-center">
 
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
-                            </td>
-                            <td class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                                <div class="">
-                                    <h4 class="money">300000<sup>đ</sup></h4>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                            </div>
+                        </td>
+                        <td class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                            <div class="">
+                                <h4 class="money">300000<sup>đ</sup></h4>
 
-                                    <div class="container-ticket text-center" data-toggle="collapse"
-                                         data-target="#${buses.id}">
-                                        <i class="fa fa-bus"></i><span>Đặt vé</span>
-                                    </div>
+                                <div class="container-ticket text-center" data-toggle="collapse"
+                                     data-target="#${schedule.timeTableScheduleEntity.id}">
+                                    <i class="fa fa-bus"></i><span>Đặt vé</span>
                                 </div>
-                            </td>
-                            <!-- end time from to -->
-                        </tr>
-                        <tr>
-                            <td class="col-xs-12 col-sm-12 col-md-12 col-lg-12 info" colspan="5">
-                                <div id="${buses.id}" class="collapse info-wapper">
-                                    <div class="info-tilte">
-                                        <div class="row">
+                            </div>
+                        </td>
+                        <!-- end time from to -->
+                    </tr>
+                    <tr>
+                        <td class="col-xs-12 col-sm-12 col-md-12 col-lg-12 info" colspan="5">
+                            <div id="${schedule.timeTableScheduleEntity.id}" class="collapse info-wapper">
+                                <div class="info-tilte">
+                                    <div class="row">
 
-                                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center">
-                                                <h4>Điện đặt vé</h4>
-                                            </div>
-                                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center">
-                                                <h4>Thông tin vé xe</h4>
-                                            </div>
-                                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center">
-                                                <h4>Phản hồi <br> của khách hàng</h4>
-                                            </div>
+                                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center">
+                                            <h4>Điện đặt vé</h4>
+                                        </div>
+                                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center">
+                                            <h4>Thông tin vé xe</h4>
+                                        </div>
+                                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center">
+                                            <h4>Phản hồi <br> của khách hàng</h4>
                                         </div>
                                     </div>
-                                    <!-- end row title -->
-                                    <div class="info-chair">
-                                        <div class="row">
-                                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                                                <form action="" method="POST" role="form" class="info-form">
-                                                    <legend>Form title</legend>
-                                                    <div class="row">
-                                                        <div class="form-group form-inline">
-                                                            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                                                                <label class="info-label">Họ Tên:</label>
-                                                            </div>
-                                                            <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
-                                                                <input type="text" required class="form-control"
-                                                                       placeholder="Tran Van A">
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="form-group form-inline">
-                                                            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                                                                <label class="info-label">Phone:</label>
-                                                            </div>
-                                                            <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
-                                                                <input type="tel" id="phone" required
-                                                                       class="form-control"
-                                                                       placeholder="VD: 0912345678">
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="form-group form-inline">
-                                                            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                                                                <label class="info-label">Email:</label>
-                                                            </div>
-                                                            <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
-                                                                <input type="email" required class="form-control"
-                                                                       placeholder="vexe@gmail.com">
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-                                                    <button type="submit"
-                                                            class="btn btn-primary pull-right container-ticket text-center">
-                                                        <i
-                                                                class="fa fa-bus"></i><span>Tiếp tục</span></button>
-                                                </form>
-                                            </div>
-                                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                                                <table class="table">
-                                                    <tr>
-                                                        <td>Tuyến đường</td>
-                                                        <td class="info-table-ticket">Bến xe khách Đà Nẵng - VP Buôn Ma
-                                                            Thuộc
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Xuất phát</td>
-                                                        <td class="info-table-ticket">Bến Xe Khách Đà Nãng</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Đích đến</td>
-                                                        <td class="info-table-ticket">VP Buôn Ma Thuột</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Giờ xuất bến</td>
-                                                        <td class="info-table-ticket">17:30 12-09-2016</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Giờ đến</td>
-                                                        <td class="info-table-ticket">05:30</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>Giá vé</td>
-                                                        <td class="info-table-ticket">280.000/người</td>
-                                                    </tr>
-                                                </table>
-                                            </div>
-                                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                </div>
+                                <!-- end row title -->
+                                <div class="info-chair">
+                                    <div class="row">
+                                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                            <form action="" method="POST" role="form" class="info-form">
+                                                <legend>Form title</legend>
                                                 <div class="row">
-                                                    <h3 class="text-center">Bạn có thích dịch vụ không ?</h3>
-
-                                                    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 col-md-push-2">
-                                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                                                            <div class="like text-center">
-                                                                <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
-
-                                                                <p class="like-text">Thích</p>
-                                                            </div>
+                                                    <div class="form-group form-inline">
+                                                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                                            <label class="info-label">Họ Tên:</label>
                                                         </div>
-                                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                                                            <div class="dislike text-center">
-                                                                <i class="fa fa-thumbs-o-down" aria-hidden="true"></i>
+                                                        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                                                            <input type="text" required class="form-control"
+                                                                   placeholder="Tran Van A">
+                                                        </div>
 
-                                                                <p class="dislike-text">Không Thích</p>
-                                                            </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="form-group form-inline">
+                                                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                                            <label class="info-label">Phone:</label>
+                                                        </div>
+                                                        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                                                            <input type="tel" id="phone" required
+                                                                   class="form-control"
+                                                                   placeholder="VD: 0912345678">
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="form-group form-inline">
+                                                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                                            <label class="info-label">Email:</label>
+                                                        </div>
+                                                        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                                                            <input type="email" required class="form-control"
+                                                                   placeholder="vexe@gmail.com">
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                <button type="submit"
+                                                        class="btn btn-primary pull-right container-ticket text-center">
+                                                    <i
+                                                            class="fa fa-bus"></i><span>Tiếp tục</span></button>
+                                            </form>
+                                        </div>
+                                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                            <table class="table">
+                                                <tr>
+                                                    <td>Tuyến đường</td>
+                                                    <td class="info-table-ticket">${schedule.scheduleEntity.departure.name} - ${schedule.scheduleEntity.arrival.name}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Xuất phát</td>
+                                                    <td class="info-table-ticket">${schedule.scheduleEntity.departure.name}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Đích đến</td>
+                                                    <td class="info-table-ticket">${schedule.scheduleEntity.arrival.name}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Giờ xuất bến</td>
+                                                    <td class="info-table-ticket">${schedule.timeTableScheduleEntity.departureTime} ${dayStartMove}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Giờ đến</td>
+                                                    <jsp:useBean id="ourDate" class="java.util.Date"/>
+                                                    <jsp:setProperty name="ourDate" property="time" value="${dayStartMove.time + 86400000}"/>
+                                                    <td class="info-table-ticket">${schedule.timeTableScheduleEntity.arriveTime}
+                                                        <fmt:formatDate value="${ourDate}" pattern="yyyy-MM-dd"/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Giá vé</td>
+                                                    <td class="info-table-ticket">280.000/người</td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                            <div class="row">
+                                                <h3 class="text-center">Bạn có thích dịch vụ không ?</h3>
+
+                                                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 col-md-push-2">
+                                                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                                        <div class="like text-center">
+                                                            <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+
+                                                            <p class="like-text">Thích</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                                        <div class="dislike text-center">
+                                                            <i class="fa fa-thumbs-o-down" aria-hidden="true"></i>
+
+                                                            <p class="dislike-text">Không Thích</p>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <hr>
-                                                <div class="row">
-                                                    <div class="contact">
-                                                        <h4 class="name-car">Xe HAV</h4>
-                                                        <h4 class="name-from">VP</h4>
+                                            </div>
+                                            <hr>
+                                            <div class="row">
+                                                <div class="contact">
+                                                    <h4 class="name-car">Xe HAV</h4>
+                                                    <h4 class="name-from">VP</h4>
 
-                                                        <h2 class="number-mobile"><i
-                                                                class="glyphicon glyphicon-phone-alt"></i>05116
-                                                            505 050</h2>
-                                                    </div>
+                                                    <h2 class="number-mobile"><i
+                                                            class="glyphicon glyphicon-phone-alt"></i>05116
+                                                        505 050</h2>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- end information ticket -->
-                                    <div class="info-end"></div>
                                 </div>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            </b:forEach>
+                                <!-- end information ticket -->
+                                <div class="info-end"></div>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
         </c:forEach>
     </div>
     <!-- end show ticket -->
@@ -513,23 +523,21 @@
     </div>
 </footer>
 <!-- end footer -->
-<c:forEach var="schedule" items="${ticketList}">
-    <b:forEach var="buses" items="${schedule.busesEntityList}">
-        <div class="tooltip" style="display: none">
-		<span id="tooltip_${buses.id}_from">
+<c:forEach var="schedule" items="${scheduleList}">
+    <div class="tooltip" style="display: none">
+		<span id="tooltip_${schedule.scheduleEntity.departure.id}_from">
 			<div class="title">Thông tin điểm xuất phát</div>
-			<p class="localgo">${from.address}</p>
+			<p class="localgo">${schedule.scheduleEntity.departure.name}</p>
 			<span></span>
 		</span>
-        </div>
-        <div class="tooltip" style="display: none">
-		<span id="tooltip_${buses.id}_to">
+    </div>
+    <div class="tooltip" style="display: none">
+		<span id="tooltip_${schedule.scheduleEntity.arrival.id}_to">
 			<div class="title">Thông tin điểm đến</div>
-			<p class="localgo">${to.address}</p>
+			<p class="localgo">${schedule.scheduleEntity.arrival.name}</p>
 			<span></span>
 		</span>
-        </div>
-    </b:forEach>
+    </div>
 </c:forEach>
 
 <script>

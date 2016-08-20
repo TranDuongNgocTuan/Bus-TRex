@@ -26,7 +26,7 @@ public class BusEntity {
     private BusServicesEntity busServicesEntity;
 
     @OneToMany(mappedBy = "busEntity")
-    private List<BusesEntity> busesEntity;
+    private List<TimeTableScheduleEntity> timeTableScheduleEntityList;
 
     public BusEntity() {
     }
@@ -71,11 +71,4 @@ public class BusEntity {
         this.busServicesEntity = busServicesEntity;
     }
 
-    public List<BusesEntity> getBusesEntity() {
-        return busesEntity;
-    }
-
-    public void setBusesEntity(List<BusesEntity> busesEntity) {
-        this.busesEntity = busesEntity;
-    }
 }

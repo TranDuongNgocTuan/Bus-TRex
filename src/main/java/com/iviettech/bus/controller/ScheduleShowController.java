@@ -2,10 +2,13 @@ package com.iviettech.bus.controller;
 
 import com.iviettech.bus.entity.BusesEntity;
 import com.iviettech.bus.entity.BusstationEntity;
+import com.iviettech.bus.entity.InfoTicket;
 import com.iviettech.bus.entity.ScheduleEntity;
 import com.iviettech.bus.repository.BusesRepository;
 import com.iviettech.bus.repository.BusstationRepository;
+import com.iviettech.bus.repository.InfoTicketRepository;
 import com.iviettech.bus.repository.ScheduleRepository;
+import com.iviettech.bus.service.ScheduleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,14 +23,18 @@ import java.util.List;
 
 @Controller
 public class ScheduleShowController {
-    @Autowired
-    ScheduleRepository scheduleRepository;
 
     @Autowired
     BusstationRepository busstationRepository;
 
     @Autowired
     BusesRepository busesRepository;
+
+    @Autowired
+    ScheduleRepository scheduleRepository;
+
+    @Autowired
+    InfoTicketRepository infoTicketRepository;
 
     /**
      * This is method perform show schedule user find with departure ,arrival and departuretime201
@@ -44,17 +51,19 @@ public class ScheduleShowController {
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Date date = null;
         try {
-            date = dateFormat.parse("2016-08-17");
+            date = dateFormat.parse("2016-08-20");
 //            System.out.println(dateFormat.format(date));
         } catch (ParseException e) {
             e.printStackTrace();
         }
 
-        List<ScheduleEntity> scheduleEntityList =
-                scheduleRepository.findByFromAndToAndDepartureTimeEqual(busstationEntityFrom.getId(), busstationEntityTo.getId(), new java.sql.Date(date.getTime()) );
-       model.addAttribute("ticketList", scheduleEntityList);
+        ScheduleService scheduleService = new ScheduleService();
 
+        List<InfoTicket> scheduleEntityList =
+                infoTicketRepository.findAllInfoTicket(1, 3, new java.sql.Date(date.getTime()));
 
+        model.addAttribute("scheduleList",scheduleEntityList);
+        model.addAttribute("dayStartMove",new java.sql.Date(date.getTime()));
 
         return "findticket";
     }

@@ -18,7 +18,7 @@ import java.util.Properties;
 @EnableTransactionManagement
 public class SpringConfig {
     @Bean
-    DataSource dataSource() {
+    public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         // Thay cho dung voi co so du lieu minh dung nghe
 //        dataSource.setDriverClassName("com.mysql.jdbc.Driver");

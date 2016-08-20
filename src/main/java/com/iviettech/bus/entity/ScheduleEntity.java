@@ -29,14 +29,14 @@ public class ScheduleEntity {
     @Column(name = "numberday")
     private int numberDay;
 
-    @OneToOne(cascade = {CascadeType.ALL})
-    @PrimaryKeyJoinColumn
+    @ManyToOne
+    @JoinColumn(name = "busservicesId")
     private BusServicesEntity busServicesEntity;
 
     @OneToMany(mappedBy = "scheduleEntity")
     private List<PromotionTimeEntity> promotionTimeEntityList;
 
-    @OneToMany(mappedBy = "scheduleEntity")
+    @OneToMany(mappedBy = "scheduleEntity", fetch = FetchType.EAGER)
     private List<TimeTableScheduleEntity> timeTableScheduleEntityList;
 
 

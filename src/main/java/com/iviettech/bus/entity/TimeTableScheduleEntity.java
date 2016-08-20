@@ -24,6 +24,10 @@ public class TimeTableScheduleEntity {
     @JoinColumn(name = "scheduleId")
     private ScheduleEntity scheduleEntity;
 
+    @ManyToOne
+    @JoinColumn(name = "busId")
+    private BusEntity busEntity;
+
     @OneToMany(mappedBy = "timeTableScheduleEntity")
     private List<BusesEntity> busesEntityList;
 
@@ -67,5 +71,13 @@ public class TimeTableScheduleEntity {
 
     public void setDuration(Time duration) {
         this.duration = duration;
+    }
+
+    public List<BusesEntity> getBusesEntityList() {
+        return busesEntityList;
+    }
+
+    public void setBusesEntityList(List<BusesEntity> busesEntityList) {
+        this.busesEntityList = busesEntityList;
     }
 }
