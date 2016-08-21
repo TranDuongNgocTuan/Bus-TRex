@@ -23,12 +23,23 @@ public class SpringConfig {
         // Thay cho dung voi co so du lieu minh dung nghe
 //        dataSource.setDriverClassName("com.mysql.jdbc.Driver");
 //        dataSource.setDriverClassName("org.mariadb.jdbc.Driver");
-        dataSource.setDriverClassName("org.mariadb.jdbc.Driver");
+        try{
+            dataSource.setDriverClassName("org.mariadb.jdbc.Driver");
+            dataSource.setUsername("myuser");
+            dataSource.setPassword("123456");
+        }catch (Exception ex){
+
+        }finally {
+            dataSource.setDriverClassName("com.mysql.jdbc.Driver");
+            dataSource.setUsername("root");
+            dataSource.setPassword("");
+        }
+//        dataSource.setDriverClassName("org.mariadb.jdbc.Driver");
         dataSource.setUrl("jdbc:mysql://localhost:3306/BusTRex");
 //        dataSource.setUsername("myuser");
 //        dataSource.setPassword("123456");
-        dataSource.setUsername("myuser");
-        dataSource.setPassword("123456");
+//        dataSource.setUsername("root");
+//        dataSource.setPassword("");
         return  dataSource;
     }
 
