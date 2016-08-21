@@ -40,7 +40,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-				<img src="../img/Banner_Trang_Chu_(PC)_-_With_Clock.png" class="img-reponsive">
+				<img src="webjars/img/Banner_Trang_Chu_(PC)_-_With_Clock.png" class="img-reponsive">
 			</div>
 		</div>
 	</div> <!-- end poster -->

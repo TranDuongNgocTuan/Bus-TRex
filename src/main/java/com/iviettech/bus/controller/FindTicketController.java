@@ -22,7 +22,7 @@ import java.util.Date;
 import java.util.List;
 
 @Controller
-public class ScheduleShowController {
+public class FindTicketController {
 
     @Autowired
     BusstationRepository busstationRepository;
@@ -41,7 +41,7 @@ public class ScheduleShowController {
      * @param model
      * @return
      */
-    @RequestMapping(value = "/schedule")
+    @RequestMapping(value = "/findticket")
     public String showTicketList(Model model) {
         BusstationEntity busstationEntityFrom = busstationRepository.findOne(1); // Form
         BusstationEntity busstationEntityTo = busstationRepository.findOne(2);   // To

@@ -77,7 +77,7 @@
       <div class="col-md-8">
         <div>
           <h2>Đặt vé trực tuyến tiện lợi, không cần chờ đợi</h2>
-          <form id="searchForm" action="/schedule">
+          <form id="searchForm" action="/findticket">
             <fieldset class="row">
               <div class="location-select-row form-inline col-xs-10 col-sm-11 col-md-12">
                 <div class="form-group searchLeft col-md-6">

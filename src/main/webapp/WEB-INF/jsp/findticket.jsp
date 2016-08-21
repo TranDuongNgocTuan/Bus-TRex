@@ -282,6 +282,7 @@
                                 <div class="info-chair">
                                     <div class="row">
                                         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                            <%--Form book a ticket--%>
                                             <form action="" method="POST" role="form" class="info-form">
                                                 <legend>Form title</legend>
                                                 <div class="row">
@@ -291,7 +292,7 @@
                                                         </div>
                                                         <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
                                                             <input type="text" required class="form-control"
-                                                                   placeholder="Tran Van A">
+                                                                   placeholder="Tran Van A" name="fullName">
                                                         </div>
 
                                                     </div>
@@ -304,7 +305,7 @@
                                                         <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
                                                             <input type="tel" id="phone" required
                                                                    class="form-control"
-                                                                   placeholder="VD: 0912345678">
+                                                                   placeholder="VD: 0912345678" name="numberPhone">
                                                         </div>
 
                                                     </div>
@@ -316,7 +317,7 @@
                                                         </div>
                                                         <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
                                                             <input type="email" required class="form-control"
-                                                                   placeholder="vexe@gmail.com">
+                                                                   placeholder="vexe@gmail.com" name="gmail">
                                                         </div>
 
                                                     </div>

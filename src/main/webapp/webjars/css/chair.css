@@ -31,7 +31,7 @@
     background-color:yellow;      
 } 
 #place .seat{
-    background:url("images/seat-white.svg") no-repeat scroll 0 0 transparent;
+    background:url("/webjars/images/seat-white.png") no-repeat scroll 0 0 transparent;
     height: 43px;
     width: 46px;
     display:block;
@@ -40,11 +40,11 @@
 }
 #place .selectedSeat
 { 
-    background-image:url("images/seat-gray.svg");          
+    background-image:url("/webjars/images/seat-gray.png");
 }
 #place .selectingSeat
 { 
-    background-image:url("images/seat-green.svg");        
+    background-image:url("/webjars/images/seat-green.png");
 }
 #place .row-2, #place .row-3{
     margin-top:40px;

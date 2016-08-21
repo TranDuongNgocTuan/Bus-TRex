@@ -3,6 +3,7 @@
 <html>
 <head>
     <title></title>
+    <script type="text/javascript" src="/webjars/js/test.js"></script>
 </head>
 <body>
     <h1>Hello</h1>
