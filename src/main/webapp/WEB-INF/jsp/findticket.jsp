@@ -11,22 +11,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='https://fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,900,700italic,900italic'
           rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="webjars/tooltipster/dist/css/tooltipster.bundle.min.css"/>
+    <link rel="stylesheet" type="text/css" href="resource/tooltipster/dist/css/tooltipster.bundle.min.css"/>
     <link rel="stylesheet" type="text/css"
-          href="webjars/tooltipster/dist/css/plugins/tooltipster/sideTip/themes/tooltipster-sideTip-noir-customized.css"/>
-    <link rel="stylesheet" href="webjars/vendor/bootstrap.css">
-    <link rel="stylesheet" href="webjars/css/findticket.css">
-    <link rel="stylesheet" href="webjars/css/intlTelInput.css">
-    <link rel="stylesheet" href="webjars/css/demo.css">
-    <script type="text/javascript" src="webjars/vendor/bootstrap.js"></script>
-    <script type="text/javascript" src="webjars/js/findticket.js"></script>
-    <script type="text/javascript" src="webjars/js/chair.js"></script>
+          href="resource/tooltipster/dist/css/plugins/tooltipster/sideTip/themes/tooltipster-sideTip-noir-customized.css"/>
+    <link rel="stylesheet" href="resource/vendor/bootstrap.css">
+    <link rel="stylesheet" href="resource/css/findticket.css">
+    <link rel="stylesheet" href="resource/css/intlTelInput.css">
+    <link rel="stylesheet" href="resource/css/demo.css">
+    <script type="text/javascript" src="resource/vendor/bootstrap.js"></script>
+    <script type="text/javascript" src="resource/js/findticket.js"></script>
+    <script type="text/javascript" src="resource/js/chair.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="webjars/js/intlTelInput.js"></script>
-    <script type="text/javascript" src="webjars/tooltipster/dist/js/tooltipster.bundle.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="webjars/css/bootstrap-datepicker.standalone.min.css">
-    <script type="text/javascript" src="webjars/js/bootstrap-datepicker.min.js"></script>
+    <script src="resource/js/intlTelInput.js"></script>
+    <script type="text/javascript" src="resource/tooltipster/dist/js/tooltipster.bundle.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="resource/css/bootstrap-datepicker.standalone.min.css">
+    <script type="text/javascript" src="resource/js/bootstrap-datepicker.min.js"></script>
 <body>
 <nav class="navbar navbar-default" role="navigation">
     <div class="container">
@@ -56,7 +56,7 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <img src="webjars/img/Banner_Trang_Chu_(PC)_-_With_Clock.png" class="img-reponsive">
+            <img src="resource/img/Banner_Trang_Chu_(PC)_-_With_Clock.png" class="img-reponsive">
         </div>
     </div>
 </div>
@@ -92,7 +92,7 @@
             <div class="logo col-md-4 col-sm-4 hidden-xs mt10">
                 <div class="pull-right col-md-12">
                     <div class="col-md-5 pr0 text-right">
-                        <img height="42" src="webjars/img/lock-sercurity.png" type="image/svg+xml">
+                        <img height="42" src="resource/img/lock-sercurity.png" type="image/svg+xml">
                     </div>
                     <div class="col-md-7 secure-col pull-right">
                         <span>Thanh toán online</span><br>
@@ -322,6 +322,7 @@
 
                                                     </div>
                                                 </div>
+                                                <input type="hidden" value="${schedule.busesId}" name="busesId"/>
                                                 <button type="submit"
                                                         class="btn btn-primary pull-right container-ticket text-center">
                                                     <i
@@ -478,7 +479,7 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-                <img src="webjars/img/icon-vxr.png" class="pull-left" width="55px" height="55px">
+                <img src="resource/img/icon-vxr.png" class="pull-left" width="55px" height="55px">
 
                 <p>Bản quyền © 2016 thuộc về VeXeRe.Com <br>
                     Tên công ty: CÔNG TY CỔ PHẦN VEXERE <br>
@@ -491,16 +492,16 @@
             <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
                 <div class="row">
                     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                        <img src="webjars/img/certificate1.png">
+                        <img src="resource/img/certificate1.png">
                     </div>
                     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                        <img src="webjars/img/certificate1.png">
+                        <img src="resource/img/certificate1.png">
                     </div>
                     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                        <img src="webjars/img/certificate1.png">
+                        <img src="resource/img/certificate1.png">
                     </div>
                     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                        <img src="webjars/img/certificate1.png">
+                        <img src="resource/img/certificate1.png">
                     </div>
                 </div>
             </div>

@@ -28,7 +28,7 @@ public class TicketEntity {
     @Column(name = "status")
     private int status;
 
-    private int seat;
+    private String seat;
 
     @ManyToOne
     @JoinColumn(name = "busesId")
@@ -93,11 +93,11 @@ public class TicketEntity {
         this.status = status;
     }
 
-    public int getSeat() {
+    public String getSeat() {
         return seat;
     }
 
-    public void setSeat(int seat) {
+    public void setSeat(String seat) {
         this.seat = seat;
     }
 }

@@ -17,7 +17,7 @@
   <link rel="canonical" href="https://vexere.com">
   <meta name="robots" content="index, follow" />
   <meta charset="utf-8">
-  <link href="webjars/Content/vxr/images/vexere-ico.ico?v=4484" rel="shortcut icon" type="image/x-icon" />
+  <link href="resource/Content/vxr/images/vexere-ico.ico?v=4484" rel="shortcut icon" type="image/x-icon" />
   <meta property="og:site_name" content="VeXeRe" />
   <meta property="og:type" content="product.group" />
   <meta property="og:url" content="https://vexere.com" />
@@ -25,8 +25,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <meta name="google-site-verification" content="niV9ShHdCWcZFAoPyWjqPL74Aldmk_jHfbvYkIt6uX0" />
   <!-- Stylesheet -->
-  <link href="webjars/bundles/home-styles.css?v=4484" rel="stylesheet" />
-  <link rel="stylesheet" type="text/css" href="webjars/font-awesome-4.6.3/css/font-awesome.min.css">
+  <link href="resource/bundles/home-styles.css?v=4484" rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" href="resource/font-awesome-4.6.3/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 
 
@@ -39,10 +39,10 @@
   <div class="container">
     <div class="row">
       <div class="col-md-3">
-        <a href="/" class="logo-image"><img height="50" src="webjars/Content/vxr/images/Home/logo.png" /></a>
+        <a href="/" class="logo-image"><img height="50" src="resource/Content/vxr/images/Home/logo.png" /></a>
         <ul class="header-action-bar visible-sm visible-xs">
           <li>
-            <a class="header-blue-language en-change" href="javascript:" data-href="/vi-VN/Language/ChangeLanguage?curlang=en&url=/"><img width="24" src="webjars/Content/vxr/images/english_icon.png" /></a>
+            <a class="header-blue-language en-change" href="javascript:" data-href="/vi-VN/Language/ChangeLanguage?curlang=en&url=/"><img width="24" src="resource/Content/vxr/images/english_icon.png" /></a>
           </li>
           <li>
             <a class="header-blue-tel" href="tel: 19006484">
@@ -113,27 +113,27 @@
             <ul id="slider" class="slides" style="width: 1000%; transition-duration: 0s; transform: translate3d(-352px, 0px, 0px);">
               <li class="clone" aria-hidden="true" style="width: 352px; margin-right: 0px; float: left; display: block;">
                 <a href="#" target="_blank">
-                  <img src="webjars/Content/vxr/images/promotion/Silder_2-9_(_ty_le_360x214_).jpg" draggable="false">
+                  <img src="resource/Content/vxr/images/promotion/Silder_2-9_(_ty_le_360x214_).jpg" draggable="false">
                 </a>
               </li>
               <li class="flex-active-slide" style="width: 352px; margin-right: 0px; float: left; display: block;" data-thumb-alt="">
                 <a href="#">
-                  <img src="webjars/Content/vxr/images/promotion/Silder_2-9_(_ty_le_360x214_).jpg" draggable="false">
+                  <img src="resource/Content/vxr/images/promotion/Silder_2-9_(_ty_le_360x214_).jpg" draggable="false">
                 </a>
               </li>
               <li class="" data-thumb-alt="" style="width: 352px; margin-right: 0px; float: left; display: block;">
                 <a href="#" target="_blank">
-                  <img src="webjars/Content/vxr/images/promotion/Silder_2-9_(_ty_le_360x214_).jpg" draggable="false">
+                  <img src="resource/Content/vxr/images/promotion/Silder_2-9_(_ty_le_360x214_).jpg" draggable="false">
                 </a>
               </li>
               <li class="" data-thumb-alt="" style="width: 352px; margin-right: 0px; float: left; display: block;">
                 <a href="#" target="_blank">
-                  <img src="webjars/Content/vxr/images/promotion/cyberpay_slider.png" draggable="false">
+                  <img src="resource/Content/vxr/images/promotion/cyberpay_slider.png" draggable="false">
                 </a>
               </li>
               <li class="clone" style="width: 352px; margin-right: 0px; float: left; display: block;" aria-hidden="true">
                 <a href="#">
-                  <img src="webjars/Content/vxr/images/promotion/cyberpay_slider.jpg" draggable="false">
+                  <img src="resource/Content/vxr/images/promotion/cyberpay_slider.jpg" draggable="false">
                 </a>
               </li>
             </ul>
@@ -153,7 +153,7 @@
       <div class="col-sm-12" style="margin-bottom: 40px;">
         <div class="col-sm-12 pr0 pl0">
           <div class="banner-29">
-            <img class="visible-xs visible-sm img-responsive" src="webjars/Content/vxr/images/General/Banner_Trang_Chu_(Mobile)_-_With_Clock.png" />
+            <img class="visible-xs visible-sm img-responsive" src="resource/Content/vxr/images/General/Banner_Trang_Chu_(Mobile)_-_With_Clock.png" />
             <div class="ticket-amount"><label></label></div>
           </div>
         </div>
@@ -188,7 +188,7 @@
 
   <div class="skyline-city"></div>
   <div class="bus-img">
-    <img style="opacity: 0.3;filter: alpha(opacity=30);" src="webjars/Content/vxr/images/newlayout/banh-xe.gif">
+    <img style="opacity: 0.3;filter: alpha(opacity=30);" src="resource/Content/vxr/images/newlayout/banh-xe.gif">
   </div>
 </div>
 <div class="hidden-sm hidden-xs">
@@ -210,7 +210,7 @@
             <p>Dịch vụ đặt mua vé xe trực tuyến thật tuyệt vời, tôi thấy thậm chí đặt chỗ mua vé máy bay còn không được chọn chỗ ngồi như vậy. Bây giờ tôi không còn phải đi lại xếp hàng mua vé tại bến xe nữa, chỉ cần cầm mã vé qua SMS và email là đã có thể lên xe rồi. Cảm ơn CTy T-Rex.</p>
             <div class="text-center" style="position: relative">
               <hr class="customer-divider" />
-              <img class="img-circle customer-avatar" width="50" src="webjars/Content/vxr/images/Vancakova.jpg" />
+              <img class="img-circle customer-avatar" width="50" src="resource/Content/vxr/images/Vancakova.jpg" />
               <p>Lê Quốc Thọ</p>
             </div>
           </div>
@@ -258,7 +258,7 @@
 
         <h2>Đối t&aacute;c</h2>
         <div class="col-08 clearfix">
-          <a target="_blank" href="http://csip.vn/" rel="nofollow"><img src="webjars/Content/tp/images/logo_csip_final.png" style="width: 45px;"></a>
+          <a target="_blank" href="http://csip.vn/" rel="nofollow"><img src="resource/Content/tp/images/logo_csip_final.png" style="width: 45px;"></a>
         </div>
       </div>
     </div>
@@ -267,7 +267,7 @@
     <div class="copyright-panel" itemscope itemtype="http://schema.org/Organization">
       <div class="col col-md-8 footer-info-panel hidden-sm hidden-xs">
         <a itemprop="url" class="footer-logo" href="/" title="Cổng thông tin vé xe khách lớn nhất Việt Nam">
-          <img itemprop="logo" src="webjars/Content/vxr/images/Home/icon-vxr.jpg" alt="" style="width: 55px; height: 55px;" />
+          <img itemprop="logo" src="resource/Content/vxr/images/Home/icon-vxr.jpg" alt="" style="width: 55px; height: 55px;" />
         </a>
         <p>Bản quyền &copy; 2016 thuộc về <span itemprop="name">Cty T&T</span></p>
         <p>
@@ -288,19 +288,19 @@
       <div class="col-md-4 certificate-panel">
 
         <div class="col col-md-6 col-sm-3 col-xs-4">
-          <img src="webjars/Content/vxr/images/Home/certificate0.png" />
+          <img src="resource/Content/vxr/images/Home/certificate0.png" />
         </div>
         <div class="col col-md-6  col-sm-3 col-xs-4">
-          <img src="webjars/Content/vxr/images/Home/certificate1.png" />
+          <img src="resource/Content/vxr/images/Home/certificate1.png" />
         </div>
         <div class="col col-md-6 col-sm-3 hidden-xs">
           <a href="http://online.gov.vn/HomePage/WebsiteDisplay.aspx?DocId=773">
-            <img src="webjars/Content/vxr/images/Home/certificate2.png" />
+            <img src="resource/Content/vxr/images/Home/certificate2.png" />
           </a>
         </div>
         <div class="col col-md-6 col-sm-3 col-xs-4">
           <a href="http://online.gov.vn/HomePage/WebsiteDisplay.aspx?DocId=773">
-            <img src="webjars/Content/vxr/images/Home/certificate3.png" />
+            <img src="resource/Content/vxr/images/Home/certificate3.png" />
           </a>
         </div>
       </div>
@@ -324,7 +324,7 @@
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
 
 
-<script type="text/javascript" src="webjars/bundles/home-scripts.js"></script>
+<script type="text/javascript" src="resource/bundles/home-scripts.js"></script>
 
 
 
@@ -383,7 +383,7 @@
   }
 
   .bus-km {
-    background: url(/webjars/Content/vxr/images/pop-up/xe-lien-hung.png) no-repeat;
+    background: url(/resource/Content/vxr/images/pop-up/xe-lien-hung.png) no-repeat;
     position: absolute;
     bottom: 0;
     left: 0;
@@ -403,7 +403,7 @@
   }
 
   .bus-caolam {
-    background: url(/webjars/Content/vxr/images/pop-up/sliderOperator/xe-cao-lam/khuyenmai.png) no-repeat;
+    background: url(/resource/Content/vxr/images/pop-up/sliderOperator/xe-cao-lam/khuyenmai.png) no-repeat;
     position: absolute;
     bottom: 0;
     left: 0;
@@ -413,7 +413,7 @@
   }
 
   .bus-halinh {
-    background: url(/webjars/Content/vxr/images/pop-up/sliderOperator/xe-ha-linh/khuyenmai.png) no-repeat;
+    background: url(/resource/Content/vxr/images/pop-up/sliderOperator/xe-ha-linh/khuyenmai.png) no-repeat;
     position: absolute;
     bottom: 0;
     left: 0;
@@ -423,7 +423,7 @@
   }
 
   .bus-hoangkhai {
-    background: url(/webjars/Content/vxr/images/pop-up/sliderOperator/xe-hoang-khai/khuyenmai.png) no-repeat;
+    background: url(/resource/Content/vxr/images/pop-up/sliderOperator/xe-hoang-khai/khuyenmai.png) no-repeat;
     position: absolute;
     bottom: 0;
     left: 0;
@@ -433,7 +433,7 @@
   }
 
   .bus-thesinh {
-    background: url(/webjars/Content/vxr/images/pop-up/sliderOperator/xe-the-sinh/khuyenmai.png) no-repeat;
+    background: url(/resource/Content/vxr/images/pop-up/sliderOperator/xe-the-sinh/khuyenmai.png) no-repeat;
     position: absolute;
     bottom: 0;
     left: 0;
@@ -534,10 +534,10 @@
       <div class="modal-body pd-0">
         <div class="popup-container">
           <a class="dalat-link" href="#">
-            <img class="img-responsive img-popup-tet" src="webjars/Content/vxr/images/pop-up/Popup_New_PC_and_Mobile.png" />
+            <img class="img-responsive img-popup-tet" src="resource/Content/vxr/images/pop-up/Popup_New_PC_and_Mobile.png" />
 
           </a>
-          <img class="close-button" src="webjars/Content/vxr/images/newlayout/close_red.png" width="32" />
+          <img class="close-button" src="resource/Content/vxr/images/newlayout/close_red.png" width="32" />
         </div>
       </div>
     </div>

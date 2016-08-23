@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en"><head>
@@ -5,14 +6,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">  
 <link href='https://fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,900,700italic,900italic' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="webjars/vendor/bootstrap.css">
-<link rel="stylesheet" href="webjars/css/findticket.css">
-<link rel="stylesheet" href="webjars/css/choosechair.css">
-<link rel="stylesheet" type="text/css" href="webjars/css/chair.css">
-<script type="text/javascript" src="webjars/vendor/bootstrap.js"></script>
-<script type="text/javascript" src="webjars/js/findticket.js"></script>
-<script type="text/javascript" src="webjars/js/chair.js"></script>
+	<link rel="stylesheet" href="resource/vendor/bootstrap.css">
+<link rel="stylesheet" href="/resource/css/findticket.css">
+<link rel="stylesheet" href="/resource/css/choosechair.css">
+<link rel="stylesheet" type="text/css" href="/resource/css/chair.css">
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
+<script type="text/javascript" src="/resource/vendor/bootstrap.js"></script>
+<script type="text/javascript" src="/resource/js/chair.js"></script>
+
 <body >
 	<nav class="navbar navbar-default" role="navigation">
 		<div class="container">
@@ -40,10 +41,15 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-				<img src="webjars/img/Banner_Trang_Chu_(PC)_-_With_Clock.png" class="img-reponsive">
+				<img src="/resource/img/Banner_Trang_Chu_(PC)_-_With_Clock.png" class="img-reponsive">
 			</div>
 		</div>
 	</div> <!-- end poster -->
+
+	<%-- Seats choosed--%>
+	<c:forEach var="seat" items="${seatChoosed}" >
+		<input type="hidden" value="${seat}" name="seats"/>
+	</c:forEach>
 
 	<div class="map-chair">
 		<div class="container">
@@ -143,7 +149,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-					<img src="webjars/img/icon-vxr.svg" class="pull-left" width="55px" height="55px">
+					<img src="/resource/img/icon-vxr.svg" class="pull-left" width="55px" height="55px">
 					<p>Bản quyền © 2016 thuộc về VeXeRe.Com <br>
 						Tên công ty: CÔNG TY CỔ PHẦN VEXERE <br>
 						Địa chỉ đăng ký kinh doanh: 8C Chữ Đồng Tử, Phường 7, Quận Tân Bình, Thành Phố Hồ Chí Minh, Việt Nam <br>

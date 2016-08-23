@@ -54,6 +54,7 @@ public class InfoTicketRepository{
         String sql = "SELECT schedule.* , timetableschedule.*" +
                 ", case when bus.seats is null then 0 else bus.seats END as 'seat'" +
                 ", case when buses.id is null then 0 else count(ticket.id) END as 'Quantity'" +
+                ", case when buses.id is null then 0 else buses.id END as 'busesId'" +
                 " from schedule" +
                 " inner join timetableschedule" +
                 " on schedule.id = timetableschedule.scheduleId" +
@@ -95,6 +96,7 @@ public class InfoTicketRepository{
                 aInfoTicket.setTimeTableScheduleEntity(timeTableScheduleEntity);
                 aInfoTicket.setNumberSeat(rs.getInt(14));
                 aInfoTicket.setNumberTicket(rs.getInt("Quantity"));
+                aInfoTicket.setBusesId(rs.getInt("busesId"));
 
                 return aInfoTicket;
             }

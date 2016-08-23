@@ -23,28 +23,29 @@
 }
 #place li
 {
-   list-style: none outside none;
-   position: absolute;
-}    
+    list-style: none outside none;
+    position: absolute;
+}
 #place li:hover
 {
-    background-color:yellow;      
-} 
+    background-color:yellow;
+}
 #place .seat{
-    background:url("/webjars/images/seat-white.png") no-repeat scroll 0 0 transparent;
+    background: url("/resource/images/seat-white.png") no-repeat scroll 0 0 transparent;
     height: 43px;
     width: 46px;
     display:block;
     /* border: 1px solid black; */
     text-align: center;
+    background-size: 44px;
 }
 #place .selectedSeat
-{ 
-    background-image:url("/webjars/images/seat-gray.png");
+{
+    background-image:url("/resource/images/seat-gray.png");
 }
 #place .selectingSeat
-{ 
-    background-image:url("/webjars/images/seat-green.png");
+{
+    background-image:url("/resource/images/seat-green.png");
 }
 #place .row-2, #place .row-3{
     margin-top:40px;
