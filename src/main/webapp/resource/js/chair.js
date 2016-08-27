@@ -51,7 +51,11 @@ $(window).load(function () {
             alert('This seat is already reserved');
         }
         else {
-            $(this).toggleClass(settings.selectingSeatCss);
+            var total = $('#place li.' + settings.selectingSeatCss + ' a').length;
+            if(total < 4 || $(this).hasClass(settings.selectingSeatCss))
+                $(this).toggleClass(settings.selectingSeatCss);
+            else
+                alert("Bạn không thể chọn quá 4 ghế");
         }
     });
 
@@ -66,9 +70,10 @@ $(window).load(function () {
                 str.push($(this).attr('title') + ',');
         });
         $('#number-chair').html(str.join(''));
+        $('input[name=selectSeat]').val(str.join(''));
     });
 
-    $('#btnShowNew').click(function () {
+    $('#btnNext').click(function () {
         var str = [], item;
         $.each($('#place li.' + settings.selectingSeatCss + ' a'), function (index, value) {
             item = $(this).attr('title');

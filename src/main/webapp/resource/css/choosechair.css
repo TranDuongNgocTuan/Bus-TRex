@@ -66,14 +66,13 @@ a.btn.btn-default.back {
 }
 
 .available-seat, .booked-seat, .selected-seat {
-    display: inline-block;
-    padding: 6px;
-    border-radius: 50%;
-    border: 1px solid #373636;
+
 }
 
 .available-seat {
     background: #ffffff;
+    background: url('/resource/images/seat-white.png') no-repeat scroll 0 0 transparent;
+    background-size: 30px;
 }
 
 #seatDescription  p {
@@ -83,10 +82,14 @@ a.btn.btn-default.back {
 
 .booked-seat {
     background-color: #dddddd;
+    background: url('/resource/images/seat-gray.png') no-repeat scroll 0 0 transparent;
+    background-size: 30px;
 }
 
 .selected-seat {
     background: #badf41;
+    background: url('/resource/images/seat-green.png') no-repeat scroll 0 0 transparent;
+    background-size: 30px;
 }
 
 .choose-chair {
@@ -102,4 +105,56 @@ a.btn.btn-default.back {
     font-weight: 700;
     margin-top: 40px;
     color: rgba(244, 67, 54, 0.92);
+}
+
+.container-ticket.text-center {
+    width: 50%;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+i.fa.fa-bus {
+    margin-right: 10px;
+    padding-right: 10px;
+}
+
+p.text-chair {
+    display: inline-block;
+    margin-right: 10px;
+    margin-left: 15px;
+}
+
+p#number-chair {
+    display: inline-block;
+    /* margin: 0 0 13px; */
+}
+
+.next{
+    text-decoration: none;
+    color: black;
+    /* text-decoration: none; */
+}
+
+.next:hover {
+    text-decoration: none;
+    color: white;
+}
+
+p.total-money {
+    margin-left: 15px;
+}
+
+#seatDescription li {
+    margin-left: 25px;
+    padding-left: 56px;
+}
+
+ul#seatDescription {
+    margin: auto;
+    margin-left: 80px;
+}
+
+
+.barhidden{
+    display: none;
 }

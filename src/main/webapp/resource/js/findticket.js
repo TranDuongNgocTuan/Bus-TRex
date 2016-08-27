@@ -2,10 +2,16 @@
 	$(".barsearch i.bar").click(function(){
 		$(this).toggleClass('fa-sort-desc');
 		$(this).toggleClass('fa-sort-asc');
-		var chao = '${to.Id}';
-		alert(chao);
+		//var chao = '${to.Id}';
+		//alert(chao);
 		return false;
 	})
+
+	$('#btModify b').click(function(){
+		$('.barsearch.bar1').toggleClass('barhidden');
+		$('.barsearch.bar2').toggleClass('barhidden');
+		return false;
+	});
 
 	$("#phone").intlTelInput({
 		allowDropdown: false,

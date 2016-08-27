@@ -46,6 +46,7 @@ public class ChooseChairController {
         }
 
         model.addAttribute("seatChoosed", seatChoosed);
+        model.addAttribute("buses", busesEntity);
         return "choosechair";
     }
 }

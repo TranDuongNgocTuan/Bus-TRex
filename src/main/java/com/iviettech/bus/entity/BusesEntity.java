@@ -63,4 +63,12 @@ public class BusesEntity {
     public void setDate(Date date) {
         this.date = date;
     }
+
+    public TimeTableScheduleEntity getTimeTableScheduleEntity() {
+        return timeTableScheduleEntity;
+    }
+
+    public void setTimeTableScheduleEntity(TimeTableScheduleEntity timeTableScheduleEntity) {
+        this.timeTableScheduleEntity = timeTableScheduleEntity;
+    }
 }

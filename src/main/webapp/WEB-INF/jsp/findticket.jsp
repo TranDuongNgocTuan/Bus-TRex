@@ -105,7 +105,7 @@
     <!-- end choose location -->
 </div>
 
-<div class="barsearch">
+<div class="barsearch bar1">
     <div class="container">
         <table class="table">
             <tbody>
@@ -114,9 +114,9 @@
                     <div class="dropdown pull-left">
                         <i class="dropdown-toggle" type="button" data-toggle="dropdown"><i class="fa fa-bus"></i><span>Hãng xe</span></i>
                         <ul class="dropdown-menu">
-                            <li><a href="#">HTML</a></li>
-                            <li><a href="#">CSS</a></li>
-                            <li><a href="#">JavaScript</a></li>
+                            <c:forEach var="schedule" items="${scheduleList}">
+                                <li><a href="#">${schedule.scheduleEntity.busServicesEntity}</a></li>
+                            </c:forEach>
                         </ul>
                     </div>
                     <i class="bar sort1 fa fa-sort-asc"></i></td>
@@ -125,9 +125,9 @@
                         <i class="dropdown-toggle" type="button" data-toggle="dropdown"><i
                                 class="fa fa-clock-o"></i><span>Giờ đi</span></i>
                         <ul class="dropdown-menu">
-                            <li><a href="#">HTML</a></li>
-                            <li><a href="#">CSS</a></li>
-                            <li><a href="#">JavaScript</a></li>
+                            <c:forEach var="schedule" items="${scheduleList}">
+                                <li><a href="#">${schedule.timeTableScheduleEntity.departureTime}</a></li>
+                            </c:forEach>
                         </ul>
                     </div>
                     <i class="bar sort2 fa fa-sort-asc "></i></td>
@@ -135,9 +135,9 @@
                     <div class="dropdown pull-left">
                         <i class="dropdown-toggle" type="button" data-toggle="dropdown"><i class="fa fa-map-marker"></i><span>Nơi đi</span></i>
                         <ul class="dropdown-menu">
-                            <li><a href="#">HTML</a></li>
-                            <li><a href="#">CSS</a></li>
-                            <li><a href="#">JavaScript</a></li>
+                            <c:forEach var="schedule" items="${scheduleList}">
+                                <li><a href="#">${schedule.scheduleEntity.departure}</a></li>
+                            </c:forEach>
                         </ul>
                     </div>
                     <i class="bar sort3 fa fa-sort-asc"></i></td>
@@ -145,9 +145,9 @@
                     <div class="dropdown pull-left">
                         <i class="dropdown-toggle" type="button" data-toggle="dropdown"><i class="fa fa-map-marker"></i><span>Nơi đến</span></i>
                         <ul class="dropdown-menu">
-                            <li><a href="#">HTML</a></li>
-                            <li><a href="#">CSS</a></li>
-                            <li><a href="#">JavaScript</a></li>
+                            <c:forEach var="schedule" items="${scheduleList}">
+                                <li><a href="#">${schedule.scheduleEntity.arrival}</a></li>
+                            </c:forEach>
                         </ul>
                     </div>
                     <i class="bar sort4 fa fa-sort-asc"></i></td>
@@ -156,9 +156,9 @@
                         <i class="dropdown-toggle" type="button" data-toggle="dropdown"><i
                                 class="fa fa-puzzle-piece"></i><span>Sơ đồ ghế</span></i>
                         <ul class="dropdown-menu">
-                            <li><a href="#">HTML</a></li>
-                            <li><a href="#">CSS</a></li>
-                            <li><a href="#">JavaScript</a></li>
+                            <c:forEach var="schedule" items="${scheduleList}">
+                                <li><a href="#">${schedule.numberSeat - schedule.numberTicket}</a></li>
+                            </c:forEach>
                         </ul>
                     </div>
                     <i class="bar sort5 fa fa-sort-asc"></i></td>
@@ -177,18 +177,26 @@
                         <i class="dropdown-toggle" type="button" data-toggle="dropdown"><i
                                 class="fa fa-ticket"></i><span>Vé xe</span></i>
                         <ul class="dropdown-menu">
-                            <li><a href="#">HTML</a></li>
-                            <li><a href="#">CSS</a></li>
-                            <li><a href="#">JavaScript</a></li>
+                            <c:forEach var="schedule" items="${scheduleList}">
+                                <li><a href="#">${schedule.scheduleEntity.priceticket}</a></li>
+                            </c:forEach>
                         </ul>
                     </div>
-                    <i class="fa fa-sort-asc"></i></td>
+                    <i class="fa fa-sort-asc"></i>
+                </td>
             </tr>
             </tbody>
         </table>
     </div>
 </div>
 <!-- end search -->
+
+<div class="barsearch bar2 barhidden">
+    <div class="container">
+    </div>
+</div>
+<!-- end search -->
+
 
 <div class="ticket">
     <div class="container">
@@ -219,6 +227,7 @@
                                                              pattern="HH:mm"/>→
                                     <fmt:formatDate value="${schedule.timeTableScheduleEntity.arriveTime}" type="time"
                                                     pattern="HH:mm"/></h4>
+
                                 <p>Thời
                                     gian: ${schedule.timeTableScheduleEntity.duration.hours}h${schedule.timeTableScheduleEntity.duration.minutes}'</p>
                             <span class="tooltiphover"
@@ -282,7 +291,7 @@
                                 <div class="info-chair">
                                     <div class="row">
                                         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                                            <%--Form book a ticket--%>
+                                                <%--Form book a ticket--%>
                                             <form action="" method="POST" role="form" class="info-form">
                                                 <legend>Form title</legend>
                                                 <div class="row">
@@ -333,7 +342,8 @@
                                             <table class="table">
                                                 <tr>
                                                     <td>Tuyến đường</td>
-                                                    <td class="info-table-ticket">${schedule.scheduleEntity.departure.name} - ${schedule.scheduleEntity.arrival.name}
+                                                    <td class="info-table-ticket">${schedule.scheduleEntity.departure.name}
+                                                        - ${schedule.scheduleEntity.arrival.name}
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -351,7 +361,8 @@
                                                 <tr>
                                                     <td>Giờ đến</td>
                                                     <jsp:useBean id="ourDate" class="java.util.Date"/>
-                                                    <jsp:setProperty name="ourDate" property="time" value="${dayStartMove.time + 86400000}"/>
+                                                    <jsp:setProperty name="ourDate" property="time"
+                                                                     value="${dayStartMove.time - schedule.timeTableScheduleEntity.duration.time}"/>
                                                     <td class="info-table-ticket">${schedule.timeTableScheduleEntity.arriveTime}
                                                         <fmt:formatDate value="${ourDate}" pattern="yyyy-MM-dd"/>
                                                     </td>

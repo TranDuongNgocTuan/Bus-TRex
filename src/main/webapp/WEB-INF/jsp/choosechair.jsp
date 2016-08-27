@@ -1,12 +1,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en"><head>
 <title> Example </title>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">  
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link href='https://fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,900,700italic,900italic' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" href="resource/vendor/bootstrap.css">
+<link rel="stylesheet" href="resource/vendor/bootstrap.css">
 <link rel="stylesheet" href="/resource/css/findticket.css">
 <link rel="stylesheet" href="/resource/css/choosechair.css">
 <link rel="stylesheet" type="text/css" href="/resource/css/chair.css">
@@ -58,26 +59,29 @@
 					<div class="choose-chair">
 						<div class="row">
 							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-								<div class="categorize-chair"> 
+								<div class="categorize-chair">
 									<ul id="seatDescription">
-										<li><div class="available-seat"></div><p>Có thể chọn</p></li>
-										<li><div class="booked-seat"></div><p>Đã có người</p></li>
-										<li><div class="selected-seat"></div><p>Đang chọn</p></li>
+										<%--<li><div class="available-seat"></div><p>Có thể chọn</p></li>--%>
+										<%--<li><div class="booked-seat"></div><p>Đã có người</p></li>--%>
+										<%--<li><div class="selected-seat"></div><p>Đang chọn</p></li>--%>
+                                            <li class="available-seat">Available Seat</li>
+                                            <li class="booked-seat">Booked Seat</li>
+                                            <li class="selected-seat">Selected Seat</li>
 									</ul>
 								</div>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-								<div id="holder"> 
+								<div id="holder">
 									<ul id="place">
-									</ul>    
+									</ul>
 								</div>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
-								<h3>Sơ đồ ghế</h3>
+								<h3>Sơ đồ ghế:</h3>
 							</div>
 						</div>
 					</div>
@@ -90,19 +94,18 @@
 								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 									<div class="from">
 										<p><i class="fa fa-bus"></i>Xuất phát</p>
-										<p>13-08-2016 <br> 05:00</p>
+										<p><fmt:formatDate value="${buses.date}" type="date"/> <br> <fmt:formatDate value="${buses.timeTableScheduleEntity.departureTime}" type="time"/> </p>
 									</div>
 									<div class="time"></div>
 									<div class="to">
 										<p><i class="fa fa-bus"></i>Đến lúc</p>
-										<p>13-08-2016 <br> 05:00</p>
+                                        <jsp:useBean id="ourDate" class="java.util.Date"/>
+                                        <jsp:setProperty name="ourDate" property="time" value="${dayStartMove.time - schedule.timeTableScheduleEntity.duration.time}"/>
+										<p><fmt:formatDate value="${ourDate}" pattern="yyyy-MM-dd"/><br><fmt:formatDate value="${buses.timeTableScheduleEntity.arriveTime}" type="time"/></p>
 									</div>
 								</div>
 
-								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-									<p id="number-chair">Số ghế:</p>
-									<p class="total-money">Tổng tiền</p>
-								</div>
+
 							</div>
 							<div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
 								<div class="row">
@@ -133,9 +136,23 @@
 							</div>
 						</div>
 						<div class="row">
+							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+								<p class="text-chair">Số ghế:</p><p id="number-chair"></p>
+								<p class="total-money">Tổng tiền</p>
+							</div>
+						</div>
+						<div class="row">
 							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
-								<a href="" class="btn btn-default back"><i class="fa fa-arrow-left" aria-hidden="true"></i>Quay lại</a>
-								<a href="" class="btn btn-default go"><i class="fa fa-arrow-right" aria-hidden="true"></i>Tiếp tục</a>	
+								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+									<form action="/" method="POST">
+										<input type="hidden" value="" name="selectSeat"/>
+
+										<button type="submit"
+												class="btn btn-primary container-ticket text-center">
+											<i
+													class="fa fa-bus"></i><span>Tiếp tục</span></button>
+									</form>
+								</div>
 							</div>
 
 						</div>
@@ -173,7 +190,7 @@
 						</div> -->
 					</div>
 				</div>
-			</div>	
+			</div>
 		</div>
 	</footer> <!-- end footer -->
 </body>

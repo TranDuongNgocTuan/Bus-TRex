@@ -33,6 +33,9 @@ public class ScheduleEntity {
     @JoinColumn(name = "busservicesId")
     private BusServicesEntity busServicesEntity;
 
+    @Column(name = "priceticket")
+    private int priceTicket;
+
     @OneToMany(mappedBy = "scheduleEntity")
     private List<PromotionTimeEntity> promotionTimeEntityList;
 
