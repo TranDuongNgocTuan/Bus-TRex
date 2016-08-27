@@ -28,7 +28,7 @@
   <link href="resource/bundles/home-styles.css?v=4484" rel="stylesheet" />
   <link rel="stylesheet" type="text/css" href="resource/font-awesome-4.6.3/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
-
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
 
 
@@ -39,7 +39,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-3">
-        <a href="/" class="logo-image"><img height="50" src="resource/Content/vxr/images/Home/logo.png" /></a>
+        <a href="/" class="logo-image"><img height="50" src="resource/Content/vxr/images/Home/bus-vxr.png" /></a>
         <ul class="header-action-bar visible-sm visible-xs">
           <li>
             <a class="header-blue-language en-change" href="javascript:" data-href="/vi-VN/Language/ChangeLanguage?curlang=en&url=/"><img width="24" src="resource/Content/vxr/images/english_icon.png" /></a>
@@ -118,12 +118,12 @@
               </li>
               <li class="flex-active-slide" style="width: 352px; margin-right: 0px; float: left; display: block;" data-thumb-alt="">
                 <a href="#">
-                  <img src="resource/Content/vxr/images/promotion/Silder_2-9_(_ty_le_360x214_).jpg" draggable="false">
+                  <img src="resource/Content/vxr/images/promotion/cyberpay_slider.png" draggable="false">
                 </a>
               </li>
               <li class="" data-thumb-alt="" style="width: 352px; margin-right: 0px; float: left; display: block;">
                 <a href="#" target="_blank">
-                  <img src="resource/Content/vxr/images/promotion/Silder_2-9_(_ty_le_360x214_).jpg" draggable="false">
+                  <img src="resource/Content/vxr/images/promotion/cyberpay_slider.png" draggable="false">
                 </a>
               </li>
               <li class="" data-thumb-alt="" style="width: 352px; margin-right: 0px; float: left; display: block;">
