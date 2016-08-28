@@ -85,16 +85,17 @@ public class InfoTicketRepository{
                 scheduleEntity.setBusServicesEntity(busServicesRepository.findOne(rs.getInt(6)));
                 scheduleEntity.setPromotionTimeEntityList(promotionTimeRepository.findByScheduleEntityId(rs.getInt(1)));
                 scheduleEntity.setTimeTableScheduleEntityList(timeTableScheduleRepository.findByScheduleEntityId(rs.getInt(1)));
+                scheduleEntity.setPriceTicket(rs.getInt(8));
                 timeTableScheduleEntity.setScheduleEntity(scheduleEntity);
-                timeTableScheduleEntity.setId(rs.getInt(8));
-                timeTableScheduleEntity.setArriveTime(rs.getTime(9));
-                timeTableScheduleEntity.setDepartureTime(rs.getTime(10));
-                timeTableScheduleEntity.setDuration(rs.getTime(11));
+                timeTableScheduleEntity.setId(rs.getInt(9));
+                timeTableScheduleEntity.setArriveTime(rs.getTime(10));
+                timeTableScheduleEntity.setDepartureTime(rs.getTime(11));
+                timeTableScheduleEntity.setDuration(rs.getTime(12));
                 timeTableScheduleEntity.setBusesEntityList(busesRepository.findByTimeTableScheduleEntityId(rs.getInt(8)));
 
                 aInfoTicket.setScheduleEntity(scheduleEntity);
                 aInfoTicket.setTimeTableScheduleEntity(timeTableScheduleEntity);
-                aInfoTicket.setNumberSeat(rs.getInt(14));
+                aInfoTicket.setNumberSeat(rs.getInt(15));
                 aInfoTicket.setNumberTicket(rs.getInt("Quantity"));
                 aInfoTicket.setBusesId(rs.getInt("busesId"));
 

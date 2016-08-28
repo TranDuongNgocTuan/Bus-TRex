@@ -304,7 +304,7 @@ h4.name-car {
     font-size: medium;
 }
 
-h4.money {
+h4.moneyTicket {
     text-align: right;
     font-weight: 700;
 }
@@ -390,4 +390,12 @@ p.space {
     text-overflow: ellipsis;
     white-space: nowrap;
     width: 137px;
+}
+
+.barhidden{
+    display: none;
+}
+
+h4.departureTime {
+    float: left;
 }

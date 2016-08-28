@@ -114,12 +114,12 @@
                     <div class="dropdown pull-left">
                         <i class="dropdown-toggle" type="button" data-toggle="dropdown"><i class="fa fa-bus"></i><span>Hãng xe</span></i>
                         <ul class="dropdown-menu">
-                            <c:forEach var="schedule" items="${scheduleList}">
-                                <li><a href="#">${schedule.scheduleEntity.busServicesEntity}</a></li>
+                            <c:forEach var="schedule" items="${scheduleListNormal}">
+                                <li><a href="#">${schedule.busServicesEntity.name}</a></li>
                             </c:forEach>
                         </ul>
                     </div>
-                    <i class="bar sort1 fa fa-sort-asc"></i></td>
+                    <i class="bar fa fa-sort-desc service"></i></td>
                 <td>
                     <div class="dropdown pull-left">
                         <i class="dropdown-toggle" type="button" data-toggle="dropdown"><i
@@ -130,38 +130,38 @@
                             </c:forEach>
                         </ul>
                     </div>
-                    <i class="bar sort2 fa fa-sort-asc "></i></td>
+                    <i class="bar departure fa fa-sort-desc "></i></td>
                 <td>
                     <div class="dropdown pull-left">
                         <i class="dropdown-toggle" type="button" data-toggle="dropdown"><i class="fa fa-map-marker"></i><span>Nơi đi</span></i>
                         <ul class="dropdown-menu">
-                            <c:forEach var="schedule" items="${scheduleList}">
-                                <li><a href="#">${schedule.scheduleEntity.departure}</a></li>
+                            <c:forEach var="schedule" items="${scheduleListNormal}">
+                                <li><a href="#">${schedule.departure.name}</a></li>
                             </c:forEach>
                         </ul>
                     </div>
-                    <i class="bar sort3 fa fa-sort-asc"></i></td>
+                    <i class="bar from fa fa-sort-desc"></i></td>
                 <td>
                     <div class="dropdown pull-left">
                         <i class="dropdown-toggle" type="button" data-toggle="dropdown"><i class="fa fa-map-marker"></i><span>Nơi đến</span></i>
                         <ul class="dropdown-menu">
-                            <c:forEach var="schedule" items="${scheduleList}">
-                                <li><a href="#">${schedule.scheduleEntity.arrival}</a></li>
+                            <c:forEach var="schedule" items="${scheduleListNormal}">
+                                <li><a href="#">${schedule.arrival.name}</a></li>
                             </c:forEach>
                         </ul>
                     </div>
-                    <i class="bar sort4 fa fa-sort-asc"></i></td>
+                    <i class="bar to fa fa-sort-desc"></i></td>
                 <td>
                     <div class="dropdown pull-left">
                         <i class="dropdown-toggle" type="button" data-toggle="dropdown"><i
                                 class="fa fa-puzzle-piece"></i><span>Sơ đồ ghế</span></i>
                         <ul class="dropdown-menu">
-                            <c:forEach var="schedule" items="${scheduleList}">
-                                <li><a href="#">${schedule.numberSeat - schedule.numberTicket}</a></li>
+                            <c:forEach var="seat" items="${seatList}">
+                                <li><a href="#">${seat}</a></li>
                             </c:forEach>
                         </ul>
                     </div>
-                    <i class="bar sort5 fa fa-sort-asc"></i></td>
+                    <i class="bar chair fa fa-sort-desc"></i></td>
                 <td>
                     <div class="dropdown pull-left">
                         <i class="dropdown-toggle" type="button" data-toggle="dropdown"><i class="fa fa-star"></i><span>Đánh giá</span></i>
@@ -171,18 +171,18 @@
                             <li><a href="#">JavaScript</a></li>
                         </ul>
                     </div>
-                    <i class="bar sort6 fa fa-sort-asc"></i></td>
+                    <i class="bar sort6 fa fa-sort-desc"></i></td>
                 <td>
                     <div class="dropdown pull-left">
                         <i class="dropdown-toggle" type="button" data-toggle="dropdown"><i
                                 class="fa fa-ticket"></i><span>Vé xe</span></i>
                         <ul class="dropdown-menu">
-                            <c:forEach var="schedule" items="${scheduleList}">
-                                <li><a href="#">${schedule.scheduleEntity.priceticket}</a></li>
+                            <c:forEach var="schedule" items="${scheduleListNormal}">
+                                <li><a href="#">${schedule.priceTicket}</a></li>
                             </c:forEach>
                         </ul>
                     </div>
-                    <i class="fa fa-sort-asc"></i>
+                    <i class="bar money fa fa-sort-desc"></i>
                 </td>
             </tr>
             </tbody>
@@ -200,13 +200,13 @@
 
 <div class="ticket">
     <div class="container">
-        <c:forEach var="schedule" items="${scheduleList}">
-            <div class="row">
-                <table class="table table-borderless">
-                    <tr>
+        <div class="row">
+            <table class="table table-borderless" id="mytable">
+                <c:forEach var="schedule" items="${scheduleList}">
+                    <tr id="getTrInfo">
                         <td class="col-xs-2 col-sm-2 col-md-2 col-lg-2 fix-border">
                             <div class="container-bus">
-                                <h4 class="">${schedule.scheduleEntity.busServicesEntity.name}</h4>
+                                <h4 class="nameService">${schedule.scheduleEntity.busServicesEntity.name}</h4>
                                 <i class="glyphicon glyphicon-align-left"></i>
                                 <i class="glyphicon glyphicon-picture"></i>
                                 <i class="glyphicon glyphicon-plus-sign"></i>
@@ -222,28 +222,28 @@
                             </div>
                             <div class="container-time">
                                     <%--time arrvial and departure`--%>
-                                <h4 class=""><fmt:formatDate value="${schedule.timeTableScheduleEntity.departureTime}"
-                                                             type="time"
-                                                             pattern="HH:mm"/>→
-                                    <fmt:formatDate value="${schedule.timeTableScheduleEntity.arriveTime}" type="time"
+                                <h4 class="departureTime"><fmt:formatDate value="${schedule.timeTableScheduleEntity.departureTime}"
+                                                            type="time"
+                                                             pattern="HH:mm"/>→</h4>
+                                <h4 class="arrvialTime"><fmt:formatDate value="${schedule.timeTableScheduleEntity.arriveTime}" type="time"
                                                     pattern="HH:mm"/></h4>
 
                                 <p>Thời
                                     gian: ${schedule.timeTableScheduleEntity.duration.hours}h${schedule.timeTableScheduleEntity.duration.minutes}'</p>
                             <span class="tooltiphover"
                                   data-tooltip-content="#tooltip_${schedule.scheduleEntity.departure.id}_from">
-                            <p class="adress">${schedule.scheduleEntity.departure.name}</p><i
+                            <p class="adress fromGo">${schedule.scheduleEntity.departure.name}</p><i
                                     class="fa fa-sort-desc"></i></span>
                             <span class="tooltiphover"
                                   data-tooltip-content="#tooltip_${schedule.scheduleEntity.arrival.id}_to">→
-                                <p class="adress">${schedule.scheduleEntity.arrival.name}</p><i
+                                <p class="adress goTo">${schedule.scheduleEntity.arrival.name}</p><i
                                         class="fa fa-sort-desc"></i></span>
                             </div>
                         </td>
                         <!-- end time from to -->
                         <td class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
                             <div class="container-chair text-center">
-                                <p class="">Giường nằm ${schedule.numberSeat} chỗ</p>
+                                <p class="mapChair">Số ghế trên xe: ${schedule.numberSeat} chỗ</p>
 
                                 <p class="space">Còn trống: ${schedule.numberSeat - schedule.numberTicket}</p>
                             </div>
@@ -260,7 +260,7 @@
                         </td>
                         <td class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
                             <div class="">
-                                <h4 class="money">300000<sup>đ</sup></h4>
+                                <h4 class="moneyTicket">${schedule.scheduleEntity.priceTicket}<sup>đ</sup></h4>
 
                                 <div class="container-ticket text-center" data-toggle="collapse"
                                      data-target="#${schedule.timeTableScheduleEntity.id}">
@@ -270,14 +270,14 @@
                         </td>
                         <!-- end time from to -->
                     </tr>
-                    <tr>
+                    <tr id="getTrSubmit">
                         <td class="col-xs-12 col-sm-12 col-md-12 col-lg-12 info" colspan="5">
                             <div id="${schedule.timeTableScheduleEntity.id}" class="collapse info-wapper">
                                 <div class="info-tilte">
                                     <div class="row">
 
                                         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center">
-                                            <h4>Điện đặt vé</h4>
+                                            <h4>Đặt vé</h4>
                                         </div>
                                         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center">
                                             <h4>Thông tin vé xe</h4>
@@ -293,7 +293,6 @@
                                         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
                                                 <%--Form book a ticket--%>
                                             <form action="" method="POST" role="form" class="info-form">
-                                                <legend>Form title</legend>
                                                 <div class="row">
                                                     <div class="form-group form-inline">
                                                         <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
@@ -369,7 +368,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td>Giá vé</td>
-                                                    <td class="info-table-ticket">280.000/người</td>
+                                                    <td class="info-table-ticket">${schedule.scheduleEntity.priceTicket}/người</td>
                                                 </tr>
                                             </table>
                                         </div>
@@ -397,12 +396,12 @@
                                             <hr>
                                             <div class="row">
                                                 <div class="contact">
-                                                    <h4 class="name-car">Xe HAV</h4>
-                                                    <h4 class="name-from">VP</h4>
+                                                    <h4 class="name-car">${schedule.scheduleEntity.busServicesEntity.name}</h4>
+                                                    <h4 class="name-from">Telephone:</h4>
 
                                                     <h2 class="number-mobile"><i
-                                                            class="glyphicon glyphicon-phone-alt"></i>05116
-                                                        505 050</h2>
+                                                            class="glyphicon glyphicon-phone-alt"></i>${schedule.scheduleEntity.busServicesEntity.phone}
+                                                    </h2>
                                                 </div>
                                             </div>
                                         </div>
@@ -413,9 +412,10 @@
                             </div>
                         </td>
                     </tr>
-                </table>
-            </div>
-        </c:forEach>
+                </c:forEach>
+            </table>
+
+        </div>
     </div>
     <!-- end show ticket -->
 </div>

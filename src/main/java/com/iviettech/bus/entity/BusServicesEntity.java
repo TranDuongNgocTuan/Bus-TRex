@@ -20,6 +20,8 @@ public class BusServicesEntity {
 
     private String address;
 
+    private String phone;
+
     private Date dob;
 
     private String description;
@@ -117,5 +119,13 @@ public class BusServicesEntity {
 
     public void setScheduleEntityList(List<ScheduleEntity> scheduleEntityList) {
         this.scheduleEntityList = scheduleEntityList;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }
