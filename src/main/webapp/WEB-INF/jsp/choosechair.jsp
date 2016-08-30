@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en"><head>
@@ -144,14 +145,14 @@
 						<div class="row">
 							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
 								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
-									<form action="/" method="POST">
-										<input type="hidden" value="" name="selectSeat"/>
-										<input type="hidden" value="" name="numberSeat"/>
+									<form:form modelAttribute="ticket" action="/transfer" method="POST">
+										<input type="hidden" value="" path="seat"/>
+										<input type="hidden" value="" name="numberSeats"/>
 										<button type="submit"
 												class="btn btn-primary container-ticket text-center">
 											<i
 													class="fa fa-bus"></i><span>Tiếp tục</span></button>
-									</form>
+									</form:form>
 								</div>
 							</div>
 

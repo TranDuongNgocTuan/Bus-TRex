@@ -94,7 +94,7 @@
 
                     3. Sau khi thanh toán, bạn sẽ nhận được vé điện tử qua tin nhắn và Email thay cho vé giấy để lên xe</p>
                     <img src="resource/img/nganluong-logo.jpg" class="img-reponsive" width="100%">
-                    <div class="container-ticket text-center" >
+                    <%--<div class="container-ticket text-center" >--%>
                       <a target="_blank" href="https://www.nganluong.vn/button_payment.php?receiver=(Email chính tài khoản nhận tiền)"
                          &product_name=(Mã đơn đặt hàng)
                          &price=(Tổng giá trị)
@@ -102,7 +102,7 @@
                          &comments=(Ghi chú về đơn hàng)">
                         <img src="https://www.nganluong.vn//css/newhome/img/button/safe-buy-2.png"border="0" />
                       </a>
-                    </div>
+                    <%--</div>--%>
                   </div>
                 </div>
               </div>

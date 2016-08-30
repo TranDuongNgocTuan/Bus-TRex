@@ -411,7 +411,7 @@ h4.departureTime {
     background: none;
 }
 
-input#exampleInputName2 {
+input#exampleInputName3, input#exampleInputName2, input#exampleInputName1{
     background: none;
     padding-left: 37px;
     border-bottom: 1px solid #acacac;
@@ -470,3 +470,4 @@ button.close:hover {
 textarea#commentInto {
     height: 165px;
 }
+

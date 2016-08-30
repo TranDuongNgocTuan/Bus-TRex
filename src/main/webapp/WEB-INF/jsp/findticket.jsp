@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="b" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,6 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='https://fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,900,700italic,900italic'
           rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="resource/css/star-rating.css" media="all" type="text/css"/>
     <link rel="stylesheet" type="text/css" href="resource/tooltipster/dist/css/tooltipster.bundle.min.css"/>
     <link rel="stylesheet" type="text/css"
           href="resource/tooltipster/dist/css/plugins/tooltipster/sideTip/themes/tooltipster-sideTip-noir-customized.css"/>
@@ -18,18 +20,21 @@
     <link rel="stylesheet" href="resource/css/findticket.css">
     <link rel="stylesheet" href="resource/css/intlTelInput.css">
     <link rel="stylesheet" href="resource/css/demo.css">
-    <link rel="stylesheet" href="resource/css/star-rating.css" media="all" type="text/css"/>
+    <link rel="stylesheet" href="/resource/css/jquery-ui.css">
+    <link rel="stylesheet" href="/resource/css/bootstrap-datepicker.min.css">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
+    <script type="text/javascript" src="resource/js/findticket.js"></script>
+    <script src="/resource/js/bootstrap-datepicker.min.js"/>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="/resource/js/ajax.js"></script>
     <script src="resource/js/star-rating.js" type="text/javascript"></script>
     <script type="text/javascript" src="resource/vendor/bootstrap.js"></script>
-    <script type="text/javascript" src="resource/js/findticket.js"></script>
     <script type="text/javascript" src="resource/js/chair.js"></script>
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <%--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>--%>
     <script src="resource/js/intlTelInput.js"></script>
     <script type="text/javascript" src="resource/tooltipster/dist/js/tooltipster.bundle.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="resource/css/bootstrap-datepicker.standalone.min.css">
-    <script type="text/javascript" src="resource/js/bootstrap-datepicker.min.js"></script>
+
+    <script src="/resource/js/jquery-ui.js"></script>
 <body>
 <nav class="navbar navbar-default" role="navigation">
     <div class="container">
@@ -197,24 +202,24 @@
 <div class="barsearch bar2 barhidden">
     <div class="container">
         <div class="row">
-            <form class="form-inline text-center" action="/findticket" method="post">
+            <form class="form-inline text-center" action="/findticket" method="get">
                 <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
                     <div class="input-group form-group">
                         <div class="input-group-addon"><i class="fa fa-map-marker fa-lg" aria-hidden="true"></i></div>
-                        <input type="text" class="form-control" id="exampleInputName2" placeholder="Nơi đi">
+                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Nơi đi" name="departPlace">
                     </div>
                 </div>
                 <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
                     <div class="input-group form-group">
                         <div class="input-group-addon"><i class="fa fa-map-marker fa-lg" aria-hidden="true"></i></div>
-                        <input type="text" class="form-control" id="exampleInputName2" placeholder="Nơi đến">
+                        <input type="text" class="form-control" id="exampleInputName2" placeholder="Nơi đến" name="destination">
                     </div>
                 </div>
                 <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                    <div class="input-group form-group">
-                        <div class='input-group date' id='datetimepicker7'>
+                    <div class="input-group date" data-provide="datepicker">
+                        <div class='input-group'>
                             <div class="input-group-addon"><i class="fa fa-calendar fa-lg" aria-hidden="true"></i></div>
-                            <input type="text" class="form-control" id="exampleInputName2" placeholder="">
+                            <input type="text" class="form-control ll-skin-nigran" id="exampleInputName3" placeholder="" name="departDate">
                         </div>
                     </div>
                 </div>
@@ -326,7 +331,7 @@
                                     <div class="row">
                                         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
                                                 <%--Form book a ticket--%>
-                                            <form action="" method="POST" role="form" class="info-form">
+                                            <form:form modelAttribute="ticket" action="/choosechair" method="POST" role="form" class="info-form">
                                                 <div class="row">
                                                     <div class="form-group form-inline">
                                                         <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
@@ -334,7 +339,7 @@
                                                         </div>
                                                         <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
                                                             <input type="text" required class="form-control"
-                                                                   placeholder="Tran Van A" name="fullName">
+                                                                   placeholder="Tran Van A" path="fullName">
                                                         </div>
 
                                                     </div>
@@ -347,7 +352,7 @@
                                                         <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
                                                             <input type="tel" id="phone" required
                                                                    class="form-control"
-                                                                   placeholder="VD: 0912345678" name="numberPhone">
+                                                                   placeholder="VD: 0912345678" path="numberphone">
                                                         </div>
 
                                                     </div>
@@ -359,7 +364,7 @@
                                                         </div>
                                                         <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
                                                             <input type="email" required class="form-control"
-                                                                   placeholder="vexe@gmail.com" name="gmail">
+                                                                   placeholder="vexe@gmail.com" path="gmail">
                                                         </div>
 
                                                     </div>
@@ -369,7 +374,7 @@
                                                         class="btn btn-primary pull-right container-ticket text-center">
                                                     <i
                                                             class="fa fa-bus"></i><span>Tiếp tục</span></button>
-                                            </form>
+                                            </form:form>
                                         </div>
                                         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
                                             <table class="table">
@@ -574,7 +579,7 @@
 <c:forEach var="busService" items="${scheduleListNormal}">
     <div class="modal fade" id="service${busService.busServicesEntity.id}">
         <div class="modal-dialog">
-            <form accept="/" method="get">
+            <form id="commentForm">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -586,14 +591,14 @@
                                 <legend>Hãng xe: ${busService.busServicesEntity.name}</legend>
 
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Tran Van A" name="fullName">
+                                    <input type="text" class="form-control" placeholder="Tran Van A" name="fullName" id="fullName">
                                 </div>
                                 <div class="form-group">
-                                    <input type="gmail" class="form-control" placeholder="vexere@gmail.com" name="gmail">
+                                    <input type="gmail" class="form-control" placeholder="vexere@gmail.com" name="gmail" id="gmail">
                                 </div>
                                 <div class="form-group">
                                     <label >Bình luận:</label>
-                                    <textarea class="form-control" rows="5" id="commentInto" name="commnet"></textarea>
+                                    <textarea class="form-control" rows="5" id="commentInto" name="commnet" id="comment"></textarea>
                                 </div>
                                 <div class="form-group">
                                     <input type="hidden" name="busService" value="${busService.busServicesEntity.id}"/>
@@ -603,19 +608,19 @@
                                 <legend>Đánh giá:</legend>
                                 <div class="form-group form-inline">
                                     <label for="input-7-xs" class="control-label">Tổng quan:</label>
-                                    <input id="input-7-xs" class="rating rating-loading" value="0" data-min="0" data-max="5" data-show-clear="false" data-show-caption="false" data-step="1" data-size="xs" name="rankOverall">
+                                    <input id="input-7-xs" class="rating rating-loading" value="0" data-min="0" data-max="5" data-show-clear="false" data-show-caption="false" data-step="1" data-size="xs" name="rankOverall" id="rankOverall">
                                 </div>
                                 <div class="form-group form-inline">
                                     <label for="input-7-xs" class="control-label">Chất lưọng xe buýt:</label>
-                                    <input id="input-7-xs" class="rating rating-loading" value="0" data-min="0" data-max="5" data-show-clear="false" data-show-caption="false" data-step="1" data-size="xs" name="rankBus">
+                                    <input id="input-7-xs" class="rating rating-loading" value="0" data-min="0" data-max="5" data-show-clear="false" data-show-caption="false" data-step="1" data-size="xs" name="rankBus" id="rankBus">
                                 </div>
                                 <div class="form-group form-inline">
                                     <label for="input-7-xs" class="control-label">Đúng giờ:</label>
-                                    <input id="input-7-xs" class="rating rating-loading" value="0" data-min="0" data-max="5" data-show-clear="false" data-show-caption="false" data-step="1" data-size="xs" name="rankPunctuality">
+                                    <input id="input-7-xs" class="rating rating-loading" value="0" data-min="0" data-max="5" data-show-clear="false" data-show-caption="false" data-step="1" data-size="xs" name="rankPunctuality" id="rankPunctuality">
                                 </div>
                                 <div class="form-group form-inline">service
                                     <label for="input-7-xs" class="control-label">Hành sử:</label>
-                                    <input id="input-7-xs" class="rating rating-loading" value="0" data-min="0" data-max="5" data-show-clear="false" data-show-caption="false" data-step="1" data-size="xs" name="rankBehavior">
+                                    <input id="input-7-xs" class="rating rating-loading" value="0" data-min="0" data-max="5" data-show-clear="false" data-show-caption="false" data-step="1" data-size="xs" name="rankBehavior" id="rankBehavior">
                                 </div>
                             </div>
                         </div>
@@ -623,7 +628,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <input type="submit" class="btn btn-primary btncomment" value="Đăng bình luận"/>
+                    <button type="button" class="btn btn-primary btncomment" id="submitCommentForm" value="Đăng bình luận"/>
                 </div>
             </form>
         </div>
@@ -638,5 +643,6 @@
         });
     });
 </script>
+
 </body>
 </html>

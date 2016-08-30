@@ -15,6 +15,11 @@ public class CommentEntity {
 
     private String content;
 
+    @Column(name = "fullname")
+    private String fullName;
+
+    private String gmail;
+
     @ManyToOne
     @JoinColumn(name = "rankId")
     private RankEntity rankEntity;
@@ -54,5 +59,21 @@ public class CommentEntity {
 
     public void setDob(Date dob) {
         this.dob = dob;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public String getGmail() {
+        return gmail;
+    }
+
+    public void setGmail(String gmail) {
+        this.gmail = gmail;
     }
 }

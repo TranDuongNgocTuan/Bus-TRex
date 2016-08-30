@@ -7,10 +7,11 @@ import com.iviettech.bus.repository.InfoTicketRepository;
 import com.iviettech.bus.repository.ScheduleRepository;
 import com.iviettech.bus.service.ScheduleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -39,16 +40,19 @@ public class FindTicketController {
      * @param model
      * @return
      */
-    @RequestMapping(value = "/findticket")
-    public String showTicketList(Model model) {
-        BusstationEntity busstationEntityFrom = busstationRepository.findOne(1); // Form
-        BusstationEntity busstationEntityTo = busstationRepository.findOne(2);   // To
+    @RequestMapping(value = "/findticket", method = RequestMethod.GET)
+    public String showTicketList(@RequestParam(name = "departPlace"/*, required = false, defaultValue = "Hà Nội"*/) String from,
+                                 @RequestParam(name = "destination"/*, required = false, defaultValue = "TP Hồ Chí Minh"*/) String to,
+                                 @RequestParam(name = "departDate"/*, required = false, defaultValue = "2013/03/03"*/) String dateInput,
+                                 Model model) {
+        BusstationEntity busstationEntityFrom = busstationRepository.findByName(from); // Form
+        BusstationEntity busstationEntityTo = busstationRepository.findByName(to);   // To
 
 
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
         Date date = null;
         try {
-            date = dateFormat.parse("2016-08-20");
+            date = dateFormat.parse(dateInput);
 //            System.out.println(dateFormat.format(date));
         } catch (ParseException e) {
             e.printStackTrace();
@@ -70,6 +74,21 @@ public class FindTicketController {
         return "findticket";
     }
 
+    @RequestMapping(value = "/findticket/comment", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
+    @ResponseBody
+    public String submitComment(@RequestBody String body) {
+        String[] commentArr = body.split(",");
+        CommentEntity commentEntity = new CommentEntity();
+        commentEntity.setFullName(commentArr[0]);
+        commentEntity.setGmail(commentArr[1]);
+        commentEntity.setContent(commentArr[2]);
+//        Comment comment = new Comment(commentArr[0], commentArr[1]);
+        // save comment to DB
+//        return
+        return "";
+    }
+
+
     public List<Integer> filterQutSeat(List<ScheduleEntity> scheduleEntityList){
         List<Integer> seats = new ArrayList<>();
 
@@ -81,5 +100,12 @@ public class FindTicketController {
             }
         }
         return seats;
+    }
+
+    @InitBinder
+    public void initBinder(WebDataBinder binder) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        sdf.setLenient(true);
+        binder.registerCustomEditor(Date.class, new CustomDateEditor(sdf, true));
     }
 }

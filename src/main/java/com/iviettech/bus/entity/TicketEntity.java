@@ -25,6 +25,8 @@ public class TicketEntity {
     @Column(name = "numberphone")
     private String numberphone;
 
+    private String gmail;
+
     @Column(name = "status")
     private int status;
 
@@ -110,5 +112,13 @@ public class TicketEntity {
 
     public void setNumberSeats(int numberSeats) {
         this.numberSeats = numberSeats;
+    }
+
+    public String getGmail() {
+        return gmail;
+    }
+
+    public void setGmail(String gmail) {
+        this.gmail = gmail;
     }
 }
