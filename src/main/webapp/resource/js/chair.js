@@ -62,6 +62,7 @@ $(window).load(function () {
     $('.' + settings.seatCss).click(function () {
         var str = [];
         var total = $('#place li.' + settings.selectingSeatCss + ' a').length;
+        $('input[name=numberSeat]').val(total);
         $.each($('#place li.' + settings.selectingSeatCss + ' a'), function (index, value) {
             if (index == total - 1) {
                 str.push($(this).attr('title'));

@@ -30,6 +30,9 @@ public class TicketEntity {
 
     private String seat;
 
+    @Column(name = "numberseats")
+    private int numberSeats;
+
     @ManyToOne
     @JoinColumn(name = "busesId")
     private BusesEntity busesEntity;
@@ -99,5 +102,13 @@ public class TicketEntity {
 
     public void setSeat(String seat) {
         this.seat = seat;
+    }
+
+    public int getNumberSeats() {
+        return numberSeats;
+    }
+
+    public void setNumberSeats(int numberSeats) {
+        this.numberSeats = numberSeats;
     }
 }

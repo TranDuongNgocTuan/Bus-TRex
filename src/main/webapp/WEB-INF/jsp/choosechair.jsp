@@ -146,7 +146,7 @@
 								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
 									<form action="/" method="POST">
 										<input type="hidden" value="" name="selectSeat"/>
-
+										<input type="hidden" value="" name="numberSeat"/>
 										<button type="submit"
 												class="btn btn-primary container-ticket text-center">
 											<i

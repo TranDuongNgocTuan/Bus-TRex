@@ -55,6 +55,7 @@ public class InfoTicketRepository{
                 ", case when bus.seats is null then 0 else bus.seats END as 'seat'" +
                 ", case when buses.id is null then 0 else count(ticket.id) END as 'Quantity'" +
                 ", case when buses.id is null then 0 else buses.id END as 'busesId'" +
+                ", case when sum(ticket.numberseats) is null then 0 else sum(ticket.numberseats) END as 'numberOfTicket'" +
                 " from schedule" +
                 " inner join timetableschedule" +
                 " on schedule.id = timetableschedule.scheduleId" +
@@ -98,6 +99,7 @@ public class InfoTicketRepository{
                 aInfoTicket.setNumberSeat(rs.getInt(15));
                 aInfoTicket.setNumberTicket(rs.getInt("Quantity"));
                 aInfoTicket.setBusesId(rs.getInt("busesId"));
+                aInfoTicket.setSumNumberOfSeat(rs.getInt("numberOfTicket"));
 
                 return aInfoTicket;
             }

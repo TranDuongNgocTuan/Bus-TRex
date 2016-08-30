@@ -18,6 +18,9 @@
     <link rel="stylesheet" href="resource/css/findticket.css">
     <link rel="stylesheet" href="resource/css/intlTelInput.css">
     <link rel="stylesheet" href="resource/css/demo.css">
+    <link rel="stylesheet" href="resource/css/star-rating.css" media="all" type="text/css"/>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="resource/js/star-rating.js" type="text/javascript"></script>
     <script type="text/javascript" src="resource/vendor/bootstrap.js"></script>
     <script type="text/javascript" src="resource/js/findticket.js"></script>
     <script type="text/javascript" src="resource/js/chair.js"></script>
@@ -70,20 +73,20 @@
                 <h4>Đà Nẵng đi Hải Phòng</h4>
 
                 <div class="date-picker">
-                    <div class="pull-left date-wapper">
-                        <button id="btPrevDate" style="" type="button" class="btn btn-default"><i
-                                class="fa fa-caret-left fa-lg"></i></button>
-                        <!-- <input type="button" id="span-current-date" value="10-08-2016" tabindex="1" class="btn btn-vxr current-date hasDatepicker"> -->
-                        <div class="input-group date" data-provide="datepicker">
-                            <input type="text" class="form-control">
+                    <%--<div class="pull-left date-wapper">--%>
+                        <%--<button id="btPrevDate" style="" type="button" class="btn btn-default"><i--%>
+                                <%--class="fa fa-caret-left fa-lg"></i></button>--%>
+                        <%--<!-- <input type="button" id="span-current-date" value="10-08-2016" tabindex="1" class="btn btn-vxr current-date hasDatepicker"> -->--%>
+                        <%--<div class="input-group date" data-provide="datepicker">--%>
+                            <%--<input type="text" class="form-control">--%>
 
-                            <div class="input-group-addon">
-                                <span class="glyphicon glyphicon-th"></span>
-                            </div>
-                        </div>
-                        <button id="btNextDate" type="button" class="btn btn-default"><i
-                                class="fa fa-caret-right fa-lg"></i></button>
-                    </div>
+                            <%--<div class="input-group-addon">--%>
+                                <%--<span class="glyphicon glyphicon-th"></span>--%>
+                            <%--</div>--%>
+                        <%--</div>--%>
+                        <%--<button id="btNextDate" type="button" class="btn btn-default"><i--%>
+                                <%--class="fa fa-caret-right fa-lg"></i></button>--%>
+                    <%--</div>--%>
                     <div class="pull-left ml10 modify-container">
                         <a id="btModify" class="text-blue" href="#"><b>Sửa nơi đi, nơi đến, ngày đi</b></a>
                     </div>
@@ -193,9 +196,38 @@
 
 <div class="barsearch bar2 barhidden">
     <div class="container">
+        <div class="row">
+            <form class="form-inline text-center" action="/findticket" method="post">
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                    <div class="input-group form-group">
+                        <div class="input-group-addon"><i class="fa fa-map-marker fa-lg" aria-hidden="true"></i></div>
+                        <input type="text" class="form-control" id="exampleInputName2" placeholder="Nơi đi">
+                    </div>
+                </div>
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                    <div class="input-group form-group">
+                        <div class="input-group-addon"><i class="fa fa-map-marker fa-lg" aria-hidden="true"></i></div>
+                        <input type="text" class="form-control" id="exampleInputName2" placeholder="Nơi đến">
+                    </div>
+                </div>
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                    <div class="input-group form-group">
+                        <div class='input-group date' id='datetimepicker7'>
+                            <div class="input-group-addon"><i class="fa fa-calendar fa-lg" aria-hidden="true"></i></div>
+                            <input type="text" class="form-control" id="exampleInputName2" placeholder="">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                    <button type="submit" class="container-ticket text-center buttonFind">
+                        <i class="fa fa-bus"></i><span>Đặt vé</span>
+                    </button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
-<!-- end search -->
+<!-- end search 2 -->
 
 
 <div class="ticket">
@@ -245,11 +277,11 @@
                             <div class="container-chair text-center">
                                 <p class="mapChair">Số ghế trên xe: ${schedule.numberSeat} chỗ</p>
 
-                                <p class="space">Còn trống: ${schedule.numberSeat - schedule.numberTicket}</p>
+                                <p class="space">Còn trống: ${schedule.numberSeat - schedule.sumNumberOfSeat}</p>
                             </div>
                         </td>
-                        <td class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                            <div class="container-start text-center">
+                        <td class="col-xs-2 col-sm-2 col-md-2 col-lg-2 text-center">
+                            <div class="container-start ">
 
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
@@ -257,6 +289,8 @@
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
                             </div>
+                            <p>15 rating</p>
+                            <a class="writereviews" data-toggle="modal" href='#service${schedule.scheduleEntity.busServicesEntity.id}'>Viết đánh giá</a>
                         </td>
                         <td class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
                             <div class="">
@@ -534,6 +568,65 @@
 			<p class="localgo">${schedule.scheduleEntity.arrival.name}</p>
 			<span></span>
 		</span>
+    </div>
+</c:forEach>
+
+<c:forEach var="busService" items="${scheduleListNormal}">
+    <div class="modal fade" id="service${busService.busServicesEntity.id}">
+        <div class="modal-dialog">
+            <form accept="/" method="get">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title"><i class="fa fa-pencil fa-2x" aria-hidden="true"></i>Viết đánh giá</h4>
+                    </div>
+                    <div class="modal-body comment">
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                <legend>Hãng xe: ${busService.busServicesEntity.name}</legend>
+
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Tran Van A" name="fullName">
+                                </div>
+                                <div class="form-group">
+                                    <input type="gmail" class="form-control" placeholder="vexere@gmail.com" name="gmail">
+                                </div>
+                                <div class="form-group">
+                                    <label >Bình luận:</label>
+                                    <textarea class="form-control" rows="5" id="commentInto" name="commnet"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <input type="hidden" name="busService" value="${busService.busServicesEntity.id}"/>
+                                </div>
+                            </div>
+                            <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+                                <legend>Đánh giá:</legend>
+                                <div class="form-group form-inline">
+                                    <label for="input-7-xs" class="control-label">Tổng quan:</label>
+                                    <input id="input-7-xs" class="rating rating-loading" value="0" data-min="0" data-max="5" data-show-clear="false" data-show-caption="false" data-step="1" data-size="xs" name="rankOverall">
+                                </div>
+                                <div class="form-group form-inline">
+                                    <label for="input-7-xs" class="control-label">Chất lưọng xe buýt:</label>
+                                    <input id="input-7-xs" class="rating rating-loading" value="0" data-min="0" data-max="5" data-show-clear="false" data-show-caption="false" data-step="1" data-size="xs" name="rankBus">
+                                </div>
+                                <div class="form-group form-inline">
+                                    <label for="input-7-xs" class="control-label">Đúng giờ:</label>
+                                    <input id="input-7-xs" class="rating rating-loading" value="0" data-min="0" data-max="5" data-show-clear="false" data-show-caption="false" data-step="1" data-size="xs" name="rankPunctuality">
+                                </div>
+                                <div class="form-group form-inline">service
+                                    <label for="input-7-xs" class="control-label">Hành sử:</label>
+                                    <input id="input-7-xs" class="rating rating-loading" value="0" data-min="0" data-max="5" data-show-clear="false" data-show-caption="false" data-step="1" data-size="xs" name="rankBehavior">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <input type="submit" class="btn btn-primary btncomment" value="Đăng bình luận"/>
+                </div>
+            </form>
+        </div>
     </div>
 </c:forEach>
 

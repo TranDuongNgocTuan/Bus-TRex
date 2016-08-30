@@ -15,15 +15,18 @@ public class InfoTicket{
 
     private int busesId;
 
+    private int sumNumberOfSeat;
+
     public InfoTicket() {
     }
 
-    public InfoTicket(ScheduleEntity scheduleEntity, int numberTicket, TimeTableScheduleEntity timeTableScheduleEntity, int numberSeat, int busesId) {
+    public InfoTicket(ScheduleEntity scheduleEntity, int numberTicket, TimeTableScheduleEntity timeTableScheduleEntity, int numberSeat, int busesId, int sumNumberOfSeat) {
         this.scheduleEntity = scheduleEntity;
         this.numberTicket = numberTicket;
         this.timeTableScheduleEntity = timeTableScheduleEntity;
         this.numberSeat = numberSeat;
         this.busesId = busesId;
+        this.sumNumberOfSeat = sumNumberOfSeat;
     }
 
     public ScheduleEntity getScheduleEntity() {
@@ -64,5 +67,13 @@ public class InfoTicket{
 
     public void setBusesId(int busesId) {
         this.busesId = busesId;
+    }
+
+    public int getSumNumberOfSeat() {
+        return sumNumberOfSeat;
+    }
+
+    public void setSumNumberOfSeat(int sumNumberOfSeat) {
+        this.sumNumberOfSeat = sumNumberOfSeat;
     }
 }
