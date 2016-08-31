@@ -96,7 +96,7 @@
 								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 									<div class="from">
 										<p><i class="fa fa-bus"></i>Xuất phát</p>
-										<p><fmt:formatDate value="${buses.date}" type="date"/> <br> <fmt:formatDate value="${buses.timeTableScheduleEntity.departureTime}" type="time"/> </p>
+										<p><fmt:formatDate value="${buses}" type="date"/> <br> <fmt:formatDate value="${buses.timeTableScheduleEntity.departureTime}" type="time"/> </p>
 									</div>
 									<div class="time"></div>
 									<div class="to">
