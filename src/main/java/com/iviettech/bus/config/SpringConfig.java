@@ -34,12 +34,6 @@ public class SpringConfig {
             dataSource.setUsername("root");
             dataSource.setPassword("");
 
-//        dataSource.setDriverClassName("org.mariadb.jdbc.Driver");
-//        dataSource.setUrl("jdbc:mysql://localhost:3306/BusTRex");
-////        dataSource.setUsername("myuser");
-//        dataSource.setPassword("123456");
-//        dataSource.setUsername("root");
-//        dataSource.setPassword("");
         return  dataSource;
     }
 
