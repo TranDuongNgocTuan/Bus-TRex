@@ -115,7 +115,7 @@
                 <table class="table table-borderless">
                   <tbody><tr>
                     <td class="col-xs-3 col-sm-3 col-md-3 col-lg-3">Tuyến:</td>
-                    <td class="col-xs-9 col-sm-9 col-md-9 col-lg-9" colspan="3">Chau Doc ⇒ Can Tho</td>
+                    <td class="col-xs-9 col-sm-9 col-md-9 col-lg-9" colspan="3">${ticket.busesEntity.timeTableScheduleEntity.scheduleEntity.departure.city} đến ${ticket.busesEntity.timeTableScheduleEntity.scheduleEntity.arrival.city}</td>
                   </tr>
                   <tr>
                     <td>Ngày đi:</td>

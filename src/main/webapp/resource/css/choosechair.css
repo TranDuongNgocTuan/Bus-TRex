@@ -111,6 +111,7 @@ a.btn.btn-default.back {
     width: 50%;
     text-transform: uppercase;
     margin-bottom: 10px;
+    background-color: white;
 }
 
 i.fa.fa-bus {
@@ -119,13 +120,12 @@ i.fa.fa-bus {
 }
 
 p.text-chair {
-    display: inline-block;
+    float:left;
     margin-right: 10px;
     margin-left: 15px;
 }
 
 p#number-chair {
-    display: inline-block;
     /* margin: 0 0 13px; */
 }
 
@@ -157,4 +157,27 @@ ul#seatDescription {
 
 .barhidden{
     display: none;
+}
+
+table.tableMoney {
+    margin-left: 15px;
+}
+
+td.text-chair {
+    padding-bottom: 5px;
+    font-weight: 700;
+    font-size: 1.2em;
+}
+
+td.total-money {
+    padding-bottom: 5px;
+    font-weight: 700;
+    font-size: 1.2em;
+}
+
+td#totalMoney {padding-left: 26px;font-size: 1.1em;font-weight: 600;color: red;}
+
+td#number-chair {
+    font-weight: 600;
+    padding-left: 25px;
 }

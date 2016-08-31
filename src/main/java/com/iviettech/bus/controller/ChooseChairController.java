@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpSession;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -31,8 +32,9 @@ public class ChooseChairController {
     BusesRepository busesRepository;
 
     @RequestMapping(value = "/choosechair")
-    public String showTicketList(@RequestParam(name = "gmail") int busesId,
+    public String showTicketList(/*@RequestParam(name = "") int busesId,*/
                                  @ModelAttribute(value = "ticket") TicketEntity ticket,
+                                 HttpSession session,
                                  Model model) {
 
         BusesEntity busesEntity = busesRepository.findOne(1);

@@ -240,7 +240,7 @@ footer p {
     background-position: top left,top right;
     background-position-x: left, right;
     background-position-y: top, top;
-    /*background-color: #fff;*/
+    background-color: #fff;
     width: 100%;
     border: none;
     box-shadow: none;
@@ -248,7 +248,7 @@ footer p {
 
 button.btn.btn-primary.pull-right.container-ticket.text-center {
     margin-top: 17px;
-    background-color: white;
+    /* background-color: white; */
 }
 
 button.container-ticket:hover {background: rgba(249, 175, 0, 0.78);}

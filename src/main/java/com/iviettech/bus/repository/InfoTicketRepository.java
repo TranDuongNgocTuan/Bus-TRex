@@ -67,7 +67,7 @@ public class InfoTicketRepository{
                 " on buses.id = ticket.busesId" +
                 " left join bus" +
                 " on timetableschedule.busId = bus.id"+
-                " where schedule.departureId = " + fromId + " and schedule.arrivalId = " + toId + " and datediff('" +  datePay  + "', busservices.dob)%schedule.numberday = 0" +
+                " where schedule.departureId = " + fromId + " and schedule.arrivalId = " + toId + " and datediff('" +  datePay  + "', schedule.datestart)%schedule.numberday = 0" +
                 " group by timetableschedule.id";
         List<InfoTicket> infoTicketList = jdbcTemplate.query(sql, new RowMapper<InfoTicket>() {
 
@@ -87,16 +87,17 @@ public class InfoTicketRepository{
                 scheduleEntity.setPromotionTimeEntityList(promotionTimeRepository.findByScheduleEntityId(rs.getInt(1)));
                 scheduleEntity.setTimeTableScheduleEntityList(timeTableScheduleRepository.findByScheduleEntityId(rs.getInt(1)));
                 scheduleEntity.setPriceTicket(rs.getInt(8));
+                scheduleEntity.setDateStart(rs.getDate(9));
                 timeTableScheduleEntity.setScheduleEntity(scheduleEntity);
-                timeTableScheduleEntity.setId(rs.getInt(9));
-                timeTableScheduleEntity.setArriveTime(rs.getTime(10));
-                timeTableScheduleEntity.setDepartureTime(rs.getTime(11));
-                timeTableScheduleEntity.setDuration(rs.getTime(12));
+                timeTableScheduleEntity.setId(rs.getInt(10));
+                timeTableScheduleEntity.setArriveTime(rs.getTime(11));
+                timeTableScheduleEntity.setDepartureTime(rs.getTime(12));
+                timeTableScheduleEntity.setDuration(rs.getTime(13));
                 timeTableScheduleEntity.setBusesEntityList(busesRepository.findByTimeTableScheduleEntityId(rs.getInt(8)));
 
                 aInfoTicket.setScheduleEntity(scheduleEntity);
                 aInfoTicket.setTimeTableScheduleEntity(timeTableScheduleEntity);
-                aInfoTicket.setNumberSeat(rs.getInt(15));
+                aInfoTicket.setNumberSeat(rs.getInt("seat"));
                 aInfoTicket.setNumberTicket(rs.getInt("Quantity"));
                 aInfoTicket.setBusesId(rs.getInt("busesId"));
                 aInfoTicket.setSumNumberOfSeat(rs.getInt("numberOfTicket"));

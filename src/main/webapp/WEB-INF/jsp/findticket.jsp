@@ -30,11 +30,11 @@
     <script src="resource/js/star-rating.js" type="text/javascript"></script>
     <script type="text/javascript" src="resource/vendor/bootstrap.js"></script>
     <script type="text/javascript" src="resource/js/chair.js"></script>
-    <%--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>--%>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="resource/js/intlTelInput.js"></script>
     <script type="text/javascript" src="resource/tooltipster/dist/js/tooltipster.bundle.min.js"></script>
-
-    <script src="/resource/js/jquery-ui.js"></script>
+    <script type="text/javascript" src="/resource/js/jquery-ui.js"></script>
+    <%--<script type="text/javascript" src="/resource/js/utils.js"/>--%>
 <body>
 <nav class="navbar navbar-default" role="navigation">
     <div class="container">
@@ -350,7 +350,7 @@
                                                             <label class="info-label">Phone:</label>
                                                         </div>
                                                         <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
-                                                            <input type="tel" id="phone" required
+                                                            <input type="tel" class="phone form-control" required
                                                                    class="form-control"
                                                                    placeholder="VD: 0912345678" path="numberphone">
                                                         </div>
@@ -628,7 +628,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary btncomment" id="submitCommentForm" value="Đăng bình luận"/>
+                    <button type="button" class="btn btn-primary btncomment" data-dismiss="modal" id="submitCommentForm" value="Đăng bình luận"/>
                 </div>
             </form>
         </div>

@@ -52,6 +52,7 @@
 	<c:forEach var="seat" items="${seatChoosed}" >
 		<input type="hidden" value="${seat}" name="seats"/>
 	</c:forEach>
+	<%-- Price Ticket --%>
 
 	<div class="map-chair">
 		<div class="container">
@@ -125,11 +126,11 @@
 									<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
 										<div class="row">
 											<div class="from">
-												<p>An Giang(Châu Đốc, Long Xuyên)</p>
+												<p>${ticket.busesEntity.timeTableScheduleEntity.scheduleEntity.departure.city}</p>
 											</div>
 											<div class="time"></div>
 											<div class="to">
-												<p>Cần Thơ</p>
+												<p>${ticket.busesEntity.timeTableScheduleEntity.scheduleEntity.arrival.city}</p>
 											</div>
 										</div>
 									</div>
@@ -138,16 +139,27 @@
 						</div>
 						<div class="row">
 							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-								<p class="text-chair">Số ghế:</p><p id="number-chair"></p>
-								<p class="total-money">Tổng tiền</p>
+								<%--<p class="text-chair">Số ghế:</p><p id="number-chair"></p>
+								<p class="total-money">Tổng tiền:</p><p id="totalMoney"></p>--%>
+								<table class="tableMoney">
+									<tr>
+										<td class="text-chair">Số ghế:</td>
+										<td id="number-chair"></td>
+									</tr>
+									<tr>
+										<td class="total-money">Tổng tiền:</td>
+										<td id="totalMoney"></td>
+									</tr>
+								</table>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
 								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
 									<form:form modelAttribute="ticket" action="/transfer" method="POST">
-										<input type="hidden" value="" path="seat"/>
-										<input type="hidden" value="" name="numberSeats"/>
+										<input type="hidden" value="" path="seat" id="seat"/>
+										<input type="hidden" value="" path="numberSeats" id="numberSeats"/>
+										<input type="hidden" value="${ticket.busesEntity.timeTableScheduleEntity.scheduleEntity.priceTicket}" path="totalprice"  name="priceTicket"/>
 										<button type="submit"
 												class="btn btn-primary container-ticket text-center">
 											<i

@@ -3,12 +3,13 @@
 
 //Case II: If already booked
 var bookedSeats = [];
+var money;
 $(window).ready(function () {
     $('input[name=seats]').each(function () {
         bookedSeats.push($(this).val());
         //alert($(this).val());
     });
-
+    money = $('input[name=priceTicket]').val();
 });
 
 
@@ -62,7 +63,9 @@ $(window).load(function () {
     $('.' + settings.seatCss).click(function () {
         var str = [];
         var total = $('#place li.' + settings.selectingSeatCss + ' a').length;
-        $('input[name=numberSeat]').val(total);
+        $('input#numberSeats').val(total);
+        $('totalMoney').val(total*money);
+
         $.each($('#place li.' + settings.selectingSeatCss + ' a'), function (index, value) {
             if (index == total - 1) {
                 str.push($(this).attr('title'));
@@ -70,8 +73,10 @@ $(window).load(function () {
             else
                 str.push($(this).attr('title') + ',');
         });
+        /*set day money*/
         $('#number-chair').html(str.join(''));
-        $('input[name=selectSeat]').val(str.join(''));
+        $('#totalMoney').html(total*money+"<sup>đ<sup>");
+        $('input#seat').val(str.join(''));
     });
 
     $('#btnNext').click(function () {

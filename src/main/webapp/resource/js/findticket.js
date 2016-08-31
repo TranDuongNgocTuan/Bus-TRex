@@ -78,7 +78,7 @@
 		return false;
 	});
 
-	$("#phone").intlTelInput({
+	$(".phone").intlTelInput({
 		allowDropdown: false,
 		autoHideDialCode: false,
 		autoPlaceholder: false,
@@ -96,7 +96,7 @@
 		// onlyCountries: ['us', 'gb', 'ch', 'ca', 'do'],
 		// preferredCountries: ['cn', 'jp'],
 		separateDialCode: true,
-		utilsScript: "build/js/utils.js"
+		utilsScript: "/resource/js/utils.js"
 	});
 
 	var availableTags = [
@@ -237,7 +237,7 @@
 		source: availableTags
 	});
 
-	var datepicker = $.fn.datepicker.noConflict(); // return $.fn.datepicker to previously assigned value
+	var datepicker = $.fn.datepicker.noConflict;
 	$.fn.bootstrapDP = datepicker;
 
 	$("#exampleInputName3").datepicker();
