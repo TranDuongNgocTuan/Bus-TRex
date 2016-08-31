@@ -34,7 +34,6 @@
     <script src="resource/js/intlTelInput.js"></script>
     <script type="text/javascript" src="resource/tooltipster/dist/js/tooltipster.bundle.min.js"></script>
     <script type="text/javascript" src="/resource/js/jquery-ui.js"></script>
-    <%--<script type="text/javascript" src="/resource/js/utils.js"/>--%>
 <body>
 <nav class="navbar navbar-default" role="navigation">
     <div class="container">
@@ -370,6 +369,7 @@
                                                     </div>
                                                 </div>
                                                 <input type="hidden" value="${schedule.busesId}" name="busesId"/>
+                                                <input type="hidden" value="${schedule.timeTableScheduleEntity.id}" name="timeTableId"/>
                                                 <button type="submit"
                                                         class="btn btn-primary pull-right container-ticket text-center">
                                                     <i

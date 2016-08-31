@@ -237,8 +237,8 @@
 		source: availableTags
 	});
 
-	var datepicker = $.fn.datepicker.noConflict;
+	var datepicker = $.fn.datepicker.noConflict();
 	$.fn.bootstrapDP = datepicker;
 
-	$("#exampleInputName3").datepicker();
+	$("#exampleInputName3").bootstrapDP();
 });

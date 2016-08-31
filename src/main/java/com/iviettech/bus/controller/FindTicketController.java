@@ -45,9 +45,11 @@ public class FindTicketController {
                                  @RequestParam(name = "destination"/*, required = false, defaultValue = "TP Hồ Chí Minh"*/) String to,
                                  @RequestParam(name = "departDate"/*, required = false, defaultValue = "2013/03/03"*/) String dateInput,
                                  Model model) {
+
         BusstationEntity busstationEntityFrom = busstationRepository.findByName(from); // Form
         BusstationEntity busstationEntityTo = busstationRepository.findByName(to);   // To
-
+        if (busstationEntityFrom == null || busstationEntityTo == null)
+            return "error404";
 
         DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
         Date date = null;
@@ -59,9 +61,9 @@ public class FindTicketController {
         }
 
         List<InfoTicket> scheduleEntityList =
-                infoTicketRepository.findAllInfoTicket(1, 2, new java.sql.Date(date.getTime()));
+                infoTicketRepository.findAllInfoTicket(busstationEntityFrom.getId(), busstationEntityTo.getId(), new java.sql.Date(date.getTime()));
         List<ScheduleEntity> scheduleEntityListNormal =
-                scheduleRepository.findByDepartureIdAndArrivalIdAndDate(1, 2, new java.sql.Date(date.getTime()));
+                scheduleRepository.findByDepartureIdAndArrivalIdAndDate(busstationEntityFrom.getId(), busstationEntityTo.getId(), new java.sql.Date(date.getTime()));
         List<Integer> seats = filterQutSeat(scheduleEntityListNormal);
 
         model.addAttribute("from", busstationEntityFrom);

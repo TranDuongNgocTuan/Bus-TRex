@@ -5,6 +5,7 @@ import com.iviettech.bus.entity.BusstationEntity;
 import com.iviettech.bus.entity.InfoTicket;
 import com.iviettech.bus.entity.TicketEntity;
 import com.iviettech.bus.repository.BusesRepository;
+import com.iviettech.bus.repository.TimeTableScheduleRepository;
 import com.iviettech.bus.service.ScheduleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,6 +20,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -31,13 +33,24 @@ public class ChooseChairController {
     @Autowired
     BusesRepository busesRepository;
 
+    @Autowired
+    TimeTableScheduleRepository timeTableScheduleRepository;
+
     @RequestMapping(value = "/choosechair")
-    public String showTicketList(/*@RequestParam(name = "") int busesId,*/
+    public String showTicketList(@RequestParam(name = "busesId") int busesId,
+                                 @RequestParam(name = "timeTableId")int timeTableId,
                                  @ModelAttribute(value = "ticket") TicketEntity ticket,
                                  HttpSession session,
                                  Model model) {
 
-        BusesEntity busesEntity = busesRepository.findOne(1);
+        BusesEntity busesEntity = busesRepository.findOne(busesId);
+
+        if (busesEntity == null){
+            busesEntity = new BusesEntity();
+            busesEntity.setDate(new java.sql.Date(Calendar.getInstance().getTimeInMillis()));
+            busesEntity.setTimeTableScheduleEntity(timeTableScheduleRepository.findOne(timeTableId));
+        }
+
         List<TicketEntity> ticketEntityList = busesEntity.getTicketEntityList();
 
         List<String> seatChoosed = new ArrayList<>();
