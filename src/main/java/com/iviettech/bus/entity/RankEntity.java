@@ -19,6 +19,14 @@ public class RankEntity {
 
     private float point;
 
+    private int rankOverall;
+
+    private int rankBus;
+
+    private int rankPunctuality;
+
+    private int rankBehavior;
+
     @OneToMany(mappedBy = "rankEntity")
     private List<CommentEntity> commentEntityList;
 
@@ -55,5 +63,37 @@ public class RankEntity {
 
     public void setCommentEntityList(List<CommentEntity> commentEntityList) {
         this.commentEntityList = commentEntityList;
+    }
+
+    public int getRankOverall() {
+        return rankOverall;
+    }
+
+    public void setRankOverall(int rankOverall) {
+        this.rankOverall = rankOverall;
+    }
+
+    public int getRankBus() {
+        return rankBus;
+    }
+
+    public void setRankBus(int rankBus) {
+        this.rankBus = rankBus;
+    }
+
+    public int getRankPunctuality() {
+        return rankPunctuality;
+    }
+
+    public void setRankPunctuality(int rankPunctuality) {
+        this.rankPunctuality = rankPunctuality;
+    }
+
+    public int getRankBehavior() {
+        return rankBehavior;
+    }
+
+    public void setRankBehavior(int rankBehavior) {
+        this.rankBehavior = rankBehavior;
     }
 }

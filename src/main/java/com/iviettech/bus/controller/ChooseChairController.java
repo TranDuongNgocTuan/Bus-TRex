@@ -9,6 +9,7 @@ import com.iviettech.bus.service.ScheduleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -30,23 +31,26 @@ public class ChooseChairController {
     BusesRepository busesRepository;
 
     @RequestMapping(value = "/choosechair")
-    public String showTicketList(/*@RequestParam(name = "fullName") String fullName,
-                                 @RequestParam(name = "numberPhone") String numberPhone,
-                                 @RequestParam(name = "gmail") String gmail,
-                                 @RequestParam(name = "gmail") int busesId,*/
+    public String showTicketList(@RequestParam(name = "gmail") int busesId,
+                                 @ModelAttribute(value = "ticket") TicketEntity ticket,
                                  Model model) {
 
         BusesEntity busesEntity = busesRepository.findOne(1);
         List<TicketEntity> ticketEntityList = busesEntity.getTicketEntityList();
+
         List<String> seatChoosed = new ArrayList<>();
-        for (TicketEntity ticket : ticketEntityList){
-            String[] seatOfTicket = ticket.getSeat().split("[ .,?!]+");
+        for (TicketEntity ticketEntity : ticketEntityList) {
+            String[] seatOfTicket = ticketEntity.getSeat().split("[ .,?!]+");
             for (String seat : seatOfTicket)
-            seatChoosed.add(seat);
+                seatChoosed.add(seat);
         }
+
+        ticket.setBusesEntity(busesEntity);
 
         model.addAttribute("seatChoosed", seatChoosed);
         model.addAttribute("buses", busesEntity);
+        model.addAttribute("ticket", ticket);
+
         return "choosechair";
     }
 }

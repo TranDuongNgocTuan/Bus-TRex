@@ -117,4 +117,12 @@ public class ScheduleEntity {
     public void setBusServicesEntity(BusServicesEntity busServicesEntity) {
         this.busServicesEntity = busServicesEntity;
     }
+
+    public int getPriceTicket() {
+        return priceTicket;
+    }
+
+    public void setPriceTicket(int priceTicket) {
+        this.priceTicket = priceTicket;
+    }
 }

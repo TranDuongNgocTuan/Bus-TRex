@@ -82,7 +82,7 @@
               <div class="location-select-row form-inline col-xs-10 col-sm-11 col-md-12">
                 <div class="form-group searchLeft col-md-6">
                   <span class="ui-helper-hidden-accessible" role="status" aria-live="polite">10 results are available, use up and down arrow keys to navigate.</span>
-                  <input id="tags" class="input-txt place ui-autocomplete-input" type="text" autocomplete="off" tabindex="1" accesskey="1" placeholder="Gõ vào tỉnh đi" onmouseup="return false;" name="departPlace">
+                  <input id="tags" class="input-txt place ui-autocomplete-input" type="text" autocomplete="off" tabindex="1" accesskey="1" placeholder="Gõ vào tỉnh đi" onmouseup="return false;" name="departPlace" required>
                 </div>
                 <div class="form-group switchButton-container hidden-xs hidden-sm">
                   <a class="switchButton bold" href="#">
@@ -90,13 +90,13 @@
                   </a>
                 </div>
                 <div class="form-group searchRight col-md-6">
-                  <input id="tags1" class="input-txt place ui-autocomplete-input" type="text" autocomplete="off" tabindex="2" accesskey="2" placeholder="Gõ vào tỉnh đến" onmouseup="return false;" name="destination">
+                  <input id="tags1" class="input-txt place ui-autocomplete-input" type="text" autocomplete="off" tabindex="2" accesskey="2" placeholder="Gõ vào tỉnh đến" onmouseup="return false;" name="destination" required>
                 </div>
               </div>
               <div class="date-select-row col-md-12 col-xs-12 form-inline">
                 <div class="form-group col-md-6 pl0 select-date-container">
-                  <div   class="panel-input-date" >
-                    <input type="text" autocomplete="off" tabindex="3" accesskey="3" placeholder="Chọn ngày đi" class="input-txt date" name="departDate" readonly="" id="datepicker" >
+                  <div class="panel-input-date" >
+                    <input type="text" autocomplete="off" tabindex="3" accesskey="3" placeholder="Chọn ngày đi" class="input-txt date" name="departDate" id="datepicker" required>
                   </div>
                 </div>
               </div>

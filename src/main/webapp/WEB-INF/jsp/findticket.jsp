@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="b" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,6 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='https://fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,900,700italic,900italic'
           rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="resource/css/star-rating.css" media="all" type="text/css"/>
     <link rel="stylesheet" type="text/css" href="resource/tooltipster/dist/css/tooltipster.bundle.min.css"/>
     <link rel="stylesheet" type="text/css"
           href="resource/tooltipster/dist/css/plugins/tooltipster/sideTip/themes/tooltipster-sideTip-noir-customized.css"/>
@@ -18,15 +20,21 @@
     <link rel="stylesheet" href="resource/css/findticket.css">
     <link rel="stylesheet" href="resource/css/intlTelInput.css">
     <link rel="stylesheet" href="resource/css/demo.css">
-    <script type="text/javascript" src="resource/vendor/bootstrap.js"></script>
-    <script type="text/javascript" src="resource/js/findticket.js"></script>
-    <script type="text/javascript" src="resource/js/chair.js"></script>
+    <link rel="stylesheet" href="/resource/css/jquery-ui.css">
+    <link rel="stylesheet" href="/resource/css/bootstrap-datepicker.min.css">
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script type="text/javascript" src="resource/js/findticket.js"></script>
+    <script src="/resource/js/bootstrap-datepicker.min.js"/>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="/resource/js/ajax.js"></script>
+    <script src="resource/js/star-rating.js" type="text/javascript"></script>
+    <script type="text/javascript" src="resource/vendor/bootstrap.js"></script>
+    <script type="text/javascript" src="resource/js/chair.js"></script>
+    <%--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>--%>
     <script src="resource/js/intlTelInput.js"></script>
     <script type="text/javascript" src="resource/tooltipster/dist/js/tooltipster.bundle.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="resource/css/bootstrap-datepicker.standalone.min.css">
-    <script type="text/javascript" src="resource/js/bootstrap-datepicker.min.js"></script>
+
+    <script src="/resource/js/jquery-ui.js"></script>
 <body>
 <nav class="navbar navbar-default" role="navigation">
     <div class="container">
@@ -70,20 +78,20 @@
                 <h4>Đà Nẵng đi Hải Phòng</h4>
 
                 <div class="date-picker">
-                    <div class="pull-left date-wapper">
-                        <button id="btPrevDate" style="" type="button" class="btn btn-default"><i
-                                class="fa fa-caret-left fa-lg"></i></button>
-                        <!-- <input type="button" id="span-current-date" value="10-08-2016" tabindex="1" class="btn btn-vxr current-date hasDatepicker"> -->
-                        <div class="input-group date" data-provide="datepicker">
-                            <input type="text" class="form-control">
+                    <%--<div class="pull-left date-wapper">--%>
+                        <%--<button id="btPrevDate" style="" type="button" class="btn btn-default"><i--%>
+                                <%--class="fa fa-caret-left fa-lg"></i></button>--%>
+                        <%--<!-- <input type="button" id="span-current-date" value="10-08-2016" tabindex="1" class="btn btn-vxr current-date hasDatepicker"> -->--%>
+                        <%--<div class="input-group date" data-provide="datepicker">--%>
+                            <%--<input type="text" class="form-control">--%>
 
-                            <div class="input-group-addon">
-                                <span class="glyphicon glyphicon-th"></span>
-                            </div>
-                        </div>
-                        <button id="btNextDate" type="button" class="btn btn-default"><i
-                                class="fa fa-caret-right fa-lg"></i></button>
-                    </div>
+                            <%--<div class="input-group-addon">--%>
+                                <%--<span class="glyphicon glyphicon-th"></span>--%>
+                            <%--</div>--%>
+                        <%--</div>--%>
+                        <%--<button id="btNextDate" type="button" class="btn btn-default"><i--%>
+                                <%--class="fa fa-caret-right fa-lg"></i></button>--%>
+                    <%--</div>--%>
                     <div class="pull-left ml10 modify-container">
                         <a id="btModify" class="text-blue" href="#"><b>Sửa nơi đi, nơi đến, ngày đi</b></a>
                     </div>
@@ -114,12 +122,12 @@
                     <div class="dropdown pull-left">
                         <i class="dropdown-toggle" type="button" data-toggle="dropdown"><i class="fa fa-bus"></i><span>Hãng xe</span></i>
                         <ul class="dropdown-menu">
-                            <c:forEach var="schedule" items="${scheduleList}">
-                                <li><a href="#">${schedule.scheduleEntity.busServicesEntity}</a></li>
+                            <c:forEach var="schedule" items="${scheduleListNormal}">
+                                <li><a href="#">${schedule.busServicesEntity.name}</a></li>
                             </c:forEach>
                         </ul>
                     </div>
-                    <i class="bar sort1 fa fa-sort-asc"></i></td>
+                    <i class="bar fa fa-sort-desc service"></i></td>
                 <td>
                     <div class="dropdown pull-left">
                         <i class="dropdown-toggle" type="button" data-toggle="dropdown"><i
@@ -130,38 +138,38 @@
                             </c:forEach>
                         </ul>
                     </div>
-                    <i class="bar sort2 fa fa-sort-asc "></i></td>
+                    <i class="bar departure fa fa-sort-desc "></i></td>
                 <td>
                     <div class="dropdown pull-left">
                         <i class="dropdown-toggle" type="button" data-toggle="dropdown"><i class="fa fa-map-marker"></i><span>Nơi đi</span></i>
                         <ul class="dropdown-menu">
-                            <c:forEach var="schedule" items="${scheduleList}">
-                                <li><a href="#">${schedule.scheduleEntity.departure}</a></li>
+                            <c:forEach var="schedule" items="${scheduleListNormal}">
+                                <li><a href="#">${schedule.departure.name}</a></li>
                             </c:forEach>
                         </ul>
                     </div>
-                    <i class="bar sort3 fa fa-sort-asc"></i></td>
+                    <i class="bar from fa fa-sort-desc"></i></td>
                 <td>
                     <div class="dropdown pull-left">
                         <i class="dropdown-toggle" type="button" data-toggle="dropdown"><i class="fa fa-map-marker"></i><span>Nơi đến</span></i>
                         <ul class="dropdown-menu">
-                            <c:forEach var="schedule" items="${scheduleList}">
-                                <li><a href="#">${schedule.scheduleEntity.arrival}</a></li>
+                            <c:forEach var="schedule" items="${scheduleListNormal}">
+                                <li><a href="#">${schedule.arrival.name}</a></li>
                             </c:forEach>
                         </ul>
                     </div>
-                    <i class="bar sort4 fa fa-sort-asc"></i></td>
+                    <i class="bar to fa fa-sort-desc"></i></td>
                 <td>
                     <div class="dropdown pull-left">
                         <i class="dropdown-toggle" type="button" data-toggle="dropdown"><i
                                 class="fa fa-puzzle-piece"></i><span>Sơ đồ ghế</span></i>
                         <ul class="dropdown-menu">
-                            <c:forEach var="schedule" items="${scheduleList}">
-                                <li><a href="#">${schedule.numberSeat - schedule.numberTicket}</a></li>
+                            <c:forEach var="seat" items="${seatList}">
+                                <li><a href="#">${seat}</a></li>
                             </c:forEach>
                         </ul>
                     </div>
-                    <i class="bar sort5 fa fa-sort-asc"></i></td>
+                    <i class="bar chair fa fa-sort-desc"></i></td>
                 <td>
                     <div class="dropdown pull-left">
                         <i class="dropdown-toggle" type="button" data-toggle="dropdown"><i class="fa fa-star"></i><span>Đánh giá</span></i>
@@ -171,18 +179,18 @@
                             <li><a href="#">JavaScript</a></li>
                         </ul>
                     </div>
-                    <i class="bar sort6 fa fa-sort-asc"></i></td>
+                    <i class="bar sort6 fa fa-sort-desc"></i></td>
                 <td>
                     <div class="dropdown pull-left">
                         <i class="dropdown-toggle" type="button" data-toggle="dropdown"><i
                                 class="fa fa-ticket"></i><span>Vé xe</span></i>
                         <ul class="dropdown-menu">
-                            <c:forEach var="schedule" items="${scheduleList}">
-                                <li><a href="#">${schedule.scheduleEntity.priceticket}</a></li>
+                            <c:forEach var="schedule" items="${scheduleListNormal}">
+                                <li><a href="#">${schedule.priceTicket}</a></li>
                             </c:forEach>
                         </ul>
                     </div>
-                    <i class="fa fa-sort-asc"></i>
+                    <i class="bar money fa fa-sort-desc"></i>
                 </td>
             </tr>
             </tbody>
@@ -193,20 +201,49 @@
 
 <div class="barsearch bar2 barhidden">
     <div class="container">
+        <div class="row">
+            <form class="form-inline text-center" action="/findticket" method="get">
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                    <div class="input-group form-group">
+                        <div class="input-group-addon"><i class="fa fa-map-marker fa-lg" aria-hidden="true"></i></div>
+                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Nơi đi" name="departPlace">
+                    </div>
+                </div>
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                    <div class="input-group form-group">
+                        <div class="input-group-addon"><i class="fa fa-map-marker fa-lg" aria-hidden="true"></i></div>
+                        <input type="text" class="form-control" id="exampleInputName2" placeholder="Nơi đến" name="destination">
+                    </div>
+                </div>
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                    <div class="input-group date" data-provide="datepicker">
+                        <div class='input-group'>
+                            <div class="input-group-addon"><i class="fa fa-calendar fa-lg" aria-hidden="true"></i></div>
+                            <input type="text" class="form-control ll-skin-nigran" id="exampleInputName3" placeholder="" name="departDate">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                    <button type="submit" class="container-ticket text-center buttonFind">
+                        <i class="fa fa-bus"></i><span>Đặt vé</span>
+                    </button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
-<!-- end search -->
+<!-- end search 2 -->
 
 
 <div class="ticket">
     <div class="container">
-        <c:forEach var="schedule" items="${scheduleList}">
-            <div class="row">
-                <table class="table table-borderless">
-                    <tr>
+        <div class="row">
+            <table class="table table-borderless" id="mytable">
+                <c:forEach var="schedule" items="${scheduleList}">
+                    <tr id="getTrInfo">
                         <td class="col-xs-2 col-sm-2 col-md-2 col-lg-2 fix-border">
                             <div class="container-bus">
-                                <h4 class="">${schedule.scheduleEntity.busServicesEntity.name}</h4>
+                                <h4 class="nameService">${schedule.scheduleEntity.busServicesEntity.name}</h4>
                                 <i class="glyphicon glyphicon-align-left"></i>
                                 <i class="glyphicon glyphicon-picture"></i>
                                 <i class="glyphicon glyphicon-plus-sign"></i>
@@ -222,34 +259,34 @@
                             </div>
                             <div class="container-time">
                                     <%--time arrvial and departure`--%>
-                                <h4 class=""><fmt:formatDate value="${schedule.timeTableScheduleEntity.departureTime}"
-                                                             type="time"
-                                                             pattern="HH:mm"/>→
-                                    <fmt:formatDate value="${schedule.timeTableScheduleEntity.arriveTime}" type="time"
+                                <h4 class="departureTime"><fmt:formatDate value="${schedule.timeTableScheduleEntity.departureTime}"
+                                                            type="time"
+                                                             pattern="HH:mm"/>→</h4>
+                                <h4 class="arrvialTime"><fmt:formatDate value="${schedule.timeTableScheduleEntity.arriveTime}" type="time"
                                                     pattern="HH:mm"/></h4>
 
                                 <p>Thời
                                     gian: ${schedule.timeTableScheduleEntity.duration.hours}h${schedule.timeTableScheduleEntity.duration.minutes}'</p>
                             <span class="tooltiphover"
                                   data-tooltip-content="#tooltip_${schedule.scheduleEntity.departure.id}_from">
-                            <p class="adress">${schedule.scheduleEntity.departure.name}</p><i
+                            <p class="adress fromGo">${schedule.scheduleEntity.departure.name}</p><i
                                     class="fa fa-sort-desc"></i></span>
                             <span class="tooltiphover"
                                   data-tooltip-content="#tooltip_${schedule.scheduleEntity.arrival.id}_to">→
-                                <p class="adress">${schedule.scheduleEntity.arrival.name}</p><i
+                                <p class="adress goTo">${schedule.scheduleEntity.arrival.name}</p><i
                                         class="fa fa-sort-desc"></i></span>
                             </div>
                         </td>
                         <!-- end time from to -->
                         <td class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
                             <div class="container-chair text-center">
-                                <p class="">Giường nằm ${schedule.numberSeat} chỗ</p>
+                                <p class="mapChair">Số ghế trên xe: ${schedule.numberSeat} chỗ</p>
 
-                                <p class="space">Còn trống: ${schedule.numberSeat - schedule.numberTicket}</p>
+                                <p class="space">Còn trống: ${schedule.numberSeat - schedule.sumNumberOfSeat}</p>
                             </div>
                         </td>
-                        <td class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                            <div class="container-start text-center">
+                        <td class="col-xs-2 col-sm-2 col-md-2 col-lg-2 text-center">
+                            <div class="container-start ">
 
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
@@ -257,10 +294,12 @@
                                 <i class="fa fa-star"></i>
                                 <i class="fa fa-star"></i>
                             </div>
+                            <p>15 rating</p>
+                            <a class="writereviews" data-toggle="modal" href='#service${schedule.scheduleEntity.busServicesEntity.id}'>Viết đánh giá</a>
                         </td>
                         <td class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
                             <div class="">
-                                <h4 class="money">300000<sup>đ</sup></h4>
+                                <h4 class="moneyTicket">${schedule.scheduleEntity.priceTicket}<sup>đ</sup></h4>
 
                                 <div class="container-ticket text-center" data-toggle="collapse"
                                      data-target="#${schedule.timeTableScheduleEntity.id}">
@@ -270,14 +309,14 @@
                         </td>
                         <!-- end time from to -->
                     </tr>
-                    <tr>
+                    <tr id="getTrSubmit">
                         <td class="col-xs-12 col-sm-12 col-md-12 col-lg-12 info" colspan="5">
                             <div id="${schedule.timeTableScheduleEntity.id}" class="collapse info-wapper">
                                 <div class="info-tilte">
                                     <div class="row">
 
                                         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center">
-                                            <h4>Điện đặt vé</h4>
+                                            <h4>Đặt vé</h4>
                                         </div>
                                         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center">
                                             <h4>Thông tin vé xe</h4>
@@ -292,8 +331,7 @@
                                     <div class="row">
                                         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
                                                 <%--Form book a ticket--%>
-                                            <form action="" method="POST" role="form" class="info-form">
-                                                <legend>Form title</legend>
+                                            <form:form modelAttribute="ticket" action="/choosechair" method="POST" role="form" class="info-form">
                                                 <div class="row">
                                                     <div class="form-group form-inline">
                                                         <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
@@ -301,7 +339,7 @@
                                                         </div>
                                                         <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
                                                             <input type="text" required class="form-control"
-                                                                   placeholder="Tran Van A" name="fullName">
+                                                                   placeholder="Tran Van A" path="fullName">
                                                         </div>
 
                                                     </div>
@@ -314,7 +352,7 @@
                                                         <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
                                                             <input type="tel" id="phone" required
                                                                    class="form-control"
-                                                                   placeholder="VD: 0912345678" name="numberPhone">
+                                                                   placeholder="VD: 0912345678" path="numberphone">
                                                         </div>
 
                                                     </div>
@@ -326,7 +364,7 @@
                                                         </div>
                                                         <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
                                                             <input type="email" required class="form-control"
-                                                                   placeholder="vexe@gmail.com" name="gmail">
+                                                                   placeholder="vexe@gmail.com" path="gmail">
                                                         </div>
 
                                                     </div>
@@ -336,7 +374,7 @@
                                                         class="btn btn-primary pull-right container-ticket text-center">
                                                     <i
                                                             class="fa fa-bus"></i><span>Tiếp tục</span></button>
-                                            </form>
+                                            </form:form>
                                         </div>
                                         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
                                             <table class="table">
@@ -369,7 +407,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td>Giá vé</td>
-                                                    <td class="info-table-ticket">280.000/người</td>
+                                                    <td class="info-table-ticket">${schedule.scheduleEntity.priceTicket}/người</td>
                                                 </tr>
                                             </table>
                                         </div>
@@ -397,12 +435,12 @@
                                             <hr>
                                             <div class="row">
                                                 <div class="contact">
-                                                    <h4 class="name-car">Xe HAV</h4>
-                                                    <h4 class="name-from">VP</h4>
+                                                    <h4 class="name-car">${schedule.scheduleEntity.busServicesEntity.name}</h4>
+                                                    <h4 class="name-from">Telephone:</h4>
 
                                                     <h2 class="number-mobile"><i
-                                                            class="glyphicon glyphicon-phone-alt"></i>05116
-                                                        505 050</h2>
+                                                            class="glyphicon glyphicon-phone-alt"></i>${schedule.scheduleEntity.busServicesEntity.phone}
+                                                    </h2>
                                                 </div>
                                             </div>
                                         </div>
@@ -413,9 +451,10 @@
                             </div>
                         </td>
                     </tr>
-                </table>
-            </div>
-        </c:forEach>
+                </c:forEach>
+            </table>
+
+        </div>
     </div>
     <!-- end show ticket -->
 </div>
@@ -537,6 +576,65 @@
     </div>
 </c:forEach>
 
+<c:forEach var="busService" items="${scheduleListNormal}">
+    <div class="modal fade" id="service${busService.busServicesEntity.id}">
+        <div class="modal-dialog">
+            <form id="commentForm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title"><i class="fa fa-pencil fa-2x" aria-hidden="true"></i>Viết đánh giá</h4>
+                    </div>
+                    <div class="modal-body comment">
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                <legend>Hãng xe: ${busService.busServicesEntity.name}</legend>
+
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Tran Van A" name="fullName" id="fullName">
+                                </div>
+                                <div class="form-group">
+                                    <input type="gmail" class="form-control" placeholder="vexere@gmail.com" name="gmail" id="gmail">
+                                </div>
+                                <div class="form-group">
+                                    <label >Bình luận:</label>
+                                    <textarea class="form-control" rows="5" id="commentInto" name="commnet" id="comment"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <input type="hidden" name="busService" value="${busService.busServicesEntity.id}"/>
+                                </div>
+                            </div>
+                            <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+                                <legend>Đánh giá:</legend>
+                                <div class="form-group form-inline">
+                                    <label for="input-7-xs" class="control-label">Tổng quan:</label>
+                                    <input id="input-7-xs" class="rating rating-loading" value="0" data-min="0" data-max="5" data-show-clear="false" data-show-caption="false" data-step="1" data-size="xs" name="rankOverall" id="rankOverall">
+                                </div>
+                                <div class="form-group form-inline">
+                                    <label for="input-7-xs" class="control-label">Chất lưọng xe buýt:</label>
+                                    <input id="input-7-xs" class="rating rating-loading" value="0" data-min="0" data-max="5" data-show-clear="false" data-show-caption="false" data-step="1" data-size="xs" name="rankBus" id="rankBus">
+                                </div>
+                                <div class="form-group form-inline">
+                                    <label for="input-7-xs" class="control-label">Đúng giờ:</label>
+                                    <input id="input-7-xs" class="rating rating-loading" value="0" data-min="0" data-max="5" data-show-clear="false" data-show-caption="false" data-step="1" data-size="xs" name="rankPunctuality" id="rankPunctuality">
+                                </div>
+                                <div class="form-group form-inline">service
+                                    <label for="input-7-xs" class="control-label">Hành sử:</label>
+                                    <input id="input-7-xs" class="rating rating-loading" value="0" data-min="0" data-max="5" data-show-clear="false" data-show-caption="false" data-step="1" data-size="xs" name="rankBehavior" id="rankBehavior">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary btncomment" id="submitCommentForm" value="Đăng bình luận"/>
+                </div>
+            </form>
+        </div>
+    </div>
+</c:forEach>
+
 <script>
     $(document).ready(function () {
         $('.tooltiphover').tooltipster({
@@ -545,5 +643,6 @@
         });
     });
 </script>
+
 </body>
 </html>

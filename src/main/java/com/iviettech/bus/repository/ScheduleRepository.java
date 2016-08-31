@@ -6,6 +6,7 @@ import com.iviettech.bus.entity.InfoTicket;
 import com.iviettech.bus.entity.ScheduleEntity;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 
 import java.sql.Date;
 import java.util.List;
@@ -13,13 +14,13 @@ import java.util.List;
 public interface ScheduleRepository extends CrudRepository<ScheduleEntity, Integer>{
 
     //Find schedule with form, to, date
-//    @Query(value = "SELECT schedule," +
-//            " CASE WHEN buses.date IS NULL THEN 0 ELSE  COUNT(ticket.Id) END as numberTicket" +
-//            " FROM ScheduleEntity schedule "+
-//            " INNER JOIN  schedule.timeTableScheduleEntityList timeTable" +
-//            " LEFT JOIN timeTable.busesEntityList buses" +
-//            " LEFT JOIN buses.ticketEntityList ticket" +
-//            " WHERE schedule.departure = ?1 AND schedule.arrival = ?2 AND schedule.numberDay = ?3 " +
-//            " GROUP BY timeTable.id")
-//    List<InfoTicket> findByDepartureIdAndArrivalIdAndDate(int from, int to, int date);
+    @Query(value = "select schedule.* " +
+            "from schedule  inner join busservices " +
+            "on busservices.id = schedule.busservicesId " +
+            "where schedule.departureId = :formId " +
+            "and schedule.arrivalId = :toId " +
+            "and datediff(:dateGo, busservices.dob)%schedule.numberday = 0", nativeQuery = true)
+    List<ScheduleEntity> findByDepartureIdAndArrivalIdAndDate(@Param("formId") int from,
+                                                              @Param("toId") int to,
+                                                              @Param("dateGo") Date date);
 }

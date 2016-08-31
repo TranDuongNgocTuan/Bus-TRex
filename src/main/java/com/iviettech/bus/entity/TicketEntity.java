@@ -25,10 +25,15 @@ public class TicketEntity {
     @Column(name = "numberphone")
     private String numberphone;
 
+    private String gmail;
+
     @Column(name = "status")
     private int status;
 
     private String seat;
+
+    @Column(name = "numberseats")
+    private int numberSeats;
 
     @ManyToOne
     @JoinColumn(name = "busesId")
@@ -99,5 +104,21 @@ public class TicketEntity {
 
     public void setSeat(String seat) {
         this.seat = seat;
+    }
+
+    public int getNumberSeats() {
+        return numberSeats;
+    }
+
+    public void setNumberSeats(int numberSeats) {
+        this.numberSeats = numberSeats;
+    }
+
+    public String getGmail() {
+        return gmail;
+    }
+
+    public void setGmail(String gmail) {
+        this.gmail = gmail;
     }
 }
