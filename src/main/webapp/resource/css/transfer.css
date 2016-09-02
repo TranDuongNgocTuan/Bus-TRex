@@ -1,6 +1,8 @@
 .table-borderless tbody tr td, .table-borderless tbody tr th, .table-borderless thead tr th {
     border: none;
     border-bottom: 1px solid #ddd;
+    padding: 15px;
+    font-weight: 600;
 }
 
 .payment {
@@ -26,3 +28,22 @@
 .transfer i.fa.fa-credit-card {
     margin-right: 10px;
 }
+
+.payment .bill{
+    border: 1px solid hsla(0,0%,43%,0.28);
+    border-radius: 10px;
+    box-shadow: 1px 1px 1px #8b8b8b;
+    padding: 0px;
+}
+
+table.table.table-borderless {
+    margin: 0px;
+}
+
+.text-bill{
+    text-align: center;
+    font-size: xx-large;
+    color: #e74c3c;
+    font-weight: 700;
+}
+

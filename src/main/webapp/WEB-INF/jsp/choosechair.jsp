@@ -53,6 +53,7 @@
 		<input type="hidden" value="${seat}" name="seats"/>
 	</c:forEach>
 	<%-- Price Ticket --%>
+	<input type="hidden" name="priceTicket" value="${timeTable.scheduleEntity.priceTicket}">
 
 	<div class="map-chair">
 		<div class="container">
@@ -126,11 +127,11 @@
 									<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
 										<div class="row">
 											<div class="from">
-												<p>${ticket.busesEntity.timeTableScheduleEntity.scheduleEntity.departure.city}</p>
+												<p>${timeTable.scheduleEntity.departure.city}</p>
 											</div>
 											<div class="time"></div>
 											<div class="to">
-												<p>${ticket.busesEntity.timeTableScheduleEntity.scheduleEntity.arrival.city}</p>
+												<p>${timeTable.scheduleEntity.arrival.city}</p>
 											</div>
 										</div>
 									</div>
@@ -157,13 +158,13 @@
 							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
 								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
 									<form:form modelAttribute="ticket" action="/transfer" method="POST">
-										<input type="hidden" value="" path="seat" id="seat"/>
-										<input type="hidden" value="" path="numberSeats" id="numberSeats"/>
-										<input type="hidden" value="${ticket.busesEntity.timeTableScheduleEntity.scheduleEntity.priceTicket}" path="totalprice"  name="priceTicket"/>
+										<form:input type="hidden" path="seat" id="seat"/>
+										<form:input type="hidden" path="numberSeats" id="numberSeats"/>
+										<form:input type="hidden" path="totalprice" id="totalPrice"/>
+										<input type="hidden" value="${timeTable.id}" name="timeTableId"/>
 										<button type="submit"
-												class="btn btn-primary container-ticket text-center">
-											<i
-													class="fa fa-bus"></i><span>Tiếp tục</span></button>
+												class="btn btn-primary container-ticket text-center" id="btnNextTransfer">
+											<i class="fa fa-bus"></i><span>Tiếp tục</span></button>
 									</form:form>
 								</div>
 							</div>

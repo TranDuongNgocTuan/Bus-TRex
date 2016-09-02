@@ -7,5 +7,5 @@ import org.springframework.data.repository.CrudRepository;
  * Created by tran on 15/08/2016.
  */
 public interface BusstationRepository extends CrudRepository<BusstationEntity, Integer>{
-    BusstationEntity findByName(String city);
+    BusstationEntity findByCity(String city);
 }

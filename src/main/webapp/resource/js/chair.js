@@ -63,9 +63,6 @@ $(window).load(function () {
     $('.' + settings.seatCss).click(function () {
         var str = [];
         var total = $('#place li.' + settings.selectingSeatCss + ' a').length;
-        $('input#numberSeats').val(total);
-        $('totalMoney').val(total*money);
-
         $.each($('#place li.' + settings.selectingSeatCss + ' a'), function (index, value) {
             if (index == total - 1) {
                 str.push($(this).attr('title'));
@@ -74,18 +71,19 @@ $(window).load(function () {
                 str.push($(this).attr('title') + ',');
         });
         /*set day money*/
+        $('input#numberSeats').val(total);
+        $('#totalPrice').val(total*money);
         $('#number-chair').html(str.join(''));
         $('#totalMoney').html(total*money+"<sup>đ<sup>");
         $('input#seat').val(str.join(''));
     });
 
-    $('#btnNext').click(function () {
-        var str = [], item;
-        $.each($('#place li.' + settings.selectingSeatCss + ' a'), function (index, value) {
-            item = $(this).attr('title');
-            str.push(item);
-        });
-        alert(str.join(','));
+    $('#btnNextTransfer').click(function () {
+        var total = $('#place li.' + settings.selectingSeatCss + ' a').length;
+        if (total == 0){
+            alert("Bạn cần chọn ghế");
+            event.preventDefault();
+        }
     });
 
 });

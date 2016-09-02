@@ -1,9 +1,12 @@
 package com.iviettech.bus.repository;
 
+import com.iviettech.bus.entity.BusesEntity;
 import com.iviettech.bus.entity.PromotionTimeEntity;
 import com.iviettech.bus.entity.TimeTableScheduleEntity;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
+import java.sql.Date;
 import java.util.List;
 
 /**

@@ -46,8 +46,8 @@ public class FindTicketController {
                                  @RequestParam(name = "departDate"/*, required = false, defaultValue = "2013/03/03"*/) String dateInput,
                                  Model model) {
 
-        BusstationEntity busstationEntityFrom = busstationRepository.findByName(from); // Form
-        BusstationEntity busstationEntityTo = busstationRepository.findByName(to);   // To
+        BusstationEntity busstationEntityFrom = busstationRepository.findByCity(from); // Form
+        BusstationEntity busstationEntityTo = busstationRepository.findByCity(to);   // To
         if (busstationEntityFrom == null || busstationEntityTo == null)
             return "error404";
 
@@ -66,6 +66,10 @@ public class FindTicketController {
                 scheduleRepository.findByDepartureIdAndArrivalIdAndDate(busstationEntityFrom.getId(), busstationEntityTo.getId(), new java.sql.Date(date.getTime()));
         List<Integer> seats = filterQutSeat(scheduleEntityListNormal);
 
+        if(scheduleEntityList == null || scheduleEntityListNormal == null)
+            return "error404";
+
+        model.addAttribute("ticket", new TicketEntity());
         model.addAttribute("from", busstationEntityFrom);
         model.addAttribute("to", busstationEntityTo);
         model.addAttribute("scheduleList", scheduleEntityList);
@@ -77,17 +81,15 @@ public class FindTicketController {
     }
 
     @RequestMapping(value = "/findticket/comment", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
-    @ResponseBody
-    public String submitComment(@RequestBody String body) {
-        String[] commentArr = body.split(",");
+    public @ResponseBody String submitComment(@RequestBody String body) {
+
+        String[] commentArr = body.split("&");
         CommentEntity commentEntity = new CommentEntity();
-        commentEntity.setFullName(commentArr[0]);
-        commentEntity.setGmail(commentArr[1]);
-        commentEntity.setContent(commentArr[2]);
-//        Comment comment = new Comment(commentArr[0], commentArr[1]);
+
+
         // save comment to DB
 //        return
-        return "";
+        return "Hello";
     }
 
 

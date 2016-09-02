@@ -26,13 +26,14 @@
     <script type="text/javascript" src="resource/js/findticket.js"></script>
     <script src="/resource/js/bootstrap-datepicker.min.js"/>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="/resource/js/ajax.js"></script>
-    <script src="resource/js/star-rating.js" type="text/javascript"></script>
     <script type="text/javascript" src="resource/vendor/bootstrap.js"></script>
     <script type="text/javascript" src="resource/js/chair.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="resource/js/intlTelInput.js"></script>
+    <script src="/resource/js/star-rating.js" type="text/javascript"></script>
     <script type="text/javascript" src="resource/tooltipster/dist/js/tooltipster.bundle.min.js"></script>
+    <script type="text/javascript" src="/resource/js/validator.js"></script>
+    <script src="/resource/js/ajax.js"></script>
     <script type="text/javascript" src="/resource/js/jquery-ui.js"></script>
 <body>
 <nav class="navbar navbar-default" role="navigation">
@@ -78,18 +79,18 @@
 
                 <div class="date-picker">
                     <%--<div class="pull-left date-wapper">--%>
-                        <%--<button id="btPrevDate" style="" type="button" class="btn btn-default"><i--%>
-                                <%--class="fa fa-caret-left fa-lg"></i></button>--%>
-                        <%--<!-- <input type="button" id="span-current-date" value="10-08-2016" tabindex="1" class="btn btn-vxr current-date hasDatepicker"> -->--%>
-                        <%--<div class="input-group date" data-provide="datepicker">--%>
-                            <%--<input type="text" class="form-control">--%>
+                    <%--<button id="btPrevDate" style="" type="button" class="btn btn-default"><i--%>
+                    <%--class="fa fa-caret-left fa-lg"></i></button>--%>
+                    <%--<!-- <input type="button" id="span-current-date" value="10-08-2016" tabindex="1" class="btn btn-vxr current-date hasDatepicker"> -->--%>
+                    <%--<div class="input-group date" data-provide="datepicker">--%>
+                    <%--<input type="text" class="form-control">--%>
 
-                            <%--<div class="input-group-addon">--%>
-                                <%--<span class="glyphicon glyphicon-th"></span>--%>
-                            <%--</div>--%>
-                        <%--</div>--%>
-                        <%--<button id="btNextDate" type="button" class="btn btn-default"><i--%>
-                                <%--class="fa fa-caret-right fa-lg"></i></button>--%>
+                    <%--<div class="input-group-addon">--%>
+                    <%--<span class="glyphicon glyphicon-th"></span>--%>
+                    <%--</div>--%>
+                    <%--</div>--%>
+                    <%--<button id="btNextDate" type="button" class="btn btn-default"><i--%>
+                    <%--class="fa fa-caret-right fa-lg"></i></button>--%>
                     <%--</div>--%>
                     <div class="pull-left ml10 modify-container">
                         <a id="btModify" class="text-blue" href="#"><b>Sửa nơi đi, nơi đến, ngày đi</b></a>
@@ -205,26 +206,29 @@
                 <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
                     <div class="input-group form-group">
                         <div class="input-group-addon"><i class="fa fa-map-marker fa-lg" aria-hidden="true"></i></div>
-                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Nơi đi" name="departPlace">
+                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Nơi đi"
+                               name="departPlace">
                     </div>
                 </div>
                 <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
                     <div class="input-group form-group">
                         <div class="input-group-addon"><i class="fa fa-map-marker fa-lg" aria-hidden="true"></i></div>
-                        <input type="text" class="form-control" id="exampleInputName2" placeholder="Nơi đến" name="destination">
+                        <input type="text" class="form-control" id="exampleInputName2" placeholder="Nơi đến"
+                               name="destination">
                     </div>
                 </div>
                 <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
                     <div class="input-group date" data-provide="datepicker">
                         <div class='input-group'>
                             <div class="input-group-addon"><i class="fa fa-calendar fa-lg" aria-hidden="true"></i></div>
-                            <input type="text" class="form-control ll-skin-nigran" id="exampleInputName3" placeholder="" name="departDate">
+                            <input type="text" class="form-control ll-skin-nigran" id="exampleInputName3" placeholder=""
+                                   name="departDate">
                         </div>
                     </div>
                 </div>
                 <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
                     <button type="submit" class="container-ticket text-center buttonFind">
-                        <i class="fa fa-bus"></i><span>Đặt vé</span>
+                        <i class="fa fa-bus"></i><span>TÌM VÉ</span>
                     </button>
                 </div>
             </form>
@@ -242,7 +246,7 @@
                     <tr id="getTrInfo">
                         <td class="col-xs-2 col-sm-2 col-md-2 col-lg-2 fix-border">
                             <div class="container-bus">
-                                <h4 class="nameService">${schedule.scheduleEntity.busServicesEntity.name}</h4>
+                                <h4>${schedule.scheduleEntity.busServicesEntity.name}</h4>
                                 <i class="glyphicon glyphicon-align-left"></i>
                                 <i class="glyphicon glyphicon-picture"></i>
                                 <i class="glyphicon glyphicon-plus-sign"></i>
@@ -258,11 +262,13 @@
                             </div>
                             <div class="container-time">
                                     <%--time arrvial and departure`--%>
-                                <h4 class="departureTime"><fmt:formatDate value="${schedule.timeTableScheduleEntity.departureTime}"
-                                                            type="time"
-                                                             pattern="HH:mm"/>→</h4>
-                                <h4 class="arrvialTime"><fmt:formatDate value="${schedule.timeTableScheduleEntity.arriveTime}" type="time"
-                                                    pattern="HH:mm"/></h4>
+                                <h4 class="departureTime"><fmt:formatDate
+                                        value="${schedule.timeTableScheduleEntity.departureTime}"
+                                        type="time"
+                                        pattern="HH:mm"/>→</h4>
+                                <h4 class="arrvialTime"><fmt:formatDate
+                                        value="${schedule.timeTableScheduleEntity.arriveTime}" type="time"
+                                        pattern="HH:mm"/></h4>
 
                                 <p>Thời
                                     gian: ${schedule.timeTableScheduleEntity.duration.hours}h${schedule.timeTableScheduleEntity.duration.minutes}'</p>
@@ -286,15 +292,20 @@
                         </td>
                         <td class="col-xs-2 col-sm-2 col-md-2 col-lg-2 text-center">
                             <div class="container-start ">
-
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
+                                    <%--<i class="fa fa-star"></i>--%>
+                                    <%--<i class="fa fa-star"></i>--%>
+                                    <%--<i class="fa fa-star"></i>--%>
+                                    <%--<i class="fa fa-star"></i>--%>
+                                    <%--<i class="fa fa-star"></i>--%>
+                                <input id="input-1-xs" class="rating rating-loading rank-busService" value="3.5"
+                                       data-min="0" data-max="5" data-show-clear="false" data-show-caption="false"
+                                       data-step="0.5" data-size="xs" name="rankBus" data-readonly="true">
                             </div>
-                            <p>15 rating</p>
-                            <a class="writereviews" data-toggle="modal" href='#service${schedule.scheduleEntity.busServicesEntity.id}'>Viết đánh giá</a>
+                            <a data-toggle="modal" href='#modal-id2'><p>15 rating <i class="fa fa-sort-desc"></i></p>
+                            </a>
+                            <a class="writereviews" data-toggle="modal"
+                               href='#service'>Viết đánh giá <input type="hidden" value="${schedule.scheduleEntity.busServicesEntity.id}/%/${schedule.scheduleEntity.busServicesEntity.name}"></a>
+
                         </td>
                         <td class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
                             <div class="">
@@ -313,7 +324,6 @@
                             <div id="${schedule.timeTableScheduleEntity.id}" class="collapse info-wapper">
                                 <div class="info-tilte">
                                     <div class="row">
-
                                         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 text-center">
                                             <h4>Đặt vé</h4>
                                         </div>
@@ -330,15 +340,16 @@
                                     <div class="row">
                                         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
                                                 <%--Form book a ticket--%>
-                                            <form:form modelAttribute="ticket" action="/choosechair" method="POST" role="form" class="info-form">
+                                            <form:form modelAttribute="ticket" action="/choosechair" method="post"
+                                                       class="info-form">
                                                 <div class="row">
                                                     <div class="form-group form-inline">
                                                         <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
                                                             <label class="info-label">Họ Tên:</label>
                                                         </div>
                                                         <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
-                                                            <input type="text" required class="form-control"
-                                                                   placeholder="Tran Van A" path="fullName">
+                                                            <form:input type="text" required="true" class="form-control"
+                                                                        placeholder="Tran Van A" path="fullName"/>
                                                         </div>
 
                                                     </div>
@@ -349,9 +360,10 @@
                                                             <label class="info-label">Phone:</label>
                                                         </div>
                                                         <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
-                                                            <input type="tel" class="phone form-control" required
-                                                                   class="form-control"
-                                                                   placeholder="VD: 0912345678" path="numberphone">
+                                                            <form:input type="tel" class="phone form-control"
+                                                                        required="true"
+                                                                        placeholder="VD: 0912345678"
+                                                                        path="numberphone"/>
                                                         </div>
 
                                                     </div>
@@ -362,18 +374,24 @@
                                                             <label class="info-label">Email:</label>
                                                         </div>
                                                         <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
-                                                            <input type="email" required class="form-control"
-                                                                   placeholder="vexe@gmail.com" path="gmail">
+                                                            <form:input type="email" required="true"
+                                                                        class="form-control"
+                                                                        placeholder="vexe@gmail.com" path="gmail"/>
                                                         </div>
 
                                                     </div>
                                                 </div>
                                                 <input type="hidden" value="${schedule.busesId}" name="busesId"/>
-                                                <input type="hidden" value="${schedule.timeTableScheduleEntity.id}" name="timeTableId"/>
+                                                <input type="hidden" value="${schedule.timeTableScheduleEntity.id}"
+                                                       name="timeTableId"/>
+                                                <input type="hidden" value="${schedule.scheduleEntity.departure.id}"
+                                                       name="busstationDeparture"/>
+                                                <input type="hidden" value="${schedule.scheduleEntity.arrival.id}"
+                                                       name="busstationArrival"/>
+                                                <input type="hidden" value="${dayStartMove}" name="dayStartMove">
                                                 <button type="submit"
                                                         class="btn btn-primary pull-right container-ticket text-center">
-                                                    <i
-                                                            class="fa fa-bus"></i><span>Tiếp tục</span></button>
+                                                    <i class="fa fa-bus"></i><span>Tiếp tục</span></button>
                                             </form:form>
                                         </div>
                                         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
@@ -576,73 +594,238 @@
     </div>
 </c:forEach>
 
-<c:forEach var="busService" items="${scheduleListNormal}">
-    <div class="modal fade" id="service${busService.busServicesEntity.id}">
-        <div class="modal-dialog">
-            <form id="commentForm">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 class="modal-title"><i class="fa fa-pencil fa-2x" aria-hidden="true"></i>Viết đánh giá</h4>
-                    </div>
-                    <div class="modal-body comment">
-                        <div class="row">
-                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                                <legend>Hãng xe: ${busService.busServicesEntity.name}</legend>
+<div class="modal fade" id="modal-id2">
+    <div class="modal-dialog comment">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Bình Luận</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 text-center">
+                        <div class="point-avg">
+                            <h4 class="namecomment">Đánh giá tổng thể nhà xe HV</h4>
 
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Tran Van A" name="fullName" id="fullName">
-                                </div>
-                                <div class="form-group">
-                                    <input type="gmail" class="form-control" placeholder="vexere@gmail.com" name="gmail" id="gmail">
-                                </div>
-                                <div class="form-group">
-                                    <label >Bình luận:</label>
-                                    <textarea class="form-control" rows="5" id="commentInto" name="commnet" id="comment"></textarea>
-                                </div>
-                                <div class="form-group">
-                                    <input type="hidden" name="busService" value="${busService.busServicesEntity.id}"/>
+                            <h3 class="pointSum">3.5</h3>
+                            <input id="input-7-xs" class="rating rating-loading" value="3.5" data-min="0" data-max="5"
+                                   data-show-clear="false" data-show-caption="false" data-step="0.5" data-size="xs"
+                                   name="rankBus" data-readonly="true">
+                        </div>
+                    </div>
+                    <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 point-four">
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 border-bottom">
+                                        <div class="element-point">
+                                            <p class="pull-left">Tổng quan:</p>
+
+                                            <p class="pull-right">3.6</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 border-bottom">
+                                        <div class="element-point">
+                                            <p class="pull-left">Tổng quan:</p>
+
+                                            <p class="pull-right">3.6</p>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
-                                <legend>Đánh giá:</legend>
-                                <div class="form-group form-inline">
-                                    <label for="input-7-xs" class="control-label">Tổng quan:</label>
-                                    <input id="input-7-xs" class="rating rating-loading" value="0" data-min="0" data-max="5" data-show-clear="false" data-show-caption="false" data-step="1" data-size="xs" name="rankOverall" id="rankOverall">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 point-four">
+                                <div class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 border-bottom">
+                                        <div class="element-point">
+                                            <p class="pull-left">Tổng quan:</p>
+
+                                            <p class="pull-right">3.6</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 border-bottom">
+                                        <div class="element-point">
+                                            <p class="pull-left">Tổng quan:</p>
+
+                                            <p class="pull-right">3.6</p>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="form-group form-inline">
-                                    <label for="input-7-xs" class="control-label">Chất lưọng xe buýt:</label>
-                                    <input id="input-7-xs" class="rating rating-loading" value="0" data-min="0" data-max="5" data-show-clear="false" data-show-caption="false" data-step="1" data-size="xs" name="rankBus" id="rankBus">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <h5 class="coment-element">Đánh giá của từng khách hàng</h5>
+                        <hr class="color-hr">
+                        <div id="comment-customer">
+                            <div class="row">
+                                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                    <table class="table table-hover">
+                                        <tbody>
+                                        <tr>
+                                            <th scope="row">Tổng quan:</th>
+                                            <td class="pull-right">3.5</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Chắt lượng</th>
+                                            <td class="pull-right">2.5</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Đúng giờ:</th>
+                                            <td class="pull-right">3.2</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Dịch vụ:</th>
+                                            <td class="pull-right">3.5</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
-                                <div class="form-group form-inline">
-                                    <label for="input-7-xs" class="control-label">Đúng giờ:</label>
-                                    <input id="input-7-xs" class="rating rating-loading" value="0" data-min="0" data-max="5" data-show-clear="false" data-show-caption="false" data-step="1" data-size="xs" name="rankPunctuality" id="rankPunctuality">
+                                <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                            <h5 class="pull-left">Tran Van A</h5>
+                                            <h5 class="pull-right">2015-25-16</h5>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                            <p class="content-comment"></p>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="form-group form-inline">service
-                                    <label for="input-7-xs" class="control-label">Hành sử:</label>
-                                    <input id="input-7-xs" class="rating rating-loading" value="0" data-min="0" data-max="5" data-show-clear="false" data-show-caption="false" data-step="1" data-size="xs" name="rankBehavior" id="rankBehavior">
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <hr>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                    <table class="table table-hover">
+                                        <tbody>
+                                        <tr>
+                                            <th scope="row">Tổng quan:</th>
+                                            <td class="pull-right">3.5</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Chắt lượng</th>
+                                            <td class="pull-right">2.5</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Đúng giờ:</th>
+                                            <td class="pull-right">3.2</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">Dịch vụ:</th>
+                                            <td class="pull-right">3.5</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                            <h5 class="pull-left">Tran Van A</h5>
+                                            <h5 class="pull-right">2015-25-16</h5>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                            <p class="content-comment"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <hr>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary btncomment" data-dismiss="modal" id="submitCommentForm" value="Đăng bình luận"/>
-                </div>
-            </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                <a class="writereviews" data-toggle="modal" href='#modal-id'>
+                    <button type="button" class="btn btn-primary wm-comment" data-dismiss="modal">
+                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                        Viết đánh giá
+                    </button>
+                </a>
+            </div>
         </div>
     </div>
-</c:forEach>
+</div>
 
-<script>
-    $(document).ready(function () {
-        $('.tooltiphover').tooltipster({
-            theme: ['tooltipster-noir', 'tooltipster-noir-customized'],
-            contentCloning: true,
-        });
-    });
-</script>
+<div class="modal fade" id="service">
+    <div class="modal-dialog">
+        <form class="commentForm" data-toggle="validator" role="form">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title"><i class="fa fa-pencil fa-2x" aria-hidden="true"></i>Viết đánh giá</h4>
+                </div>
+                <div class="modal-body comment">
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                            <legend class="nameService">Hãng xe: </legend>
+
+                            <div class="form-group">
+                                <input type="text" class="form-control fullNameModal" placeholder="Tran Van A"
+                                       name="fullName" required="true">
+                            </div>
+                            <div class="form-group">
+                                <input type="gmail" class="form-control gmailModal" placeholder="vexere@gmail.com"
+                                       name="gmail">
+                            </div>
+                            <div class="form-group">
+                                <label>Bình luận:</label>
+                                    <textarea class="form-control commentModal" rows="5" id="commentInto" name="commnet"
+                                            ></textarea>
+                            </div>
+                            <div class="form-group">
+                                <input type="hidden" name="busService" value=""
+                                       class="busServiceModal"/>
+                            </div>
+                        </div>
+                        <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+                            <legend>Đánh giá:</legend>
+                            <div class="form-group form-inline">
+                                <label for="input-7-xs" class="control-label">Tổng quan:</label>
+                                <input id="input-7-xs" class="rating rating-loading rankOverall" value="" data-min="0"
+                                       data-max="5" data-show-clear="false" data-show-caption="false" data-step="1"
+                                       data-size="xs" name="rankOverall" required="true">
+                            </div>
+                            <div class="form-group form-inline">
+                                <label for="input-7-xs" class="control-label">Chất lưọng xe buýt:</label>
+                                <input id="input-7-xs" class="rating rating-loading rankBus" value="0" data-min="0"
+                                       data-max="5" data-show-clear="false" data-show-caption="false" data-step="1"
+                                       data-size="xs" name="rankBus">
+                            </div>
+                            <div class="form-group form-inline">
+                                <label for="input-7-xs" class="control-label">Đúng giờ:</label>
+                                <input id="input-7-xs" class="rating rating-loading rankPunctuality" value="0"
+                                       data-min="0"
+                                       data-max="5" data-show-clear="false" data-show-caption="false" data-step="1"
+                                       data-size="xs" name="rankPunctuality">
+                            </div>
+                            <div class="form-group form-inline">
+                                <label for="input-7-xs" class="control-label">Hành sử:</label>
+                                <input id="input-7-xs" class="rating rating-loading rankBehavior" value="0" data-min="0"
+                                       data-max="5" data-show-clear="false" data-show-caption="false" data-step="1"
+                                       data-size="xs" name="rankBehavior">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary btncomment submitCommentForm" <%--data-dismiss="modal"--%>
+                        value="Đăng bình luận">Đăng bình luận
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
 
 </body>
 </html>

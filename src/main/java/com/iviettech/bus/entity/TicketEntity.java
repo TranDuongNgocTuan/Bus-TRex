@@ -39,6 +39,14 @@ public class TicketEntity {
     @JoinColumn(name = "busesId")
     private BusesEntity busesEntity;
 
+    @ManyToOne
+    @JoinColumn(name = "busstationdeparture")
+    private BusstationEntity busstationEntityDeparture;
+
+    @ManyToOne
+    @JoinColumn(name = "busstationarrival")
+    private BusstationEntity busstationEntityArrival;
+
     public TicketEntity() {
     }
 
@@ -121,4 +129,34 @@ public class TicketEntity {
     public void setGmail(String gmail) {
         this.gmail = gmail;
     }
+
+    public BusstationEntity getBusstationEntityDeparture() {
+        return busstationEntityDeparture;
+    }
+
+    public void setBusstationEntityDeparture(BusstationEntity busstationEntityDeparture) {
+        this.busstationEntityDeparture = busstationEntityDeparture;
+    }
+
+    public BusstationEntity getBusstationEntityArrival() {
+        return busstationEntityArrival;
+    }
+
+    public void setBusstationEntityArrival(BusstationEntity busstationEntityArrival) {
+        this.busstationEntityArrival = busstationEntityArrival;
+    }
+
+//    public void setetValueTicketEntity() {
+//        this.bookTime = new Date();
+//        this.totalprice = 0;
+//        this.fullName = "";
+//        this.numberphone = "";
+//        this.gmail = "";
+//        this.status = 0;
+//        this.seat = "";
+//        this.numberSeats = 0;
+//        this.busesEntity = busesEntity;
+//        this.busstationEntityDeparture = busstationEntityDeparture;
+//        this.busstationEntityArrival = busstationEntityArrival;
+//    }
 }

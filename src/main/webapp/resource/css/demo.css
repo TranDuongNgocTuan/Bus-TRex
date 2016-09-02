@@ -66,6 +66,10 @@ input.phone {
   width: 100%;
 }
 
+input#numberphone {
+  width: 100%;
+}
+
 .intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-3 {
   border-bottom: 1px solid #E6E4E4;
 }

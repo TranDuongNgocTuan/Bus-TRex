@@ -1,5 +1,25 @@
 ﻿$(function(){
 
+	$(document).ready(function () {
+		$('.tooltiphover').tooltipster({
+			theme: ['tooltipster-noir', 'tooltipster-noir-customized'],
+			contentCloning: true,
+		});
+	});
+
+	$(document).on('ready', function () {
+		$('#input-7-xs').rating({});
+	});
+
+	$('.commentForm').validator();
+
+	$(".writereviews").click(function(){
+		var idName = $(this).find('input').val();
+		var idAndName = idName.split("/%/");
+		$('.nameService').html("Hãng xe:   " + idAndName[1]);
+		$('.busServiceModal').val(idAndName[0]);
+	});
+
 	function sortTable(f,n){
 		var rowInfo = $('tr#getTrInfo').get();
 		var rowSubmit = $('tr#getTrSubmit').get();

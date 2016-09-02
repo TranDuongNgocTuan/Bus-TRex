@@ -38,6 +38,12 @@ public class BusServicesEntity {
     @OneToMany(mappedBy = "busServicesEntity")
     private List<PromotionEntity> promotionEntityList;
 
+    @OneToMany(mappedBy = "busstationEntityDeparture")
+    private List<TicketEntity> ticketEntityListDeparture;
+
+    @OneToMany(mappedBy = "busstationEntityArrival")
+    private List<TicketEntity> ticketEntityListArrival;
+
     public BusServicesEntity() {
     }
 
@@ -127,5 +133,21 @@ public class BusServicesEntity {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public List<TicketEntity> getTicketEntityListDeparture() {
+        return ticketEntityListDeparture;
+    }
+
+    public void setTicketEntityListDeparture(List<TicketEntity> ticketEntityListDeparture) {
+        this.ticketEntityListDeparture = ticketEntityListDeparture;
+    }
+
+    public List<TicketEntity> getTicketEntityListArrival() {
+        return ticketEntityListArrival;
+    }
+
+    public void setTicketEntityListArrival(List<TicketEntity> ticketEntityListArrival) {
+        this.ticketEntityListArrival = ticketEntityListArrival;
     }
 }
