@@ -1,12 +1,11 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
 
-  <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+  <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="">
@@ -32,12 +31,6 @@
   <!-- Custom Fonts -->
   <link href="../../resource/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-  <!-- DataTables CSS -->
-  <link href="../../resource/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet">
-
-  <!-- DataTables Responsive CSS -->
-  <link href="../../resource/bower_components/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet">
-
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -60,7 +53,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="admin.jsp">QUẢN LÝ</a>
+      <a class="navbar-brand" href="admin">TRANG HỒ SƠ</a>
     </div>
     <!-- /.navbar-header -->
 
@@ -154,73 +147,40 @@
   <div id="page-wrapper">
     <div class="row">
       <div class="col-lg-12">
-        <h1 class="page-header">HÃNG XE</h1>
+        <h1 class="page-header">THAY ĐỔI HỒ SƠ</h1>
       </div>
       <!-- /.col-lg-12 -->
     </div>
-
     <div class="row">
       <div class="col-lg-12">
         <div class="panel panel-default">
-          <div class="panel-heading">
-            Danh sách các hãng xe
-          </div>
-          <!-- /.panel-heading -->
+          <div class="panel-heading">Thông tin </div>
           <div class="panel-body">
-
             <div class="row">
-            <div class="col-xs-12 col-sm-8 col-md-6">
-              <form:form action="search" method="get">
-                <div class="input-group">
-                  <input name="searchInput" type="text" class="form-control" placeholder="Search for name..."/>
-                        <span class="input-group-btn">
-                            <button class="btn btn-outline btn-primary" type="submit">Search</button>
-                        </span>
-                </div>
-              </form:form>
-            </div>
-            </div>
-              <div class="row">
-            <div class="col-md-12">
-            <div class="table-responsive">
-              <table class="table table-hover">
-                <thead>
-                  <tr>
-                    <th>Id</th>
-                    <th>Address</th>
-                    <th>Description</th>
-                    <th>Dob</th>
-                    <th>Foundation</th>
-                    <th>Name</th>
-                    <th>Phone</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <c:forEach var="bus" items="${busList}" varStatus="index">
-                    <tr>
-                      <td>${bus.id}</td>
-                      <td>${bus.address}</td>
-                      <td>${bus.description}</td>
-                      <td>${bus.dob}</td>
-                      <td>${bus.foundation}</td>
-                      <td>${bus.name}</td>
-                      <td>${bus.phone}</td>
-                      <td><button class="btn btn-sm btn-outline btn-primary" onclick="location.href='edit/${bus.id}'">Edit</button></td>
-                      <td>  <button class="btn btn-sm btn-outline btn-danger" onclick="location.href='delete/${bus.id}'">Delete</button></td>
-                    </tr>
-                  </c:forEach>
-                </tbody>
-              </table>
-            </div>
-            </div>
-            <!-- /.table-responsive -->
+              <div class="col-lg-12">
+                <c:form role="form" modelAttribute="admin" action="/profile" method="post">
 
+                    <div class="form-group">
+                      <label>Username</label>
+                      <input  class="form-control" type="text"  placeholder="tho">
+                      <label>Password</label>
+                      <input  class="form-control" type="text"  placeholder="123">
+                    </div>
+
+                  <button class="btn btn-info" type="submit">Lưu</button>
+                  <div style="color: red">${msg}</div>
+                </c:form>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+
+    <!-- /.row -->
   </div>
+  <!-- /#page-wrapper -->
+
 </div>
 <!-- /#wrapper -->
 

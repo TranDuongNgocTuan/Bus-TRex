@@ -53,4 +53,9 @@ public class LoginController {
             return "login";
         }
     }
+
+    @RequestMapping(value = "/admin",method = RequestMethod.GET)
+    public String admin(){
+        return "admin";
+    }
 }

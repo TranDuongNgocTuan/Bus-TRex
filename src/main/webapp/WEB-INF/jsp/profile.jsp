@@ -1,6 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://www.springframework.org/tags/form" %>
-<%@ page import="com.iviettech.bus.entity.AdminEntity"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -159,19 +158,15 @@
           <div class="panel-body">
             <div class="row">
               <div class="col-lg-12">
-                <c:form role="form" modelAttribute="adminEntity1" action="/profile" method="post">
+                <c:form role="form" modelAttribute="admin" action="/change" method="post">
                   <fieldset disabled="">
                     <div class="form-group">
                       <label>Username</label>
-                      <input id="disabledInput" class="form-control" type="text" disabled="" placeholder="tho">
+                      <input id="disabledInput" class="form-control" type="text" disabled="" ${admin.username}>
                       <label>Password</label>
-                      <input id="disabledInput1" class="form-control" type="text" disabled="" placeholder="123">
+                      <input id="disabledInput1" class="form-control" type="text" disabled="" ${admin.password}>
                     </div>
                   </fieldset>
-                  <div class="form-group">
-                    <label>Thay đổi password</label>
-                    <input  class="form-control"/>
-                  </div>
                   <button class="btn btn-info" type="submit">Thay đổi</button>
                   <div style="color: red">${msg}</div>
                 </c:form>

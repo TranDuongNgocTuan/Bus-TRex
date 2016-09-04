@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
@@ -6,7 +6,7 @@
 
 <head>
 
-  <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+  <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="">
@@ -110,7 +110,7 @@
                 <a href="#"><i class="fa fa-bars fa-fw"></i> Tuyến xe</a>
               </li>
               <li>
-                <a href="buscompany"><i class="fa fa-bus fa-fw"></i> Hãng xe</a>
+                <a href="/buscompany"><i class="fa fa-bus fa-fw"></i> Hãng xe</a>
               </li>
               <li>
                 <a href="#"><i class="fa fa-male fa-fw"></i> Tài xế</a>
@@ -154,70 +154,51 @@
   <div id="page-wrapper">
     <div class="row">
       <div class="col-lg-12">
-        <h1 class="page-header">HÃNG XE</h1>
+        <h1 class="page-header">THAY ĐỔI HÃNG XE</h1>
       </div>
       <!-- /.col-lg-12 -->
     </div>
 
     <div class="row">
       <div class="col-lg-12">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            Danh sách các hãng xe
-          </div>
-          <!-- /.panel-heading -->
-          <div class="panel-body">
-
-            <div class="row">
-            <div class="col-xs-12 col-sm-8 col-md-6">
-              <form:form action="search" method="get">
-                <div class="input-group">
-                  <input name="searchInput" type="text" class="form-control" placeholder="Search for name..."/>
-                        <span class="input-group-btn">
-                            <button class="btn btn-outline btn-primary" type="submit">Search</button>
-                        </span>
-                </div>
-              </form:form>
+        <form:form action="${action}" method="post" modelAttribute="bus">
+          <fieldset class="scheduler-border">
+            <legend class="scheduler-border"><c:out value="${msg}"/></legend>
+            <c:if test="${type.equals('update')}">
+              <div class="form-group">
+                <label class="control-label">ID</label>
+                <form:input path="id" type="text" class="form-control" id="id" placeholder="ID" disabled="true"/>
+                <form:hidden path="id" />
+              </div>
+            </c:if>
+            <div class="form-group">
+              <label class="control-label">Address (*)</label>
+              <form:input path="address" type="text" class="form-control" placeholder="Address" required="true"/>
             </div>
+            <div class="form-group">
+              <label class="control-label">Description (*)</label>
+              <form:textarea path="description" type="text" class="form-control" placeholder="Description" required="true"/>
             </div>
-              <div class="row">
-            <div class="col-md-12">
-            <div class="table-responsive">
-              <table class="table table-hover">
-                <thead>
-                  <tr>
-                    <th>Id</th>
-                    <th>Address</th>
-                    <th>Description</th>
-                    <th>Dob</th>
-                    <th>Foundation</th>
-                    <th>Name</th>
-                    <th>Phone</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <c:forEach var="bus" items="${busList}" varStatus="index">
-                    <tr>
-                      <td>${bus.id}</td>
-                      <td>${bus.address}</td>
-                      <td>${bus.description}</td>
-                      <td>${bus.dob}</td>
-                      <td>${bus.foundation}</td>
-                      <td>${bus.name}</td>
-                      <td>${bus.phone}</td>
-                      <td><button class="btn btn-sm btn-outline btn-primary" onclick="location.href='edit/${bus.id}'">Edit</button></td>
-                      <td>  <button class="btn btn-sm btn-outline btn-danger" onclick="location.href='delete/${bus.id}'">Delete</button></td>
-                    </tr>
-                  </c:forEach>
-                </tbody>
-              </table>
+            <div class="form-group">
+              <label class="control-label">Dob (*)</label>
+              <form:input path="dob" type="date" class="form-control" placeholder="Dob" required="true" />
             </div>
+            <div class="form-group">
+              <label class="control-label">Foundation (*)</label>
+              <form:input path="foundation" type="date" class="form-control" placeholder="Foundation" required="true" />
             </div>
-            <!-- /.table-responsive -->
-
+            <div class="form-group">
+              <label class="control-label">Name (*)</label>
+              <form:input path="name" type="text" class="form-control" placeholder="Name" required="true"/>
             </div>
-          </div>
-        </div>
+            <div class="form-group">
+              <label class="control-label">Phone (*)</label>
+              <form:input path="phone" type="number" step="any" class="form-control" placeholder="Phone" required="true"/>
+            </div>
+            <br>
+            <button type="submit" class="btn btn-info">Save</button>
+          </fieldset>
+        </form:form>
       </div>
     </div>
   </div>

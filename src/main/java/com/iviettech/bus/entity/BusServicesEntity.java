@@ -38,7 +38,11 @@ public class BusServicesEntity {
     @OneToMany(mappedBy = "busServicesEntity")
     private List<PromotionEntity> promotionEntityList;
 
+    public BusServicesEntity(int id) {
+    }
+
     public BusServicesEntity() {
+
     }
 
     public int getId() {
