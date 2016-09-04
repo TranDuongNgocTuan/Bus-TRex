@@ -1,10 +1,11 @@
 package com.iviettech.bus.controller;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.iviettech.bus.entity.*;
-import com.iviettech.bus.repository.BusesRepository;
-import com.iviettech.bus.repository.BusstationRepository;
-import com.iviettech.bus.repository.InfoTicketRepository;
-import com.iviettech.bus.repository.ScheduleRepository;
+import com.iviettech.bus.repository.*;
 import com.iviettech.bus.service.ScheduleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -13,12 +14,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Controller
 public class FindTicketController {
@@ -34,6 +35,12 @@ public class FindTicketController {
 
     @Autowired
     InfoTicketRepository infoTicketRepository;
+
+    @Autowired
+    CommentRepository commentRepository;
+
+    @Autowired
+    BusServicesRepository busServicesRepository;
 
     /**
      * This is method perform show schedule user find with departure ,arrival and departuretime201
@@ -64,6 +71,8 @@ public class FindTicketController {
                 infoTicketRepository.findAllInfoTicket(busstationEntityFrom.getId(), busstationEntityTo.getId(), new java.sql.Date(date.getTime()));
         List<ScheduleEntity> scheduleEntityListNormal =
                 scheduleRepository.findByDepartureIdAndArrivalIdAndDate(busstationEntityFrom.getId(), busstationEntityTo.getId(), new java.sql.Date(date.getTime()));
+        List<BusServicesEntity> busServicesEntityList =
+                busServicesRepository.findByScheduleEntityListDepartureIdAndArrivalIdAnd(busstationEntityFrom.getId(), busstationEntityTo.getId(), new java.sql.Date(date.getTime()));
         List<Integer> seats = filterQutSeat(scheduleEntityListNormal);
 
         if(scheduleEntityList == null || scheduleEntityListNormal == null)
@@ -74,22 +83,63 @@ public class FindTicketController {
         model.addAttribute("to", busstationEntityTo);
         model.addAttribute("scheduleList", scheduleEntityList);
         model.addAttribute("scheduleListNormal", scheduleEntityListNormal);
+        model.addAttribute("buseServiceList", busServicesEntityList);
         model.addAttribute("seatList", seats);
         model.addAttribute("dayStartMove",new java.sql.Date(date.getTime()));
+
+
 
         return "findticket";
     }
 
-    @RequestMapping(value = "/findticket/comment", method = RequestMethod.POST, produces = "text/plain;charset=UTF-8")
-    public @ResponseBody String submitComment(@RequestBody String body) {
+    @RequestMapping(value = "/findticket/comment", method = RequestMethod.GET, produces = "text/plain;charset=UTF-8")
+    public @ResponseBody String submitComment(HttpServletRequest request) {
 
-        String[] commentArr = body.split("&");
+//        String[] commentArr = body.split("&");
+//        CommentEntity commentEntity = new CommentEntity();
+        String Name = request.getParameter("fullName");
+        String gmail = request.getParameter("gmail");
+        String comment = request.getParameter("comment");
+        int busServiceId = Integer.parseInt(request.getParameter("busServiceId"));
+        int rankOverall = Integer.parseInt(request.getParameter("rankOverall"));
+        int rankBus = Integer.parseInt(request.getParameter("rankBus"));
+        int rankPunctuality = Integer.parseInt(request.getParameter("rankPunctuality"));
+        int rankBehavior = Integer.parseInt(request.getParameter("rankBehavior"));
+
+        Date date = new java.sql.Date(Calendar.getInstance().getTimeInMillis());
         CommentEntity commentEntity = new CommentEntity();
+        commentEntity.setFullName(Name);
+        commentEntity.setGmail(gmail);
+        commentEntity.setDob(date);
+        commentEntity.setContent(comment);
+        commentEntity.setRankBus(rankBus);
+        commentEntity.setRankBehavior(rankBehavior);
+        commentEntity.setRankOverall(rankOverall);
+        commentEntity.setRankPunctuality(rankPunctuality);
+        commentEntity.setRankEntity(busServicesRepository.findOne(busServiceId).getRankEntity());
 
+        commentRepository.save(commentEntity);
 
-        // save comment to DB
-//        return
-        return "Hello";
+        ObjectMapper mapper = new ObjectMapper();
+        Map<String, String> hash = new HashMap<>();
+        hash.put("fullName", Name);
+        hash.put("gmail", gmail);
+        hash.put("content", comment);
+        hash.put("rankOverall", String.valueOf(rankOverall));
+        hash.put("rankBus", String.valueOf(rankBus));
+        hash.put("rankPunctuality", String.valueOf(rankPunctuality));
+        hash.put("rankBehavior", String.valueOf(rankBehavior));
+        hash.put("busServiceId", String.valueOf(busServiceId));
+        hash.put("dob", String.valueOf(date));
+
+        String ajaxResponse = "";
+        try {
+            ajaxResponse = mapper.writeValueAsString(hash);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return ajaxResponse;
     }
 
 

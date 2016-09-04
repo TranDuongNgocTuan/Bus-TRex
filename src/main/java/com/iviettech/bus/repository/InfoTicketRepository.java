@@ -52,11 +52,19 @@ public class InfoTicketRepository{
     public  List<InfoTicket> findAllInfoTicket(int fromId, int toId, Date datePay){
         String sql = "SELECT schedule.* , timetableschedule.*" +
                 ", case when bus.seats is null then 0 else bus.seats END as 'seat'" +
+                ",case when avg(comment.rankBehavior)is null then 0 else avg(comment.rankBehavior) END as 'rankBehavior'" +
+                ",case when avg(comment.rankBus)is null then 0 else avg(comment.rankBus) END as 'rankBus'" +
+                ",case when avg(comment.rankOverall)is null then 0 else avg(comment.rankOverall) END as 'rankOverall'" +
+                ",case when avg(comment.rankPunctuality)is null then 0 else avg(comment.rankPunctuality) END as 'rankPunctuality'" +
                 " from schedule" +
                 " inner join timetableschedule" +
                 " on schedule.id = timetableschedule.scheduleId" +
                 " inner join busservices" +
                 " on busservices.id = schedule.busservicesId" +
+                " inner join rank" +
+                " on busservices.id = rank.id" +
+                " left join comment" +
+                " on rank.id = comment.rankId" +
                 " left join bus" +
                 " on timetableschedule.busId = bus.id"+
                 " where schedule.departureId = " + fromId + " and schedule.arrivalId = " + toId + " and datediff('" +  datePay  + "', schedule.datestart)%schedule.numberday = 0" +
@@ -90,6 +98,10 @@ public class InfoTicketRepository{
                 aInfoTicket.setScheduleEntity(scheduleEntity);
                 aInfoTicket.setTimeTableScheduleEntity(timeTableScheduleEntity);
                 aInfoTicket.setNumberSeat(rs.getInt("seat"));
+                aInfoTicket.setRankBehavior(rs.getFloat("rankBehavior"));
+                aInfoTicket.setRankBus(rs.getFloat("rankBus"));
+                aInfoTicket.setRankOverall(rs.getFloat("rankOverall"));
+                aInfoTicket.setRankPunctuality(rs.getFloat("rankPunctuality"));
 
                 BusesEntity busesEntity = busesRepository.findByDateAndTimeTableScheduleEntityId(datePay, timeTableScheduleEntity.getId());
                 if (busesEntity != null){

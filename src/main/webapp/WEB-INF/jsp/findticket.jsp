@@ -10,8 +10,7 @@
     <title> Example </title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href='https://fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,900,700italic,900italic'
-          rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
     <link rel="stylesheet" href="resource/css/star-rating.css" media="all" type="text/css"/>
     <link rel="stylesheet" type="text/css" href="resource/tooltipster/dist/css/tooltipster.bundle.min.css"/>
     <link rel="stylesheet" type="text/css"
@@ -297,14 +296,18 @@
                                     <%--<i class="fa fa-star"></i>--%>
                                     <%--<i class="fa fa-star"></i>--%>
                                     <%--<i class="fa fa-star"></i>--%>
-                                <input id="input-1-xs" class="rating rating-loading rank-busService" value="3.5"
+                                        <c:set var="pointStart" value="${(schedule.rankBehavior+schedule.rankBus+schedule.rankOverall+schedule.rankPunctuality)/4}"/>
+                                <input id="input-1-xs" class="rating rating-loading rank-busService"
+                                       value="<c:out value="${pointStart}"/>"
                                        data-min="0" data-max="5" data-show-clear="false" data-show-caption="false"
                                        data-step="0.5" data-size="xs" name="rankBus" data-readonly="true">
                             </div>
-                            <a data-toggle="modal" href='#modal-id2'><p>15 rating <i class="fa fa-sort-desc"></i></p>
+                            <a data-toggle="modal" href='#modal-id${schedule.scheduleEntity.busServicesEntity.id}'><p>${schedule.scheduleEntity.busServicesEntity.rankEntity.commentEntityList.size()}
+                                rating <i class="fa fa-sort-desc"></i></p>
                             </a>
                             <a class="writereviews" data-toggle="modal"
-                               href='#service'>Viết đánh giá <input type="hidden" value="${schedule.scheduleEntity.busServicesEntity.id}/%/${schedule.scheduleEntity.busServicesEntity.name}"></a>
+                               href='#service'>Viết đánh giá <input type="hidden"
+                                                                    value="${schedule.scheduleEntity.busServicesEntity.id}/%/${schedule.scheduleEntity.busServicesEntity.name}"></a>
 
                         </td>
                         <td class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
@@ -594,166 +597,147 @@
     </div>
 </c:forEach>
 
-<div class="modal fade" id="modal-id2">
-    <div class="modal-dialog comment">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">Bình Luận</h4>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 text-center">
-                        <div class="point-avg">
-                            <h4 class="namecomment">Đánh giá tổng thể nhà xe HV</h4>
+<c:forEach var="busService" items="${buseServiceList}">
+    <div class="modal fade" id="modal-id${busService.id}">
+        <div class="modal-dialog comment">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Bình Luận</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 text-center">
+                            <div class="point-avg">
+                                <h4 class="namecomment">Đánh giá tổng thể nhà xe <br> ${busService.name}</h4>
+                                <c:set var="pointBehavior" value="${0}"/>
+                                <c:set var="pointBus" value="${0}"/>
+                                <c:set var="pointOverall" value="${0}"/>
+                                <c:set var="pointPunctuality" value="${0}"/>
+                                <c:set var="countRank" value="${0}"/>
+                                <c:forEach var="commnet" items="${busService.rankEntity.commentEntityList}">
+                                    <c:set var="pointBehavior" value="${pointBehavior + commnet.rankBehavior}"/>
+                                    <c:set var="pointBus" value="${pointBus + commnet.rankBus}"/>
+                                    <c:set var="pointOverall" value="${pointOverall + commnet.rankOverall}"/>
+                                    <c:set var="pointPunctuality"
+                                           value="${pointPunctuality + commnet.rankPunctuality}"/>
+                                    <c:set var="countRank" value="${countRank + 1}"/>
+                                </c:forEach>
+                                <c:if test="${countRank == 0}">
+                                    <c:set var="countRank" value="1"/>
+                                </c:if>
 
-                            <h3 class="pointSum">3.5</h3>
-                            <input id="input-7-xs" class="rating rating-loading" value="3.5" data-min="0" data-max="5"
-                                   data-show-clear="false" data-show-caption="false" data-step="0.5" data-size="xs"
-                                   name="rankBus" data-readonly="true">
-                        </div>
-                    </div>
-                    <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
-                        <div class="row">
-                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 point-four">
-                                <div class="row">
-                                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 border-bottom">
-                                        <div class="element-point">
-                                            <p class="pull-left">Tổng quan:</p>
-
-                                            <p class="pull-right">3.6</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 border-bottom">
-                                        <div class="element-point">
-                                            <p class="pull-left">Tổng quan:</p>
-
-                                            <p class="pull-right">3.6</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 point-four">
-                                <div class="row">
-                                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 border-bottom">
-                                        <div class="element-point">
-                                            <p class="pull-left">Tổng quan:</p>
-
-                                            <p class="pull-right">3.6</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 border-bottom">
-                                        <div class="element-point">
-                                            <p class="pull-left">Tổng quan:</p>
-
-                                            <p class="pull-right">3.6</p>
-                                        </div>
-                                    </div>
-                                </div>
+                                <h3 class="pointSum"><fmt:formatNumber type="number" maxFractionDigits="1" value="${(pointBehavior + pointBus + pointOverall + pointPunctuality)/countRank/4}" /></h3>
+                                <input id="input-7-xs" class="rating rating-loading" value="${(pointBehavior + pointBus + pointOverall + pointPunctuality)/countRank/4}" data-min="0"
+                                       data-max="5"
+                                       data-show-clear="false" data-show-caption="false" data-step="0.5" data-size="xs"
+                                       name="rankBus" data-readonly="true">
                             </div>
                         </div>
-                    </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                        <h5 class="coment-element">Đánh giá của từng khách hàng</h5>
-                        <hr class="color-hr">
-                        <div id="comment-customer">
+                        <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
                             <div class="row">
-                                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                                    <table class="table table-hover">
-                                        <tbody>
-                                        <tr>
-                                            <th scope="row">Tổng quan:</th>
-                                            <td class="pull-right">3.5</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">Chắt lượng</th>
-                                            <td class="pull-right">2.5</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">Đúng giờ:</th>
-                                            <td class="pull-right">3.2</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">Dịch vụ:</th>
-                                            <td class="pull-right">3.5</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 point-four">
                                     <div class="row">
-                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                            <h5 class="pull-left">Tran Van A</h5>
-                                            <h5 class="pull-right">2015-25-16</h5>
+                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 border-bottom">
+                                            <div class="element-point">
+                                                <p class="pull-left">Tổng quan:</p>
+
+                                                <p class="pull-right"><fmt:formatNumber type="number" maxFractionDigits="1" value="${pointOverall/countRank}" /></p>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                            <p class="content-comment"></p>
+                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 border-bottom">
+                                            <div class="element-point">
+                                                <p class="pull-left">Chắt lượng xe buýt:</p>
+
+                                                <p class="pull-right"><fmt:formatNumber type="number" maxFractionDigits="1" value="${pointBus/countRank}" /></p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                    <hr>
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 point-four">
+                                    <div class="row">
+                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 border-bottom">
+                                            <div class="element-point">
+                                                <p class="pull-left">Đúng giờ:</p>
+
+                                                <p class="pull-right"><fmt:formatNumber type="number" maxFractionDigits="1" value="${pointPunctuality/countRank}" /></p>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 border-bottom">
+                                            <div class="element-point">
+                                                <p class="pull-left">Hành sử:</p>
+
+                                                <p class="pull-right"><fmt:formatNumber type="number" maxFractionDigits="1" value="${pointBehavior/countRank}" /></p>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                                    <table class="table table-hover">
-                                        <tbody>
-                                        <tr>
-                                            <th scope="row">Tổng quan:</th>
-                                            <td class="pull-right">3.5</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">Chắt lượng</th>
-                                            <td class="pull-right">2.5</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">Đúng giờ:</th>
-                                            <td class="pull-right">3.2</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">Dịch vụ:</th>
-                                            <td class="pull-right">3.5</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <h5 class="coment-element">Đánh giá của từng khách hàng</h5>
+                            <hr class="color-hr">
+                            <div id="comment-customer${busService.id}">
+                                <c:forEach var="customer" items="${busService.rankEntity.commentEntityList}">
                                     <div class="row">
-                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                            <h5 class="pull-left">Tran Van A</h5>
-                                            <h5 class="pull-right">2015-25-16</h5>
+                                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                        <table class="table table-hover">
+                                            <tbody>
+                                            <tr>
+                                                <th scope="row">Tổng quan:</th>
+                                                <td class="pull-right">${customer.rankOverall}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Chắt lượng</th>
+                                                <td class="pull-right">${customer.rankBus}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Đúng giờ:</th>
+                                                <td class="pull-right">${customer.rankPunctuality}</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Hành sử</th>
+                                                <td class="pull-right">${customer.rankBehavior}</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                                        <div class="row">
+                                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                                <h5 class="pull-left">${customer.fullName}</h5>
+                                                <h5 class="pull-right">${customer.dob}</h5>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                                <p class="content-comment">${customer.content}</p>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                            <p class="content-comment"></p>
-                                        </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <hr>
                                     </div>
                                 </div>
-                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                    <hr>
-                                </div>
+                                </c:forEach>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 
-                <a class="writereviews" data-toggle="modal" href='#modal-id'>
-                    <button type="button" class="btn btn-primary wm-comment" data-dismiss="modal">
-                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                        Viết đánh giá
-                    </button>
-                </a>
+                    <a class="writereviews" data-toggle="modal" href='#modal-id'>
+                        <button type="button" class="btn btn-primary wm-comment" data-dismiss="modal">
+                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                            Viết đánh giá
+                        </button>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
-</div>
+</c:forEach>
 
 <div class="modal fade" id="service">
     <div class="modal-dialog">
@@ -766,7 +750,7 @@
                 <div class="modal-body comment">
                     <div class="row">
                         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                            <legend class="nameService">Hãng xe: </legend>
+                            <legend class="nameService">Hãng xe:</legend>
 
                             <div class="form-group">
                                 <input type="text" class="form-control fullNameModal" placeholder="Tran Van A"
@@ -774,12 +758,12 @@
                             </div>
                             <div class="form-group">
                                 <input type="gmail" class="form-control gmailModal" placeholder="vexere@gmail.com"
-                                       name="gmail">
+                                       name="gmail" required>
                             </div>
                             <div class="form-group">
                                 <label>Bình luận:</label>
                                     <textarea class="form-control commentModal" rows="5" id="commentInto" name="commnet"
-                                            ></textarea>
+                                              required maxlength="768" data-minlength="50"></textarea>
                             </div>
                             <div class="form-group">
                                 <input type="hidden" name="busService" value=""
@@ -792,7 +776,7 @@
                                 <label for="input-7-xs" class="control-label">Tổng quan:</label>
                                 <input id="input-7-xs" class="rating rating-loading rankOverall" value="" data-min="0"
                                        data-max="5" data-show-clear="false" data-show-caption="false" data-step="1"
-                                       data-size="xs" name="rankOverall" required="true">
+                                       data-size="xs" name="rankOverall">
                             </div>
                             <div class="form-group form-inline">
                                 <label for="input-7-xs" class="control-label">Chất lưọng xe buýt:</label>

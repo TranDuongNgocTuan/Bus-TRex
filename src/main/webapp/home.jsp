@@ -27,9 +27,13 @@
   <!-- Stylesheet -->
   <link href="resource/bundles/home-styles.css?v=4484" rel="stylesheet" />
   <link rel="stylesheet" type="text/css" href="resource/font-awesome-4.6.3/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <link rel="stylesheet" href="/resource/css/bootstrap-datepicker.min.css">
+  <link rel="stylesheet" href="/resource/css/jquery-ui.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
+  <script src="/resource/js/jquery-ui.js"></script>
+  <script src="/resource/js/bootstrap-datepicker.min.js"/>
+  <script type="text/javascript" src="resource/bundles/home-scripts.js"></script>
 
 
   <!-- END GA -->
@@ -211,7 +215,6 @@
             <div class="text-center" style="position: relative">
               <hr class="customer-divider" />
               <img class="img-circle customer-avatar" width="50" src="resource/Content/vxr/images/Vancakova.jpg" />
-              <p>Lê Quốc Thọ</p>
             </div>
           </div>
         </div>
@@ -309,32 +312,7 @@
   </div>
 </div>
 
-
-
-
-
-
-<script type="text/javascript" src="/vi-VN/Language/Data" charset="utf-8"></script>
-
-<script src="https://apis.google.com/js/platform.js" async="async"></script>
-
-
-
-
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
-
-
-<script type="text/javascript" src="resource/bundles/home-scripts.js"></script>
-
-
-
-
-
-
 <script>
-
-
-
 
   function zeroPad(num, places) {
     var zero = places - num.toString().length + 1;
@@ -584,15 +562,6 @@
   ga('send', 'pageview');
 </script>
 
-<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
-<script type="text/javascript">
-  $( function() {
-    $( "#datepicker" ).datepicker();
-  } );
-</script>
-
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
 <script>
   $( function() {
     var availableTags = [
@@ -741,6 +710,14 @@
 
 <script>
   $( "#slider" ).slider();
+</script>
+
+<script>
+  $( function() {
+    var datepicker = $.fn.datepicker.noConflict();
+    $.fn.bootstrapDP = datepicker;
+    $( "#datepicker" ).bootstrapDP();
+  } );
 </script>
 
 </body>
