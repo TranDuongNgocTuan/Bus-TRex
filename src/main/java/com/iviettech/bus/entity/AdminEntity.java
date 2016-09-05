@@ -25,8 +25,6 @@ public class AdminEntity {
 
 
 
-
-
     public int getId() {
         return id;
     }

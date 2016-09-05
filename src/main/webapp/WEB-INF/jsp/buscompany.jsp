@@ -113,7 +113,7 @@
                 <a href="buscompany"><i class="fa fa-bus fa-fw"></i> Hãng xe</a>
               </li>
               <li>
-                <a href="#"><i class="fa fa-male fa-fw"></i> Tài xế</a>
+                <a href="taixe"><i class="fa fa-male fa-fw"></i> Tài xế</a>
               </li>
             </ul>
             <!-- /.nav-second-level -->
@@ -169,16 +169,19 @@
           <div class="panel-body">
 
             <div class="row">
-            <div class="col-xs-12 col-sm-8 col-md-6">
-              <form:form action="search" method="get">
-                <div class="input-group">
-                  <input name="searchInput" type="text" class="form-control" placeholder="Search for name..."/>
-                        <span class="input-group-btn">
-                            <button class="btn btn-outline btn-primary" type="submit">Search</button>
-                        </span>
-                </div>
-              </form:form>
-            </div>
+              <div class="col-xs-12 col-sm-8 col-md-6">
+                <form:form action="search" method="get">
+                  <div class="input-group">
+                    <input name="searchInput" type="text" class="form-control" placeholder="Search for name..."/>
+                          <span class="input-group-btn">
+                              <button class="btn btn-outline btn-primary" type="submit">Search</button>
+                          </span>
+                  </div>
+                </form:form>
+              </div>
+              <div class="col-sm-3">
+                <a href="newBus" role="button" class="btn btn-outline btn-primary">Add new bus company</a>
+              </div>
             </div>
               <div class="row">
             <div class="col-md-12">
@@ -193,10 +196,12 @@
                     <th>Foundation</th>
                     <th>Name</th>
                     <th>Phone</th>
+                    <th></th>
+                    <th></th>
                   </tr>
                 </thead>
                 <tbody>
-                  <c:forEach var="bus" items="${busList}" varStatus="index">
+                  <c:forEach var="bus" items="${busList}">
                     <tr>
                       <td>${bus.id}</td>
                       <td>${bus.address}</td>
@@ -206,7 +211,7 @@
                       <td>${bus.name}</td>
                       <td>${bus.phone}</td>
                       <td><button class="btn btn-sm btn-outline btn-primary" onclick="location.href='edit/${bus.id}'">Edit</button></td>
-                      <td>  <button class="btn btn-sm btn-outline btn-danger" onclick="location.href='delete/${bus.id}'">Delete</button></td>
+                      <td>  <button class="btn btn-sm btn-outline btn-danger" onclick="location.href='delete?id=${bus.id}'">Delete</button></td>
                     </tr>
                   </c:forEach>
                 </tbody>

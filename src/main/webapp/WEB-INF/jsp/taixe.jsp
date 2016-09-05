@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
@@ -6,7 +6,7 @@
 
 <head>
 
-  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="">
@@ -110,10 +110,10 @@
                 <a href="#"><i class="fa fa-bars fa-fw"></i> Tuyến xe</a>
               </li>
               <li>
-                <a href="/buscompany"><i class="fa fa-bus fa-fw"></i> Hãng xe</a>
+                <a href="buscompany"><i class="fa fa-bus fa-fw"></i> Hãng xe</a>
               </li>
               <li>
-                <a href="#"><i class="fa fa-male fa-fw"></i> Tài xế</a>
+                <a href="taixe"><i class="fa fa-male fa-fw"></i> Tài xế</a>
               </li>
             </ul>
             <!-- /.nav-second-level -->
@@ -154,51 +154,65 @@
   <div id="page-wrapper">
     <div class="row">
       <div class="col-lg-12">
-        <h1 class="page-header">THAY ĐỔI HÃNG XE</h1>
+        <h1 class="page-header">TÀI XẾ</h1>
       </div>
       <!-- /.col-lg-12 -->
     </div>
 
     <div class="row">
       <div class="col-lg-12">
-        <form:form action="${action}" method="post" modelAttribute="bus">
-          <fieldset class="scheduler-border">
-            <legend class="scheduler-border"><c:out value="${msg}"/></legend>
-            <c:if test="${type.equals('update')}">
-              <div class="form-group">
-                <label class="control-label">ID</label>
-                <form:input path="id" type="text" class="form-control" id="id" placeholder="ID" disabled="true"/>
-                <form:hidden path="id" />
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            Danh sách các tài xế
+          </div>
+          <!-- /.panel-heading -->
+          <div class="panel-body">
+            <div class="col-xs-12 col-sm-8 col-md-6">
+              <form:form action="search" method="get">
+                <div class="input-group">
+                  <input name="searchInput" type="text" class="form-control" placeholder="Search for name..."/>
+                          <span class="input-group-btn">
+                              <button class="btn btn-outline btn-primary" type="submit">Search</button>
+                          </span>
+                </div>
+              </form:form>
+            </div>
+            <div class="row">
+              <div class="col-sm-3">
+                <a href="newBus" role="button" class="btn btn-outline btn-primary">Add new bus company</a>
               </div>
-            </c:if>
-            <div class="form-group">
-              <label class="control-label">Address (*)</label>
-              <form:input path="address" type="text" class="form-control" placeholder="Address" required="true"/>
             </div>
-            <div class="form-group">
-              <label class="control-label">Description (*)</label>
-              <form:textarea path="description" type="text" class="form-control" placeholder="Description" required="true"/>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="table-responsive">
+                  <table class="table table-hover" >
+                    <thead>
+                    <tr>
+                      <th width="10px">Id</th>
+                      <th width="20px">Name</th>
+                      <th width="10px"></th>
+                      <th width="10px"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <c:forEach var="taixe" items="${taiXeList}">
+                      <tr>
+                        <td>${taixe.id}</td>
+                        <td>${taixe.name}</td>
+                        <td><button class="btn btn-sm btn-outline btn-primary" onclick="location.href='edit/${taixe.id}'">Edit</button></td>
+                        <td>  <button class="btn btn-sm btn-outline btn-danger" onclick="location.href='delete/${taixe.id}'">Delete</button></td>
+                      </tr>
+                    </c:forEach>
+                    </tbody>
+                    <i>${message}</i><br/>
+                  </table>
+                </div>
+              </div>
+              <!-- /.table-responsive -->
+
             </div>
-            <div class="form-group">
-              <label class="control-label">Dob (*)</label>
-              <form:input path="dob" type="date" class="form-control" placeholder="Dob" required="true" />
-            </div>
-            <div class="form-group">
-              <label class="control-label">Foundation (*)</label>
-              <form:input path="foundation" type="date" class="form-control" placeholder="Foundation" required="true" />
-            </div>
-            <div class="form-group">
-              <label class="control-label">Name (*)</label>
-              <form:input path="name" type="text" class="form-control" placeholder="Name" required="true"/>
-            </div>
-            <div class="form-group">
-              <label class="control-label">Phone (*)</label>
-              <form:input path="phone" type="number" step="any" class="form-control" placeholder="Phone" required="true"/>
-            </div>
-            <br>
-            <button type="submit" class="btn btn-info">Lưu</button>
-          </fieldset>
-        </form:form>
+          </div>
+        </div>
       </div>
     </div>
   </div>

@@ -15,8 +15,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
  */
 @Controller
 public class ProfileController {
-    @Autowired
-    ProfileRepository profileRepository;
+
 
     @RequestMapping(value = "/profile")
     public String profile(Model model){
@@ -24,13 +23,7 @@ public class ProfileController {
         return "profile";
     }
 
-    @RequestMapping(value = "/change/{id}",method = GET)
-    public String ChangePass(Model model,@PathVariable int id){
-        model.addAttribute("admin",profileRepository.findOne(id));
-        model.addAttribute("msg","Update infomation");
 
-        return "profile";
-    }
 
     @RequestMapping(value = "/change")
     public String change(){
