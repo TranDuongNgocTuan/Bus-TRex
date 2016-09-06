@@ -7,6 +7,8 @@ import com.iviettech.bus.repository.BusesRepository;
 import com.iviettech.bus.repository.StatusBusesRepository;
 import com.iviettech.bus.repository.TicketRepository;
 import com.iviettech.bus.repository.TimeTableScheduleRepository;
+import com.iviettech.bus.utils.AESCrypter;
+import com.iviettech.bus.utils.MailUtilGmail;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
+import java.security.GeneralSecurityException;
 import java.sql.Date;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -39,6 +42,11 @@ public class TransferController {
     @Autowired
     TicketRepository ticketRepository;
 
+    @Autowired
+    AESCrypter aesCrypter;
+
+    @Autowired
+    MailUtilGmail mailUtilGmail;
 
     @RequestMapping(value = "/transfer")
     public String transfer(@RequestParam(value = "timeTableId") int timeTableId,
@@ -63,7 +71,7 @@ public class TransferController {
     }
 
     @RequestMapping(value = "/postpaid")
-    public String postPaid(HttpSession session){
+    public String postPaid(HttpSession session) throws GeneralSecurityException {
 
         TicketEntity ticketEntitySession = (TicketEntity) session.getAttribute("ticket");
         TimeTableScheduleEntity timeTableScheduleEntity = (TimeTableScheduleEntity) session.getAttribute("timeTableTicket");
@@ -81,9 +89,25 @@ public class TransferController {
 
         ticketEntitySession.setBookTime(new java.sql.Date(Calendar.getInstance().getTimeInMillis()));
         ticketEntitySession.setBusesEntity(busesEntity);
+
+        String text = ticketEntitySession.getId()+"-"+ticketEntitySession.getFullName()+"-"+ticketEntitySession.getBookTime().toString();
+        String key = "TTY6I9^hQuo!a1n0";
+        String iv =  "Iay63!2Uy*)sQZhn"; // Initialization vector
+        String encryptedCode = aesCrypter.encrypt(text, key, iv);
+        ticketEntitySession.setCodeTicket(encryptedCode);
+
         ticketRepository.save(ticketEntitySession);
 
         session.invalidate();
+
+        String message2="";
+        try {
+            String body = "<h1 style='color:red;'> Dear"+ticketEntitySession.getFullName()+" </h1>";
+            body += "<h2>Đây là vé của bạn</h2>";
+            mailUtilGmail.sendEmail("ittuan123@gmail.com", "conos.team@gmail.com", "New Password", body, ticketEntitySession ,true);
+        } catch (Exception ex) {
+            System.out.println("Error : " + ex);
+        }
 
         return "redirect:";
     }

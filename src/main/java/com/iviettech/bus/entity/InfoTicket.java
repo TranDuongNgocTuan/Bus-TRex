@@ -25,10 +25,12 @@ public class InfoTicket{
 
     private float rankPunctuality;
 
+    private int sell;
+
     public InfoTicket() {
     }
 
-    public InfoTicket(ScheduleEntity scheduleEntity, int numberTicket, TimeTableScheduleEntity timeTableScheduleEntity, int numberSeat, int busesId, int sumNumberOfSeat, float rankBehavior, float rankBus, float rankOverall, float rankPunctuality) {
+    public InfoTicket(ScheduleEntity scheduleEntity, int numberTicket, TimeTableScheduleEntity timeTableScheduleEntity, int numberSeat, int busesId, int sumNumberOfSeat, float rankBehavior, float rankBus, float rankOverall, float rankPunctuality, int sell) {
         this.scheduleEntity = scheduleEntity;
         this.numberTicket = numberTicket;
         this.timeTableScheduleEntity = timeTableScheduleEntity;
@@ -39,6 +41,7 @@ public class InfoTicket{
         this.rankBus = rankBus;
         this.rankOverall = rankOverall;
         this.rankPunctuality = rankPunctuality;
+        this.sell = sell;
     }
 
     public ScheduleEntity getScheduleEntity() {
@@ -119,5 +122,13 @@ public class InfoTicket{
 
     public void setRankPunctuality(float rankPunctuality) {
         this.rankPunctuality = rankPunctuality;
+    }
+
+    public int getSell() {
+        return sell;
+    }
+
+    public void setSell(int sell) {
+        this.sell = sell;
     }
 }

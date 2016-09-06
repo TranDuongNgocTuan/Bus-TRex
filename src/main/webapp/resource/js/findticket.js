@@ -1,5 +1,9 @@
 ﻿$(function(){
 
+	$("#exampleInputName3").datepicker({
+		startDate: "-"
+	});
+
 	$(document).ready(function () {
 		$('.tooltiphover').tooltipster({
 			theme: ['tooltipster-noir', 'tooltipster-noir-customized'],
@@ -257,8 +261,4 @@
 		source: availableTags
 	});
 
-	var datepicker = $.fn.datepicker.noConflict();
-	$.fn.bootstrapDP = datepicker;
-
-	$("#exampleInputName3").bootstrapDP();
 });

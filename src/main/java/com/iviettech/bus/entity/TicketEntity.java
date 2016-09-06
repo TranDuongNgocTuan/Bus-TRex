@@ -35,6 +35,9 @@ public class TicketEntity {
     @Column(name = "numberseats")
     private int numberSeats;
 
+    @Column(name = "codeticket")
+    private String codeTicket;
+
     @ManyToOne
     @JoinColumn(name = "busesId")
     private BusesEntity busesEntity;
@@ -146,17 +149,11 @@ public class TicketEntity {
         this.busstationEntityArrival = busstationEntityArrival;
     }
 
-//    public void setetValueTicketEntity() {
-//        this.bookTime = new Date();
-//        this.totalprice = 0;
-//        this.fullName = "";
-//        this.numberphone = "";
-//        this.gmail = "";
-//        this.status = 0;
-//        this.seat = "";
-//        this.numberSeats = 0;
-//        this.busesEntity = busesEntity;
-//        this.busstationEntityDeparture = busstationEntityDeparture;
-//        this.busstationEntityArrival = busstationEntityArrival;
-//    }
+    public String getCodeTicket() {
+        return codeTicket;
+    }
+
+    public void setCodeTicket(String codeTicket) {
+        this.codeTicket = codeTicket;
+    }
 }

@@ -67,6 +67,16 @@ public class FindTicketController {
             e.printStackTrace();
         }
 
+        Calendar c = new GregorianCalendar();
+        c.set(Calendar.HOUR_OF_DAY, 0); //anything 0 - 23
+        c.set(Calendar.MINUTE, 0);
+        c.set(Calendar.SECOND, 0);
+        c.set(Calendar.MILLISECOND, 0);
+        Date dateToDay = c.getTime();
+
+        if(dateToDay.after(date))
+            return "error404";
+
         List<InfoTicket> scheduleEntityList =
                 infoTicketRepository.findAllInfoTicket(busstationEntityFrom.getId(), busstationEntityTo.getId(), new java.sql.Date(date.getTime()));
         List<ScheduleEntity> scheduleEntityListNormal =
@@ -86,8 +96,6 @@ public class FindTicketController {
         model.addAttribute("buseServiceList", busServicesEntityList);
         model.addAttribute("seatList", seats);
         model.addAttribute("dayStartMove",new java.sql.Date(date.getTime()));
-
-
 
         return "findticket";
     }
@@ -141,7 +149,6 @@ public class FindTicketController {
 
         return ajaxResponse;
     }
-
 
     public List<Integer> filterQutSeat(List<ScheduleEntity> scheduleEntityList){
         List<Integer> seats = new ArrayList<>();

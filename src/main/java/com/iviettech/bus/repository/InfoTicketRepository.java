@@ -38,6 +38,8 @@ public class InfoTicketRepository{
     @Autowired
     BusesRepository busesRepository;
 
+
+
     private JdbcTemplate jdbcTemplate;
 
 //    List<InfoTicket> infoTicketList;
@@ -66,7 +68,7 @@ public class InfoTicketRepository{
                 " left join comment" +
                 " on rank.id = comment.rankId" +
                 " left join bus" +
-                " on timetableschedule.busId = bus.id"+
+                " on timetableschedule.busId = bus.id" +
                 " where schedule.departureId = " + fromId + " and schedule.arrivalId = " + toId + " and datediff('" +  datePay  + "', schedule.datestart)%schedule.numberday = 0" +
                 " group by timetableschedule.id";
         List<InfoTicket> infoTicketList = jdbcTemplate.query(sql, new RowMapper<InfoTicket>() {
@@ -102,6 +104,12 @@ public class InfoTicketRepository{
                 aInfoTicket.setRankBus(rs.getFloat("rankBus"));
                 aInfoTicket.setRankOverall(rs.getFloat("rankOverall"));
                 aInfoTicket.setRankPunctuality(rs.getFloat("rankPunctuality"));
+
+                PromotionTimeEntity promotionTimeEntity = promotionTimeRepository.findByScheduleEntityIdAndStartAndEnd(scheduleEntity.getId(), datePay);
+                if (promotionTimeEntity != null)
+                    aInfoTicket.setSell(promotionTimeEntity.getPromotionEntity().getSale());
+                else
+                    aInfoTicket.setSell(0);
 
                 BusesEntity busesEntity = busesRepository.findByDateAndTimeTableScheduleEntityId(datePay, timeTableScheduleEntity.getId());
                 if (busesEntity != null){
