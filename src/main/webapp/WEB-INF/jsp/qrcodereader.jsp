@@ -5,10 +5,12 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <meta name="description" content="HTML5 QR code Reader : A cross platform HTML5 QR code reader.">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
     <link rel="stylesheet" href="/resource/vendor/bootstrap.css">
     <link rel="stylesheet" href="/resource/css/findticket.css">
     <link rel="stylesheet" href="/resource/css/choosechair.css">
     <link rel="stylesheet" href="/resource/css/transfer.css">
+    <link rel="stylesheet" href="/resource/css/scanticket.css">
     <link rel="stylesheet" type="text/css" href="/resource/css/chair.css">
     <script type="text/javascript" src="/resource/vendor/bootstrap.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -59,10 +61,15 @@
         <div class="row">
             <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 text-center">
                 <h3>Quyét vé</h3>
-                <div id="reader" style="height:400px;">
+                <div id="reader" style="height:320px;">
                 </div>
-                <div id="read"></div>
-                <input type="button" class="btn btn-primary" value="Stop" id="btn_stop" />
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 button-camera">
+                        <input type="button" class="btn btn-success" value="Scan" id="btn_scan" />
+                        <input type="button" class="btn btn-danger " value="Stop" id="btn_stop" />
+                    </div>
+                </div>
+
             </div>
             <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7 bill">
                 <div class="row">
@@ -126,11 +133,11 @@
     </div>
 </div>
 
-<footer>
+<footer class="footer-scanticket">
     <div class="container">
         <div class="row">
             <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-                <img src="../../resource/img/icon-vxr.svg" class="pull-left" width="55px" height="55px">
+                <img src="/resource/img/icon-vxr.svg" class="pull-left" width="55px" height="55px">
                 <p>Bản quyền © 2016 thuộc về VeXeRe.Com <br>
                     Tên công ty: CÔNG TY CỔ PHẦN VEXERE <br>
                     Địa chỉ đăng ký kinh doanh: 8C Chữ Đồng Tử, Phường 7, Quận Tân Bình, Thành Phố Hồ Chí Minh, Việt Nam <br>

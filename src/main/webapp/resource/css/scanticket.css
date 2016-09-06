@@ -1,0 +1,34 @@
+input#btn_scan {
+    width: 23%;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-right: 11px;
+}
+
+input#btn_stop {
+    width: 23%;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+input#btn_scan {
+    width: 23%;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-right: 11px;
+}
+
+input#btn_stop {
+    width: 23%;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.col-xs-12.col-sm-12.col-md-12.col-lg-12.button-camera {
+    padding-top: 22px;
+}
+
+footer.footer-scanticket {
+    margin-top: 75px;
+    /* background-color: #ddd; */
+}
