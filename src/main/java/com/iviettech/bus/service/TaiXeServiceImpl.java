@@ -7,19 +7,23 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 
 @Service
 public class TaiXeServiceImpl implements TaiXeService{
+
+
     @Resource
     private TaiXeRepository taiXeRepository;
+
 
     @Override
     @Transactional
     public TaiXeEntity create(TaiXeEntity taiXeEntity){
-        TaiXeEntity createdTaiXe=taiXeEntity;
-        return taiXeRepository.save(createdTaiXe);
+        TaiXeEntity created=taiXeEntity;
+        return taiXeRepository.save(created);
     }
 
     @Override
@@ -52,5 +56,17 @@ public class TaiXeServiceImpl implements TaiXeService{
             throw new TaiXeNotFound();
         updatedTaiXe.setName(taiXeEntity.getName());
         return updatedTaiXe;
+    }
+
+    @Override
+    public List<TaiXeEntity> search(String searchInput) {
+        searchInput = searchInput.toLowerCase();
+        List<TaiXeEntity> resultList = new ArrayList<>();
+        for (TaiXeEntity taixe: taiXeRepository.findAll()) {
+            if (taixe.getName().toLowerCase().contains(searchInput)){
+                resultList.add(taixe);
+            }
+        }
+        return resultList;
     }
 }

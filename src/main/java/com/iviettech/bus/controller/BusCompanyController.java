@@ -1,87 +1,85 @@
 package com.iviettech.bus.controller;
 
-import com.iviettech.bus.entity.BusEntity;
 import com.iviettech.bus.entity.BusServicesEntity;
-import com.iviettech.bus.entity.PromotionEntity;
-import com.iviettech.bus.entity.ScheduleEntity;
-import com.iviettech.bus.repository.*;
+import com.iviettech.bus.service.BusCompanyService;
+import com.iviettech.bus.utils.TaiXeNotFound;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.WebDataBinder;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
-import static org.springframework.web.bind.annotation.RequestMethod.POST;
+
 
 @Controller
 public class BusCompanyController {
     @Autowired
-    BusRepository busRepository;
-    @Autowired
-    PromotionRepository promotionRepository;
-    @Autowired
-    ScheduleRepository scheduleRepository;
-    @Autowired
-    BusCompanyRepository busCompanyRepository;
+    private BusCompanyService busCompanyService;
 
-
-    @RequestMapping(value = "/buscompany",method = GET)
-    public String showBooks(Model model) {
-        List<BusServicesEntity> busList = (List<BusServicesEntity>) busCompanyRepository.findAll();
-        model.addAttribute("busList", busList);
-        return "buscompany";
+    @RequestMapping(value="/buscompany", method=RequestMethod.GET)
+    public ModelAndView List(){
+        ModelAndView mav=new ModelAndView("buscompany");
+        List<BusServicesEntity> busServicesEntityList=busCompanyService.findAll();
+        mav.addObject("busList", busServicesEntityList);
+        return mav;
     }
 
-    @RequestMapping(value = "/search", method = GET)
+    @RequestMapping(value = "/buscompany/create",method = RequestMethod.GET)
+    public String New(Model model){
+        model.addAttribute("busCompany", new BusServicesEntity());
+        return "createbuscompany";
+    }
+
+    @RequestMapping(value = "/buscompany/create",method = RequestMethod.POST)
+    public String createNew(BusServicesEntity busServicesEntity){
+        busCompanyService.create(busServicesEntity);
+        return "redirect:/buscompany";
+    }
+
+    @RequestMapping(value="/buscompany/edit/{id}", method=RequestMethod.GET)
+    public ModelAndView edit(@PathVariable Integer id){
+        ModelAndView mav=new ModelAndView("editbuscompany");
+        BusServicesEntity busServicesEntity=busCompanyService.findById(id);
+        mav.addObject("busCompany", busServicesEntity);
+        return mav;
+    }
+
+    @RequestMapping(value="/buscompany/edit/{id}", method=RequestMethod.POST)
+    public ModelAndView edit(@ModelAttribute @Validated BusServicesEntity busServicesEntity,BindingResult result,@PathVariable Integer id,final RedirectAttributes redirectAttributes) throws TaiXeNotFound {
+        if (result.hasErrors())
+            return new ModelAndView("editbuscompany");
+        ModelAndView mav=new ModelAndView("redirect:/buscompany");
+        String message="successfully updated.";
+        busCompanyService.update(busServicesEntity);
+        redirectAttributes.addFlashAttribute("message", message);
+        return mav;
+    }
+
+    @RequestMapping(value="/buscompany/delete/{id}", method=RequestMethod.GET)
+    public ModelAndView delete(@PathVariable Integer id,final RedirectAttributes redirectAttributes) throws TaiXeNotFound{
+        ModelAndView mav=new ModelAndView("redirect:/buscompany");
+        BusServicesEntity busServicesEntity=busCompanyService.delete(id);
+        String message=busServicesEntity.getName()+"successfully deleted.";
+        redirectAttributes.addFlashAttribute("message",message);
+        return mav;
+    }
+
+    @RequestMapping(value = "/buscompany/search", method = GET)
     public String search(@RequestParam("searchInput")String searchInput, Model model) {
+        List<BusServicesEntity> resultList;
+        if (searchInput.isEmpty()) {
+            resultList = busCompanyService.findAll();
+        } else {
+            resultList = busCompanyService.search(searchInput);
+        }
 
+        model.addAttribute("busList", resultList);
         return "buscompany";
-    }
-
-    @RequestMapping(value = "/newBusCompany", method = GET)
-    public String showNewBook(Model model) {
-        model.addAttribute("bus", new BusServicesEntity());
-        model.addAttribute("msg", "Add a new bus company");
-        model.addAttribute("action", "newBusCompany");
-        return "actionbuscompany";
-    }
-
-    @RequestMapping(value = "/newBus", method = POST)
-    public String saveBook(BusServicesEntity bus) {
-        busCompanyRepository.save(bus);
-        return "buscompany";
-    }
-
-    @RequestMapping(value = "/editbuscompany/{id}", method = GET)
-    public String showEditBus(Model model, @PathVariable int id) {
-
-        return "actionbuscompany";
-    }
-
-    @RequestMapping(value = "/updateBus", method = POST)
-    public String updateBus(@ModelAttribute BusServicesEntity bus) {
-
-        return "buscompany";
-    }
-
-    @RequestMapping(value = "/delete", method = GET)
-    public String deleteBus(@RequestParam(name = "id") int id) {
-
-
-        busCompanyRepository.delete(id);
-        return "buscompany";
-    }
-
-    @InitBinder
-    public void initBinder(WebDataBinder binder) {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        sdf.setLenient(true);
-        binder.registerCustomEditor(Date.class, new CustomDateEditor(sdf, true));
     }
 }

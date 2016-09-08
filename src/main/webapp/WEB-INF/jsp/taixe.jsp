@@ -167,31 +167,31 @@
           </div>
           <!-- /.panel-heading -->
           <div class="panel-body">
-            <div class="col-xs-12 col-sm-8 col-md-6">
-              <form:form action="search" method="get">
-                <div class="input-group">
-                  <input name="searchInput" type="text" class="form-control" placeholder="Search for name..."/>
-                          <span class="input-group-btn">
-                              <button class="btn btn-outline btn-primary" type="submit">Search</button>
-                          </span>
-                </div>
-              </form:form>
-            </div>
             <div class="row">
+              <div class="col-xs-12 col-sm-8 col-md-6">
+                <form:form action="search" method="get">
+                  <div class="input-group">
+                    <input name="searchInput" type="text" class="form-control" placeholder="Search for name..."/>
+                            <span class="input-group-btn">
+                                <button class="btn btn-outline btn-primary" type="submit">Search</button>
+                            </span>
+                  </div>
+                </form:form>
+              </div>
               <div class="col-sm-3">
-                <a href="newBus" role="button" class="btn btn-outline btn-primary">Add new bus company</a>
+                <a href="/create" role="button" class="btn btn-outline btn-primary">Thêm</a>
               </div>
             </div>
             <div class="row">
-              <div class="col-md-12">
+              <div class="col-md-6">
                 <div class="table-responsive">
                   <table class="table table-hover" >
                     <thead>
                     <tr>
-                      <th width="10px">Id</th>
-                      <th width="20px">Name</th>
-                      <th width="10px"></th>
-                      <th width="10px"></th>
+                      <th>Id</th>
+                      <th>Name</th>
+                      <th></th>
+                      <th></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -204,9 +204,11 @@
                       </tr>
                     </c:forEach>
                     </tbody>
-                    <i>${message}</i><br/>
+
                   </table>
+
                 </div>
+                <i class="text-success">${message}</i><br/>
               </div>
               <!-- /.table-responsive -->
 

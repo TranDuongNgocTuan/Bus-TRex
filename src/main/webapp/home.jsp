@@ -17,7 +17,7 @@
   <link rel="canonical" href="https://vexere.com">
   <meta name="robots" content="index, follow" />
   <meta charset="utf-8">
-  <link href="resource/Content/vxr/images/vexere-ico.ico?v=4484" rel="shortcut icon" type="image/x-icon" />
+  <link href="resource/Content/vxr/images/vexere-ico.ico" rel="shortcut icon" type="image/x-icon" />
   <meta property="og:site_name" content="VeXeRe" />
   <meta property="og:type" content="product.group" />
   <meta property="og:url" content="https://vexere.com" />
@@ -119,21 +119,6 @@
               <li class="flex-active-slide" style="width: 352px; margin-right: 0px; float: left; display: block;" data-thumb-alt="">
                 <a href="#">
                   <img src="resource/Content/vxr/images/promotion/cyberpay_slider.png" draggable="false">
-                </a>
-              </li>
-              <li class="" data-thumb-alt="" style="width: 352px; margin-right: 0px; float: left; display: block;">
-                <a href="#" target="_blank">
-                  <img src="resource/Content/vxr/images/promotion/cyberpay_slider.png" draggable="false">
-                </a>
-              </li>
-              <li class="" data-thumb-alt="" style="width: 352px; margin-right: 0px; float: left; display: block;">
-                <a href="#" target="_blank">
-                  <img src="resource/Content/vxr/images/promotion/cyberpay_slider.png" draggable="false">
-                </a>
-              </li>
-              <li class="clone" style="width: 352px; margin-right: 0px; float: left; display: block;" aria-hidden="true">
-                <a href="#">
-                  <img src="resource/Content/vxr/images/promotion/cyberpay_slider.jpg" draggable="false">
                 </a>
               </li>
             </ul>

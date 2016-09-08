@@ -14,4 +14,5 @@ public interface TaiXeService {
     public List<TaiXeEntity> findAll();
     public TaiXeEntity update(TaiXeEntity taiXeEntity) throws TaiXeNotFound;
     public TaiXeEntity findById(int id);
+    List<TaiXeEntity> search(String searchInput);
 }
