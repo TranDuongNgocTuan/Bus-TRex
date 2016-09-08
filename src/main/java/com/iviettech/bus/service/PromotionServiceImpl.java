@@ -1,7 +1,9 @@
 package com.iviettech.bus.service;
 
 import com.iviettech.bus.entity.PromotionEntity;
+import com.iviettech.bus.entity.PromotionTimeEntity;
 import com.iviettech.bus.repository.PromotionRepository;
+import com.iviettech.bus.repository.PromotionTimeRepository;
 import com.iviettech.bus.utils.TaiXeNotFound;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,6 +16,8 @@ import java.util.List;
 public class PromotionServiceImpl implements PromotionService{
     @Resource
     public PromotionRepository promotionRepository;
+    @Resource
+    public PromotionTimeRepository promotionTimeRepository;
 
     @Override
     @Transactional
@@ -42,6 +46,12 @@ public class PromotionServiceImpl implements PromotionService{
     @Transactional
     public List<PromotionEntity> findAll(){
         return (List<PromotionEntity>) promotionRepository.findAll();
+    }
+
+    @Override
+    @Transactional
+    public List<PromotionTimeEntity> findAll1(){
+        return (List<PromotionTimeEntity>) promotionTimeRepository.findAll();
     }
 
     @Override

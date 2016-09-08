@@ -2,20 +2,20 @@ package com.iviettech.bus.entity;
 
 import javax.persistence.*;
 
-
 @Entity
-@Table(name = "taixe")
-public class TaiXeEntity {
+@Table(name = "image")
+public class ImageEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private String name;
+    private byte[] image;
 
-    public TaiXeEntity() {
+    public ImageEntity() {
     }
 
     public int getId() {
+
         return id;
     }
 
@@ -23,11 +23,11 @@ public class TaiXeEntity {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public byte[] getImage() {
+        return image;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setImage(byte[] image) {
+        this.image = image;
     }
 }

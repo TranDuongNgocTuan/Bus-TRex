@@ -1,6 +1,7 @@
 package com.iviettech.bus.controller;
 
 import com.iviettech.bus.entity.PromotionEntity;
+import com.iviettech.bus.entity.PromotionTimeEntity;
 import com.iviettech.bus.service.PromotionService;
 import com.iviettech.bus.utils.TaiXeNotFound;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,9 @@ public class PromotionController {
     public ModelAndView List(){
         ModelAndView mav=new ModelAndView("promotion");
         List<PromotionEntity> promotionEntityList=promotionService.findAll();
+        List<PromotionTimeEntity> promotionTimeEntityList=promotionService.findAll1();
         mav.addObject("promotionList", promotionEntityList);
+        mav.addObject("promotionTime",promotionTimeEntityList);
         return mav;
     }
 
