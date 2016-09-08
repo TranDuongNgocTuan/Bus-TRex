@@ -99,7 +99,7 @@
                         <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Quản lý<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="#"><i class="fa fa-info fa-fw"></i> Thông tin vé</a>
+                                <a href="ticketinformation"><i class="fa fa-info fa-fw"></i> Thông tin vé</a>
                             </li>
                             <li>
                                 <a href="#"><i class="fa fa-bars fa-fw"></i> Tuyến xe</a>
@@ -110,6 +110,9 @@
                             <li>
                                 <a href="taixe"><i class="fa fa-male fa-fw"></i> Tài xế</a>
                             </li>
+                            <li>
+                                <a href="#"><i class="fa fa-usd fa-fw" ></i> Khuyến mãi</a>
+                            </li>
                         </ul>
                         <!-- /.nav-second-level -->
                     </li>
@@ -117,7 +120,7 @@
                         <a href="#"><i class="fa fa-area-chart fa-fw"></i> Tổng kết doanh thu</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-usd fa-fw"></i> Khuyến mãi</a>
+                        <a href="#"><i class="fa fa-image fa-fw"></i> Hình ảnh</a>
                     </li>
                     <li>
                         <a href="#"><i class="fa fa-users fa-fw"></i> Nói về chúng tôi</a>

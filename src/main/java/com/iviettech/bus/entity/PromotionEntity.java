@@ -25,6 +25,8 @@ public class PromotionEntity {
 
     private int sale;
 
+
+
     public PromotionEntity() {
     }
 

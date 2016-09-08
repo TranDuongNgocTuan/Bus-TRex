@@ -5,9 +5,7 @@ import com.iviettech.bus.utils.TaiXeNotFound;
 
 import java.util.List;
 
-/**
- * Created by Admin on 9/5/2016.
- */
+
 public interface TaiXeService {
     public TaiXeEntity create(TaiXeEntity taiXeEntity);
     public TaiXeEntity delete(int id) throws TaiXeNotFound;

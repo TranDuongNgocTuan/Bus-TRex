@@ -105,7 +105,7 @@
             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Quản lý<span class="fa arrow"></span></a>
             <ul class="nav nav-second-level">
               <li>
-                <a href="/ticketinfomation"><i class="fa fa-info fa-fw"></i> Thông tin vé</a>
+                <a href="/ticketinformation"><i class="fa fa-info fa-fw"></i> Thông tin vé</a>
               </li>
               <li>
                 <a href="#"><i class="fa fa-bars fa-fw"></i> Tuyến xe</a>
@@ -155,7 +155,7 @@
   <div id="page-wrapper">
     <div class="row">
       <div class="col-lg-12">
-        <h1 class="page-header">THÔNG TIN VÉ</h1>
+        <h1 class="page-header">HÃNG XE</h1>
       </div>
       <!-- /.col-lg-12 -->
     </div>
@@ -164,14 +164,14 @@
       <div class="col-lg-12">
         <div class="panel panel-default">
           <div class="panel-heading">
-            Danh sách vé
+            Danh sách các hãng xe
           </div>
           <!-- /.panel-heading -->
           <div class="panel-body">
 
             <div class="row">
               <div class="col-xs-12 col-sm-8 col-md-6">
-                <form:form action="ticketinfomation/search" method="get">
+                <form:form action="ticketinformation/search" method="get">
                   <div class="input-group">
                     <input name="searchInput" type="text" class="form-control" placeholder="Search for name,phone..."/>
                           <span class="input-group-btn">
@@ -179,9 +179,6 @@
                           </span>
                   </div>
                 </form:form>
-              </div>
-              <div class="col-sm-3">
-                <a href="/ticketinfomation/create" role="button" class="btn btn-outline btn-primary">Add</a>
               </div>
             </div>
             <div class="row">
@@ -201,26 +198,22 @@
                       <th>Bus station arrival</th>
                       <th>Bus station departure</th>
                       <th>Code ticket</th>
-                      <th></th>
-                      <th></th>
                     </tr>
                     </thead>
                     <tbody>
-                    <c:forEach var="bus" items="${busList}">
+                    <c:forEach var="ticket" items="${tho}">
                       <tr>
-                        <td>${bus.id}</td>
-                        <td>${bus.address}</td>
-                        <td>${bus.description}</td>
-                        <td>${bus.dob}</td>
-                        <td>${bus.foundation}</td>
-                        <td>${bus.name}</td>
-                        <td>${bus.phone}</td>
-                        <td>${bus.dob}</td>
-                        <td>${bus.foundation}</td>
-                        <td>${bus.name}</td>
-                        <td>${bus.phone}</td>
-                        <td><button class="btn btn-sm btn-outline btn-primary" onclick="location.href='ticketinfomation/edit/${bus.id}'">Edit</button></td>
-                        <td>  <button class="btn btn-sm btn-outline btn-danger" onclick="location.href='ticketinfomation/delete/${bus.id}'">Delete</button></td>
+                        <td>${ticket.id}</td>
+                        <td>${ticket.fullName}</td>
+                        <td>${ticket.bookTime}</td>
+                        <td>${ticket.numberphone}</td>
+                        <td>${ticket.totalprice}</td>
+                        <td>${ticket.seat}</td>
+                        <td>${ticket.numberSeats}</td>
+                        <td>${ticket.gmail}</td>
+                        <td>${ticket.busstationEntityArrival}</td>
+                        <td>${ticket.busstationEntityDeparture}</td>
+                        <td>${ticket.codeTicket}</td>
                       </tr>
                     </c:forEach>
                     </tbody>
