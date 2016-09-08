@@ -17,12 +17,12 @@
 
 	$('.commentForm').validator();
 
-	$(".writereviews").click(function(){
-		var idName = $(this).find('input').val();
-		var idAndName = idName.split("/%/");
-		$('.nameService').html("Hãng xe:   " + idAndName[1]);
-		$('.busServiceModal').val(idAndName[0]);
-	});
+	//$(".writereviews").click(function(){
+	//	var idName = $(this).find('input').val();
+	//	var idAndName = idName.split("/%/");
+	//	$('.nameService').html("Hãng xe:   " + idAndName[1]);
+	//	$('.busServiceModal').val(idAndName[0]);
+	//});
 
 	function sortTable(f,n){
 		var rowInfo = $('tr#getTrInfo').get();
@@ -91,6 +91,10 @@
 
 		if($(this).hasClass('money')){
 			sortTable(f_sl,'moneyTicket');
+		}
+
+		if($(this).hasClass('rating')){
+			sortTable(f_sl,'ratingNumber');
 		}
 
 		return false;

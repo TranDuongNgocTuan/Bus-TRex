@@ -13,19 +13,17 @@
 <head lang="vi" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# product: http://ogp.me/ns/product#">
     <meta name="viewport" content="width=device-width"/>
     <title>Đặt vé xe online</title>
-
-    <link rel="canonical" href="https://vexere.com">
     <meta name="robots" content="index, follow"/>
     <meta charset="utf-8">
-    <link href="resource/Content/vxr/images/vexere-ico.ico?v=4484" rel="shortcut icon" type="image/x-icon"/>
+    <link href="resource/images/vexere-ico.ico?v=4484" rel="shortcut icon" type="image/x-icon"/>
     <meta property="og:site_name" content="VeXeRe"/>
     <meta property="og:type" content="product.group"/>
     <meta property="og:url" content="https://vexere.com"/>
-    <meta property="og:image" content="/Content/vxr/images/fb-thumbnail.jpg"/>
+    <meta property="og:image" content="/images/fb-thumbnail.jpg"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <meta name="google-site-verification" content="niV9ShHdCWcZFAoPyWjqPL74Aldmk_jHfbvYkIt6uX0"/>
     <!-- Stylesheet -->
-    <link href="resource/bundles/home-styles.css?v=4484" rel="stylesheet"/>
+    <link href="resource/css/home-styles.css?v=4484" rel="stylesheet"/>
     <link rel="stylesheet" type="text/css" href="resource/font-awesome-4.6.3/css/font-awesome.min.css">
     <link rel="stylesheet" href="/resource/css/bootstrap-datepicker.min.css">
     <link rel="stylesheet" href="/resource/css/jquery-ui.css">
@@ -33,9 +31,7 @@
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
     <script src="/resource/js/jquery-ui.min.js"></script>
     <script src="/resource/js/bootstrap-datepicker.min.js"/>
-    <script type="text/javascript" src="resource/bundles/home-scripts.js"></script>
-
-
+    <script type="text/javascript" src="resource/js/home-scripts.js"></script>
     <!-- END GA -->
 </head>
 <body>
@@ -43,12 +39,12 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3">
-                <a href="/" class="logo-image"><img height="50" src="resource/Content/vxr/images/Home/bus-vxr.png"/></a>
+                <a href="/" class="logo-image"><img height="50" src="resource/images/Home/bus-vxr.png"/></a>
                 <ul class="header-action-bar visible-sm visible-xs">
                     <li>
                         <a class="header-blue-language en-change" href="javascript:"
                            data-href="/vi-VN/Language/ChangeLanguage?curlang=en&url=/"><img width="24"
-                                                                                            src="resource/Content/vxr/images/english_icon.png"/></a>
+                                                                                            src="resource/images/english_icon.png"/></a>
                     </li>
                     <li>
                         <a class="header-blue-tel" href="tel: 19006484">
@@ -66,10 +62,10 @@
             <div class="col-md-9 header-blue-right-menu">
                 <ul class="header-blue-menu-list">
                     <li>
-                        <a href="/WEB-INF/jsp/HTML5%20QR%20code%20Reader.jsp">Kiểm tra vé</a>
+                        <a href="/scanticket">Kiểm tra vé</a>
                     </li>
                     <li>
-                        <a href="home.jsp">Trang chủ</a>
+                        <a href="/">Trang chủ</a>
                     </li>
                 </ul>
             </div>
@@ -130,35 +126,35 @@
                             <li class="clone" aria-hidden="true"
                                 style="width: 352px; margin-right: 0px; float: left; display: block;">
                                 <a href="#" target="_blank">
-                                    <img src="resource/Content/vxr/images/promotion/Silder_2-9_(_ty_le_360x214_).jpg"
+                                    <img src="resource/images/promotion/Silder_2-9_(_ty_le_360x214_).jpg"
                                          draggable="false">
                                 </a>
                             </li>
                             <li class="flex-active-slide"
                                 style="width: 352px; margin-right: 0px; float: left; display: block;" data-thumb-alt="">
                                 <a href="#">
-                                    <img src="resource/Content/vxr/images/promotion/cyberpay_slider.png"
+                                    <img src="resource/images/promotion/cyberpay_slider.png"
                                          draggable="false">
                                 </a>
                             </li>
                             <li class="" data-thumb-alt=""
                                 style="width: 352px; margin-right: 0px; float: left; display: block;">
                                 <a href="#" target="_blank">
-                                    <img src="resource/Content/vxr/images/promotion/cyberpay_slider.png"
+                                    <img src="resource/images/promotion/cyberpay_slider.png"
                                          draggable="false">
                                 </a>
                             </li>
                             <li class="" data-thumb-alt=""
                                 style="width: 352px; margin-right: 0px; float: left; display: block;">
                                 <a href="#" target="_blank">
-                                    <img src="resource/Content/vxr/images/promotion/cyberpay_slider.png"
+                                    <img src="resource/Content/promotion/cyberpay_slider.png"
                                          draggable="false">
                                 </a>
                             </li>
                             <li class="clone" style="width: 352px; margin-right: 0px; float: left; display: block;"
                                 aria-hidden="true">
                                 <a href="#">
-                                    <img src="resource/Content/vxr/images/promotion/cyberpay_slider.jpg"
+                                    <img src="resource/Content/promotion/cyberpay_slider.jpg"
                                          draggable="false">
                                 </a>
                             </li>
@@ -180,7 +176,7 @@
                 <div class="col-sm-12 pr0 pl0">
                     <div class="banner-29">
                         <img class="visible-xs visible-sm img-responsive"
-                             src="resource/Content/vxr/images/General/Banner_Trang_Chu_(Mobile)_-_With_Clock.png"/>
+                             src="resource/images/General/Banner_Trang_Chu_(Mobile)_-_With_Clock.png"/>
 
                         <div class="ticket-amount"><label></label></div>
                     </div>
@@ -220,7 +216,7 @@
 
     <div class="skyline-city"></div>
     <div class="bus-img">
-        <img style="opacity: 0.3;filter: alpha(opacity=30);" src="resource/Content/vxr/images/newlayout/banh-xe.gif">
+        <img style="opacity: 0.3;filter: alpha(opacity=30);" src="resource/images/newlayout/banh-xe.gif">
     </div>
 </div>
 <div class="hidden-sm hidden-xs">
@@ -246,7 +242,7 @@
                         <div class="text-center" style="position: relative">
                             <hr class="customer-divider"/>
                             <img class="img-circle customer-avatar" width="50"
-                                 src="resource/Content/vxr/images/Vancakova.jpg"/>
+                                 src="resource/images/Vancakova.jpg"/>
                         </div>
                     </div>
                 </div>
@@ -295,7 +291,7 @@
 
                 <div class="col-08 clearfix">
                     <a target="_blank" href="http://csip.vn/" rel="nofollow"><img
-                            src="resource/Content/tp/images/logo_csip_final.png" style="width: 45px;"></a>
+                            src="resource/img/logo_csip_final.png" style="width: 45px;"></a>
                 </div>
             </div>
         </div>
@@ -304,7 +300,7 @@
         <div class="copyright-panel" itemscope itemtype="http://schema.org/Organization">
             <div class="col col-md-8 footer-info-panel hidden-sm hidden-xs">
                 <a itemprop="url" class="footer-logo" href="/" title="Cổng thông tin vé xe khách lớn nhất Việt Nam">
-                    <img itemprop="logo" src="resource/Content/vxr/images/Home/icon-vxr.jpg" alt=""
+                    <img itemprop="logo" src="resource/images/Home/icon-vxr.jpg" alt=""
                          style="width: 55px; height: 55px;"/>
                 </a>
 
@@ -333,19 +329,19 @@
             <div class="col-md-4 certificate-panel">
 
                 <div class="col col-md-6 col-sm-3 col-xs-4">
-                    <img src="resource/Content/vxr/images/Home/certificate0.png"/>
+                    <img src="resource/images/Home/certificate0.png"/>
                 </div>
                 <div class="col col-md-6  col-sm-3 col-xs-4">
-                    <img src="resource/Content/vxr/images/Home/certificate1.png"/>
+                    <img src="resource/images/Home/certificate1.png"/>
                 </div>
                 <div class="col col-md-6 col-sm-3 hidden-xs">
                     <a href="http://online.gov.vn/HomePage/WebsiteDisplay.aspx?DocId=773">
-                        <img src="resource/Content/vxr/images/Home/certificate2.png"/>
+                        <img src="resource/images/Home/certificate2.png"/>
                     </a>
                 </div>
                 <div class="col col-md-6 col-sm-3 col-xs-4">
                     <a href="http://online.gov.vn/HomePage/WebsiteDisplay.aspx?DocId=773">
-                        <img src="resource/Content/vxr/images/Home/certificate3.png"/>
+                        <img src="resource/images/Home/certificate3.png"/>
                     </a>
                 </div>
             </div>
@@ -399,66 +395,6 @@
         bottom: 0;
         width: 390px;
         height: 260px;
-    }
-
-    .bus-km {
-        background: url(/resource/Content/vxr/images/pop-up/xe-lien-hung.png) no-repeat;
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 275px;
-        height: 86px;
-        z-index: 999;
-    }
-
-    .bus-km img {
-        width: 274px;
-        opacity: 0.2;
-    }
-
-    .banner-km {
-        width: 274px;
-        opacity: 0.2;
-    }
-
-    .bus-caolam {
-        background: url(/resource/Content/vxr/images/pop-up/sliderOperator/xe-cao-lam/khuyenmai.png) no-repeat;
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 275px;
-        height: 86px;
-        z-index: 999;
-    }
-
-    .bus-halinh {
-        background: url(/resource/Content/vxr/images/pop-up/sliderOperator/xe-ha-linh/khuyenmai.png) no-repeat;
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 275px;
-        height: 86px;
-        z-index: 999;
-    }
-
-    .bus-hoangkhai {
-        background: url(/resource/Content/vxr/images/pop-up/sliderOperator/xe-hoang-khai/khuyenmai.png) no-repeat;
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 275px;
-        height: 86px;
-        z-index: 999;
-    }
-
-    .bus-thesinh {
-        background: url(/resource/Content/vxr/images/pop-up/sliderOperator/xe-the-sinh/khuyenmai.png) no-repeat;
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 275px;
-        height: 86px;
-        z-index: 999;
     }
 
     .banner-kh-km {
@@ -555,10 +491,10 @@
                 <div class="popup-container">
                     <a class="dalat-link" href="#">
                         <img class="img-responsive img-popup-tet"
-                             src="resource/Content/vxr/images/pop-up/Popup_New_PC_and_Mobile.png"/>
+                             src="resource/images/pop-up/Popup_New_PC_and_Mobile.png"/>
 
                     </a>
-                    <img class="close-button" src="resource/Content/vxr/images/newlayout/close_red.png" width="32"/>
+                    <img class="close-button" src="resource/images/newlayout/close_red.png" width="32"/>
                 </div>
             </div>
         </div>
@@ -682,7 +618,6 @@
         });
     });
 </script>
-
 <script>
     $(function () {
         var availableTags = [
@@ -755,11 +690,9 @@
         });
     });
 </script>
-
 <script>
     $("#slider").slider();
 </script>
-
 <script>
     $(function () {
         $("#datepicker").datepicker(
@@ -769,9 +702,7 @@
 
     });
 </script>
-
 </body>
-
 </html>
 
 

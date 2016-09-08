@@ -316,6 +316,7 @@ h4.moneyTicket {
 
 .container-bus {
     display: inline-block;
+    width: 100%;
 }
 
 .table-borderless tbody tr td, .table-borderless tbody tr th, .table-borderless thead tr th {
@@ -548,4 +549,12 @@ button.btn.btn-primary.wm-comment {
 
 .container-start {
     font-size: 0.4em;
+}
+
+.offer-tag {
+    background: url(/resource/img/offer-tag.png) no-repeat;
+    background-size: 70px;
+    margin-bottom: 6px;
+    padding-left: 8px;
+    color: white;
 }

@@ -1,12 +1,10 @@
 package com.iviettech.bus.controller;
 
 import com.iviettech.bus.entity.BusesEntity;
+import com.iviettech.bus.entity.PromotionTimeEntity;
 import com.iviettech.bus.entity.TicketEntity;
 import com.iviettech.bus.entity.TimeTableScheduleEntity;
-import com.iviettech.bus.repository.BusesRepository;
-import com.iviettech.bus.repository.StatusBusesRepository;
-import com.iviettech.bus.repository.TicketRepository;
-import com.iviettech.bus.repository.TimeTableScheduleRepository;
+import com.iviettech.bus.repository.*;
 import com.iviettech.bus.utils.AESCrypter;
 import com.iviettech.bus.utils.MailUtilGmail;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,22 +46,28 @@ public class TransferController {
     @Autowired
     MailUtilGmail mailUtilGmail;
 
+    @Autowired
+    PromotionTimeRepository promotionTimeRepository;
+
     @RequestMapping(value = "/transfer")
     public String transfer(@RequestParam(value = "timeTableId") int timeTableId,
                            @ModelAttribute(value = "ticket") TicketEntity ticket,
                            HttpSession session,
                            Model model) {
 
+        Date dateStartMove = (Date) session.getAttribute("dayStartMove");
         TimeTableScheduleEntity timeTableScheduleEntity = timeTableScheduleRepository.findOne(timeTableId);
+        PromotionTimeEntity promotionTimeEntity = promotionTimeRepository.findByScheduleEntityIdAndStartAndEnd(timeTableScheduleEntity.getScheduleEntity().getId(), dateStartMove);
 
         TicketEntity ticketSession = (TicketEntity) session.getAttribute("ticket");
         ticketSession.setSeat(ticket.getSeat());
         ticketSession.setNumberSeats(ticket.getNumberSeats());
-        ticketSession.setTotalprice(ticket.getTotalprice());
+        ticketSession.setTotalprice(ticket.getTotalprice()-ticket.getTotalprice()*promotionTimeEntity.getPromotionEntity().getSale()/100);
 
         model.addAttribute("timeTableTicket", timeTableScheduleEntity);
         model.addAttribute("ticket", ticketSession);
         model.addAttribute("dayStartMove", session.getAttribute("dayStartMove"));
+        model.addAttribute("promotion", promotionTimeEntity);
         session.setAttribute("ticket", ticketSession);
         session.setAttribute("timeTableTicket", timeTableScheduleEntity);
 
@@ -90,7 +94,7 @@ public class TransferController {
         ticketEntitySession.setBookTime(new java.sql.Date(Calendar.getInstance().getTimeInMillis()));
         ticketEntitySession.setBusesEntity(busesEntity);
 
-        String text = ticketEntitySession.getId()+"-"+ticketEntitySession.getFullName()+"-"+ticketEntitySession.getBookTime().toString();
+        String text = ticketEntitySession.getBookTime().toString()+"-"+ticketEntitySession.getGmail();
         String key = "TTY6I9^hQuo!a1n0";
         String iv =  "Iay63!2Uy*)sQZhn"; // Initialization vector
         String encryptedCode = aesCrypter.encrypt(text, key, iv);
@@ -102,13 +106,17 @@ public class TransferController {
 
         String message2="";
         try {
-            String body = "<h1 style='color:red;'> Dear"+ticketEntitySession.getFullName()+" </h1>";
+            String body = "<h1 style='color:red;'> Dear "+ticketEntitySession.getFullName()+" </h1>";
             body += "<h2>Đây là vé của bạn</h2>";
-            mailUtilGmail.sendEmail("ittuan123@gmail.com", "conos.team@gmail.com", "New Password", body, ticketEntitySession ,true);
+            mailUtilGmail.sendEmail(ticketEntitySession.getGmail(), "conos.team@gmail.com", "New Password", body, ticketEntitySession ,true);
         } catch (Exception ex) {
             System.out.println("Error : " + ex);
         }
-
         return "redirect:";
+    }
+
+    @RequestMapping(value = "/onlinepayment")
+    public String onlinePayment(HttpSession session){
+        return "";
     }
 }

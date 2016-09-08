@@ -56,6 +56,7 @@ function submitComment() {
     $(".rankBus").val(0);
     $('.rankPunctuality').val(0);
     $(".rankBehavior").val(0);
+
 }
 
 function display(data) {
@@ -102,5 +103,4 @@ function display(data) {
         "        </div>" +
         "</div>";
     $('#comment-customer'+data.busServiceId).append(newComment);
-    alert(data.fullName);
 }

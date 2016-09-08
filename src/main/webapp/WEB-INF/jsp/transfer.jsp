@@ -155,8 +155,14 @@
                             </tr>
                             <tr>
                                 <td>Tổng tiền:</td>
-                                <td colspan="3">
-                                    <strong class="text-primary">${ticket.totalprice}<sup>₫</sup></strong>
+                                <td>
+                                    <strong class="text-primary">${ticket.totalprice}<sup>đ</sup></strong>
+                                </td>
+                                <td>
+                                    Ưu đải:
+                                </td>
+                                <td>
+                                    ${promotion.promotionEntity.sale}%
                                 </td>
                             </tr>
                             </tbody>
@@ -170,5 +176,39 @@
         </div>
     </div>
 </div>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                <img src="resource/img/icon-vxr.png" class="pull-left" width="55px" height="55px">
+
+                <p>Bản quyền © 2016 thuộc về VeXeRe.Com <br>
+                    Tên công ty: CÔNG TY CỔ PHẦN VEXERE <br>
+                    Địa chỉ đăng ký kinh doanh: 8C Chữ Đồng Tử, Phường 7, Quận Tân Bình, Thành Phố Hồ Chí Minh, Việt Nam
+                    <br>
+                    Địa chỉ: 79/i8 Âu Cơ, P.14, Q.11, TP. Hồ Chí Minh, Việt Nam <br>
+                    Giấy chứng nhận ĐKKD số 0312387105 do Sở KH& ĐT TP. Hồ Chí Minh cấp lần đầu ngày 25/7/2013
+                </p>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                <div class="row">
+                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                        <img src="resource/img/certificate1.png">
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                        <img src="resource/img/certificate1.png">
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                        <img src="resource/img/certificate1.png">
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                        <img src="resource/img/certificate1.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
 </body>
 </html>

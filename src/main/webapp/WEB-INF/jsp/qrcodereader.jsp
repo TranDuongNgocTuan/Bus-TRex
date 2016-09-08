@@ -73,11 +73,11 @@
             </div>
             <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7 bill">
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-12" id="scanTicketInfo">
                         <table class="table table-borderless">
                             <tbody>
                             <tr>
-                                <td colspan="4" class="text-bill"> HÓA ĐƠN</td>
+                                <td colspan="4" class="text-bill">VÉ XE</td>
                             </tr>
                             <tr>
                                 <td class="col-xs-3 col-sm-3 col-md-3 col-lg-3">Tuyến:</td>

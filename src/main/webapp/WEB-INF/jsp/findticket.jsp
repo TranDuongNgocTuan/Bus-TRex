@@ -21,9 +21,10 @@
     <link rel="stylesheet" href="resource/css/demo.css">
     <link rel="stylesheet" href="/resource/css/jquery-ui.css">
     <link rel="stylesheet" href="/resource/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" href="/resource/vendor/font-awesome.css">
     <%--<script   src="https://code.jquery.com/jquery-1.12.4.js"  integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="  crossorigin="anonymous"></script>--%>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
-
+    <link rel="stylesheet" href="/resource/css/dropdowns-enhancement.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script type="text/javascript" src="resource/vendor/bootstrap.js"></script>
     <script src="/resource/js/ajax.js"></script>
@@ -37,6 +38,7 @@
     <script type="text/javascript" src="resource/js/findticket.js"></script>
     <script type="text/javascript" src="resource/tooltipster/dist/js/tooltipster.bundle.min.js"></script>
     <script src="/resource/js/star-rating.js" type="text/javascript"></script>
+    <script src="/resource/js/dropdowns-enhancement.js"></script>
 <body>
 <nav class="navbar navbar-default" role="navigation">
     <div class="container">
@@ -122,12 +124,18 @@
             <tr>
                 <td>
                     <div class="dropdown pull-left">
-                        <i class="dropdown-toggle" type="button" data-toggle="dropdown"><i class="fa fa-bus"></i><span>Hãng xe</span></i>
+                        <i class="dropdown-toggle" data-placeholder="false" type="button" data-toggle="dropdown"><i class="fa fa-bus"></i><span>Hãng xe</span></i>
                         <ul class="dropdown-menu">
                             <c:forEach var="schedule" items="${scheduleListNormal}">
-                                <li><a href="#">${schedule.busServicesEntity.name}</a></li>
+                                <li><input type="checkbox" id="ID${schedule.busServicesEntity.name}" name="NAME" value="${schedule.busServicesEntity.name}"><label for="ID${schedule.busServicesEntity.name}">${schedule.busServicesEntity.name}</label></li>
                             </c:forEach>
                         </ul>
+
+                                <%--<button data-toggle="dropdown" class="btn btn-primary dropdown-toggle" data-placeholder="false"><span class="caret"></span></button>--%>
+                                <%--<ul class="dropdown-menu">--%>
+                                    <%--<li><input type="checkbox" id="ID" name="NAME" value="VALUE"><label for="ID">Label</label></li>--%>
+                                    <%--<!-- Other items -->--%>
+                                <%--</ul>--%>
                     </div>
                     <i class="bar fa fa-sort-desc service"></i></td>
                 <td>
@@ -181,7 +189,7 @@
                             <li><a href="#">JavaScript</a></li>
                         </ul>
                     </div>
-                    <i class="bar sort6 fa fa-sort-desc"></i></td>
+                    <i class="bar rating sort6 fa fa-sort-desc"></i></td>
                 <td>
                     <div class="dropdown pull-left">
                         <i class="dropdown-toggle" type="button" data-toggle="dropdown"><i
@@ -250,22 +258,23 @@
                             <div class="container-bus">
                                 <c:if test="${schedule.sell >0}">
                                     <div class="row">
-                                        <div class="col-sm-4 col-xs-3 pd-0 mb10">
+                                        <div class="col-sm-6 col-xs-6">
                                             <div class="offer-tag">ƯU ĐÃI</div>
                                         </div>
-                                        <div class="col-sm-8 col-xs-8 mt5 pd-0">
+                                        <div class="col-sm-6 col-xs-6">
                                             <span>Giảm ${schedule.sell}%</span>
                                         </div>
                                     </div>
                                 </c:if>
-                                <h4>${schedule.scheduleEntity.busServicesEntity.name}</h4>
+                                <div class="pull-left">
+                                    <i class="fa fa-bus"></i>
+                                </div>
+                                <h4 class="nameService">${schedule.scheduleEntity.busServicesEntity.name}</h4>
                                 <i class="glyphicon glyphicon-align-left"></i>
                                 <i class="glyphicon glyphicon-picture"></i>
                                 <i class="glyphicon glyphicon-plus-sign"></i>
                             </div>
-                            <div class="pull-left">
-                                <i class="fa fa-bus"></i>
-                            </div>
+
                         </td>
                         <!-- end ìnformation bus -->
                         <td class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
@@ -315,7 +324,7 @@
                                        data-min="0" data-max="5" data-show-clear="false" data-show-caption="false"
                                        data-step="0.5" data-size="xs" name="rankBus" data-readonly="true">
                             </div>
-                            <a data-toggle="modal" href='#modal-id${schedule.scheduleEntity.busServicesEntity.id}'><p>${schedule.scheduleEntity.busServicesEntity.rankEntity.commentEntityList.size()}
+                            <a data-toggle="modal" href='#modal-id${schedule.scheduleEntity.busServicesEntity.id}'><p class="ratingNumber">${schedule.scheduleEntity.busServicesEntity.rankEntity.commentEntityList.size()}
                                 rating <i class="fa fa-sort-desc"></i></p>
                             </a>
                             <a class="writereviews" data-toggle="modal"
@@ -641,7 +650,7 @@
                                 </c:if>
 
                                 <h3 class="pointSum"><fmt:formatNumber type="number" maxFractionDigits="1" value="${(pointBehavior + pointBus + pointOverall + pointPunctuality)/countRank/4}" /></h3>
-                                <input id="input-7-xs" class="rating rating-loading" value="${(pointBehavior + pointBus + pointOverall + pointPunctuality)/countRank/4}" data-min="0"
+                                <input id="" class="rating rating-loading input-7-xs" value="${(pointBehavior + pointBus + pointOverall + pointPunctuality)/countRank/4}" data-min="0"
                                        data-max="5"
                                        data-show-clear="false" data-show-caption="false" data-step="0.5" data-size="xs"
                                        name="rankBus" data-readonly="true">
@@ -787,26 +796,26 @@
                             <legend>Đánh giá:</legend>
                             <div class="form-group form-inline">
                                 <label for="input-7-xs" class="control-label">Tổng quan:</label>
-                                <input id="input-7-xs" class="rating rating-loading rankOverall" value="" data-min="0"
+                                <input id="" class="rating rating-loading input-7-xs rankOverall" value="" data-min="0"
                                        data-max="5" data-show-clear="false" data-show-caption="false" data-step="1"
                                        data-size="xs" name="rankOverall">
                             </div>
                             <div class="form-group form-inline">
                                 <label for="input-7-xs" class="control-label">Chất lưọng xe buýt:</label>
-                                <input id="input-7-xs" class="rating rating-loading rankBus" value="0" data-min="0"
+                                <input id="" class="rating rating-loading input-7-xs rankBus" value="0" data-min="0"
                                        data-max="5" data-show-clear="false" data-show-caption="false" data-step="1"
                                        data-size="xs" name="rankBus">
                             </div>
                             <div class="form-group form-inline">
                                 <label for="input-7-xs" class="control-label">Đúng giờ:</label>
-                                <input id="input-7-xs" class="rating rating-loading rankPunctuality" value="0"
+                                <input id="" class="rating rating-loading input-7-xs rankPunctuality" value="0"
                                        data-min="0"
                                        data-max="5" data-show-clear="false" data-show-caption="false" data-step="1"
                                        data-size="xs" name="rankPunctuality">
                             </div>
                             <div class="form-group form-inline">
                                 <label for="input-7-xs" class="control-label">Hành sử:</label>
-                                <input id="input-7-xs" class="rating rating-loading rankBehavior" value="0" data-min="0"
+                                <input id="" class="rating rating-loading input-7-xs rankBehavior" value="0" data-min="0"
                                        data-max="5" data-show-clear="false" data-show-caption="false" data-step="1"
                                        data-size="xs" name="rankBehavior">
                             </div>
