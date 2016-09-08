@@ -111,7 +111,7 @@
                                 <a href="taixe"><i class="fa fa-male fa-fw"></i> Tài xế</a>
                             </li>
                             <li>
-                                <a href="#"><i class="fa fa-usd fa-fw" ></i> Khuyến mãi</a>
+                                <a href="promotion"><i class="fa fa-usd fa-fw" ></i> Khuyến mãi</a>
                             </li>
                         </ul>
                         <!-- /.nav-second-level -->

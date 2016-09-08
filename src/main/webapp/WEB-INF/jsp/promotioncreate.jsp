@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
@@ -6,7 +6,7 @@
 
 <head>
 
-  <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+  <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="">
@@ -101,22 +101,22 @@
             <a href="admin"><i class="fa fa-home fa-fw"></i> Trang chủ</a>
           </li>
           <li>
-            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Quản lý<span class="fa arrow"></span></a>
+            <a href=""><i class="fa fa-bar-chart-o fa-fw"></i> Quản lý<span class="fa arrow"></span></a>
             <ul class="nav nav-second-level">
               <li>
-                <a href="ticketinformation"><i class="fa fa-info fa-fw"></i> Thông tin vé</a>
+                <a href="/ticketinformation"><i class="fa fa-info fa-fw"></i> Thông tin vé</a>
               </li>
               <li>
                 <a href="#"><i class="fa fa-bars fa-fw"></i> Tuyến xe</a>
               </li>
               <li>
-                <a href="buscompany"><i class="fa fa-bus fa-fw"></i> Hãng xe</a>
+                <a href="/buscompany"><i class="fa fa-bus fa-fw"></i> Hãng xe</a>
               </li>
               <li>
-                <a href="taixe"><i class="fa fa-male fa-fw"></i> Tài xế</a>
+                <a href="/taixe"><i class="fa fa-male fa-fw"></i> Tài xế</a>
               </li>
               <li>
-                <a href="promotion"><i class="fa fa-usd fa-fw" ></i> Khuyến mãi</a>
+                <a href="/promotion"><i class="fa fa-usd fa-fw"></i> Khuyến mãi</a>
               </li>
             </ul>
             <!-- /.nav-second-level -->
@@ -157,7 +157,7 @@
   <div id="page-wrapper">
     <div class="row">
       <div class="col-lg-12">
-        <h1 class="page-header">TÀI XẾ</h1>
+        <h1 class="page-header">KHUYẾN MÃI</h1>
       </div>
       <!-- /.col-lg-12 -->
     </div>
@@ -166,34 +166,23 @@
       <div class="col-lg-12">
         <div class="panel panel-default">
           <div class="panel-heading">
-            Thêm tài xế
+            Thêm khuyến mãi
           </div>
           <!-- /.panel-heading -->
           <div class="panel-body">
             <div class="row">
               <div class="col-md-12">
-                <form:form method="POST" commandName="taiXe" action="${pageContext.request.contextPath}/create">
+                <form:form method="POST" commandName="promotion" action="${pageContext.request.contextPath}/promotion/create">
                   <div class="form-group">
                     <label class="control-label">Name (*)</label>
                     <form:input path="name" type="text" class="form-control"  required="true"/>
                     <form:errors path="name" cssStyle="color: red;"/>
+                    <label class="control-label">Sale (*)</label>
+                    <form:input path="sale" type="text" class="form-control"  required="true"/>
+                    <form:errors path="sale" cssStyle="color: red;"/>
                   </div>
                   <br>
                   <button type="submit" class="btn btn-info">Tạo</button>
-                  <%--<table>--%>
-                  <%--<tbody>--%>
-                  <%--<tr>--%>
-                  <%--<td>Shop name:</td>--%>
-                  <%--<td><form:input path="name" /></td>--%>
-                  <%--<td><form:errors path="name" cssStyle="color: red;"/></td>--%>
-                  <%--</tr>--%>
-                  <%--<tr>--%>
-                  <%--<td><input type="submit" value="Edit" /></td>--%>
-                  <%--<td></td>--%>
-                  <%--<td></td>--%>
-                  <%--</tr>--%>
-                  <%--</tbody>--%>
-                  <%--</table>--%>
                 </form:form>
 
               </div>
