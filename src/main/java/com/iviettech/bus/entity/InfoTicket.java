@@ -17,16 +17,31 @@ public class InfoTicket{
 
     private int sumNumberOfSeat;
 
+    private float rankBehavior;
+
+    private float rankBus;
+
+    private float rankOverall;
+
+    private float rankPunctuality;
+
+    private int sell;
+
     public InfoTicket() {
     }
 
-    public InfoTicket(ScheduleEntity scheduleEntity, int numberTicket, TimeTableScheduleEntity timeTableScheduleEntity, int numberSeat, int busesId, int sumNumberOfSeat) {
+    public InfoTicket(ScheduleEntity scheduleEntity, int numberTicket, TimeTableScheduleEntity timeTableScheduleEntity, int numberSeat, int busesId, int sumNumberOfSeat, float rankBehavior, float rankBus, float rankOverall, float rankPunctuality, int sell) {
         this.scheduleEntity = scheduleEntity;
         this.numberTicket = numberTicket;
         this.timeTableScheduleEntity = timeTableScheduleEntity;
         this.numberSeat = numberSeat;
         this.busesId = busesId;
         this.sumNumberOfSeat = sumNumberOfSeat;
+        this.rankBehavior = rankBehavior;
+        this.rankBus = rankBus;
+        this.rankOverall = rankOverall;
+        this.rankPunctuality = rankPunctuality;
+        this.sell = sell;
     }
 
     public ScheduleEntity getScheduleEntity() {
@@ -75,5 +90,45 @@ public class InfoTicket{
 
     public void setSumNumberOfSeat(int sumNumberOfSeat) {
         this.sumNumberOfSeat = sumNumberOfSeat;
+    }
+
+    public float getRankBehavior() {
+        return rankBehavior;
+    }
+
+    public void setRankBehavior(float rankBehavior) {
+        this.rankBehavior = rankBehavior;
+    }
+
+    public float getRankBus() {
+        return rankBus;
+    }
+
+    public void setRankBus(float rankBus) {
+        this.rankBus = rankBus;
+    }
+
+    public float getRankOverall() {
+        return rankOverall;
+    }
+
+    public void setRankOverall(float rankOverall) {
+        this.rankOverall = rankOverall;
+    }
+
+    public float getRankPunctuality() {
+        return rankPunctuality;
+    }
+
+    public void setRankPunctuality(float rankPunctuality) {
+        this.rankPunctuality = rankPunctuality;
+    }
+
+    public int getSell() {
+        return sell;
+    }
+
+    public void setSell(int sell) {
+        this.sell = sell;
     }
 }

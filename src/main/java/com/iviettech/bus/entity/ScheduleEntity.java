@@ -36,6 +36,9 @@ public class ScheduleEntity {
     @Column(name = "priceticket")
     private int priceTicket;
 
+    @Column(name = "datestart")
+    private java.sql.Date dateStart;
+
     @OneToMany(mappedBy = "scheduleEntity")
     private List<PromotionTimeEntity> promotionTimeEntityList;
 
@@ -124,5 +127,13 @@ public class ScheduleEntity {
 
     public void setPriceTicket(int priceTicket) {
         this.priceTicket = priceTicket;
+    }
+
+    public java.sql.Date getDateStart() {
+        return dateStart;
+    }
+
+    public void setDateStart(java.sql.Date dateStart) {
+        this.dateStart = dateStart;
     }
 }

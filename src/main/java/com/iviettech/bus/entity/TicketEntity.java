@@ -35,9 +35,20 @@ public class TicketEntity {
     @Column(name = "numberseats")
     private int numberSeats;
 
+    @Column(name = "codeticket")
+    private String codeTicket;
+
     @ManyToOne
     @JoinColumn(name = "busesId")
     private BusesEntity busesEntity;
+
+    @ManyToOne
+    @JoinColumn(name = "busstationdeparture")
+    private BusstationEntity busstationEntityDeparture;
+
+    @ManyToOne
+    @JoinColumn(name = "busstationarrival")
+    private BusstationEntity busstationEntityArrival;
 
     public TicketEntity() {
     }
@@ -120,5 +131,29 @@ public class TicketEntity {
 
     public void setGmail(String gmail) {
         this.gmail = gmail;
+    }
+
+    public BusstationEntity getBusstationEntityDeparture() {
+        return busstationEntityDeparture;
+    }
+
+    public void setBusstationEntityDeparture(BusstationEntity busstationEntityDeparture) {
+        this.busstationEntityDeparture = busstationEntityDeparture;
+    }
+
+    public BusstationEntity getBusstationEntityArrival() {
+        return busstationEntityArrival;
+    }
+
+    public void setBusstationEntityArrival(BusstationEntity busstationEntityArrival) {
+        this.busstationEntityArrival = busstationEntityArrival;
+    }
+
+    public String getCodeTicket() {
+        return codeTicket;
+    }
+
+    public void setCodeTicket(String codeTicket) {
+        this.codeTicket = codeTicket;
     }
 }

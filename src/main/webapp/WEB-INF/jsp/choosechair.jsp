@@ -52,6 +52,8 @@
 	<c:forEach var="seat" items="${seatChoosed}" >
 		<input type="hidden" value="${seat}" name="seats"/>
 	</c:forEach>
+	<%-- Price Ticket --%>
+	<input type="hidden" name="priceTicket" value="${timeTable.scheduleEntity.priceTicket}">
 
 	<div class="map-chair">
 		<div class="container">
@@ -125,11 +127,11 @@
 									<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
 										<div class="row">
 											<div class="from">
-												<p>An Giang(Châu Đốc, Long Xuyên)</p>
+												<p>${timeTable.scheduleEntity.departure.city}</p>
 											</div>
 											<div class="time"></div>
 											<div class="to">
-												<p>Cần Thơ</p>
+												<p>${timeTable.scheduleEntity.arrival.city}</p>
 											</div>
 										</div>
 									</div>
@@ -138,20 +140,31 @@
 						</div>
 						<div class="row">
 							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-								<p class="text-chair">Số ghế:</p><p id="number-chair"></p>
-								<p class="total-money">Tổng tiền</p>
+								<%--<p class="text-chair">Số ghế:</p><p id="number-chair"></p>
+								<p class="total-money">Tổng tiền:</p><p id="totalMoney"></p>--%>
+								<table class="tableMoney">
+									<tr>
+										<td class="text-chair">Số ghế:</td>
+										<td id="number-chair"></td>
+									</tr>
+									<tr>
+										<td class="total-money">Tổng tiền:</td>
+										<td id="totalMoney"></td>
+									</tr>
+								</table>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
 								<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
 									<form:form modelAttribute="ticket" action="/transfer" method="POST">
-										<input type="hidden" value="" path="seat"/>
-										<input type="hidden" value="" name="numberSeats"/>
+										<form:input type="hidden" path="seat" id="seat"/>
+										<form:input type="hidden" path="numberSeats" id="numberSeats"/>
+										<form:input type="hidden" path="totalprice" id="totalPrice"/>
+										<input type="hidden" value="${timeTable.id}" name="timeTableId"/>
 										<button type="submit"
-												class="btn btn-primary container-ticket text-center">
-											<i
-													class="fa fa-bus"></i><span>Tiếp tục</span></button>
+												class="btn btn-primary container-ticket text-center" id="btnNextTransfer">
+											<i class="fa fa-bus"></i><span>Tiếp tục</span></button>
 									</form:form>
 								</div>
 							</div>

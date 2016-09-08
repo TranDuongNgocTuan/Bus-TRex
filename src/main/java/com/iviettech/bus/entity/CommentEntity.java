@@ -26,6 +26,14 @@ public class CommentEntity {
 
     private Date dob;
 
+    private int rankOverall;
+
+    private int rankBus;
+
+    private int rankPunctuality;
+
+    private int rankBehavior;
+
     public CommentEntity() {
     }
 
@@ -76,4 +84,38 @@ public class CommentEntity {
     public void setGmail(String gmail) {
         this.gmail = gmail;
     }
+
+    public int getRankOverall() {
+        return rankOverall;
+    }
+
+    public void setRankOverall(int rankOverall) {
+        this.rankOverall = rankOverall;
+    }
+
+    public int getRankBus() {
+        return rankBus;
+    }
+
+    public void setRankBus(int rankBus) {
+        this.rankBus = rankBus;
+    }
+
+    public int getRankPunctuality() {
+        return rankPunctuality;
+    }
+
+    public void setRankPunctuality(int rankPunctuality) {
+        this.rankPunctuality = rankPunctuality;
+    }
+
+    public int getRankBehavior() {
+        return rankBehavior;
+    }
+
+    public void setRankBehavior(int rankBehavior) {
+        this.rankBehavior = rankBehavior;
+    }
+
+
 }

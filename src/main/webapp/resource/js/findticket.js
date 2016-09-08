@@ -1,5 +1,29 @@
 ﻿$(function(){
 
+	$("#exampleInputName3").datepicker({
+		startDate: "-"
+	});
+
+	$(document).ready(function () {
+		$('.tooltiphover').tooltipster({
+			theme: ['tooltipster-noir', 'tooltipster-noir-customized'],
+			contentCloning: true,
+		});
+	});
+
+	$(document).on('ready', function () {
+		$('#input-7-xs').rating({});
+	});
+
+	$('.commentForm').validator();
+
+	$(".writereviews").click(function(){
+		var idName = $(this).find('input').val();
+		var idAndName = idName.split("/%/");
+		$('.nameService').html("Hãng xe:   " + idAndName[1]);
+		$('.busServiceModal').val(idAndName[0]);
+	});
+
 	function sortTable(f,n){
 		var rowInfo = $('tr#getTrInfo').get();
 		var rowSubmit = $('tr#getTrSubmit').get();
@@ -78,7 +102,7 @@
 		return false;
 	});
 
-	$("#phone").intlTelInput({
+	$(".phone").intlTelInput({
 		allowDropdown: false,
 		autoHideDialCode: false,
 		autoPlaceholder: false,
@@ -96,7 +120,7 @@
 		// onlyCountries: ['us', 'gb', 'ch', 'ca', 'do'],
 		// preferredCountries: ['cn', 'jp'],
 		separateDialCode: true,
-		utilsScript: "build/js/utils.js"
+		utilsScript: "/resource/js/utils.js"
 	});
 
 	var availableTags = [
@@ -237,8 +261,4 @@
 		source: availableTags
 	});
 
-	var datepicker = $.fn.datepicker.noConflict(); // return $.fn.datepicker to previously assigned value
-	$.fn.bootstrapDP = datepicker;
-
-	$("#exampleInputName3").datepicker();
 });

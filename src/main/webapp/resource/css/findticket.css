@@ -1,5 +1,9 @@
 *{margin:0;padding:0; }
 
+body{
+    font-family: 'Roboto', sans-serif;
+}
+
 .navbar > .container .navbar-brand, .navbar > .container-fluid .navbar-brand {color: white;}
 
 input.form-control {
@@ -218,7 +222,7 @@ footer p {
     padding-right: 25px;
 }
 
-.ticket span {
+.ticket .container-ticket span {
     margin-left: 15px;
     color: black;
     text-transform: uppercase;
@@ -240,7 +244,7 @@ footer p {
     background-position: top left,top right;
     background-position-x: left, right;
     background-position-y: top, top;
-    /*background-color: #fff;*/
+    background-color: #fff;
     width: 100%;
     border: none;
     box-shadow: none;
@@ -248,7 +252,7 @@ footer p {
 
 button.btn.btn-primary.pull-right.container-ticket.text-center {
     margin-top: 17px;
-    background-color: white;
+    /* background-color: white; */
 }
 
 button.container-ticket:hover {background: rgba(249, 175, 0, 0.78);}
@@ -468,6 +472,80 @@ button.close:hover {
 }
 
 textarea#commentInto {
-    height: 165px;
+    height: 257px;
 }
 
+.modal-header {
+    background-color: #1867aa;
+    color: white;
+}
+
+button.close:hover {
+    color: white;
+    opacity: 1;
+}
+button.close{
+    padding: 8px;
+}
+
+h3.pointSum {
+    color: #e74c3c;
+    font-weight: 600;
+}
+
+.modal-dialog.comment{
+    width: 65%;
+}
+
+.rating-container.rating-xs.rating-animate {
+    font-size: 3em;
+}
+
+.point-four{
+    padding: 16px;
+    font-size: 1.1em;
+}
+
+h5.namecomment{
+    font-weight: 600;
+    color: #1867aa;
+}
+
+.point-avg {
+    border: 1px solid black;
+    border: 2px #dae5f0 solid;
+    background: #fcfdff;
+}
+
+.element-point{
+    border-bottom: 1px solid black;
+    padding-bottom: 20px;
+}
+
+.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+    border-top: none;
+}
+
+.comment table.table.table-hover tr {
+    border-bottom: 1px #d8d7d7 solid;
+}
+
+#comment-customer hr {
+    border-top: 1px dashed #61a0dd;
+}
+
+p.content-comment {
+    height: 109px;
+    border: 1px #d8d7d7 solid;
+    border-radius: 10px;
+    padding-top: 5px;
+    padding-left: 5px;
+}
+
+button.btn.btn-primary.wm-comment {
+    margin-left: 8px;
+}
+
+.container-start {
+    font-size: 0.4em;
+}

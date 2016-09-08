@@ -19,7 +19,7 @@ public interface ScheduleRepository extends CrudRepository<ScheduleEntity, Integ
             "on busservices.id = schedule.busservicesId " +
             "where schedule.departureId = :formId " +
             "and schedule.arrivalId = :toId " +
-            "and datediff(:dateGo, busservices.dob)%schedule.numberday = 0", nativeQuery = true)
+            "and datediff(:dateGo, schedule.datestart)%schedule.numberday = 0", nativeQuery = true)
     List<ScheduleEntity> findByDepartureIdAndArrivalIdAndDate(@Param("formId") int from,
                                                               @Param("toId") int to,
                                                               @Param("dateGo") Date date);

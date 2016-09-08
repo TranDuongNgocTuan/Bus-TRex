@@ -3,7 +3,6 @@
   -moz-box-sizing: border-box; }
 
 .intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-3 {
-  /* padding-right: 10%; */
   width: 100%;
 }
 
@@ -61,7 +60,16 @@ button:hover {
   margin-bottom: 100px; }
 
 
-input#phone {
-  /* padding-right: 10%; */
+input.phone {
+  padding: 0px;
+  border: none;
   width: 100%;
+}
+
+input#numberphone {
+  width: 100%;
+}
+
+.intl-tel-input.allow-dropdown.separate-dial-code.iti-sdc-3 {
+  border-bottom: 1px solid #E6E4E4;
 }
