@@ -127,7 +127,7 @@
                         <i class="dropdown-toggle" data-placeholder="false" type="button" data-toggle="dropdown"><i class="fa fa-bus"></i><span>Hãng xe</span></i>
                         <ul class="dropdown-menu">
                             <c:forEach var="schedule" items="${scheduleListNormal}">
-                                <li><input type="checkbox" id="ID${schedule.busServicesEntity.name}" name="NAME" value="${schedule.busServicesEntity.name}"><label for="ID${schedule.busServicesEntity.name}">${schedule.busServicesEntity.name}</label></li>
+                                <li><input type="checkbox" id="ID${schedule.busServicesEntity.name}" name="HANGXE" value="${schedule.busServicesEntity.name}"><label for="ID${schedule.busServicesEntity.name}">${schedule.busServicesEntity.name}</label></li>
                             </c:forEach>
                         </ul>
 
@@ -140,11 +140,11 @@
                     <i class="bar fa fa-sort-desc service"></i></td>
                 <td>
                     <div class="dropdown pull-left">
-                        <i class="dropdown-toggle" type="button" data-toggle="dropdown"><i
+                        <i class="dropdown-toggle" data-placeholder="false" type="button" data-toggle="dropdown"><i
                                 class="fa fa-clock-o"></i><span>Giờ đi</span></i>
                         <ul class="dropdown-menu">
                             <c:forEach var="schedule" items="${scheduleList}">
-                                <li><a href="#">${schedule.timeTableScheduleEntity.departureTime}</a></li>
+                                <li><input type="checkbox" id="ID${schedule.timeTableScheduleEntity.departureTime}" name="THOIGIAN" value="${schedule.timeTableScheduleEntity.departureTime}"><label for="ID${schedule.timeTableScheduleEntity.departureTime}">${schedule.timeTableScheduleEntity.departureTime}</label></li>
                             </c:forEach>
                         </ul>
                     </div>

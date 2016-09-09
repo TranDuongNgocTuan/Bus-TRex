@@ -17,6 +17,12 @@
               <property name="prefix" value="/WEB-INF/jsp/" />
               <property name="suffix" value=".jsp" />
        </bean>
+
+       <bean class="org.springframework.web.servlet.view.XmlViewResolver">
+              <property name="order" value="1" />
+              <property name="location" value="/WEB-INF/spring-views.xml"/>
+       </bean>
+
        <bean class="org.springframework.web.multipart.support.StandardServletMultipartResolver" id="multipartResolver">
        </bean>
 

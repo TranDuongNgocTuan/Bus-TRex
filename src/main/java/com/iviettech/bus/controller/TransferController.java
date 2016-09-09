@@ -86,6 +86,17 @@ public class TransferController {
         return "transfer";
     }
 
+    public void sendTicket(TicketEntity ticketEntity){
+        String message2="";
+        try {
+            String body = "<h1 style='color:red;'> Dear "+ticketEntity.getFullName()+" </h1>";
+            body += "<h2>Đây là vé của bạn</h2>";
+            mailUtilGmail.sendEmail(ticketEntity.getGmail(), "conos.team@gmail.com", "New Password", body, ticketEntity ,true);
+        } catch (Exception ex) {
+            System.out.println("Error : " + ex);
+        }
+    }
+
     @RequestMapping(value = "/postpaid")
     public String postPaid(HttpSession session) throws GeneralSecurityException {
 
@@ -116,16 +127,11 @@ public class TransferController {
 
         session.invalidate();
 
-        String message2="";
-        try {
-            String body = "<h1 style='color:red;'> Dear "+ticketEntitySession.getFullName()+" </h1>";
-            body += "<h2>Đây là vé của bạn</h2>";
-            mailUtilGmail.sendEmail(ticketEntitySession.getGmail(), "conos.team@gmail.com", "New Password", body, ticketEntitySession ,true);
-        } catch (Exception ex) {
-            System.out.println("Error : " + ex);
-        }
+        sendTicket(ticketEntitySession);
+
         return "redirect:";
     }
+
 
     @RequestMapping(value = "/SetExpressCheckoutForParallelPayment")
     public void setOnlinePayment(HttpServletRequest request,
@@ -262,7 +268,7 @@ public class TransferController {
         // configuration map.
         PayPalAPIInterfaceServiceService service = new PayPalAPIInterfaceServiceService(
                 configurationMap);
-
+        String path = null;
         if (request.getRequestURI().contains("DoExpressCheckoutForParallelPayment")) {  // *************** DoExpressCheckout for parallel payment ************************
 
             DoExpressCheckoutPaymentRequestType doCheckoutPaymentRequestType = new DoExpressCheckoutPaymentRequestType();
@@ -377,17 +383,21 @@ public class TransferController {
                     requestSession.setAttribute("map", map);
 //                    response.sendRedirect(servletContext
 //                            .getContextPath() + "/home.jsp");
+                    sendTicket(ticketEntity);
+                    path = "redirect:/";
                 } else {
 
                     requestSession.setAttribute("Error",
                             doCheckoutPaymentResponseType.getErrors());
                     response.sendRedirect(servletContext
                             .getContextPath() + "/Error.jsp");
+                    session.removeAttribute("ticket");
+                    path = "error404transfer";
                 }
             }
 
         }
-        return "redirect:/";
+        return path;
     }
 
 }
