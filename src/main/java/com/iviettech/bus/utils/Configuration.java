@@ -14,9 +14,9 @@ public class Configuration {
 		configMap.putAll(getConfig());
 				
 		// Account Credential
-		configMap.put("acct1.UserName", "jb-us-seller_api1.paypal.com");
-		configMap.put("acct1.Password", "WX4WTU3S8MY44S7F");
-		configMap.put("acct1.Signature", "AFcWxV21C7fd0v3bYYYRCpSSRl31A7yDhhsPUU2XhtMoZXsWHFxu-RWy");
+		configMap.put("acct1.UserName", "ittuan123-facilitator_api1.gmail.com");
+		configMap.put("acct1.Password", "P2DV77PXM5NBXHJY");
+		configMap.put("acct1.Signature", "AFcWxV21C7fd0v3bYYYRCpSSRl31AYjaAeXm3fQJoxc18jFnsXYTmAdl");
 		// Subject is optional, only required in case of third party permission
 		//configMap.put("acct1.Subject", "");
 		

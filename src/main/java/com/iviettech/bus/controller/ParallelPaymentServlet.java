@@ -33,62 +33,62 @@ import urn.ebay.apis.eBLBaseComponents.SetExpressCheckoutRequestDetailsType;
 
 public class ParallelPaymentServlet extends HttpServlet {
 
-	private static final long serialVersionUID = 1239098098123L;
+    private static final long serialVersionUID = 1239098098123L;
 
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
-		
-		
-		if(request.getRequestURI().contains("SetExpressCheckoutForParallelPayment")){
-			getServletConfig().getServletContext().getRequestDispatcher("/usecase_jsp/SetExpressCheckoutForParallelPayment.jsp")
-			.forward(request, response);
-		}else if(request.getRequestURI().contains("DoExpressCheckoutForParallelPayment")){
-			getServletConfig().getServletContext().getRequestDispatcher("/usecase_jsp/DoExpressCheckoutForParallelPayment.jsp")
-			.forward(request, response);
-		}
-	}
+    protected void doGet(HttpServletRequest request,
+                         HttpServletResponse response) throws ServletException, IOException {
 
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
 
-		HttpSession session = request.getSession();
-		session.setAttribute("url", request.getRequestURI());
-		response.setContentType("text/html");
+        if (request.getRequestURI().contains("SetExpressCheckoutForParallelPayment")) {
+            getServletConfig().getServletContext().getRequestDispatcher("/SetExpressCheckoutForParallelPayment.jsp")
+                    .forward(request, response);
+        } else if (request.getRequestURI().contains("DoExpressCheckoutForParallelPayment")) {
+            getServletConfig().getServletContext().getRequestDispatcher("/DoExpressCheckoutForParallelPayment.jsp")
+                    .forward(request, response);
+        }
+    }
 
-		// Configuration map containing signature credentials and other required
-		// configuration.
-		// For a full list of configuration parameters refer at
-		// (https://github.com/paypal/sdk-core-java/blob/master/README.md)
-		Map<String, String> configurationMap = Configuration
-				.getAcctAndConfig();
+    protected void doPost(HttpServletRequest request,
+                          HttpServletResponse response) throws ServletException, IOException {
 
-		// Creating service wrapper object to make an API call by loading
-		// configuration map.
-		PayPalAPIInterfaceServiceService service = new PayPalAPIInterfaceServiceService(
-				configurationMap);
+        HttpSession session = request.getSession();
+        session.setAttribute("url", request.getRequestURI());
+        response.setContentType("text/html");
 
-		// # SetExpressCheckout API
-		// The SetExpressCheckout API operation initiates an Express Checkout
-		// transaction.
-		// This sample code uses Merchant Java SDK to make API call. You can
-		// download the SDKs
-		// [here](https://github.com/paypal/sdk-packages/tree/gh-pages/merchant-sdk/java)
-		if (request.getRequestURI().contains("SetExpressCheckoutForParallelPayment")) { // *************** SetExpressCheckout for parallel payment ************************
-			SetExpressCheckoutRequestType setExpressCheckoutReq = new SetExpressCheckoutRequestType();
-			SetExpressCheckoutRequestDetailsType details = new SetExpressCheckoutRequestDetailsType();
+        // Configuration map containing signature credentials and other required
+        // configuration.
+        // For a full list of configuration parameters refer at
+        // (https://github.com/paypal/sdk-core-java/blob/master/README.md)
+        Map<String, String> configurationMap = Configuration
+                .getAcctAndConfig();
 
-			StringBuffer url = new StringBuffer();
-			url.append("http://");
-			url.append(request.getServerName());
-			url.append(":");
-			url.append(request.getServerPort());
-			url.append(request.getContextPath());
+        // Creating service wrapper object to make an API call by loading
+        // configuration map.
+        PayPalAPIInterfaceServiceService service = new PayPalAPIInterfaceServiceService(
+                configurationMap);
 
-			String returnURL = url.toString() + "/DoExpressCheckoutForParallelPayment";
-			String cancelURL = url.toString() + "/SetExpressCheckoutForParallelPayment";
+        // # SetExpressCheckout API
+        // The SetExpressCheckout API operation initiates an Express Checkout
+        // transaction.
+        // This sample code uses Merchant Java SDK to make API call. You can
+        // download the SDKs
+        // [here](https://github.com/paypal/sdk-packages/tree/gh-pages/merchant-sdk/java)
+        if (request.getRequestURI().contains("SetExpressCheckoutForParallelPayment")) { // *************** SetExpressCheckout for parallel payment ************************
+            SetExpressCheckoutRequestType setExpressCheckoutReq = new SetExpressCheckoutRequestType();
+            SetExpressCheckoutRequestDetailsType details = new SetExpressCheckoutRequestDetailsType();
+
+            StringBuffer url = new StringBuffer();
+            url.append("http://");
+            url.append(request.getServerName());
+            url.append(":");
+            url.append(request.getServerPort());
+            url.append(request.getContextPath());
+
+            String returnURL = url.toString() + "/DoExpressCheckoutForParallelPayment";
+            String cancelURL = url.toString() + "/SetExpressCheckoutForParallelPayment";
 
 			/*
-			 * (Required) URL to which the buyer's browser is returned after
+             * (Required) URL to which the buyer's browser is returned after
 			 * choosing to pay with PayPal. For digital goods, you must add
 			 * JavaScript to this page to close the in-context experience. Note:
 			 * PayPal recommends that the value be the final review page on
@@ -96,31 +96,31 @@ public class ParallelPaymentServlet extends HttpServlet {
 			 * agreement. Character length and limitations: 2048 single-byte
 			 * characters
 			 */
-			details.setReturnURL(returnURL + "?currencyCodeType="
-					+ request.getParameter("currencyCode"));
+            details.setReturnURL(returnURL + "?currencyCodeType="
+                    + request.getParameter("currencyCode"));
 
-			details.setCancelURL(cancelURL);
+            details.setCancelURL(cancelURL);
 			/*
 			 * (Optional) Email address of the buyer as entered during checkout.
 			 * PayPal uses this value to pre-fill the PayPal membership sign-up
 			 * portion on the PayPal pages. Character length and limitations:
 			 * 127 single-byte alphanumeric characters
 			 */
-			details.setBuyerEmail(request.getParameter("buyerEmail"));
+            details.setBuyerEmail(request.getParameter("buyerEmail"));
 
-			SellerDetailsType seller_1 = new SellerDetailsType();
-			seller_1.setPayPalAccountID(request.getParameter("receiverEmail_0"));
-			PaymentDetailsType paymentDetails_1 = new PaymentDetailsType();
-			paymentDetails_1.setSellerDetails(seller_1);
-			paymentDetails_1.setPaymentRequestID(request
-					.getParameter("requestId_0"));
-			BasicAmountType orderTotal_1 = new BasicAmountType();
-			orderTotal_1.setCurrencyID(CurrencyCodeType.fromValue(request
-					.getParameter("currencyCode")));
-			orderTotal_1.setValue(request.getParameter("orderTotal"));
-			paymentDetails_1.setOrderTotal(orderTotal_1);
-			paymentDetails_1.setPaymentAction(PaymentActionCodeType
-					.fromValue(request.getParameter("paymentAction")));
+            SellerDetailsType seller_1 = new SellerDetailsType();
+            seller_1.setPayPalAccountID(request.getParameter("receiverEmail_0"));
+            PaymentDetailsType paymentDetails_1 = new PaymentDetailsType();
+            paymentDetails_1.setSellerDetails(seller_1);
+            paymentDetails_1.setPaymentRequestID(request
+                    .getParameter("requestId_0"));
+            BasicAmountType orderTotal_1 = new BasicAmountType();
+            orderTotal_1.setCurrencyID(CurrencyCodeType.fromValue(request
+                    .getParameter("currencyCode")));
+            orderTotal_1.setValue(request.getParameter("orderTotal"));
+            paymentDetails_1.setOrderTotal(orderTotal_1);
+            paymentDetails_1.setPaymentAction(PaymentActionCodeType
+                    .fromValue(request.getParameter("paymentAction")));
 
 //			SellerDetailsType seller_2 = new SellerDetailsType();
 //			seller_2.setPayPalAccountID(request.getParameter("receiverEmail_1"));
@@ -136,49 +136,49 @@ public class ParallelPaymentServlet extends HttpServlet {
 //			paymentDetails_2.setPaymentAction(PaymentActionCodeType
 //					.fromValue(request.getParameter("paymentAction")));
 
-			List<PaymentDetailsType> payDetails = new ArrayList<PaymentDetailsType>();
-			payDetails.add(paymentDetails_1);
+            List<PaymentDetailsType> payDetails = new ArrayList<PaymentDetailsType>();
+            payDetails.add(paymentDetails_1);
 //			payDetails.add(paymentDetails_2);
 
-			details.setPaymentDetails(payDetails);
+            details.setPaymentDetails(payDetails);
 
-			setExpressCheckoutReq.setSetExpressCheckoutRequestDetails(details);
+            setExpressCheckoutReq.setSetExpressCheckoutRequestDetails(details);
 
-			SetExpressCheckoutReq expressCheckoutReq = new SetExpressCheckoutReq();
-			expressCheckoutReq
-					.setSetExpressCheckoutRequest(setExpressCheckoutReq);
-			SetExpressCheckoutResponseType setExpressCheckoutResponse = null;
+            SetExpressCheckoutReq expressCheckoutReq = new SetExpressCheckoutReq();
+            expressCheckoutReq
+                    .setSetExpressCheckoutRequest(setExpressCheckoutReq);
+            SetExpressCheckoutResponseType setExpressCheckoutResponse = null;
 
-			try {
-				setExpressCheckoutResponse = service
-						.setExpressCheckout(expressCheckoutReq);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+            try {
+                setExpressCheckoutResponse = service
+                        .setExpressCheckout(expressCheckoutReq);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
-			if (setExpressCheckoutResponse != null) {
-				session.setAttribute("lastReq", service.getLastRequest());
-				session.setAttribute("lastResp", service.getLastResponse());
+            if (setExpressCheckoutResponse != null) {
+                session.setAttribute("lastReq", service.getLastRequest());
+                session.setAttribute("lastResp", service.getLastResponse());
 
-				if (setExpressCheckoutResponse.getAck().toString()
-						.equalsIgnoreCase("SUCCESS")) {
-					session.setAttribute("ecToken",
-							setExpressCheckoutResponse.getToken());
-					response.sendRedirect("https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token="
-							+ setExpressCheckoutResponse.getToken());
-				} else {
+                if (setExpressCheckoutResponse.getAck().toString()
+                        .equalsIgnoreCase("SUCCESS")) {
+                    session.setAttribute("ecToken",
+                            setExpressCheckoutResponse.getToken());
+                    response.sendRedirect("https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token="
+                            + setExpressCheckoutResponse.getToken());
+                } else {
 
-					session.setAttribute("Error",
-							setExpressCheckoutResponse.getErrors());
-					response.sendRedirect(this.getServletContext()
-							.getContextPath() + "/Error.jsp");
-				}
+                    session.setAttribute("Error",
+                            setExpressCheckoutResponse.getErrors());
+                    response.sendRedirect(this.getServletContext()
+                            .getContextPath() + "/Error.jsp");
+                }
 
-			}
-		}else if (request.getRequestURI().contains("DoExpressCheckoutForParallelPayment")) {  // *************** DoExpressCheckout for parallel payment ************************
+            }
+        } else if (request.getRequestURI().contains("DoExpressCheckoutForParallelPayment")) {  // *************** DoExpressCheckout for parallel payment ************************
 
-				DoExpressCheckoutPaymentRequestType doCheckoutPaymentRequestType = new DoExpressCheckoutPaymentRequestType();
-				DoExpressCheckoutPaymentRequestDetailsType doEcdetails = new DoExpressCheckoutPaymentRequestDetailsType();
+            DoExpressCheckoutPaymentRequestType doCheckoutPaymentRequestType = new DoExpressCheckoutPaymentRequestType();
+            DoExpressCheckoutPaymentRequestDetailsType doEcdetails = new DoExpressCheckoutPaymentRequestDetailsType();
 				/*
 				 * A timestamped token by which you identify to PayPal that you
 				 * are processing this payment with Express Checkout. The token
@@ -187,13 +187,13 @@ public class ParallelPaymentServlet extends HttpServlet {
 				 * response is identical to the value in the request. Character
 				 * length and limitations: 20 single-byte characters
 				 */
-				doEcdetails.setToken(request.getParameter("token"));
+            doEcdetails.setToken(request.getParameter("token"));
 				/*
 				 * Unique PayPal Customer Account identification number.
 				 * Character length and limitations: 13 single-byte alphanumeric
 				 * characters
 				 */
-				doEcdetails.setPayerID(request.getParameter("payerID"));
+            doEcdetails.setPayerID(request.getParameter("payerID"));
 				/*
 				 * (Optional) How you want to obtain payment. If the transaction
 				 * does not include a one-time purchase, this field is ignored.
@@ -211,18 +211,18 @@ public class ParallelPaymentServlet extends HttpServlet {
 				 * single-byte alphabetic characters This field is deprecated.
 				 * Use PaymentAction in PaymentDetailsType instead.
 				 */
-				doEcdetails.setPaymentAction(PaymentActionCodeType.fromValue(request.getParameter("paymentAction")));
-				
-				SellerDetailsType seller_1 = new SellerDetailsType();
-				seller_1.setPayPalAccountID(request.getParameter("receiverEmail_0"));
-				PaymentDetailsType paymentDetails_1 = new PaymentDetailsType();
-				paymentDetails_1.setSellerDetails(seller_1);
-				paymentDetails_1.setPaymentRequestID(request.getParameter("requestId_0"));
-				BasicAmountType orderTotal_1 = new BasicAmountType();
-				orderTotal_1.setCurrencyID(CurrencyCodeType.fromValue(request.getParameter("currencyCode")));
-				orderTotal_1.setValue(request.getParameter("orderTotal"));
-				paymentDetails_1.setOrderTotal(orderTotal_1);
-				paymentDetails_1.setPaymentAction(PaymentActionCodeType.fromValue(request.getParameter("paymentAction")));
+            doEcdetails.setPaymentAction(PaymentActionCodeType.fromValue(request.getParameter("paymentAction")));
+
+            SellerDetailsType seller_1 = new SellerDetailsType();
+            seller_1.setPayPalAccountID(request.getParameter("receiverEmail_0"));
+            PaymentDetailsType paymentDetails_1 = new PaymentDetailsType();
+            paymentDetails_1.setSellerDetails(seller_1);
+            paymentDetails_1.setPaymentRequestID(request.getParameter("requestId_0"));
+            BasicAmountType orderTotal_1 = new BasicAmountType();
+            orderTotal_1.setCurrencyID(CurrencyCodeType.fromValue(request.getParameter("currencyCode")));
+            orderTotal_1.setValue(request.getParameter("orderTotal"));
+            paymentDetails_1.setOrderTotal(orderTotal_1);
+            paymentDetails_1.setPaymentAction(PaymentActionCodeType.fromValue(request.getParameter("paymentAction")));
 
 //				SellerDetailsType seller_2 = new SellerDetailsType();
 //				seller_2.setPayPalAccountID(request.getParameter("receiverEmail_1"));
@@ -235,36 +235,36 @@ public class ParallelPaymentServlet extends HttpServlet {
 //				paymentDetails_2.setOrderTotal(orderTotal_2);
 //				paymentDetails_2.setPaymentAction(PaymentActionCodeType.fromValue(request.getParameter("paymentAction")));
 
-				List<PaymentDetailsType> payDetails = new ArrayList<PaymentDetailsType>();
-				payDetails.add(paymentDetails_1);
+            List<PaymentDetailsType> payDetails = new ArrayList<PaymentDetailsType>();
+            payDetails.add(paymentDetails_1);
 //				payDetails.add(paymentDetails_2);
-				
-				doEcdetails.setPaymentDetails(payDetails);
-				doCheckoutPaymentRequestType.setDoExpressCheckoutPaymentRequestDetails(doEcdetails);
-				DoExpressCheckoutPaymentReq doExpressCheckoutPaymentReq = new DoExpressCheckoutPaymentReq();
-				doExpressCheckoutPaymentReq.setDoExpressCheckoutPaymentRequest(doCheckoutPaymentRequestType);
-				DoExpressCheckoutPaymentResponseType doCheckoutPaymentResponseType = null;
-				
-				try {
-					doCheckoutPaymentResponseType = service
-							.doExpressCheckoutPayment(doExpressCheckoutPaymentReq);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-				response.setContentType("text/html");
 
-				if (doCheckoutPaymentResponseType != null) {
-					//session.setAttribute("nextDescription"," \n Parallel Payment completed");
-					session.setAttribute("lastReq", service.getLastRequest());
-					session.setAttribute("lastResp", service.getLastResponse());
-					if (doCheckoutPaymentResponseType.getAck().toString()
-							.equalsIgnoreCase("SUCCESS")) {
-						Map<Object, Object> map = new LinkedHashMap<Object, Object>();
-						map.put("Ack", doCheckoutPaymentResponseType.getAck());
-						Iterator<PaymentInfoType> iterator = doCheckoutPaymentResponseType
-								.getDoExpressCheckoutPaymentResponseDetails()
-								.getPaymentInfo().iterator();
-						int index = 1;
+            doEcdetails.setPaymentDetails(payDetails);
+            doCheckoutPaymentRequestType.setDoExpressCheckoutPaymentRequestDetails(doEcdetails);
+            DoExpressCheckoutPaymentReq doExpressCheckoutPaymentReq = new DoExpressCheckoutPaymentReq();
+            doExpressCheckoutPaymentReq.setDoExpressCheckoutPaymentRequest(doCheckoutPaymentRequestType);
+            DoExpressCheckoutPaymentResponseType doCheckoutPaymentResponseType = null;
+
+            try {
+                doCheckoutPaymentResponseType = service
+                        .doExpressCheckoutPayment(doExpressCheckoutPaymentReq);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            response.setContentType("text/html");
+
+            if (doCheckoutPaymentResponseType != null) {
+                //session.setAttribute("nextDescription"," \n Parallel Payment completed");
+                session.setAttribute("lastReq", service.getLastRequest());
+                session.setAttribute("lastResp", service.getLastResponse());
+                if (doCheckoutPaymentResponseType.getAck().toString()
+                        .equalsIgnoreCase("SUCCESS")) {
+                    Map<Object, Object> map = new LinkedHashMap<Object, Object>();
+                    map.put("Ack", doCheckoutPaymentResponseType.getAck());
+                    Iterator<PaymentInfoType> iterator = doCheckoutPaymentResponseType
+                            .getDoExpressCheckoutPaymentResponseDetails()
+                            .getPaymentInfo().iterator();
+                    int index = 1;
 						/*
 						 * Unique transaction ID of the payment. Note: If the
 						 * PaymentAction of the request was Authorization or
@@ -272,31 +272,31 @@ public class ParallelPaymentServlet extends HttpServlet {
 						 * with the Authorization & Capture APIs. Character
 						 * length and limitations: 19 single-byte characters
 						 */
-						while (iterator.hasNext()) {
-							PaymentInfoType result = (PaymentInfoType) iterator
-									.next();
-							map.put("Transaction ID" + index,
-									result.getTransactionID());
-							index++;
-						}
-						session.setAttribute(
-								"transactionId",
-								doCheckoutPaymentResponseType
-										.getDoExpressCheckoutPaymentResponseDetails()
-										.getPaymentInfo().get(0)
-										.getTransactionID());
-						session.setAttribute("map", map);
-						response.sendRedirect(this.getServletContext()
-								.getContextPath() + "/Response.jsp");
-					} else {
+                    while (iterator.hasNext()) {
+                        PaymentInfoType result = (PaymentInfoType) iterator
+                                .next();
+                        map.put("Transaction ID" + index,
+                                result.getTransactionID());
+                        index++;
+                    }
+                    session.setAttribute(
+                            "transactionId",
+                            doCheckoutPaymentResponseType
+                                    .getDoExpressCheckoutPaymentResponseDetails()
+                                    .getPaymentInfo().get(0)
+                                    .getTransactionID());
+                    session.setAttribute("map", map);
+                    response.sendRedirect(this.getServletContext()
+                            .getContextPath() + "/Response.jsp");
+                } else {
 
-						session.setAttribute("Error",
-								doCheckoutPaymentResponseType.getErrors());
-						response.sendRedirect(this.getServletContext()
-								.getContextPath() + "/Error.jsp");
-					}
-				}
+                    session.setAttribute("Error",
+                            doCheckoutPaymentResponseType.getErrors());
+                    response.sendRedirect(this.getServletContext()
+                            .getContextPath() + "/Error.jsp");
+                }
+            }
 
-			}
-	}
+        }
+    }
 }

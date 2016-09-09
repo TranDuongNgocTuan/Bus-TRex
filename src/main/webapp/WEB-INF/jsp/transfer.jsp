@@ -78,9 +78,9 @@
                                     giấy để lên xe</p>
                                 <img src="resource/img/nganluong-logo.jpg" class="pull-left" width="100%">
 
-                                <button type="submit"
+                                <a href="/SetExpressCheckoutForParallelPayment"><button type="submit"
                                         class="btn btn-primary container-ticket text-center">
-                                    <i class="fa fa-bus"></i><span>Thanh Toán</span></button>
+                                    <i class="fa fa-bus"></i><span>Thanh Toán</span></button></a>
                             </div>
                         </div>
                     </div>
