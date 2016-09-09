@@ -29,7 +29,16 @@
   <link rel="stylesheet" type="text/css" href="resource/font-awesome-4.6.3/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+    .carousel-inner > .item > img,
+    .carousel-inner > .item > a > img {
+      width: 100%;
+      margin: auto;
+    }
+  </style>
 
 
   <!-- END GA -->
@@ -117,18 +126,32 @@
                 </a>
               </li>
               <li class="flex-active-slide" style="width: 352px; margin-right: 0px; float: left; display: block;" data-thumb-alt="">
-                <a href="#">
-                  <img src="resource/Content/vxr/images/promotion/cyberpay_slider.png" draggable="false">
-                </a>
+                <%--<a href="#">--%>
+                  <%--<img src="resource/Content/vxr/images/promotion/cyberpay_slider.png" draggable="false">--%>
+                <%--</a>--%>
+                <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                  <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                  </ol>
+                  <div class="carousel-inner" role="listbox">
+                    <div class="item active">
+                      <img src="resource/Content/vxr/images/promotion/cyberpay_slider.png" alt="Chania" width="460" height="345">
+                    </div>
+                    <div class="item">
+                      <img src="resource/Content/vxr/images/promotion/Silder_2-9_(_ty_le_360x214_).jpg" alt="Chania" width="460" height="345">
+                    </div>
+                  </div>
+                </div>
               </li>
             </ul>
           </div>
           <ul class="flex-direction-nav">
             <li class="flex-nav-prev">
-              <a class="flex-prev" href="#">Previous</a>
+              <a class="flex-prev" href="#myCarousel" role="button" data-slide="prev">Previous</a>
             </li>
             <li class="flex-nav-next">
-              <a class="flex-next" href="#">Next</a>
+              <a class="flex-next" href="#myCarousel" role="button" data-slide="next">Next</a>
             </li>
           </ul>
         </div>

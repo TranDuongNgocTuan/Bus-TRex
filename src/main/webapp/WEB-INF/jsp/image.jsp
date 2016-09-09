@@ -158,7 +158,7 @@
   <div id="page-wrapper">
     <div class="row">
       <div class="col-lg-12">
-        <h1 class="page-header">HÃNG XE</h1>
+        <h1 class="page-header">HÌNH ẢNH</h1>
       </div>
       <!-- /.col-lg-12 -->
     </div>
@@ -167,24 +167,14 @@
       <div class="col-lg-12">
         <div class="panel panel-default">
           <div class="panel-heading">
-            Danh sách các hãng xe
+            Danh sách các hình
           </div>
           <!-- /.panel-heading -->
           <div class="panel-body">
 
             <div class="row">
-              <div class="col-xs-12 col-sm-8 col-md-6">
-                <form:form action="buscompany/search" method="get">
-                  <div class="input-group">
-                    <input name="searchInput" type="text" class="form-control" placeholder="Search for name,phone..."/>
-                          <span class="input-group-btn">
-                              <button class="btn btn-outline btn-primary" type="submit">Search</button>
-                          </span>
-                  </div>
-                </form:form>
-              </div>
               <div class="col-sm-3">
-                <a href="/buscompany/create" role="button" class="btn btn-outline btn-primary">Add</a>
+                <a href="/image/create" role="button" class="btn btn-outline btn-primary">Add</a>
               </div>
             </div>
             <div class="row">
@@ -194,12 +184,7 @@
                     <thead>
                     <tr>
                       <th>Id</th>
-                      <th>Address</th>
-                      <th>Description</th>
-                      <th>Dob</th>
-                      <th>Foundation</th>
-                      <th>Name</th>
-                      <th>Phone</th>
+                      <th>Image</th>
                       <th></th>
                       <th></th>
                     </tr>
@@ -209,11 +194,6 @@
                       <tr>
                         <td>${bus.id}</td>
                         <td>${bus.address}</td>
-                        <td>${bus.description}</td>
-                        <td>${bus.dob}</td>
-                        <td>${bus.foundation}</td>
-                        <td>${bus.name}</td>
-                        <td>${bus.phone}</td>
                         <td><button class="btn btn-sm btn-outline btn-primary" onclick="location.href='buscompany/edit/${bus.id}'">Edit</button></td>
                         <td>  <button class="btn btn-sm btn-outline btn-danger" onclick="location.href='buscompany/delete/${bus.id}'">Delete</button></td>
                       </tr>
