@@ -387,7 +387,7 @@ public class TransferController {
             }
 
         }
-        return "redirect:";
+        return "redirect:/";
     }
 
 }
