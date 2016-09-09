@@ -15,28 +15,28 @@
   <title>ADMIN</title>
 
   <!-- Bootstrap Core CSS -->
-  <link href="../../resource/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../../resource/admin/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- MetisMenu CSS -->
-  <link href="../../resource/bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+  <link href="../../resource/admin/bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
 
   <!-- Timeline CSS -->
-  <link href="../../resource/dist/css/timeline.css" rel="stylesheet">
+  <link href="../../resource/admin/dist/css/timeline.css" rel="stylesheet">
 
   <!-- Custom CSS -->
-  <link href="../../resource/dist/css/sb-admin-2.css" rel="stylesheet">
+  <link href="../../resource/admin/dist/css/sb-admin-2.css" rel="stylesheet">
 
   <!-- Morris Charts CSS -->
-  <link href="../../resource/bower_components/morrisjs/morris.css" rel="stylesheet">
+  <link href="../../resource/admin/bower_components/morrisjs/morris.css" rel="stylesheet">
 
   <!-- Custom Fonts -->
-  <link href="../../resource/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="../../resource/admin/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
   <!-- DataTables CSS -->
-  <link href="../../resource/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet">
+  <link href="../../resource/admin/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet">
 
   <!-- DataTables Responsive CSS -->
-  <link href="../../resource/bower_components/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet">
+  <link href="../../resource/admin/bower_components/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -149,7 +149,7 @@
       </div>
       <!-- /.sidebar-collapse -->
     </div>
-    <script src="../../resource/bower_components/morrisjs/morris.min.js"></script>
+    <script src="../../resource/admin/bower_components/morrisjs/morris.min.js"></script>
     <script src="../../resource/js/morris-data.js"></script>
     <!-- /.navbar-static-side -->
   </nav>
@@ -225,20 +225,20 @@
 <!-- /#wrapper -->
 
 <!-- jQuery -->
-<script src="../../resource/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="../../resource/admin/bower_components/jquery/dist/jquery.min.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
-<script src="../../resource/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../../resource/admin/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
 <!-- Metis Menu Plugin JavaScript -->
-<script src="../../resource/bower_components/metisMenu/dist/metisMenu.min.js"></script>
+<script src="../../resource/admin/bower_components/metisMenu/dist/metisMenu.min.js"></script>
 
 <!-- Morris Charts JavaScript -->
-<script src="../../resource/bower_components/raphael/raphael-min.js"></script>
+<script src="../../resource/admin/bower_components/raphael/raphael-min.js"></script>
 
 
 <!-- Custom Theme JavaScript -->
-<script src="../../resource/dist/js/sb-admin-2.js"></script>
+<script src="../../resource/admin/dist/js/sb-admin-2.js"></script>
 
 </body>
 

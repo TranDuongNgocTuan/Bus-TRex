@@ -21,10 +21,10 @@
   <link href="../../resource/bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
 
   <!-- Timeline CSS -->
-  <link href="../../resource/dist/css/timeline.css" rel="stylesheet">
+  <link href="../../resource/admin/dist/css/timeline.css" rel="stylesheet">
 
   <!-- Custom CSS -->
-  <link href="../../resource/dist/css/sb-admin-2.css" rel="stylesheet">
+  <link href="../../resource/admin/dist/css/sb-admin-2.css" rel="stylesheet">
 
   <!-- Morris Charts CSS -->
   <link href="../../resource/bower_components/morrisjs/morris.css" rel="stylesheet">
@@ -209,7 +209,7 @@
 
 
 <!-- Custom Theme JavaScript -->
-<script src="../../resource/dist/js/sb-admin-2.js"></script>
+<script src="../../resource/admin/dist/js/sb-admin-2.js"></script>
 
 </body>
 
