@@ -111,17 +111,14 @@
             <version>1.2</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/com.paypal.sdk/merchantsdk -->
+        <!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
         <dependency>
-            <groupId>com.paypal.sdk</groupId>
-            <artifactId>merchantsdk</artifactId>
-            <version>LATEST</version>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.4</version>
         </dependency>
-        <dependency>
-            <groupId>com.paypal.sdk</groupId>
-            <artifactId>permissionssdk</artifactId>
-            <version>2.4.109</version>
-        </dependency>
+
+
 
     </dependencies>
 

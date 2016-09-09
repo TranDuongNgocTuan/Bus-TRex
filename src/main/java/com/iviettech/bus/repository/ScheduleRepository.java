@@ -23,4 +23,6 @@ public interface ScheduleRepository extends CrudRepository<ScheduleEntity, Integ
     List<ScheduleEntity> findByDepartureIdAndArrivalIdAndDate(@Param("formId") int from,
                                                               @Param("toId") int to,
                                                               @Param("dateGo") Date date);
+
+    List<ScheduleEntity> findById(int id);
 }

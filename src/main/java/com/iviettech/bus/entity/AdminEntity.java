@@ -23,6 +23,8 @@ public class AdminEntity {
     public AdminEntity() {
     }
 
+
+
     public int getId() {
         return id;
     }

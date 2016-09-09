@@ -10,12 +10,14 @@
 
        <context:component-scan base-package="com.iviettech.bus"/>
 
-       <mvc:resources mapping="/webjars/**" location="/webjars/"/>
+       <mvc:resources mapping="/resource/**" location="/resource/"/>
 
        <!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/jsp directory -->
        <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
               <property name="prefix" value="/WEB-INF/jsp/" />
               <property name="suffix" value=".jsp" />
+       </bean>
+       <bean class="org.springframework.web.multipart.support.StandardServletMultipartResolver" id="multipartResolver">
        </bean>
 
        <mvc:default-servlet-handler />

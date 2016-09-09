@@ -32,7 +32,7 @@ public class BusServicesEntity {
     @OneToOne(mappedBy = "busServicesEntity")
     private RankEntity rankEntity;
 
-    @OneToMany(mappedBy = "busServicesEntity")
+    @OneToMany(mappedBy = "busServicesEntity", fetch = FetchType.EAGER)
     private List<BusEntity> busEntityList;
 
     @OneToMany(mappedBy = "busServicesEntity")
