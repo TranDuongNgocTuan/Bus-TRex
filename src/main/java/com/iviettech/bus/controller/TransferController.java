@@ -125,11 +125,9 @@ public class TransferController {
 
         ticketRepository.save(ticketEntitySession);
 
-        session.invalidate();
-
         sendTicket(ticketEntitySession);
 
-        return "redirect:";
+        return "transfersuccess";
     }
 
 

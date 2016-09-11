@@ -10,7 +10,7 @@
 
        <context:component-scan base-package="com.iviettech.bus"/>
 
-       <mvc:resources mapping="/resource/**" location="/resource/"/>
+       <mvc:resources mapping="/webjars/**" location="/webjars/"/>
 
        <!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/jsp directory -->
        <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -32,5 +32,5 @@
        <mvc:annotation-driven />
 
        <task:annotation-driven />
-       <bean id="scheduleTicketController" class="com.iviettech.bus.controller.ScheduleTicketController"></bean>
+       <bean id="scheduleTicketController" class="com.iviettech.bus.controller.ScheduleController"></bean>
 </beans>

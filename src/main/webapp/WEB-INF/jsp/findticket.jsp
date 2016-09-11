@@ -335,16 +335,39 @@
                         <td class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
                             <div class="">
                                 <h4 class="moneyTicket">${schedule.scheduleEntity.priceTicket}<sup>đ</sup></h4>
+                                <jsp:useBean id="dateNow" class="java.util.Date" />
+                                <fmt:formatDate var="dateNowTime" type="time" value="${dateNow}"/>
+                                <fmt:formatDate var="dateNowDate" pattern="yyyy-MM-dd" value="${dateNow}"/>
+                                <%--<c:out value="${dateNowDate}"/>--%>
+                                <%--<c:out value="${dayStartMove}"/>--%>
+                                <c:choose>
+                                    <c:when test="${(dateNowTime ge schedule.timeTableScheduleEntity.departureTime) && (dateNowDate == dayStartMove)}">
+                                        <div class="container-ticket-over text-center" data-toggle="collapse"
+                                             data-target="#${schedule.timeTableScheduleEntity.id}">
+                                            <b:choose>
+                                               <b:when test="${schedule.numberSeat == schedule.sumNumberOfSeat}">
+                                                   <i class="fa fa-bus"></i><span>HẾT VÉ</span>
+                                               </b:when>
+                                                <b:otherwise>
+                                                    <i class="fa fa-bus"></i><span>ĐÃ ĐI</span>
+                                                </b:otherwise>
+                                            </b:choose>
 
-                                <div class="container-ticket text-center" data-toggle="collapse"
-                                     data-target="#${schedule.timeTableScheduleEntity.id}">
-                                    <i class="fa fa-bus"></i><span>Đặt vé</span>
-                                </div>
+                                        </div>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <div class="container-ticket text-center" data-toggle="collapse"
+                                             data-target="#${schedule.timeTableScheduleEntity.id}">
+                                            <i class="fa fa-bus"></i><span>Đặt vé</span>
+                                        </div>
+                                    </c:otherwise>
+                                </c:choose>
                             </div>
                         </td>
                         <!-- end time from to -->
                     </tr>
                     <tr id="getTrSubmit">
+                        <c:if test="">
                         <td class="col-xs-12 col-sm-12 col-md-12 col-lg-12 info" colspan="5">
                             <div id="${schedule.timeTableScheduleEntity.id}" class="collapse info-wapper">
                                 <div class="info-tilte">
@@ -493,6 +516,7 @@
                                 <div class="info-end"></div>
                             </div>
                         </td>
+                        </c:if>
                     </tr>
                 </c:forEach>
             </table>

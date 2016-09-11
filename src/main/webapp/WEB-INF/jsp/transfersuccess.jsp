@@ -3,10 +3,11 @@
 <html lang="en"><head>
 <title> Example </title>
 <meta charset="utf-8">
-<meta http-equiv="refresh" content="5000; URL='http://localhost:8080" />
+<meta http-equiv="refresh" content="120; URL='http://localhost:8080" />
 <meta name="viewport" content="width=device-width, initial-scale=1">  
 <link href='https://fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,900,700italic,900italic' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="/resource/vendor/bootstrap.css">
+<link href="/resource/css/transfersuccess.css" rel="stylesheet">
 <link rel="stylesheet" href="/resource/css/findticket.css">
 <script type="text/javascript" src="/resource/vendor/bootstrap.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
@@ -37,7 +38,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-				<img src="img/Banner_Trang_Chu_(PC)_-_With_Clock.png" class="img-reponsive">
+				<img src="/resource/img/Banner_Trang_Chu_(PC)_-_With_Clock.png" class="img-reponsive">
 			</div>
 		</div>
 	</div> <!-- end poster -->
@@ -48,7 +49,7 @@
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
 					<h3 class="titleFinish">Giao dịch thanh toán thành công</h3>
 					<h5 class="contentFinish">Cảm ơn Quý Khách sử dụng dịch vụ mua vé xe trực tuyến. Quý khách hãy tải vé xe của mình. Hoặc kiểm tra trên gmail.</h5>
-					<a href="" class="btn btn-primary"><i class="fa fa-download icon-download" aria-hidden="true"></i>Tải vé xe</a>
+					<a href="/downloadPDF" target="blank_" class="btn btn-primary"><i class="fa fa-download icon-download" aria-hidden="true"></i>Tải vé xe</a>
 				</div>
 			</div>
 		</div>
@@ -58,7 +59,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-					<img src="img/icon-vxr.svg" class="pull-left" width="55px" height="55px">
+					<img src="/resource/img/icon-vxr.svg" class="pull-left" width="55px" height="55px">
 					<p>Bản quyền © 2016 thuộc về VeXeRe.Com <br>
 						Tên công ty: CÔNG TY CỔ PHẦN VEXERE <br>
 						Địa chỉ đăng ký kinh doanh: 8C Chữ Đồng Tử, Phường 7, Quận Tân Bình, Thành Phố Hồ Chí Minh, Việt Nam <br>

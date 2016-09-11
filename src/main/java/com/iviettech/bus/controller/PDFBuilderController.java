@@ -27,7 +27,8 @@ public class PDFBuilderController extends AbstractITextPdfView {
                                     PdfWriter writer, HttpServletRequest request, HttpServletResponse response)
             throws Exception {
         // get data model which is passed by the Spring container
-        TicketEntity ticketEntity = (TicketEntity) request.getAttribute("ticketFinish");
+        TicketEntity ticketEntity = (TicketEntity) model.get("ticketFinish");
+        doc.setPageSize(PageSize.A4.rotate());
         createDoc(doc, ticketEntity);
     }
 

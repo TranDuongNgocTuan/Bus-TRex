@@ -24,7 +24,7 @@
     <meta name="google-site-verification" content="niV9ShHdCWcZFAoPyWjqPL74Aldmk_jHfbvYkIt6uX0"/>
     <!-- Stylesheet -->
     <link href="resource/css/home-styles.css?v=4484" rel="stylesheet"/>
-    <link rel="stylesheet" type="text/css" href="resource/font-awesome-4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="resource/css/font-awesome.min.css">
     <link rel="stylesheet" href="/resource/css/bootstrap-datepicker.min.css">
     <link rel="stylesheet" href="/resource/css/jquery-ui.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -147,14 +147,14 @@
                             <li class="" data-thumb-alt=""
                                 style="width: 352px; margin-right: 0px; float: left; display: block;">
                                 <a href="#" target="_blank">
-                                    <img src="resource/Content/promotion/cyberpay_slider.png"
+                                    <img src="resource/images/promotion/cyberpay_slider.png"
                                          draggable="false">
                                 </a>
                             </li>
                             <li class="clone" style="width: 352px; margin-right: 0px; float: left; display: block;"
                                 aria-hidden="true">
                                 <a href="#">
-                                    <img src="resource/Content/promotion/cyberpay_slider.jpg"
+                                    <img src="resource/images/promotion/cyberpay_slider.jpg"
                                          draggable="false">
                                 </a>
                             </li>
@@ -291,7 +291,7 @@
 
                 <div class="col-08 clearfix">
                     <a target="_blank" href="http://csip.vn/" rel="nofollow"><img
-                            src="resource/img/logo_csip_final.png" style="width: 45px;"></a>
+                            src="resource/images/logocompany.pnguery" style="width: 45px;"></a>
                 </div>
             </div>
         </div>
