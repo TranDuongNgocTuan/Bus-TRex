@@ -1,0 +1,83 @@
+*{margin:0;padding:0;}
+
+.schedulecity {padding-bottom: 70px;}
+
+body{
+    font-family: 'Roboto', sans-serif;
+}
+
+.tab-content {
+    /* margin-top: 20px; */
+    padding: 23px 20px;
+    border: 1px solid #ddd;
+    border-top: none;
+    height: 230px;
+}
+
+p.departurefrom {
+    float: left;
+    color: #999;
+    padding-top: 9px;
+    font-weight: 600;
+}
+
+.container-ticket {
+    box-sizing: content-box;
+    display: inline-block;
+    position: relative;
+    padding: 6px 0px;
+    color: #684d18;
+    font-weight: bold;
+    font-size: 16px;
+    background-size: 90% 100%;
+    background-repeat: no-repeat;
+    background-image: -webkit-radial-gradient(circle at 0 50%,rgba(255,255,224,0) .4em,#ffffe0 .5em),-webkit-radial-gradient(circle at 100% 50%,rgba(255,255,224,0) .4em,#ffffe0 .5em);
+    background-image: -webkit-radial-gradient(0 50% circle,rgba(255,255,224,0) .4em,#ffffe0 .5em),-webkit-radial-gradient(100% 50% circle,rgba(255,255,224,0) .4em,#ffffe0 .5em);
+    background-image: radial-gradient(circle at 0 50%,rgba(255,255,224,0) .4em,#f9af00 .5em),radial-gradient(circle at 100% 50%,rgba(255,255,224,0) .4em,#f9af00 .5em);
+    background-position: top left,top right;
+    background-position-x: left, right;
+    background-position-y: top, top;
+    background-color: #fff;
+    width: 100%;
+    border: none;
+    box-shadow: none;
+    text-transform: uppercase;
+    width: 80%;
+}
+
+.col-xs-12.col-sm-6.col-md-6.col-lg-6.routes-list {
+    padding-bottom: 10px;
+}
+
+.routes-list i.fa.fa-bus {
+    margin-right: 10px;
+    padding-right: 10px;
+    border-right: 1.8px solid #e5a100;
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+    font-size: 1.3em;
+    color: #1867aa;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.nav-tabs > li > a {
+    color: gray;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+p.ticketfare {
+    padding-top: 9px;
+    font-size: 1.1em;
+    font-weight: 600;
+    color: #999;
+}
+
+p.arrvialto {
+    padding-top: 9px;
+    font-weight: 600;
+    font-size: 1.1em;
+}

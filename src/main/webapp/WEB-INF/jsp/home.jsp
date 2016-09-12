@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Admin
@@ -11,27 +12,27 @@
 <!DOCTYPE html>
 <html>
 <head lang="vi" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# product: http://ogp.me/ns/product#">
-    <meta name="viewport" content="width=device-width"/>
     <title>Đặt vé xe online</title>
-    <meta name="robots" content="index, follow"/>
     <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
     <link href="resource/images/vexere-ico.ico?v=4484" rel="shortcut icon" type="image/x-icon"/>
-    <meta property="og:site_name" content="VeXeRe"/>
-    <meta property="og:type" content="product.group"/>
-    <meta property="og:url" content="https://vexere.com"/>
-    <meta property="og:image" content="/images/fb-thumbnail.jpg"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-    <meta name="google-site-verification" content="niV9ShHdCWcZFAoPyWjqPL74Aldmk_jHfbvYkIt6uX0"/>
     <!-- Stylesheet -->
-    <link href="resource/css/home-styles.css?v=4484" rel="stylesheet"/>
-    <link rel="stylesheet" type="text/css" href="resource/css/font-awesome.min.css">
+    <link href="../../resource/css/home-styles.css?v=4484" rel="stylesheet"/>
+    <link rel="stylesheet" href="/resource/vendor/font-awesome.css">
+    <link rel="stylesheet" href="/resource/vendor/bootstrap.css">
     <link rel="stylesheet" href="/resource/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" href="/resource/css/home.css">
+    <link rel="stylesheet" href="/resource/css/busserviceschedule.css">
     <link rel="stylesheet" href="/resource/css/jquery-ui.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+    <%--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">--%>
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
+    <script type="text/javascript" src="/resource/vendor/bootstrap.js"></script>
     <script src="/resource/js/jquery-ui.min.js"></script>
     <script src="/resource/js/bootstrap-datepicker.min.js"/>
-    <script type="text/javascript" src="resource/js/home-scripts.js"></script>
+    <script type="text/javascript" src="../../resource/js/home-scripts.js"></script>
+    <script type="text/javascript" src="/resource/js/home.js"></script>
+
     <!-- END GA -->
 </head>
 <body>
@@ -39,12 +40,12 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3">
-                <a href="/" class="logo-image"><img height="50" src="resource/images/Home/bus-vxr.png"/></a>
+                <a href="/" class="logo-image"><img height="50" src="../../resource/images/Home/bus-vxr.png"/></a>
                 <ul class="header-action-bar visible-sm visible-xs">
                     <li>
                         <a class="header-blue-language en-change" href="javascript:"
                            data-href="/vi-VN/Language/ChangeLanguage?curlang=en&url=/"><img width="24"
-                                                                                            src="resource/images/english_icon.png"/></a>
+                                                                                            src="../../resource/images/english_icon.png"/></a>
                     </li>
                     <li>
                         <a class="header-blue-tel" href="tel: 19006484">
@@ -126,28 +127,28 @@
                             <li class="clone" aria-hidden="true"
                                 style="width: 352px; margin-right: 0px; float: left; display: block;">
                                 <a href="#" target="_blank">
-                                    <img src="resource/images/promotion/Silder_2-9_(_ty_le_360x214_).jpg"
+                                    <img src="../../resource/images/promotion/Silder_2-9_(_ty_le_360x214_).jpg"
                                          draggable="false">
                                 </a>
                             </li>
                             <li class="flex-active-slide"
                                 style="width: 352px; margin-right: 0px; float: left; display: block;" data-thumb-alt="">
                                 <a href="#">
-                                    <img src="resource/images/promotion/cyberpay_slider.png"
+                                    <img src="../../resource/images/promotion/cyberpay_slider.png"
                                          draggable="false">
                                 </a>
                             </li>
                             <li class="" data-thumb-alt=""
                                 style="width: 352px; margin-right: 0px; float: left; display: block;">
                                 <a href="#" target="_blank">
-                                    <img src="resource/images/promotion/cyberpay_slider.png"
+                                    <img src="../../resource/images/promotion/cyberpay_slider.png"
                                          draggable="false">
                                 </a>
                             </li>
                             <li class="" data-thumb-alt=""
                                 style="width: 352px; margin-right: 0px; float: left; display: block;">
                                 <a href="#" target="_blank">
-                                    <img src="resource/images/promotion/cyberpay_slider.png"
+                                    <img src="../../resource/images/promotion/cyberpay_slider.png"
                                          draggable="false">
                                 </a>
                             </li>
@@ -176,7 +177,7 @@
                 <div class="col-sm-12 pr0 pl0">
                     <div class="banner-29">
                         <img class="visible-xs visible-sm img-responsive"
-                             src="resource/images/General/Banner_Trang_Chu_(Mobile)_-_With_Clock.png"/>
+                             src="../../resource/images/General/Banner_Trang_Chu_(Mobile)_-_With_Clock.png"/>
 
                         <div class="ticket-amount"><label></label></div>
                     </div>
@@ -216,7 +217,7 @@
 
     <div class="skyline-city"></div>
     <div class="bus-img">
-        <img style="opacity: 0.3;filter: alpha(opacity=30);" src="resource/images/newlayout/banh-xe.gif">
+        <img style="opacity: 0.3;filter: alpha(opacity=30);" src="../../resource/images/newlayout/banh-xe.gif">
     </div>
 </div>
 <div class="hidden-sm hidden-xs">
@@ -226,6 +227,86 @@
     <div id="busNetwork"></div>
     <div id="stations"></div>
 </div>
+
+
+<div class="schedulecity">
+    <div class="container">
+        <div class="row">
+            <h2>Dynamic Tabs</h2>
+            <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#home">Đà Nẵng</a></li>
+                <li><a data-toggle="tab" href="#menu1">Quảng Ngãi</a></li>
+                <%--<li><a data-toggle="tab" href="#menu2"></a></li>--%>
+                <%--<li><a data-toggle="tab" href="#menu3"></a></li>--%>
+            </ul>
+
+            <div class="tab-content">
+                <div id="home" class="tab-pane fade in active">
+                    <div class="row">
+                        <c:forEach var="citySchedule" items="${DaNang}">
+                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 routes-list">
+                            <div class="row">
+                                <form action="/findticket">
+                                <input type="hidden" value="${citySchedule.departure.city}" name="departPlace">
+                                <input type="hidden" value="${citySchedule.arrival.city}" name="destination">
+                                <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+                                    <p class="departurefrom">${citySchedule.departure.city}  &nbsp; &nbsp;<i class="fa fa-long-arrow-right" aria-hidden="true"></i></p>
+                                    <p class="arrvialto">  &nbsp; &nbsp;${citySchedule.arrival.city}</p>
+                                </div>
+                                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                    <p class="ticketfare">${citySchedule.priceTicket}<sup>đ</sup>/Vé</p>
+                                </div>
+                                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                    <input type="hidden" name="departDate">
+                                    <button class="container-ticket text-center" type="button" class="form-control" id="exampleInputName3" placeholder=""
+                                            ><i class="fa fa-bus"></i><span>TÌM VÉ</span></button>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                        </c:forEach>
+                    </div>
+                </div>
+
+                <div id="menu1" class="tab-pane fade">
+                    <div class="row">
+                        <c:forEach var="citySchedule" items="${QuangNgai}">
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 routes-list">
+                                <div class="row">
+                                    <form action="/findticket" method="get">
+                                        <input type="hidden" value="${citySchedule.departure.city}" name="departPlace">
+                                        <input type="hidden" value="${citySchedule.arrival.city}" name="destination">
+                                    <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+                                        <p class="departurefrom">${citySchedule.departure.city}  &nbsp; &nbsp;<i class="fa fa-long-arrow-right" aria-hidden="true"></i></p>
+                                        <p class="arrvialto">  &nbsp; &nbsp;${citySchedule.arrival.city}</p>
+                                    </div>
+                                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                        <p class="ticketfare">${citySchedule.priceTicket}<sup>đ</sup>/Vé</p>
+                                    </div>
+                                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                                        <button class="container-ticket text-center" type="button" class="form-control" id="exampleInputName3" placeholder=""
+                                                name="departDate"><i class="fa fa-bus"></i><span>TÌM VÉ</span></button>
+                                    </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </c:forEach>
+                    </div>
+                </div>
+                <div id="menu2" class="tab-pane fade">
+                    <h3>Menu 2</h3>
+                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+                </div>
+                <div id="menu3" class="tab-pane fade">
+                    <h3>Menu 3</h3>
+                    <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <div id="news-panel" class="hidden-sm hidden-xs">
     <div class="container">
         <div class="row">
@@ -242,7 +323,7 @@
                         <div class="text-center" style="position: relative">
                             <hr class="customer-divider"/>
                             <img class="img-circle customer-avatar" width="50"
-                                 src="resource/images/Vancakova.jpg"/>
+                                 src="../../resource/images/Vancakova.jpg"/>
                         </div>
                     </div>
                 </div>
@@ -252,6 +333,7 @@
 </div>
 <!--/ News/Social/Apps-->
 </div>
+
 
 
 <div id="footer">
@@ -291,7 +373,7 @@
 
                 <div class="col-08 clearfix">
                     <a target="_blank" href="http://csip.vn/" rel="nofollow"><img
-                            src="resource/images/logocompany.pnguery" style="width: 45px;"></a>
+                            src="../../resource/images/logocompany.png" style="width: 45px;"></a>
                 </div>
             </div>
         </div>
@@ -300,7 +382,7 @@
         <div class="copyright-panel" itemscope itemtype="http://schema.org/Organization">
             <div class="col col-md-8 footer-info-panel hidden-sm hidden-xs">
                 <a itemprop="url" class="footer-logo" href="/" title="Cổng thông tin vé xe khách lớn nhất Việt Nam">
-                    <img itemprop="logo" src="resource/images/Home/icon-vxr.jpg" alt=""
+                    <img itemprop="logo" src="../../resource/images/Home/icon-vxr.jpg" alt=""
                          style="width: 55px; height: 55px;"/>
                 </a>
 
@@ -329,19 +411,19 @@
             <div class="col-md-4 certificate-panel">
 
                 <div class="col col-md-6 col-sm-3 col-xs-4">
-                    <img src="resource/images/Home/certificate0.png"/>
+                    <img src="../../resource/images/Home/certificate0.png"/>
                 </div>
                 <div class="col col-md-6  col-sm-3 col-xs-4">
-                    <img src="resource/images/Home/certificate1.png"/>
+                    <img src="../../resource/images/Home/certificate1.png"/>
                 </div>
                 <div class="col col-md-6 col-sm-3 hidden-xs">
                     <a href="http://online.gov.vn/HomePage/WebsiteDisplay.aspx?DocId=773">
-                        <img src="resource/images/Home/certificate2.png"/>
+                        <img src="../../resource/images/Home/certificate2.png"/>
                     </a>
                 </div>
                 <div class="col col-md-6 col-sm-3 col-xs-4">
                     <a href="http://online.gov.vn/HomePage/WebsiteDisplay.aspx?DocId=773">
-                        <img src="resource/images/Home/certificate3.png"/>
+                        <img src="../../resource/images/Home/certificate3.png"/>
                     </a>
                 </div>
             </div>
@@ -387,100 +469,7 @@
 </script>
 
 
-<style>
-    .bus-kh-km {
-        position: fixed;
-        z-index: 999;
-        left: 50px;
-        bottom: 0;
-        width: 390px;
-        height: 260px;
-    }
 
-    .banner-kh-km {
-        position: absolute;
-        z-index: 99;
-        top: 0;
-    }
-
-    .banner-vbms {
-        position: fixed;
-        z-index: 99;
-        bottom: 0;
-    }
-
-    .close-banner-vbms {
-        position: absolute;
-        top: -13px;
-        right: 0;
-        cursor: pointer;
-    }
-
-    .popup-29 {
-        position: fixed;
-        z-index: 999;
-        left: 500px;
-        bottom: 0;
-        width: 390px;
-        height: 260px;
-    }
-
-    .close-button {
-        position: absolute;
-        right: 168px;
-        top: 9px;
-        cursor: pointer;
-        z-index: 3;
-        opacity: 0;
-    }
-
-    .pd-0 {
-        padding: 0 !important;
-        border-radius: 0;
-    }
-
-    .custom-model-content {
-        background-color: transparent;
-        box-shadow: none;
-        border: none;
-        top: 50px;
-    }
-
-    @media (max-width: 768px) {
-        .custom-model-content {
-            top: 130px;
-        }
-
-        #muine {
-            top: 124px !important;
-        }
-
-        .img-popup-tet {
-            width: 100%;
-            margin: auto;
-        }
-
-        .close-button {
-            right: -1px !important;
-            top: 0 !important;
-        }
-
-        .popup-container {
-            position: relative;
-            margin-top: 15%;
-        }
-    }
-
-    @media (min-width: 992px) {
-        .modal-lg {
-            width: 1024px !important;
-        }
-
-        .img-popup-tet {
-            margin: auto;
-        }
-    }
-</style>
 
 <div id="vexetet-modal" class="modal modal-vexetet" data-backdrop="static" data-keyboard="false" tabindex="-1"
      role="dialog" aria-hidden="true">
@@ -491,10 +480,10 @@
                 <div class="popup-container">
                     <a class="dalat-link" href="#">
                         <img class="img-responsive img-popup-tet"
-                             src="resource/images/pop-up/Popup_New_PC_and_Mobile.png"/>
+                             src="../../resource/images/pop-up/Popup_New_PC_and_Mobile.png"/>
 
                     </a>
-                    <img class="close-button" src="resource/images/newlayout/close_red.png" width="32"/>
+                    <img class="close-button" src="../../resource/images/newlayout/close_red.png" width="32"/>
                 </div>
             </div>
         </div>

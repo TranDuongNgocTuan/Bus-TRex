@@ -25,4 +25,6 @@ public interface ScheduleRepository extends CrudRepository<ScheduleEntity, Integ
                                                               @Param("dateGo") Date date);
 
     List<ScheduleEntity> findById(int id);
+
+    List<ScheduleEntity> findByDeparture_City(String city);
 }

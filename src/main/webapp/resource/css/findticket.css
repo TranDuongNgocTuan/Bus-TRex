@@ -206,11 +206,12 @@ footer p {
     padding-top: 10px;
 }
 
-.distance a.btn.btn-default {
+.distance button.btn.btn-default {
     border-color: #1867aa;
     border-radius: 0%;
     padding: 6px 9px;
     color: #1867aa;
+    text-transform: uppercase;
 }
 
 .distance {
@@ -581,3 +582,7 @@ button.btn.btn-primary.wm-comment {
     box-shadow: none;
 }
 
+#map {
+    height: 350px;
+    margin-bottom: 50px;
+}]
