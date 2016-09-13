@@ -63,6 +63,9 @@
             <div class="col-md-9 header-blue-right-menu">
                 <ul class="header-blue-menu-list">
                     <li>
+                        <a href="<c:url value="/loginstaff"/> ">Nhân viên xe</a>
+                    </li>
+                    <li>
                         <a href="/scanticket">Kiểm tra vé</a>
                     </li>
                     <li>

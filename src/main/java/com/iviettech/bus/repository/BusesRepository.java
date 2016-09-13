@@ -16,5 +16,4 @@ public interface BusesRepository extends CrudRepository<BusesEntity, Integer> {
     List<BusesEntity> findByTimeTableScheduleEntityId(int anInt);
 
     BusesEntity findByDateAndTimeTableScheduleEntityId(Date date, int id);
-
 }

@@ -13,12 +13,12 @@
       <div class="login-triangle"></div> 
       <h2 class="login-header">Log in</h2>
       <%--<form class="login-container">--%>
-        <c:form cssClass="login-container" modelAttribute="adminEntity" action="/admin" method="post">
-          <p><c:input path="username" placeholder="Username" type="text"/></p>
-          <p><c:input path="password" placeholder="Password" type="password"/></p>
-          <p><input type="submit" value="Log in"></p>
+        <form Class="login-container" action="/adminstaff" method="post">
+          <input name="username" placeholder="Username" type="text"/>
+          <input class="password" placeholder="Password" type="password"/>
+          <input type="submit" value="Log in">
           <div style="color: red">${msg}</div>
-        </c:form>
+        </form>
       <%--</form>--%>
     </div>
   </body>
