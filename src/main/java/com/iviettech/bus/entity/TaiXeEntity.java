@@ -12,6 +12,14 @@ public class TaiXeEntity {
 
     private String name;
 
+    @OneToOne(cascade = {CascadeType.ALL})
+    @PrimaryKeyJoinColumn
+    private BusEntity busEntity;
+
+    private String username;
+
+    private String password;
+
     public TaiXeEntity() {
     }
 
@@ -29,5 +37,29 @@ public class TaiXeEntity {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public BusEntity getBusEntity() {
+        return busEntity;
+    }
+
+    public void setBusEntity(BusEntity busEntity) {
+        this.busEntity = busEntity;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

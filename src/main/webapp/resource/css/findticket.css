@@ -206,11 +206,12 @@ footer p {
     padding-top: 10px;
 }
 
-.distance a.btn.btn-default {
+.distance button.btn.btn-default {
     border-color: #1867aa;
     border-radius: 0%;
     padding: 6px 9px;
     color: #1867aa;
+    text-transform: uppercase;
 }
 
 .distance {
@@ -557,4 +558,31 @@ button.btn.btn-primary.wm-comment {
     margin-bottom: 6px;
     padding-left: 8px;
     color: white;
+}
+
+.container-ticket-over {
+    box-sizing: content-box;
+    display: inline-block;
+    position: relative;
+    padding: 10px 0 5px 0;
+    color: #684d18;
+    font-weight: bold;
+    font-size: 18px;
+    background-size: 90% 100%;
+    background-repeat: no-repeat;
+    background-image: -webkit-radial-gradient(circle at 0 50%,rgba(255,255,224,0) .4em,#ffffe0 .5em),-webkit-radial-gradient(circle at 100% 50%,rgba(255,255,224,0) .4em,#ffffe0 .5em);
+    background-image: -webkit-radial-gradient(0 50% circle,rgba(255,255,224,0) .4em,#ffffe0 .5em),-webkit-radial-gradient(100% 50% circle,rgba(255,255,224,0) .4em,#ffffe0 .5em);
+    background-image: radial-gradient(circle at 0 50%,rgba(255,255,224,0) .4em,#d4d4d4 .5em),radial-gradient(circle at 100% 50%,rgba(255,255,224,0) .4em,#d4d4d4 .5em);
+    background-position: top left,top right;
+    background-position-x: left, right;
+    background-position-y: top, top;
+    background-color: #fff;
+    width: 100%;
+    border: none;
+    box-shadow: none;
+}
+
+#map {
+    height: 350px;
+    margin-bottom: 50px;
 }

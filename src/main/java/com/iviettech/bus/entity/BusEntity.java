@@ -25,8 +25,11 @@ public class BusEntity {
     @JoinColumn(name = "busservicesId")
     private BusServicesEntity busServicesEntity;
 
-    @OneToMany(mappedBy = "busEntity")
+    @OneToMany(mappedBy = "busEntity", fetch = FetchType.EAGER)
     private List<TimeTableScheduleEntity> timeTableScheduleEntityList;
+
+    @OneToOne(mappedBy = "busEntity")
+    private TaiXeEntity taiXeEntity;
 
     public BusEntity() {
     }
@@ -77,5 +80,13 @@ public class BusEntity {
 
     public void setTimeTableScheduleEntityList(List<TimeTableScheduleEntity> timeTableScheduleEntityList) {
         this.timeTableScheduleEntityList = timeTableScheduleEntityList;
+    }
+
+    public TaiXeEntity getTaiXeEntity() {
+        return taiXeEntity;
+    }
+
+    public void setTaiXeEntity(TaiXeEntity taiXeEntity) {
+        this.taiXeEntity = taiXeEntity;
     }
 }

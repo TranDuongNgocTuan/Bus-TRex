@@ -127,7 +127,7 @@
                         <i class="dropdown-toggle" data-placeholder="false" type="button" data-toggle="dropdown"><i class="fa fa-bus"></i><span>Hãng xe</span></i>
                         <ul class="dropdown-menu">
                             <c:forEach var="schedule" items="${scheduleListNormal}">
-                                <li><input type="checkbox" id="ID${schedule.busServicesEntity.name}" name="NAME" value="${schedule.busServicesEntity.name}"><label for="ID${schedule.busServicesEntity.name}">${schedule.busServicesEntity.name}</label></li>
+                                <li><input type="checkbox" id="ID${schedule.busServicesEntity.name}" name="HANGXE" value="${schedule.busServicesEntity.name}"><label for="ID${schedule.busServicesEntity.name}">${schedule.busServicesEntity.name}</label></li>
                             </c:forEach>
                         </ul>
 
@@ -140,11 +140,11 @@
                     <i class="bar fa fa-sort-desc service"></i></td>
                 <td>
                     <div class="dropdown pull-left">
-                        <i class="dropdown-toggle" type="button" data-toggle="dropdown"><i
+                        <i class="dropdown-toggle" data-placeholder="false" type="button" data-toggle="dropdown"><i
                                 class="fa fa-clock-o"></i><span>Giờ đi</span></i>
                         <ul class="dropdown-menu">
                             <c:forEach var="schedule" items="${scheduleList}">
-                                <li><a href="#">${schedule.timeTableScheduleEntity.departureTime}</a></li>
+                                <li><input type="checkbox" id="ID${schedule.timeTableScheduleEntity.departureTime}" name="THOIGIAN" value="${schedule.timeTableScheduleEntity.departureTime}"><label for="ID${schedule.timeTableScheduleEntity.departureTime}">${schedule.timeTableScheduleEntity.departureTime}</label></li>
                             </c:forEach>
                         </ul>
                     </div>
@@ -247,7 +247,7 @@
 </div>
 <!-- end search 2 -->
 
-
+<c:set var="avgTicketSell" value="${0}"/>
 <div class="ticket">
     <div class="container">
         <div class="row">
@@ -334,18 +334,42 @@
                         </td>
                         <td class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
                             <div class="">
+                                <c:set var="avgTicketSell" value="${avgTicketSell + schedule.scheduleEntity.priceTicket}"/>
                                 <h4 class="moneyTicket">${schedule.scheduleEntity.priceTicket}<sup>đ</sup></h4>
+                                <jsp:useBean id="dateNow" class="java.util.Date" />
+                                <fmt:formatDate var="dateNowTime" type="time" value="${dateNow}"/>
+                                <fmt:formatDate var="dateNowDate" pattern="yyyy-MM-dd" value="${dateNow}"/>
+                                <%--<c:out value="${dateNowDate}"/>--%>
+                                <%--<c:out value="${dayStartMove}"/>--%>
+                                <c:choose>
+                                    <c:when test="${(dateNowTime ge schedule.timeTableScheduleEntity.departureTime) && (dateNowDate == dayStartMove)}">
+                                        <div class="container-ticket-over text-center" data-toggle="collapse"
+                                             data-target="#${schedule.timeTableScheduleEntity.id}">
+                                            <b:choose>
+                                               <b:when test="${schedule.numberSeat == schedule.sumNumberOfSeat}">
+                                                   <i class="fa fa-bus"></i><span>HẾT VÉ</span>
+                                               </b:when>
+                                                <b:otherwise>
+                                                    <i class="fa fa-bus"></i><span>ĐÃ ĐI</span>
+                                                </b:otherwise>
+                                            </b:choose>
 
-                                <div class="container-ticket text-center" data-toggle="collapse"
-                                     data-target="#${schedule.timeTableScheduleEntity.id}">
-                                    <i class="fa fa-bus"></i><span>Đặt vé</span>
-                                </div>
+                                        </div>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <div class="container-ticket text-center" data-toggle="collapse"
+                                             data-target="#${schedule.timeTableScheduleEntity.id}">
+                                            <i class="fa fa-bus"></i><span>Đặt vé</span>
+                                        </div>
+                                    </c:otherwise>
+                                </c:choose>
                             </div>
                         </td>
                         <!-- end time from to -->
                     </tr>
                     <tr id="getTrSubmit">
                         <td class="col-xs-12 col-sm-12 col-md-12 col-lg-12 info" colspan="5">
+                            <c:if test="${!((dateNowTime ge schedule.timeTableScheduleEntity.departureTime) && (dateNowDate == dayStartMove)) || schedule.numberSeat == schedule.sumNumberOfSeat}">
                             <div id="${schedule.timeTableScheduleEntity.id}" class="collapse info-wapper">
                                 <div class="info-tilte">
                                     <div class="row">
@@ -492,7 +516,9 @@
                                 <!-- end information ticket -->
                                 <div class="info-end"></div>
                             </div>
+                            </c:if>
                         </td>
+
                     </tr>
                 </c:forEach>
             </table>
@@ -502,15 +528,31 @@
     <!-- end show ticket -->
 </div>
 
+<%-- google map--%>
 <div class="distance">
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
-                <a href="" class="btn btn-default">THÔNG TIN TUYẾN ĐƯỜNG ĐÀ NẴNG HẢI PHÒNG</a>
-
-                <p>Giá vé trung bình : 402.500 VNĐ Giá vé trên chưa bao gồm phụ thu các ngày Lễ Tết.</p>
+                <button class="btn btn-default" data-toggle="collapse" data-target="#infostreet">THÔNG TIN TUYẾN ĐƯỜNG ${from.city} ${to.city}</button>
+                <p>Giá vé trung bình : <c:out value="${avgTicketSell / scheduleList.size()}"/> VNĐ <span style="color: red">Giá vé trên chưa bao gồm phụ thu các ngày Lễ Tết.</span></p>
             </div>
         </div>
+    </div>
+</div>
+
+<input type="hidden" id="start" value="${from.city},Viet Nam"/>
+<input type="hidden" id="end" value="${to.city},Viet Nam"/>
+
+<%--<div class="collapse" id="infostreet">--%>
+    <%--<div class="card card-block">--%>
+
+    <%--</div>--%>
+<%--</div>--%>
+
+
+<div class="container">
+    <div class="row">
+        <div id="map"></div>
     </div>
 </div>
 
@@ -526,10 +568,6 @@
                     <li><a href="">Xe Sapa Express </a></li>
                     <li><a href="">Xe Thành Công </a></li>
                     <li><a href="">Xe Thanh Vân </a></li>
-                    <li><a href="">Xe Thuận Thảo </a></li>
-                    <li><a href="">Xe Thuận Tiến </a></li>
-                    <li><a href="">Xe Năm Rùm </a></li>
-                    <li><a href="">Xe Việt Lào </a></li>
                 </ul>
             </div>
             <div class="col-lg-2  col-md-2">
@@ -538,10 +576,6 @@
                     <li><a href="">Xe Sapa Express </a></li>
                     <li><a href="">Xe Thành Công </a></li>
                     <li><a href="">Xe Thanh Vân </a></li>
-                    <li><a href="">Xe Thuận Thảo </a></li>
-                    <li><a href="">Xe Thuận Tiến </a></li>
-                    <li><a href="">Xe Năm Rùm </a></li>
-                    <li><a href="">Xe Việt Lào </a></li>
                 </ul>
             </div>
         </div>
@@ -832,6 +866,39 @@
         </form>
     </div>
 </div>
+
+<script>
+    function initMap() {
+        var directionsService = new google.maps.DirectionsService;
+        var directionsDisplay = new google.maps.DirectionsRenderer;
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 10,
+            center: {lat: 41.85, lng: -87.65}
+        });
+        directionsDisplay.setMap(map);
+
+        calculateAndDisplayRoute(directionsService, directionsDisplay);
+    }
+
+    function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+        directionsService.route({
+            origin: document.getElementById('start').value,
+            destination: document.getElementById('end').value,
+            travelMode: google.maps.TravelMode.DRIVING
+        }, function(response, status) {
+            if (status === google.maps.DirectionsStatus.OK) {
+                directionsDisplay.setDirections(response);
+                //get direction info
+                var route = response.routes[0];
+            } else {
+                window.alert('Directions request failed due to ' + status);
+            }
+        });
+    }
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA2ij9K5E7yLvjbzIhagbV7MjV2eg_rZ64&callback=initMap">
+</script>
 
 </body>
 </html>

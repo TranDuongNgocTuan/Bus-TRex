@@ -1,0 +1,25 @@
+h3.titleFinish {
+    color: red;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.finish {
+    padding: 100px 0px;
+}
+
+h5.contentFinish {
+    font-size: 20px;
+}
+
+.finish a.btn.btn-primary {
+    font-size: 21px;
+    padding: 7px 28px;
+    margin-top: 30px;
+    text-transform: uppercase;
+}
+
+i.fa.fa-download.icon-download {
+    margin-right: 23px;
+    font-size: 30px;
+}

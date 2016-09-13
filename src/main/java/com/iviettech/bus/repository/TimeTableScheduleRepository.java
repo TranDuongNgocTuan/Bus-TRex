@@ -14,4 +14,6 @@ import java.util.List;
  */
 public interface TimeTableScheduleRepository extends CrudRepository<TimeTableScheduleEntity, Integer> {
     List<TimeTableScheduleEntity> findByScheduleEntityId(int i);
+
+    List<TimeTableScheduleEntity> findByBusEntity_Id(int id);
 }
