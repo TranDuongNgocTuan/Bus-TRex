@@ -1,6 +1,5 @@
 package com.iviettech.bus.controller;
 
-import com.iviettech.bus.entity.BusServicesEntity;
 import com.iviettech.bus.entity.TicketEntity;
 import com.iviettech.bus.service.TicketInfomationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
@@ -26,6 +27,36 @@ public class TicketInfomationController {
         List<TicketEntity> ticketEntityList=ticketInfomationService.findAll();
         mav.addObject("tho", ticketEntityList);
         return mav;
+    }
+
+    @RequestMapping("/pdfExport")
+    public ModelAndView pdfExport(HttpServletResponse response) {
+
+        response.setContentType("application/pdf");
+        response.addHeader("Content-Disposition", "attachment; filename=exportMy.pdf");
+        List<TicketEntity> ticketEntityList=ticketInfomationService.findAll();
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("pdfView");
+        mv.addObject("tho", ticketEntityList);
+        return mv;
+    }
+
+    @RequestMapping(value = "/excelExport", method = {RequestMethod.POST})
+    public ModelAndView excelExport(HttpServletResponse response) {
+
+        response.setContentType("application/vnd.ms-excel");
+        response.setHeader("Content-Disposition", "attachment; filename=myExcelExport.xls");
+        List<TicketEntity> ticketEntityList=ticketInfomationService.findAll();
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("excelView");
+        mv.addObject("tho",ticketEntityList);
+        return mv;
+    }
+
+    @RequestMapping(value = "/downloadPDF", method = RequestMethod.GET)
+    public ModelAndView dowloadPdf(){
+        List<TicketEntity> ticketEntityList=ticketInfomationService.findAll();
+        return new ModelAndView("pdfView","tho",ticketEntityList);
     }
 
     @RequestMapping(value = "/ticketinformation/search", method = GET)

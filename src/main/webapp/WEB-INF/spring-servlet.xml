@@ -27,4 +27,9 @@
 
        <task:annotation-driven />
        <bean id="scheduleTicketController" class="com.iviettech.bus.controller.ScheduleTicketController"></bean>
+
+
+       <!--<bean id="pdfView" class="com.iviettech.bus.service.PDFBuilder"></bean>-->
+              <!--<bean class="com.util.PDFBuilder" id="pdfView">-->
+
 </beans>

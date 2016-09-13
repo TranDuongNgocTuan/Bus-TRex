@@ -82,6 +82,6 @@ public class PromotionController {
         }
 
         model.addAttribute("promotionList", resultList);
-        return "promotion";
+        return "redirect:/promotion";
     }
 }

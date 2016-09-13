@@ -7,25 +7,23 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-/**
- * Created by Admin on 8/29/2016.
- */
+
 @Component
 public class AdminService {
 
     @Autowired
     AdminRepository adminRepository;
 
-    public Boolean checkAdmin(String user, String pass){
+    public AdminEntity checkAdmin(String user, String pass){
         String username=user.trim();
         String password=pass.trim();
         Boolean test=false;
         List<AdminEntity> adminEntityList=(List<AdminEntity>) adminRepository.findAll();
         for(AdminEntity admin: adminEntityList){
-            if ((admin.getUsername().equals(username))&&(admin.getPassword().equals(password))){
-                test=true;
+            if ((admin.getUsername().equalsIgnoreCase(username))&&(admin.getPassword().equalsIgnoreCase(password))){
+                return admin;
             }
         }
-        return test;
+        return null;
     }
 }

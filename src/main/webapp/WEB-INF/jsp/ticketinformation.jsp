@@ -116,6 +116,9 @@
               <li>
                 <a href="/taixe"><i class="fa fa-male fa-fw"></i> Tài xế</a>
               </li>
+              <li>
+                <a href="/promotion"><i class="fa fa-usd fa-fw"></i> Khuyến mãi</a>
+              </li>
             </ul>
             <!-- /.nav-second-level -->
           </li>
@@ -123,7 +126,7 @@
             <a href="#"><i class="fa fa-area-chart fa-fw"></i> Tổng kết doanh thu</a>
           </li>
           <li>
-            <a href="#"><i class="fa fa-usd fa-fw"></i> Khuyến mãi</a>
+            <a href="#"><i class="fa fa-image fa-fw"></i> Hình ảnh</a>
           </li>
           <li>
             <a href="#"><i class="fa fa-users fa-fw"></i> Nói về chúng tôi</a>
@@ -211,12 +214,19 @@
                         <td>${ticket.seat}</td>
                         <td>${ticket.numberSeats}</td>
                         <td>${ticket.gmail}</td>
-                        <td>${ticket.busstationEntityArrival}</td>
-                        <td>${ticket.busstationEntityDeparture}</td>
+                        <td>${ticket.busstationEntityArrival.name}</td>
+                        <td>${ticket.busstationEntityDeparture.name}</td>
                         <td>${ticket.codeTicket}</td>
                       </tr>
                     </c:forEach>
                     </tbody>
+                  </table>
+                  <table class="table table-condensed table-hover">
+                    <tr>
+                      <td>
+                        <h3><a href="/downloadPDF">Download PDF Document</a></h3>
+                      </td>
+                    </tr>
                   </table>
                 </div>
               </div>

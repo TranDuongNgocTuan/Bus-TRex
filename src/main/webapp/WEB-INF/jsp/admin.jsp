@@ -1,3 +1,4 @@
+<%@ page import="com.iviettech.bus.entity.AdminEntity" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
@@ -44,6 +45,17 @@
 <body>
 
 <div id="wrapper">
+    <%
+        AdminEntity adminEntity = (AdminEntity) session.getAttribute("adminEntity");
+//        out.print(adminEntity.getRoleEntity().getLevel());
+        if (adminEntity==null || adminEntity.getRoleEntity().getLevel()!=1) {
+            response.sendRedirect("/login");
+        }
+    %>
+    <%--<jsp:include page="home.jsp"/>--%>
+    <%--<%--%>
+        <%--}--%>
+    <%--%>--%>
 
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
@@ -54,7 +66,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="admin.jsp">TRANG CHỦ</a>
+            <a class="navbar-brand" href="admin">TRANG CHỦ</a>
         </div>
         <!-- /.navbar-header -->
 
@@ -69,7 +81,7 @@
                     <li><a href="profile"><i class="fa fa-user fa-fw"></i> Hồ sơ Admin</a>
                     </li>
                     <li class="divider"></li>
-                    <li><a href="login"><i class="fa fa-sign-out fa-fw"></i>Đăng xuất</a>
+                    <li><a href="/logout"><i class="fa fa-sign-out fa-fw"></i>Đăng xuất</a>
                     </li>
                 </ul>
                 <!-- /.dropdown-user -->
@@ -152,7 +164,7 @@
     <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">CHÀO ADMIN !</h1>
+                <h1 class="page-header">CHÀO ${adminEntity.username} !</h1>
             </div>
             <!-- /.col-lg-12 -->
         </div>
