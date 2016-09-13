@@ -10,13 +10,19 @@
 
        <context:component-scan base-package="com.iviettech.bus"/>
 
-       <mvc:resources mapping="/resource/**" location="/resource/"/>
+       <mvc:resources mapping="/webjars/**" location="/webjars/"/>
 
        <!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/jsp directory -->
        <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
               <property name="prefix" value="/WEB-INF/jsp/" />
               <property name="suffix" value=".jsp" />
        </bean>
+
+       <bean class="org.springframework.web.servlet.view.XmlViewResolver">
+              <property name="order" value="1" />
+              <property name="location" value="/WEB-INF/spring-views.xml"/>
+       </bean>
+
        <bean class="org.springframework.web.multipart.support.StandardServletMultipartResolver" id="multipartResolver">
        </bean>
 
@@ -26,10 +32,5 @@
        <mvc:annotation-driven />
 
        <task:annotation-driven />
-       <bean id="scheduleTicketController" class="com.iviettech.bus.controller.ScheduleTicketController"></bean>
-
-
-       <!--<bean id="pdfView" class="com.iviettech.bus.service.PDFBuilder"></bean>-->
-              <!--<bean class="com.util.PDFBuilder" id="pdfView">-->
-
+       <bean id="scheduleTicketController" class="com.iviettech.bus.controller.ScheduleController"></bean>
 </beans>
