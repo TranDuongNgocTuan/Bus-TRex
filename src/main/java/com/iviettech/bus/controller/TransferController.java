@@ -93,6 +93,31 @@ public class TransferController {
         }
     }
 
+    public String encryptedCodeTicket(TicketEntity ticketEntitySession) throws GeneralSecurityException {
+
+        String text = ticketEntitySession.getBookTime().toString()+"-"+ticketEntitySession.getGmail();
+
+        String key = "TTY6I9^hQuo!a1n0";
+        String iv =  "Iay63!2Uy*)sQZhn"; // Initialization vector
+
+        String encryptedCode = aesCrypter.encrypt(text, key, iv);
+
+        return encryptedCode;
+    }
+
+    public BusesEntity findBusesEntity(Date dateStartMove, TimeTableScheduleEntity timeTableScheduleEntity){
+        BusesEntity busesEntity = busesRepository.findByDateAndTimeTableScheduleEntityId(dateStartMove, timeTableScheduleEntity.getId());
+
+        if (busesEntity == null){
+            busesEntity = new BusesEntity();
+            busesEntity.setDate(new Date(dateStartMove.getTime()));
+            busesEntity.setTimeTableScheduleEntity(timeTableScheduleEntity);
+            busesEntity.setStatusBusesEntity(statusBusesRepository.findOne(1));
+            busesRepository.save(busesEntity);
+        }
+        return busesEntity;
+    }
+
     @RequestMapping(value = "/postpaid")
     public String postPaid(HttpSession session) throws GeneralSecurityException {
 
@@ -100,28 +125,18 @@ public class TransferController {
         TimeTableScheduleEntity timeTableScheduleEntity = (TimeTableScheduleEntity) session.getAttribute("timeTableTicket");
         Date dateStartMove = (Date) session.getAttribute("dayStartMove");
 
-        BusesEntity busesEntity = busesRepository.findByDateAndTimeTableScheduleEntityId(dateStartMove, timeTableScheduleEntity.getId());
-
-        if (busesEntity == null){
-            busesEntity = new BusesEntity();
-            busesEntity.setDate(new Date(dateStartMove.getTime()));
-            busesEntity.setTimeTableScheduleEntity((TimeTableScheduleEntity) session.getAttribute("timeTableTicket"));
-            busesEntity.setStatusBusesEntity(statusBusesRepository.findOne(1));
-            busesRepository.save(busesEntity);
-        }
+        BusesEntity busesEntity = findBusesEntity(dateStartMove, timeTableScheduleEntity);
 
         ticketEntitySession.setBookTime(new Date(Calendar.getInstance().getTimeInMillis()));
         ticketEntitySession.setBusesEntity(busesEntity);
 
-        String text = ticketEntitySession.getBookTime().toString()+"-"+ticketEntitySession.getGmail();
-        String key = "TTY6I9^hQuo!a1n0";
-        String iv =  "Iay63!2Uy*)sQZhn"; // Initialization vector
-        String encryptedCode = aesCrypter.encrypt(text, key, iv);
-        ticketEntitySession.setCodeTicket(encryptedCode);
+        ticketEntitySession.setCodeTicket(encryptedCodeTicket(ticketEntitySession));
 
         ticketRepository.save(ticketEntitySession);
 
         sendTicket(ticketEntitySession);
+
+        session.setAttribute("ticket", ticketEntitySession);
 
         return "transfersuccess";
     }
@@ -245,7 +260,7 @@ public class TransferController {
     @RequestMapping(value = "/DoExpressCheckoutForParallelPayment")
     public String doOnlinePayment(HttpServletRequest request,
                                   HttpServletResponse response,
-                                  HttpSession session) throws IOException {
+                                  HttpSession session) throws IOException, GeneralSecurityException {
         TicketEntity ticketEntity = (TicketEntity) session.getAttribute("ticket");
         HttpSession requestSession = request.getSession();
         requestSession.setAttribute("url", request.getRequestURI());
@@ -377,8 +392,19 @@ public class TransferController {
                     requestSession.setAttribute("map", map);
 //                    response.sendRedirect(servletContext
 //                            .getContextPath() + "/home.jsp");
+
+                    TimeTableScheduleEntity timeTableScheduleEntity = (TimeTableScheduleEntity) session.getAttribute("timeTableTicket");
+                    Date dateStartMove = (Date) session.getAttribute("dayStartMove");
+
+                    BusesEntity busesEntity = findBusesEntity(dateStartMove, timeTableScheduleEntity);
+
+                    ticketEntity.setBookTime(new Date(Calendar.getInstance().getTimeInMillis()));
+                    ticketEntity.setCodeTicket(encryptedCodeTicket(ticketEntity));
+                    ticketEntity.setBusesEntity(busesEntity);
+                    ticketRepository.save(ticketEntity);
                     sendTicket(ticketEntity);
-                    path = "redirect:/";
+                    session.setAttribute("ticket", ticketEntity);
+                    path = "transfersuccess";
                 } else {
 
                     requestSession.setAttribute("Error",

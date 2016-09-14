@@ -33,8 +33,15 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Trang chủ</a></li>
-                <li><a href="#">Kiểm tra vé</a></li>
+                <li>
+                    <a href="<c:url value="/loginstaff"/> ">Nhân viên xe</a>
+                </li>
+                <li>
+                    <a href="/scanticket">Kiểm tra vé</a>
+                </li>
+                <li>
+                    <a href="/">Trang chủ</a>
+                </li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
@@ -60,7 +67,7 @@
                         <div class="panel-heading">
                             <h4 class="panel-title">
                                 <a data-toggle="collapse" data-parent="#accordion" href="#collapse1"><i
-                                        class="fa fa-credit-card" aria-hidden="true"></i>Thanh Toán Ngân Lưọng</a>
+                                        class="fa fa-credit-card" aria-hidden="true"></i>Thanh Toán PayPal</a>
                             </h4>
                         </div>
                         <div id="collapse1" class="panel-collapse collapse">
@@ -76,7 +83,7 @@
 
                                     3. Sau khi thanh toán, bạn sẽ nhận được vé điện tử qua tin nhắn và Email thay cho vé
                                     giấy để lên xe</p>
-                                <img src="resource/img/nganluong-logo.jpg" class="pull-left" width="100%">
+                                <img src="resource/img/paypal.png" class="pull-left" width="100%">
 
                                 <a href="/SetExpressCheckoutForParallelPayment"><button type="submit"
                                         class="btn btn-primary container-ticket text-center">

@@ -56,8 +56,15 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="/">Trang chủ</a></li>
-                <li><a href="">Kiểm tra vé</a></li>
+                <li>
+                    <a href="<c:url value="/loginstaff"/> ">Nhân viên xe</a>
+                </li>
+                <li>
+                    <a href="/scanticket">Kiểm tra vé</a>
+                </li>
+                <li>
+                    <a href="/">Trang chủ</a>
+                </li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
@@ -131,7 +138,7 @@
                             </c:forEach>
                         </ul>
 
-                                <%--<button data-toggle="dropdown" class="btn btn-primary dropdown-toggle" data-placeholder="false"><span class="caret"></span></button>--%>
+                                  <%--<button data-toggle="dropdown" class="btn btn-primary dropdown-toggle" data-placeholder="false"><span class="caret"></span></button>--%>
                                 <%--<ul class="dropdown-menu">--%>
                                     <%--<li><input type="checkbox" id="ID" name="NAME" value="VALUE"><label for="ID">Label</label></li>--%>
                                     <%--<!-- Other items -->--%>

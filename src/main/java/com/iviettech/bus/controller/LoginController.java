@@ -6,9 +6,7 @@ import com.iviettech.bus.service.AdminService;
 import com.iviettech.bus.service.ProfileService;
 import com.iviettech.bus.utils.TaiXeNotFound;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -45,11 +43,11 @@ public class LoginController {
 //                model.addAttribute("msg","welcome"+adminEntity.getUsername());
 //                return "admin";
 //            }else {
-//                model.addAttribute("error","Username ho?c Passwprd không ?úng");
+//                model.addAttribute("error","Username ho?c Passwprd khï¿½ng ?ï¿½ng");
 //                return "login";
 //            }
 //        }else {
-//            model.addAttribute("error","Username ho?c Passwprd không ?úng");
+//            model.addAttribute("error","Username ho?c Passwprd khï¿½ng ?ï¿½ng");
 //            return "login";
 //        }
 //    }

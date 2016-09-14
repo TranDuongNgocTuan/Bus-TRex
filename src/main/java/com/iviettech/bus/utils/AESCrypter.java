@@ -8,6 +8,8 @@ import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 import java.io.UnsupportedEncodingException;
 import java.security.GeneralSecurityException;
+import java.sql.Array;
+import java.util.Arrays;
 
 @Component
 public class AESCrypter {
@@ -48,6 +50,8 @@ public class AESCrypter {
         cipher.init(1, skeySpec, ivSpec);
 
         byte[] encrypted = cipher.doFinal(text.getBytes());
+
+//        byte[] encryptedSubString = Arrays.copyOfRange(encrypted, 0, 8);
 
         return hexToString(encrypted);
     }

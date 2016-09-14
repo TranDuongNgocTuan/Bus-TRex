@@ -28,8 +28,15 @@
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse navbar-ex1-collapse">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#">Trang chủ</a></li>
-					<li><a href="#">Kiểm tra vé</a></li>
+					<li>
+						<a href="<c:url value="/loginstaff"/> ">Nhân viên xe</a>
+					</li>
+					<li>
+						<a href="/scanticket">Kiểm tra vé</a>
+					</li>
+					<li>
+						<a href="/">Trang chủ</a>
+					</li>
 				</ul>
 			</div><!-- /.navbar-collapse -->
 		</div>
@@ -49,7 +56,7 @@
 				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
 					<h3 class="titleFinish">Giao dịch thanh toán thành công</h3>
 					<h5 class="contentFinish">Cảm ơn Quý Khách sử dụng dịch vụ mua vé xe trực tuyến. Quý khách hãy tải vé xe của mình. Hoặc kiểm tra trên gmail.</h5>
-					<a href="/downloadPDF" target="blank_" class="btn btn-primary"><i class="fa fa-download icon-download" aria-hidden="true"></i>Tải vé xe</a>
+					<a href="/downloadPDFPay" target="blank_" class="btn btn-primary"><i class="fa fa-download icon-download" aria-hidden="true"></i>Tải vé xe</a>
 				</div>
 			</div>
 		</div>
