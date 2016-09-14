@@ -51,9 +51,9 @@ public class AESCrypter {
 
         byte[] encrypted = cipher.doFinal(text.getBytes());
 
-//        byte[] encryptedSubString = Arrays.copyOfRange(encrypted, 0, 8);
+        byte[] encryptedSubString = Arrays.copyOfRange(encrypted, 0, 8);
 
-        return hexToString(encrypted);
+        return hexToString(encryptedSubString);
     }
 
     public static byte[] stringToHex(String s) {
