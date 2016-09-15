@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.sql.Date;
 import java.util.List;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
@@ -39,7 +40,9 @@ public class PromotionController {
     }
 
     @RequestMapping(value = "/promotion/create",method = RequestMethod.POST)
-    public String createNew(PromotionEntity promotionEntity){
+    public String createNew(@ModelAttribute(name = "promotion")PromotionEntity promotionEntity,
+                            @RequestParam(name = "datestart") Date datestart,
+                            @RequestParam(name = "dateend") Date dateend){
         promotionService.create(promotionEntity);
         return "redirect:/promotion";
     }

@@ -129,7 +129,7 @@
                         <!-- /.nav-second-level -->
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-area-chart fa-fw"></i> Tổng kết doanh thu</a>
+                        <a href="/charts/piechart"><i class="fa fa-area-chart fa-fw"></i> Tổng kết doanh thu</a>
                     </li>
                     <li>
                         <a href="#"><i class="fa fa-image fa-fw"></i> Hình ảnh</a>

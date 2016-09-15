@@ -104,19 +104,19 @@
             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Quản lý<span class="fa arrow"></span></a>
             <ul class="nav nav-second-level">
               <li>
-                <a href="ticketinformation"><i class="fa fa-info fa-fw"></i> Thông tin vé</a>
+                <a href="/ticketinformation"><i class="fa fa-info fa-fw"></i> Thông tin vé</a>
               </li>
               <li>
                 <a href="#"><i class="fa fa-bars fa-fw"></i> Tuyến xe</a>
               </li>
               <li>
-                <a href="buscompany"><i class="fa fa-bus fa-fw"></i> Hãng xe</a>
+                <a href="/buscompany"><i class="fa fa-bus fa-fw"></i> Hãng xe</a>
               </li>
               <li>
-                <a href="taixe"><i class="fa fa-male fa-fw"></i> Tài xế</a>
+                <a href="/taixe"><i class="fa fa-male fa-fw"></i> Tài xế</a>
               </li>
               <li>
-                <a href="promotion"><i class="fa fa-usd fa-fw" ></i> Khuyến mãi</a>
+                <a href="/promotion"><i class="fa fa-usd fa-fw" ></i> Khuyến mãi</a>
               </li>
             </ul>
             <!-- /.nav-second-level -->

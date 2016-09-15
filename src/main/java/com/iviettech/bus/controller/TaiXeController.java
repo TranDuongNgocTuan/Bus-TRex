@@ -29,8 +29,10 @@ public class TaiXeController {
     }
 
     @RequestMapping(value = "/create",method = RequestMethod.POST)
-    public String createNewTaiXe(TaiXeEntity taiXeEntity){
+    public String createNewTaiXe(TaiXeEntity taiXeEntity,final RedirectAttributes redirectAttributes){
+        String message=" successfully created.";
         taiXeService.create(taiXeEntity);
+        redirectAttributes.addFlashAttribute("message", message);
         return "redirect:/taixe";
     }
 
@@ -55,7 +57,7 @@ public class TaiXeController {
         if (result.hasErrors())
             return new ModelAndView("taixeedit");
         ModelAndView mav=new ModelAndView("redirect:/taixe");
-        String message="Tai xe was successfully updated.";
+        String message="successfully updated.";
         taiXeService.update(taiXeEntity);
         redirectAttributes.addFlashAttribute("message", message);
         return mav;

@@ -7,4 +7,6 @@
 
 	<bean id="pdfView" class="com.iviettech.bus.controller.PDFBuilderController">
 	</bean>
+	<bean id="pdfViewAdmin" class="com.iviettech.bus.service.PDFBuilder">
+	</bean>
 </beans>

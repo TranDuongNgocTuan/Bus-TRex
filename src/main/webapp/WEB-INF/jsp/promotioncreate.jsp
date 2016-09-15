@@ -15,10 +15,10 @@
   <title>ADMIN</title>
 
   <!-- Bootstrap Core CSS -->
-  <link href="../../resource/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../../resource/admin/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- MetisMenu CSS -->
-  <link href="../../resource/bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+  <link href="../../resource/admin/bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
 
   <!-- Timeline CSS -->
   <link href="../../resource/admin/dist/css/timeline.css" rel="stylesheet">
@@ -27,16 +27,16 @@
   <link href="../../resource/admin/dist/css/sb-admin-2.css" rel="stylesheet">
 
   <!-- Morris Charts CSS -->
-  <link href="../../resource/bower_components/morrisjs/morris.css" rel="stylesheet">
+  <link href="../../resource/admin/bower_components/morrisjs/morris.css" rel="stylesheet">
 
   <!-- Custom Fonts -->
-  <link href="../../resource/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="../../resource/admin/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
   <!-- DataTables CSS -->
-  <link href="../../resource/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet">
+  <link href="../../resource/admin/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet">
 
   <!-- DataTables Responsive CSS -->
-  <link href="../../resource/bower_components/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet">
+  <link href="../../resource/admin/bower_components/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -149,7 +149,7 @@
       </div>
       <!-- /.sidebar-collapse -->
     </div>
-    <script src="../../resource/bower_components/morrisjs/morris.min.js"></script>
+    <script src="../../resource/admin/bower_components/morrisjs/morris.min.js"></script>
     <script src="../../resource/js/morris-data.js"></script>
     <!-- /.navbar-static-side -->
   </nav>
@@ -172,7 +172,7 @@
           <div class="panel-body">
             <div class="row">
               <div class="col-md-12">
-                <form:form method="POST" commandName="promotion" action="${pageContext.request.contextPath}/promotion/create">
+                <form:form method="POST" modelAttribute="promotion" action="/promotion/create">
                   <div class="form-group">
                     <label class="control-label">Name (*)</label>
                     <form:input path="name" type="text" class="form-control"  required="true"/>
@@ -180,6 +180,17 @@
                     <label class="control-label">Sale (*)</label>
                     <form:input path="sale" type="text" class="form-control"  required="true"/>
                     <form:errors path="sale" cssStyle="color: red;"/>
+                    <%--<label class="control-label">Start (*)</label>--%>
+                    <%--<form:input path="start" type="text" class="form-control"  required="true"/>--%>
+                    <%--<form:errors path="start" cssStyle="color: red;"/>--%>
+                    <%--<label class="control-label">End (*)</label>--%>
+                    <%--<form:input path="end" type="text" class="form-control"  required="true"/>--%>
+                    <%--<form:errors path="end" cssStyle="color: red;"/>--%>
+                    <label class="control-label">Start (*)</label>
+                    <input type="date" name="datestart" class="form-control" >
+                    <label class="control-label">End (*)</label>
+                    <input type="date" name="dateend" class="form-control">
+                    <
                   </div>
                   <br>
                   <button type="submit" class="btn btn-info">Tạo</button>
@@ -196,16 +207,16 @@
 <!-- /#wrapper -->
 
 <!-- jQuery -->
-<script src="../../resource/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="../../resource/admin/bower_components/jquery/dist/jquery.min.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
-<script src="../../resource/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../../resource/admin/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
 <!-- Metis Menu Plugin JavaScript -->
-<script src="../../resource/bower_components/metisMenu/dist/metisMenu.min.js"></script>
+<script src="../../resource/admin/bower_components/metisMenu/dist/metisMenu.min.js"></script>
 
 <!-- Morris Charts JavaScript -->
-<script src="../../resource/bower_components/raphael/raphael-min.js"></script>
+<script src="../../resource/admin/bower_components/raphael/raphael-min.js"></script>
 
 
 <!-- Custom Theme JavaScript -->

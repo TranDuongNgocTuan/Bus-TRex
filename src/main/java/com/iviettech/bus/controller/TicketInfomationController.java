@@ -1,5 +1,7 @@
 package com.iviettech.bus.controller;
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.PageSize;
 import com.iviettech.bus.entity.TicketEntity;
 import com.iviettech.bus.service.TicketInfomationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,9 +56,10 @@ public class TicketInfomationController {
     }
 
     @RequestMapping(value = "/downloadPDF", method = RequestMethod.GET)
-    public ModelAndView dowloadPdf(){
+    public ModelAndView dowloadPdf(Document doc){
         List<TicketEntity> ticketEntityList=ticketInfomationService.findAll();
-        return new ModelAndView("pdfView","tho",ticketEntityList);
+        doc.setPageSize(PageSize.A3.rotate());
+        return new ModelAndView("pdfViewAdmin","tho",ticketEntityList);
     }
 
     @RequestMapping(value = "/ticketinformation/search", method = GET)

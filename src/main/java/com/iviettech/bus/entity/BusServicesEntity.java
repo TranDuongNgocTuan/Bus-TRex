@@ -150,4 +150,5 @@ public class BusServicesEntity {
     public void setTicketEntityListArrival(List<TicketEntity> ticketEntityListArrival) {
         this.ticketEntityListArrival = ticketEntityListArrival;
     }
+
 }

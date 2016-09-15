@@ -80,6 +80,6 @@ public class BusCompanyController {
         }
 
         model.addAttribute("busList", resultList);
-        return "buscompany";
+        return "/buscompany";
     }
 }
