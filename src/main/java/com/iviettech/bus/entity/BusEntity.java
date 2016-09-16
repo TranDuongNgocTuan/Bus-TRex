@@ -28,7 +28,8 @@ public class BusEntity {
     @OneToMany(mappedBy = "busEntity", fetch = FetchType.EAGER)
     private List<TimeTableScheduleEntity> timeTableScheduleEntityList;
 
-    @OneToOne(mappedBy = "busEntity")
+    @OneToOne(cascade = {CascadeType.ALL})
+    @PrimaryKeyJoinColumn
     private TaiXeEntity taiXeEntity;
 
     public BusEntity() {
@@ -89,4 +90,6 @@ public class BusEntity {
     public void setTaiXeEntity(TaiXeEntity taiXeEntity) {
         this.taiXeEntity = taiXeEntity;
     }
+
+
 }

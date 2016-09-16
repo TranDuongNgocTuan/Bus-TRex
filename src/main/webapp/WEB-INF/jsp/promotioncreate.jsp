@@ -1,3 +1,4 @@
+<%@ page import="com.iviettech.bus.entity.AdminEntity" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
@@ -50,7 +51,12 @@
 <body>
 
 <div id="wrapper">
-
+  <%
+    AdminEntity adminEntity = (AdminEntity) session.getAttribute("adminEntity");
+    if (adminEntity==null || adminEntity.getRoleEntity().getLevel()!=1) {
+      response.sendRedirect("/login");
+    }
+  %>
   <!-- Navigation -->
   <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
     <div class="navbar-header">
@@ -116,7 +122,7 @@
                 <a href="/taixe"><i class="fa fa-male fa-fw"></i> Tài xế</a>
               </li>
               <li>
-                <a href="/promotion"><i class="fa fa-usd fa-fw"></i> Khuyến mãi</a>
+                <a href="/promotion"><i class="fa fa-usd fa-fw" ></i> Khuyến mãi</a>
               </li>
             </ul>
             <!-- /.nav-second-level -->

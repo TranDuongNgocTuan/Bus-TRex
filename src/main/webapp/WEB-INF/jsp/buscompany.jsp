@@ -1,3 +1,4 @@
+<%@ page import="com.iviettech.bus.entity.AdminEntity" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
@@ -51,6 +52,12 @@
 <body>
 
 <div id="wrapper">
+  <%
+    AdminEntity adminEntity = (AdminEntity) session.getAttribute("adminEntity");
+    if (adminEntity==null || adminEntity.getRoleEntity().getLevel()!=1) {
+      response.sendRedirect("/login");
+    }
+  %>
 
   <!-- Navigation -->
   <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
@@ -184,7 +191,7 @@
                 </form:form>
               </div>
               <div class="col-sm-3">
-                <a href="/buscompany/create" role="button" class="btn btn-outline btn-primary">Add</a>
+                <a href="buscompany/create" role="button" class="btn btn-outline btn-primary">Add</a>
               </div>
             </div>
               <div class="row">
@@ -221,6 +228,7 @@
                     </tbody>
                   </table>
                 </div>
+                  <i class="text-success">${message}</i><br/>
               </div>
             <!-- /.table-responsive -->
 

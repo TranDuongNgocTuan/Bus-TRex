@@ -1,7 +1,6 @@
 package com.iviettech.bus.repository;
 
 import com.iviettech.bus.entity.BusEntity;
-import com.iviettech.bus.entity.BusServicesEntity;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 

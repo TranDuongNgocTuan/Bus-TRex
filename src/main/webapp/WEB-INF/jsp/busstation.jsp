@@ -1,13 +1,14 @@
 <%@ page import="com.iviettech.bus.entity.AdminEntity" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://www.springframework.org/tags/form" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
 
-  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="">
@@ -33,6 +34,12 @@
   <!-- Custom Fonts -->
   <link href="../../resource/admin/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
+  <!-- DataTables CSS -->
+  <link href="../../resource/admin/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet">
+
+  <!-- DataTables Responsive CSS -->
+  <link href="../../resource/admin/bower_components/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet">
+
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -51,6 +58,7 @@
       response.sendRedirect("/login");
     }
   %>
+
   <!-- Navigation -->
   <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
     <div class="navbar-header">
@@ -60,7 +68,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="admin">TRANG HỒ SƠ</a>
+      <a class="navbar-brand" href="admin.jsp">QUẢN LÝ</a>
     </div>
     <!-- /.navbar-header -->
 
@@ -98,7 +106,7 @@
             <!-- /input-group -->
           </li>
           <li>
-            <a href="admin"><i class="fa fa-home fa-fw"></i> Trang chủ</a>
+            <a href="/admin"><i class="fa fa-home fa-fw"></i> Trang chủ</a>
           </li>
           <li>
             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Quản lý<span class="fa arrow"></span></a>
@@ -125,7 +133,7 @@
             <a href="#"><i class="fa fa-area-chart fa-fw"></i> Tổng kết doanh thu</a>
           </li>
           <li>
-            <a href="#"><i class="fa fa-usd fa-fw"></i> Khuyến mãi</a>
+            <a href="#"><i class="fa fa-image fa-fw"></i> Hình ảnh</a>
           </li>
           <li>
             <a href="#"><i class="fa fa-users fa-fw"></i> Nói về chúng tôi</a>
@@ -157,41 +165,73 @@
   <div id="page-wrapper">
     <div class="row">
       <div class="col-lg-12">
-        <h1 class="page-header">HỒ SƠ</h1>
+        <h1 class="page-header">BẾN XE</h1>
       </div>
       <!-- /.col-lg-12 -->
     </div>
+
     <div class="row">
       <div class="col-lg-12">
         <div class="panel panel-default">
-          <div class="panel-heading">Thông tin </div>
+          <div class="panel-heading">
+            Danh sách các bến xe
+          </div>
+          <!-- /.panel-heading -->
           <div class="panel-body">
+
             <div class="row">
-              <div class="col-lg-12">
-                <c:form role="form" modelAttribute="admin" action="${pageContext.request.contextPath}/profile/edit/${adminEntity.id}" method="post">
-
-                    <div class="form-group">
-                      <label>Username</label>
-                      <form:input path="username" type="text" class="form-control"  required="true"/>
-                      <form:errors path="username" cssStyle="color: red;"/>
-                      <label>Password</label>
-                      <form:input path="password" type="text" class="form-control"  required="true"/>
-                      <form:errors path="password" cssStyle="color: red;"/>
-                    </div>
-
-                  <button class="btn btn-info" type="submit">Lưu</button>
-                </c:form>
+              <div class="col-xs-12 col-sm-8 col-md-6">
+                <form:form action="busstation/search" method="get">
+                  <div class="input-group">
+                    <input name="searchInput" type="text" class="form-control" placeholder="Search for name,address,city..."/>
+                          <span class="input-group-btn">
+                              <button class="btn btn-outline btn-primary" type="submit">Search</button>
+                          </span>
+                  </div>
+                </form:form>
               </div>
+              <div class="col-sm-3">
+                <a href="busstation/create" role="button" class="btn btn-outline btn-primary">Add</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="table-responsive">
+                  <table class="table table-condensed table-hover">
+                    <thead>
+                    <tr>
+                      <th>Id</th>
+                      <th>Name</th>
+                      <th>Address</th>
+                      <th>City</th>
+                      <th></th>
+                      <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <c:forEach var="bus" items="${busList}">
+                      <tr>
+                        <td>${bus.id}</td>
+                        <td>${bus.name}</td>
+                        <td>${bus.address}</td>
+                        <td>${bus.city}</td>
+                        <td><button class="btn btn-sm btn-outline btn-primary" onclick="location.href='busstation/edit/${bus.id}'">Edit</button></td>
+                        <td><button class="btn btn-sm btn-outline btn-danger" onclick="location.href='busstation/delete/${bus.id}'">Delete</button></td>
+                      </tr>
+                    </c:forEach>
+                    </tbody>
+                  </table>
+                </div>
+                <i class="text-success">${message}</i><br/>
+              </div>
+              <!-- /.table-responsive -->
+
             </div>
           </div>
         </div>
       </div>
     </div>
-
-    <!-- /.row -->
   </div>
-  <!-- /#page-wrapper -->
-
 </div>
 <!-- /#wrapper -->
 

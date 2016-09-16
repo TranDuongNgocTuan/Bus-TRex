@@ -23,11 +23,9 @@ public class PDFBuilder extends AbstractITextPdfView{
 
         doc.add(new Paragraph("Ticket Information"));
 
-        doc.setPageSize(PageSize.A3.rotate());
-
         PdfPTable table = new PdfPTable(11);
         table.setWidthPercentage(100.0f);
-        table.setWidths(new float[]{2.0f, 3.0f, 4.0f, 4.0f, 3.0f, 3.0f, 3.0f, 3.0f, 4.0f, 4.0f, 3.0f});
+        table.setWidths(new float[]{2.0f, 3.0f, 4.0f, 4.0f, 3.0f, 3.0f, 4.0f, 3.0f, 4.0f, 4.0f, 3.0f});
         table.setSpacingBefore(10);
 
         // define font for table header row

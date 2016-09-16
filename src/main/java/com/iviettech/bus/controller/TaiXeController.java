@@ -1,6 +1,7 @@
 package com.iviettech.bus.controller;
 
 import com.iviettech.bus.entity.TaiXeEntity;
+import com.iviettech.bus.repository.TaiXeRepository;
 import com.iviettech.bus.service.TaiXeService;
 import com.iviettech.bus.utils.TaiXeNotFound;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
@@ -21,6 +23,9 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 public class TaiXeController {
     @Autowired
     private TaiXeService taiXeService;
+
+    @Autowired
+    private TaiXeRepository taiXeRepository;
 
     @RequestMapping(value = "/create",method = RequestMethod.GET)
     public String newTaixe(Model model){
@@ -64,12 +69,13 @@ public class TaiXeController {
     }
 
     @RequestMapping(value="/delete/{id}", method=RequestMethod.GET)
-    public ModelAndView deleteTaiXe(@PathVariable Integer id,final RedirectAttributes redirectAttributes) throws TaiXeNotFound{
+    public String deleteTaiXe(@PathVariable int id,final RedirectAttributes redirectAttributes, HttpServletResponse response) throws TaiXeNotFound{
         ModelAndView mav=new ModelAndView("redirect:/taixe");
-        TaiXeEntity taiXeEntity=taiXeService.delete(id);
+        TaiXeEntity taiXeEntity = taiXeRepository.findOne(id);
+        taiXeRepository.removeTaiXe(id);
         String message="The Tai xe"+taiXeEntity.getName()+"was successfully deleted.";
         redirectAttributes.addFlashAttribute("message",message);
-        return mav;
+        return "taixe";
     }
 
     @RequestMapping(value = "/search", method = GET)

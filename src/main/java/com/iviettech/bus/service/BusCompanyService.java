@@ -1,7 +1,6 @@
 package com.iviettech.bus.service;
 
 import com.iviettech.bus.entity.BusServicesEntity;
-import com.iviettech.bus.entity.TaiXeEntity;
 import com.iviettech.bus.utils.TaiXeNotFound;
 
 import java.util.List;

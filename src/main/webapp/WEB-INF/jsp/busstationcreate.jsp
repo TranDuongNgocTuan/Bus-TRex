@@ -1,9 +1,9 @@
 <%@ page import="com.iviettech.bus.entity.AdminEntity" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
 
@@ -33,6 +33,12 @@
   <!-- Custom Fonts -->
   <link href="../../resource/admin/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
+  <!-- DataTables CSS -->
+  <link href="../../resource/admin/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet">
+
+  <!-- DataTables Responsive CSS -->
+  <link href="../../resource/admin/bower_components/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet">
+
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -60,7 +66,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="admin">TRANG HỒ SƠ</a>
+      <a class="navbar-brand" href="admin.jsp">QUẢN LÝ</a>
     </div>
     <!-- /.navbar-header -->
 
@@ -125,7 +131,7 @@
             <a href="#"><i class="fa fa-area-chart fa-fw"></i> Tổng kết doanh thu</a>
           </li>
           <li>
-            <a href="#"><i class="fa fa-usd fa-fw"></i> Khuyến mãi</a>
+            <a href="#"><i class="fa fa-image fa-fw"></i> Hình ảnh</a>
           </li>
           <li>
             <a href="#"><i class="fa fa-users fa-fw"></i> Nói về chúng tôi</a>
@@ -157,41 +163,44 @@
   <div id="page-wrapper">
     <div class="row">
       <div class="col-lg-12">
-        <h1 class="page-header">HỒ SƠ</h1>
+        <h1 class="page-header">BẾN XE</h1>
       </div>
       <!-- /.col-lg-12 -->
     </div>
+
     <div class="row">
       <div class="col-lg-12">
         <div class="panel panel-default">
-          <div class="panel-heading">Thông tin </div>
+          <div class="panel-heading">
+            Thêm bến xe
+          </div>
+          <!-- /.panel-heading -->
           <div class="panel-body">
             <div class="row">
-              <div class="col-lg-12">
-                <c:form role="form" modelAttribute="admin" action="${pageContext.request.contextPath}/profile/edit/${adminEntity.id}" method="post">
+              <div class="col-md-12">
+                <form:form method="POST" commandName="busCompany" action="${pageContext.request.contextPath}/busstation/create">
+                  <div class="form-group">
+                    <label class="control-label">Name (*)</label>
+                    <form:input path="name" type="text" class="form-control"  required="true"/>
+                    <form:errors path="name" cssStyle="color: red;"/>
+                    <label class="control-label">Address (*)</label>
+                    <form:input path="address" type="text" class="form-control"  required="true"/>
+                    <form:errors path="address" cssStyle="color: red;"/>
+                    <label class="control-label">City (*)</label>
+                    <form:input path="city" type="text" class="form-control"  required="true"/>
+                    <form:errors path="city" cssStyle="color: red;"/>
+                  </div>
+                  <br>
+                  <button type="submit" class="btn btn-info">Tạo</button>
+                </form:form>
 
-                    <div class="form-group">
-                      <label>Username</label>
-                      <form:input path="username" type="text" class="form-control"  required="true"/>
-                      <form:errors path="username" cssStyle="color: red;"/>
-                      <label>Password</label>
-                      <form:input path="password" type="text" class="form-control"  required="true"/>
-                      <form:errors path="password" cssStyle="color: red;"/>
-                    </div>
-
-                  <button class="btn btn-info" type="submit">Lưu</button>
-                </c:form>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-
-    <!-- /.row -->
   </div>
-  <!-- /#page-wrapper -->
-
 </div>
 <!-- /#wrapper -->
 

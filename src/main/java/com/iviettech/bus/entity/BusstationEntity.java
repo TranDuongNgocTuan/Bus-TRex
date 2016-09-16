@@ -20,9 +20,7 @@ public class BusstationEntity {
 
     private String address;
 
-    private int longitude;
 
-    private int lattifude;
 
     @OneToMany(mappedBy = "arrival")
     private List<ScheduleEntity> scheduleArrivalEntityList;
@@ -81,19 +79,4 @@ public class BusstationEntity {
         this.scheduleDepartureEntityList = scheduleDepartureEntityList;
     }
 
-    public int getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(int longitude) {
-        this.longitude = longitude;
-    }
-
-    public int getLattifude() {
-        return lattifude;
-    }
-
-    public void setLattifude(int lattifude) {
-        this.lattifude = lattifude;
-    }
 }

@@ -117,7 +117,7 @@
                 <a href="/taixe"><i class="fa fa-male fa-fw"></i> Tài xế</a>
               </li>
               <li>
-                <a href="/promotion"><i class="fa fa-usd fa-fw"></i> Khuyến mãi</a>
+                <a href="/promotion"><i class="fa fa-usd fa-fw" ></i> Khuyến mãi</a>
               </li>
             </ul>
             <!-- /.nav-second-level -->
@@ -158,7 +158,7 @@
   <div id="page-wrapper">
     <div class="row">
       <div class="col-lg-12">
-        <h1 class="page-header">HÃNG XE</h1>
+        <h1 class="page-header">THÔNG TIN VÉ XE</h1>
       </div>
       <!-- /.col-lg-12 -->
     </div>
@@ -229,6 +229,7 @@
                     </tr>
                   </table>
                 </div>
+
               </div>
               <!-- /.table-responsive -->
 
