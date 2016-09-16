@@ -1,7 +1,11 @@
 package com.iviettech.bus.controller;
 
+import com.iviettech.bus.entity.BusServicesEntity;
 import com.iviettech.bus.entity.PromotionEntity;
 import com.iviettech.bus.entity.PromotionTimeEntity;
+import com.iviettech.bus.repository.BusServicesRepository;
+import com.iviettech.bus.repository.PromotionRepository;
+import com.iviettech.bus.repository.PromotionTimeRepository;
 import com.iviettech.bus.service.PromotionService;
 import com.iviettech.bus.utils.TaiXeNotFound;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +17,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.sql.Date;
 import java.util.List;
 
@@ -22,6 +28,15 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 public class PromotionController {
     @Autowired
     private PromotionService promotionService;
+
+    @Autowired
+    private BusServicesRepository busServicesRepository;
+
+    @Autowired
+    private PromotionTimeRepository promotionTimeRepository;
+
+    @Autowired
+    private PromotionRepository promotionRepository;
 
     @RequestMapping(value="/promotion", method= RequestMethod.GET)
     public ModelAndView List(){
@@ -36,22 +51,41 @@ public class PromotionController {
     @RequestMapping(value = "/promotion/create",method = RequestMethod.GET)
     public String New(Model model){
         model.addAttribute("promotion", new PromotionEntity());
+        model.addAttribute("promotiontime",new PromotionTimeEntity());
+        List<BusServicesEntity> busServicesEntityList= (List<BusServicesEntity>) busServicesRepository.findAll();
+        model.addAttribute("busservice",busServicesEntityList);
         return "promotioncreate";
     }
 
     @RequestMapping(value = "/promotion/create",method = RequestMethod.POST)
-    public String createNew(@ModelAttribute(name = "promotion")PromotionEntity promotionEntity,
+    public String createNew(@RequestParam(name = "name") String name,
+                            @RequestParam(name = "sale") int sale,
                             @RequestParam(name = "datestart") Date datestart,
-                            @RequestParam(name = "dateend") Date dateend){
-        promotionService.create(promotionEntity);
+                            @RequestParam(name = "dateend") Date dateend,
+                            @RequestParam(name = "typesearch") int bus,
+                            HttpServletResponse response)throws IOException {
+        PromotionEntity promotion = new PromotionEntity();
+        promotion.setName(name);
+        promotion.setSale(sale);
+        promotion.setBusServicesEntity(busServicesRepository.findOne(bus));
+        promotionRepository.save(promotion);
+
+        PromotionTimeEntity promotionTime=new PromotionTimeEntity();
+        promotionTime.setStart(datestart);
+        promotionTime.setEnd(dateend);
+        promotionTime.setPromotionEntity(promotion);
+        promotionTimeRepository.save(promotionTime);
+
         return "redirect:/promotion";
     }
 
     @RequestMapping(value="/promotion/edit/{id}", method=RequestMethod.GET)
-    public ModelAndView edit(@PathVariable Integer id){
+    public ModelAndView edit(@PathVariable Integer id,Model model){
         ModelAndView mav=new ModelAndView("promotionedit");
         PromotionEntity promotionEntity=promotionService.findById(id);
         mav.addObject("promotion", promotionEntity);
+        List<BusServicesEntity> busServicesEntityList= (List<BusServicesEntity>) busServicesRepository.findAll();
+        model.addAttribute("busservice", busServicesEntityList);
         return mav;
     }
 
@@ -69,8 +103,9 @@ public class PromotionController {
     @RequestMapping(value="/promotion/delete/{id}", method=RequestMethod.GET)
     public ModelAndView delete(@PathVariable Integer id,final RedirectAttributes redirectAttributes) throws TaiXeNotFound{
         ModelAndView mav=new ModelAndView("redirect:/promotion");
-        PromotionEntity promotionEntity=promotionService.delete(id);
-        String message=promotionEntity.getName()+"successfully deleted.";
+        promotionRepository.delete(id);
+
+        String message="successfully deleted.";
         redirectAttributes.addFlashAttribute("message",message);
         return mav;
     }

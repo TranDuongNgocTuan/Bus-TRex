@@ -194,6 +194,7 @@
                     <thead>
                     <tr>
                       <th>Id</th>
+                      <th>Company</th>
                       <th>Name</th>
                       <th>Sale</th>
                       <th>Start</th>
@@ -206,6 +207,7 @@
                     <c:forEach var="promotion" items="${promotionTime}" >
                       <tr>
                         <td>${promotion.promotionEntity.id}</td>
+                        <td>${promotion.promotionEntity.busServicesEntity.name}</td>
                         <td>${promotion.promotionEntity.name}</td>
                         <td>${promotion.promotionEntity.sale}</td>
                         <td>${promotion.start}</td>

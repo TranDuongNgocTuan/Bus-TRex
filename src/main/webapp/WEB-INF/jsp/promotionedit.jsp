@@ -181,11 +181,20 @@
                     <form:input path="sale" type="text" class="form-control"  required="true"/>
                     <form:errors path="sale" cssStyle="color: red;"/>
                     <label class="control-label">Start (*)</label>
-                    <form:input path="start" type="text" class="form-control"  required="true"/>
-                    <form:errors path="start" cssStyle="color: red;"/>
+                    <input type="text" name="datestart" class="form-control" >
                     <label class="control-label">End (*)</label>
-                    <form:input path="end" type="text" class="form-control"  required="true"/>
-                    <form:errors path="end" cssStyle="color: red;"/>
+                    <input type="text" name="dateend" class="form-control">
+                    <label class="control-label">Bus Services (*)</label>
+                    <br>
+                    <tr class="dropdown-menu">
+                      <td>
+                        <select name="typesearch" class="form-control">
+                          <c:forEach var="bus" items="${busservice}">
+                            <option value="${bus.id}">${bus.name}</option>
+                          </c:forEach>
+                        </select>
+                      </td>
+                    </tr>
                   </div>
                   <br>
                   <button type="submit" class="btn btn-info">Lưu</button>

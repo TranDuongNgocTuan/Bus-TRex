@@ -18,6 +18,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 
 @Controller
+@RequestMapping(value = "/admin")
 public class BusCompanyController {
     @Autowired
     private BusCompanyService busCompanyService;

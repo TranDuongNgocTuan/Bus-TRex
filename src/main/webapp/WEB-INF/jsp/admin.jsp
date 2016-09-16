@@ -129,7 +129,7 @@
                         <!-- /.nav-second-level -->
                     </li>
                     <li>
-                        <a href="/charts/piechart"><i class="fa fa-area-chart fa-fw"></i> Tổng kết doanh thu</a>
+                        <a href="/charts/piechart"><i class="fa fa-area-chart fa-fw"></i> Số xe của hãng</a>
                     </li>
                     <li>
                         <a href="#"><i class="fa fa-image fa-fw"></i> Hình ảnh</a>
@@ -164,7 +164,7 @@
     <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">CHÀO ${adminEntity.username} !</h1>
+                <h1 class="page-header">CHÀO Admin !</h1>
             </div>
             <!-- /.col-lg-12 -->
         </div>
