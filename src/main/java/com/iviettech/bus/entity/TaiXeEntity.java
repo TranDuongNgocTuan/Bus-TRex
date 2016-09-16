@@ -12,9 +12,8 @@ public class TaiXeEntity {
 
     private String name;
 
-    @OneToOne(cascade = {CascadeType.ALL})
-    @PrimaryKeyJoinColumn
-    private BusEntity busEntity;
+    @OneToOne(mappedBy = "taiXeEntity")
+    private BusEntity  busEntity;
 
     private String username;
 
@@ -62,4 +61,5 @@ public class TaiXeEntity {
     public void setPassword(String password) {
         this.password = password;
     }
+
 }
