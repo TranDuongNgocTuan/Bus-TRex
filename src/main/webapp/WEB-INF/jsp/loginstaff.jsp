@@ -21,12 +21,12 @@
   <body>
 
     <div class="container">
-        <form Class="login-container form-signin" action="/adminstaff" method="post">
+        <form Class="login-container form-signin" action="/loginstaff" method="post">
         <h2 class="form-signin-heading">Please sign in</h2>
         <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="text" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
+        <input type="text" id="inputEmail" class="form-control" placeholder="Username" required="" autofocus="" name="username">
         <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="" name="password">
         <div class="checkbox">
           <label>
             <input type="checkbox" value="remember-me"> Remember me

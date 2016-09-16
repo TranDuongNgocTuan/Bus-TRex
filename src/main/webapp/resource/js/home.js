@@ -18,3 +18,10 @@ $(function(){
             $(this).parent().parent('form').submit();
         });
 });
+
+$(document).ready(function() {
+    $('#media').carousel({
+        pause: true,
+        interval: false,
+    });
+});

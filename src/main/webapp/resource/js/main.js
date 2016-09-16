@@ -17,7 +17,7 @@ $(document).ready(function(){
 		});
 	}
 
-	function display(data){
+	function show(data){
 		var ticket = '  <table class="table table-borderless">' +
 			'			<tbody>' +
 			'			<tr>' +
@@ -71,6 +71,23 @@ $(document).ready(function(){
 		$("#scanTicketInfo").html(ticket);
 	}
 
+	function display(data){
+		var waring = "  <div class='alert alert-danger'>" +
+		"		<strong>Xin lỗi vé xe của bạn không tồn tại. Có thể đã bị xóa vì không kiệp thanh toán trong 24h </strong>" +
+		"		</div>";
+		var success = "<div class='alert alert-success'>" +
+			"			<strong>Đây là thông tin vé của bạn. Cảm ơn bạn đã sử dụng dịch vụ của chúng tôi</strong>" +
+			"   </div>";
+		if (data.exist == 1){
+			show(data);
+			$("#notify").show("slow").html(success);
+		}
+		else{
+			$("#notify").html(waring);
+		}
+
+	}
+
 	// scanAndStop = 1 clicked scan
 	// scanAndStop = 0 clicked stop
 	var scanAndStop = 1;
@@ -108,5 +125,8 @@ $(document).ready(function(){
 
 	});
 
-
+	$("#search").click(function(){
+		var textcode = $(".textcode").val();
+		requestCode(textcode);
+	});
 });

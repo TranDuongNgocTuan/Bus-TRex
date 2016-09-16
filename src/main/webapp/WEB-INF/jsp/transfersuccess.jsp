@@ -1,9 +1,10 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en"><head>
 <title> Example </title>
 <meta charset="utf-8">
-<meta http-equiv="refresh" content="120; URL='http://localhost:8080" />
+<meta http-equiv="refresh" content="60; URL='http://localhost:8080" />
 <meta name="viewport" content="width=device-width, initial-scale=1">  
 <link href='https://fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,900,700italic,900italic' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="/resource/vendor/bootstrap.css">
@@ -29,13 +30,13 @@
 			<div class="collapse navbar-collapse navbar-ex1-collapse">
 				<ul class="nav navbar-nav navbar-right">
 					<li>
-						<a href="<c:url value="/loginstaff"/> ">Nhân viên xe</a>
+						<a href="/">Trang chủ</a>
 					</li>
 					<li>
 						<a href="/scanticket">Kiểm tra vé</a>
 					</li>
 					<li>
-						<a href="/">Trang chủ</a>
+						<a href="<c:url value="/loginstaff"/>">Nhân viên xe</a>
 					</li>
 				</ul>
 			</div><!-- /.navbar-collapse -->

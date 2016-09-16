@@ -39,19 +39,24 @@ public class CreaterTicketPdf {
 
         Font font = FontFactory.getFont(FontFactory.TIMES_ROMAN,30);
         font.setColor(BaseColor.RED);
+
+        Font fontcode = FontFactory.getFont(FontFactory.TIMES_ROMAN,10, Font.BOLD);
+        fontcode.setColor(BaseColor.BLACK);
 //        Font font2 = new Font(BaseFont.createFont("src/main/resources/font/VietFontsWeb1_ttf/vuArial.ttf", BaseFont.WINANSI, BaseFont.EMBEDDED));
 
-        FontFactory.register("/home/tran/Documents/Project/jv09-t-rex/src/main/webapp/resource/fonts/VietFontsWeb1_ttf/vuArial.ttf", "vuArial");
+        FontFactory.register("/opt/shared/webapps/ROOT/resource/fonts/VietFontsWeb1_ttf/vuArial.ttf", "vuArial");
         Font font2 = FontFactory.getFont("vuArial", BaseFont.IDENTITY_H,
                 BaseFont.EMBEDDED, 10);
+
+        FontFactory.register("/opt/shared/webapps/ROOT/resource/fonts/VietFontsWeb1_ttf/vuArial.ttf", "vuArial");
+        Font font3 = FontFactory.getFont("vuArial", BaseFont.IDENTITY_H,
+                BaseFont.EMBEDDED, 15);
+        font3.setColor(BaseColor.RED);
 
         PdfPCell cell;
         cell = new PdfPCell(qrcodeImage, true);
         cell.setBorder(Rectangle.NO_BORDER);
-        cell.setRowspan(6);
-        cell.setBorderWidthLeft(2.5f);
-        cell.setBorderWidthTop(2.5f);
-        cell.setBorderWidthBottom(2.5f);
+        cell.setRowspan(7);
         table.addCell(cell);
 
         cell = new PdfPCell(new Phrase("VÉ XE BUÝT", font));
@@ -67,7 +72,7 @@ public class CreaterTicketPdf {
         cell.setBorderWidthTop(1f);
         table.addCell(cell);
 
-        cell = new PdfPCell(new Phrase(ticketEntity.getCodeTicket()));
+        cell = new PdfPCell(new Phrase(ticketEntity.getCodeTicket(), fontcode));
         cell.setBorder(Rectangle.NO_BORDER);
         cell.setBorderWidthTop(1f);
         table.addCell(cell);
@@ -91,7 +96,7 @@ public class CreaterTicketPdf {
 
 
         table.addCell(new Phrase(ticketEntity.getBusstationEntityDeparture().getAddress(), font2));
-        table.addCell(new Phrase("Giời đi", font2));
+        table.addCell(new Phrase("Giờ đi", font2));
         cell = new PdfPCell(new Phrase("12:04:08"));
         cell.setBorder(Rectangle.NO_BORDER);
         cell.setBorderWidthRight(1f);
@@ -104,7 +109,7 @@ public class CreaterTicketPdf {
         table.addCell(cell);
 
         table.addCell(new Phrase(ticketEntity.getBusstationEntityArrival().getAddress(), font2));
-        table.addCell(new Phrase("Giời điến", font2));
+        table.addCell(new Phrase("Giờ điến", font2));
 
         cell = new PdfPCell(new Phrase("12:04:08"));
         cell.setBorder(Rectangle.NO_BORDER);
@@ -128,24 +133,42 @@ public class CreaterTicketPdf {
 
         cell = new PdfPCell(new Phrase("Họ Tên", font2));
         cell.setBorder(Rectangle.NO_BORDER);
-        cell.setBorderWidthBottom(1f);
         cell.setBorderWidthLeft(1f);
         table.addCell(cell);
 
         cell = new PdfPCell(new Phrase(ticketEntity.getFullName(), font2));
         cell.setBorder(Rectangle.NO_BORDER);
-        cell.setBorderWidthBottom(1f);
         table.addCell(cell);
 
         cell = new PdfPCell(new Phrase("Số ghế", font2));
         cell.setBorder(Rectangle.NO_BORDER);
-        cell.setBorderWidthBottom(1f);
         table.addCell(cell);
 
         cell = new PdfPCell(new Phrase(ticketEntity.getSeat(), font2));
         cell.setBorder(Rectangle.NO_BORDER);
         cell.setBorderWidthRight(1f);
+        table.addCell(cell);
+
+        cell = new PdfPCell(new Phrase("Thanh Toán", font2));
+        cell.setBorder(Rectangle.NO_BORDER);
         cell.setBorderWidthBottom(1f);
+        cell.setBorderWidthLeft(1f);
+        table.addCell(cell);
+
+        String payOk = "";
+        if (ticketEntity.getStatus() == 1){
+            payOk = "Đã Thanh Toán";
+        }
+        else{
+            payOk = "Chưa thanh toán";
+        }
+
+        cell = new PdfPCell(new Phrase(payOk, font));
+        cell.setBorder(Rectangle.NO_BORDER);
+        cell.setHorizontalAlignment(Element.ALIGN_RIGHT);
+        cell.setBorderWidthBottom(1f);
+        cell.setBorderWidthRight(1f);
+        cell.setColspan(3);
         table.addCell(cell);
 
 

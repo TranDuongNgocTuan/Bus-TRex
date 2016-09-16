@@ -34,13 +34,13 @@
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="<c:url value="/loginstaff"/> ">Nhân viên xe</a>
+                    <a href="/">Trang chủ</a>
                 </li>
                 <li>
                     <a href="/scanticket">Kiểm tra vé</a>
                 </li>
                 <li>
-                    <a href="/">Trang chủ</a>
+                    <a href="<c:url value="/loginstaff"/>">Nhân viên xe</a>
                 </li>
             </ul>
         </div>

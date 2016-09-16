@@ -18,11 +18,11 @@
     <link href="resource/images/vexere-ico.ico?v=4484" rel="shortcut icon" type="image/x-icon"/>
     <!-- Stylesheet -->
     <link href="../../resource/css/home-styles.css?v=4484" rel="stylesheet"/>
+    <link rel="stylesheet" href="/resource/css/busserviceschedule.css">
     <link rel="stylesheet" href="/resource/vendor/font-awesome.css">
     <link rel="stylesheet" href="/resource/vendor/bootstrap.css">
     <link rel="stylesheet" href="/resource/css/bootstrap-datepicker.min.css">
     <link rel="stylesheet" href="/resource/css/home.css">
-    <link rel="stylesheet" href="/resource/css/busserviceschedule.css">
     <link rel="stylesheet" href="/resource/css/jquery-ui.css">
 
     <%--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">--%>
@@ -42,11 +42,6 @@
             <div class="col-md-3">
                 <a href="/" class="logo-image"><img height="50" src="../../resource/images/Home/bus-vxr.png"/></a>
                 <ul class="header-action-bar visible-sm visible-xs">
-                    <li>
-                        <a class="header-blue-language en-change" href="javascript:"
-                           data-href="/vi-VN/Language/ChangeLanguage?curlang=en&url=/"><img width="24"
-                                                                                            src="../../resource/images/english_icon.png"/></a>
-                    </li>
                     <li>
                         <a class="header-blue-tel" href="tel: 19006484">
                             <i class="fa fa-phone"></i>
@@ -107,9 +102,13 @@
                             <div class="date-select-row col-md-12 col-xs-12 form-inline">
                                 <div class="form-group col-md-6 pl0 select-date-container">
                                     <div class="panel-input-date">
-                                        <input class="form-control" type="text" autocomplete="off" tabindex="3"
+                                        <input class="form-control input-txt date" type="text" autocomplete="off" tabindex="3"
                                                accesskey="3" placeholder="Chọn ngày đi" class="input-txt date"
                                                name="departDate" id="datepicker" required>
+                                        <%--<input id="departcker" readonly="" name="departDate"--%>
+                                               <%--type="text" class="form-control input-txt date"--%>
+                                               <%--placeholder="Chọn ngày đi" accesskey="3"--%>
+                                               <%--tabindex="3" autocomplete="off" required>--%>
                                     </div>
                                 </div>
                             </div>
@@ -123,56 +122,78 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="flexslider slider-304-title">
-                    <div class="flex-viewport" style="overflow: hidden; position: relative;">
-                        <ul id="slider" class="slides"
-                            style="width: 1000%; transition-duration: 0s; transform: translate3d(-352px, 0px, 0px);">
-                            <li class="clone" aria-hidden="true"
-                                style="width: 352px; margin-right: 0px; float: left; display: block;">
-                                <a href="#" target="_blank">
-                                    <img src="../../resource/images/promotion/Silder_2-9_(_ty_le_360x214_).jpg"
-                                         draggable="false">
-                                </a>
-                            </li>
-                            <li class="flex-active-slide"
-                                style="width: 352px; margin-right: 0px; float: left; display: block;" data-thumb-alt="">
-                                <a href="#">
-                                    <img src="../../resource/images/promotion/cyberpay_slider.png"
-                                         draggable="false">
-                                </a>
-                            </li>
-                            <li class="" data-thumb-alt=""
-                                style="width: 352px; margin-right: 0px; float: left; display: block;">
-                                <a href="#" target="_blank">
-                                    <img src="../../resource/images/promotion/cyberpay_slider.png"
-                                         draggable="false">
-                                </a>
-                            </li>
-                            <li class="" data-thumb-alt=""
-                                style="width: 352px; margin-right: 0px; float: left; display: block;">
-                                <a href="#" target="_blank">
-                                    <img src="../../resource/images/promotion/cyberpay_slider.png"
-                                         draggable="false">
-                                </a>
-                            </li>
-                            <li class="clone" style="width: 352px; margin-right: 0px; float: left; display: block;"
-                                aria-hidden="true">
-                                <a href="#">
-                                    <img src="resource/images/promotion/cyberpay_slider.jpg"
-                                         draggable="false">
-                                </a>
-                            </li>
-                        </ul>
+                <%--<div class="flexslider slider-304-title">--%>
+                    <%--<div class="flex-viewport" style="overflow: hidden; position: relative;">--%>
+                        <%--<ul id="slider" class="slides"--%>
+                            <%--style="width: 1000%; transition-duration: 0s; transform: translate3d(-352px, 0px, 0px);">--%>
+                            <%--<li class="clone" aria-hidden="true"--%>
+                                <%--style="width: 352px; margin-right: 0px; float: left; display: block;">--%>
+                                <%--<a href="#" target="_blank">--%>
+                                    <%--<img src="../../resource/images/promotion/Silder_2-9_(_ty_le_360x214_).jpg"--%>
+                                         <%--draggable="false">--%>
+                                <%--</a>--%>
+                            <%--</li>--%>
+                            <%--<li class="flex-active-slide"--%>
+                                <%--style="width: 352px; margin-right: 0px; float: left; display: block;" data-thumb-alt="">--%>
+                            <%--<!--     <a href="#">--%>
+                                    <%--<img src="../../resource/images/promotion/cyberpay_slider.png"--%>
+                                         <%--draggable="false">--%>
+                                <%--</a>--%>
+                            <%--</li>--%>
+                            <%--<li class="" data-thumb-alt=""--%>
+                                <%--style="width: 352px; margin-right: 0px; float: left; display: block;">--%>
+                                <%--<a href="#" target="_blank">--%>
+                                    <%--<img src="../../resource/images/promotion/cyberpay_slider.png"--%>
+                                         <%--draggable="false">--%>
+                                <%--</a>--%>
+                            <%--</li> -->--%>
+                            <%--</li>--%>
+                            <%--<li class="" data-thumb-alt=""--%>
+                                <%--style="width: 352px; margin-right: 0px; float: left; display: block;">--%>
+                                <%--<a href="#" target="_blank">--%>
+                                    <%--<img src="../../resource/images/promotion/cyberpay_slider.png"--%>
+                                         <%--draggable="false">--%>
+                                <%--</a>--%>
+                            <%--</li>--%>
+                            <%--<li class="clone" style="width: 352px; margin-right: 0px; float: left; display: block;"--%>
+                                <%--aria-hidden="true">--%>
+                                <%--<a href="#">--%>
+                                    <%--<img src="resource/images/promotion/cyberpay_slider.jpg"--%>
+                                         <%--draggable="false">--%>
+                                <%--</a>--%>
+                            <%--</li>--%>
+                        <%--</ul>--%>
+                    <%--</div>--%>
+                    <%--<ul class="flex-direction-nav">--%>
+                        <%--<li class="flex-nav-prev">--%>
+                            <%--<a class="flex-prev" href="#">Previous</a>--%>
+                        <%--</li>--%>
+                        <%--<li class="flex-nav-next">--%>
+                            <%--<a class="flex-next" href="#">Next</a>--%>
+                        <%--</li>--%>
+                    <%--</ul>--%>
+                    <%----%>
+                <%--</div>--%>
+                    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                        <!-- Indicators -->
+                        <ol class="carousel-indicators">
+                            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                            <li data-target="#myCarousel" data-slide-to="1"></li>
+                        </ol>
+
+                        <!-- Wrapper for slides -->
+                        <div class="carousel-inner" role="listbox">
+                            <div class="item active">
+                                <img src="/resource/images/promotion/cyberpay_slider.png" alt="Chania">
+                            </div>
+
+                            <div class="item">
+                                <img src="/resource/images/promotion/cyberpay_slider.png" alt="Chania">
+                            </div>
+                        </div>
+
+                        <!-- Left and right controls -->
                     </div>
-                    <ul class="flex-direction-nav">
-                        <li class="flex-nav-prev">
-                            <a class="flex-prev" href="#">Previous</a>
-                        </li>
-                        <li class="flex-nav-next">
-                            <a class="flex-next" href="#">Next</a>
-                        </li>
-                    </ul>
-                </div>
             </div>
         </div>
         <div class="row home-promotion">
@@ -223,19 +244,21 @@
         <img style="opacity: 0.3;filter: alpha(opacity=30);" src="../../resource/images/newlayout/banh-xe.gif">
     </div>
 </div>
-<div class="hidden-sm hidden-xs">
-    <div class="route-search-panel">
-        <div id="routeSearch"></div>
+
+<div class="busrouter">
+    <div class="container">
+        <div class="row">
+
+        </div>
     </div>
-    <div id="busNetwork"></div>
-    <div id="stations"></div>
 </div>
+
 
 
 <div class="schedulecity">
     <div class="container">
         <div class="row">
-            <h2>Dynamic Tabs</h2>
+
             <ul class="nav nav-tabs">
                 <li class="active"><a data-toggle="tab" href="#home">Đà Nẵng</a></li>
                 <li><a data-toggle="tab" href="#menu1">Quảng Ngãi</a></li>
@@ -303,6 +326,60 @@
                 <div id="menu3" class="tab-pane fade">
                     <h3>Menu 3</h3>
                     <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slidepicture">
+    <div class="container">
+        <div class='row'>
+            <div class='col-md-12'>
+                <div class="carousel slide media-carousel" id="media">
+                    <div class="carousel-inner">
+                        <div class="item  active">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <a class="thumbnail" href="#"><img alt="" src="/resource/images/nx-002.jpg" class="img-responsive"></a>
+                                </div>
+                                <div class="col-md-4">
+                                    <a class="thumbnail" href="#"><img alt="" src="/resource/images/nx-003.jpg"  class="img-responsive"></a>
+                                </div>
+                                <div class="col-md-4">
+                                    <a class="thumbnail" href="#"><img alt="" src="/resource/images/nx-hoang-long.jpg"  class="img-responsive"></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <a class="thumbnail" href="#"><img alt="" src="/resource/images/xe-phuong-trang.jpg"  class="img-responsive"></a>
+                                </div>
+                                <div class="col-md-4">
+                                    <a class="thumbnail" href="#"><img alt="" src="/resource/images/xe-the-sinh-tourist.jpg"  class="img-responsive"></a>
+                                </div>
+                                <div class="col-md-4">
+                                    <a class="thumbnail" href="#"><img alt="" src="/resource/images/nx-003.jpg"  class="img-responsive"></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <a class="thumbnail" href="#"><img alt="" src="http://placehold.it/150x150"></a>
+                                </div>
+                                <div class="col-md-4">
+                                    <a class="thumbnail" href="#"><img alt="" src="http://placehold.it/150x150"></a>
+                                </div>
+                                <div class="col-md-4">
+                                    <a class="thumbnail" href="#"><img alt="" src="http://placehold.it/150x150"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a data-slide="prev" href="#media" class="left carousel-control">‹</a>
+                    <a data-slide="next" href="#media" class="right carousel-control">›</a>
                 </div>
             </div>
         </div>

@@ -39,7 +39,7 @@ public class ScanTicketController {
 
     @RequestMapping(value = "/scanticket/codeticket", method = RequestMethod.GET ,produces = "text/plain;charset=UTF-8")
     public @ResponseBody
-    String showTicketList(HttpServletRequest request) throws GeneralSecurityException {
+    String showTicketQrCode(HttpServletRequest request) throws GeneralSecurityException {
 
         String code = request.getParameter("code");
 
@@ -47,33 +47,42 @@ public class ScanTicketController {
 //        String iv =  "Iay63!2Uy*)sQZhn"; // Initialization vector
 //        String codedecrypt = aesCrypter.decrypt(code, key, iv);
 
-
-
+        ObjectMapper mapper = null;
+        Map<String, String> hash = null;
 
         TicketEntity ticketEntity = ticketRepository.findByCodeTicket(code);
 
-        ObjectMapper mapper = new ObjectMapper();
-        Map<String, String> hash = new HashMap<>();
-        hash.put("fullName", ticketEntity.getFullName());
-        hash.put("gmail", ticketEntity.getGmail());
-        hash.put("bookTime", String.valueOf(ticketEntity.getBookTime()));
-        hash.put("numberphone", String.valueOf(ticketEntity.getNumberphone()));
-        if (ticketEntity.getStatus()==1) {
-            hash.put("status", "Đã Thanh Toán");
+        if (ticketEntity != null) {
+
+            mapper = new ObjectMapper();
+            hash = new HashMap<>();
+            hash.put("exist", "1");
+            hash.put("fullName", ticketEntity.getFullName());
+            hash.put("gmail", ticketEntity.getGmail());
+            hash.put("bookTime", String.valueOf(ticketEntity.getBookTime()));
+            hash.put("numberphone", String.valueOf(ticketEntity.getNumberphone()));
+            if (ticketEntity.getStatus() == 1) {
+                hash.put("status", "Đã Thanh Toán");
+            } else {
+                hash.put("status", "Chưa thanh toán");
+            }
+            hash.put("seat", ticketEntity.getSeat());
+            hash.put("codeTicket", ticketEntity.getCodeTicket());
+            hash.put("totalPrice", String.valueOf(ticketEntity.getTotalprice()));
+            hash.put("from", ticketEntity.getBusstationEntityDeparture().getCity());
+            hash.put("fromTime", String.valueOf(ticketEntity.getBusesEntity().getTimeTableScheduleEntity().getDepartureTime()));
+            hash.put("to", ticketEntity.getBusstationEntityArrival().getCity());
+            hash.put("toTime", String.valueOf(ticketEntity.getBusesEntity().getTimeTableScheduleEntity().getArriveTime()));
+            hash.put("dayMove", String.valueOf(ticketEntity.getBusesEntity().getDate()));
+            hash.put("departure", ticketEntity.getBusstationEntityDeparture().getAddress());
+            hash.put("arrival", ticketEntity.getBusstationEntityArrival().getAddress());
+
         }
         else{
-            hash.put("status", "Chưa thanh toán");
+            mapper = new ObjectMapper();
+            hash = new HashMap<>();
+            hash.put("exist", "0");
         }
-        hash.put("seat", ticketEntity.getSeat());
-        hash.put("codeTicket", ticketEntity.getCodeTicket());
-        hash.put("totalPrice", String.valueOf(ticketEntity.getTotalprice()));
-        hash.put("from", ticketEntity.getBusstationEntityDeparture().getCity());
-        hash.put("fromTime", String.valueOf(ticketEntity.getBusesEntity().getTimeTableScheduleEntity().getDepartureTime()));
-        hash.put("to", ticketEntity.getBusstationEntityArrival().getCity());
-        hash.put("toTime", String.valueOf(ticketEntity.getBusesEntity().getTimeTableScheduleEntity().getArriveTime()));
-        hash.put("dayMove", String.valueOf(ticketEntity.getBusesEntity().getDate()));
-        hash.put("departure", ticketEntity.getBusstationEntityDeparture().getAddress());
-        hash.put("arrival", ticketEntity.getBusstationEntityArrival().getAddress());
 
         String ajaxResponse = "";
         try {
@@ -84,4 +93,6 @@ public class ScanTicketController {
 
         return ajaxResponse;
     }
+
+
 }
