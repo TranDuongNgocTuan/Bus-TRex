@@ -63,7 +63,7 @@ public class PromotionController {
                             @RequestParam(name = "datestart") Date datestart,
                             @RequestParam(name = "dateend") Date dateend,
                             @RequestParam(name = "typesearch") int bus,
-                            HttpServletResponse response)throws IOException {
+                            HttpServletResponse response,final RedirectAttributes redirectAttributes)throws IOException {
         PromotionEntity promotion = new PromotionEntity();
         promotion.setName(name);
         promotion.setSale(sale);
@@ -75,7 +75,8 @@ public class PromotionController {
         promotionTime.setEnd(dateend);
         promotionTime.setPromotionEntity(promotion);
         promotionTimeRepository.save(promotionTime);
-
+        String message="successfully created.";
+        redirectAttributes.addFlashAttribute("message", message);
         return "redirect:/promotion";
     }
 

@@ -37,8 +37,10 @@ public class BusCompanyController {
     }
 
     @RequestMapping(value = "/buscompany/create",method = RequestMethod.POST)
-    public String createNew(BusServicesEntity busServicesEntity){
+    public String createNew(BusServicesEntity busServicesEntity,final RedirectAttributes redirectAttributes){
         busCompanyService.create(busServicesEntity);
+        String message="successfully created.";
+        redirectAttributes.addFlashAttribute("message", message);
         return "redirect:/buscompany";
     }
 

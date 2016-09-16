@@ -81,21 +81,7 @@ public class ScheduleEntity {
         this.distance = distance;
     }
 
-    public int getNumberTrip() {
-        return numberTrip;
-    }
 
-    public void setNumberTrip(int numberTrip) {
-        this.numberTrip = numberTrip;
-    }
-
-    public int getNumberDay() {
-        return numberDay;
-    }
-
-    public void setNumberDay(int numberDay) {
-        this.numberDay = numberDay;
-    }
 
     public List<PromotionTimeEntity> getPromotionTimeEntityList() {
         return promotionTimeEntityList;
@@ -119,6 +105,23 @@ public class ScheduleEntity {
 
     public void setBusServicesEntity(BusServicesEntity busServicesEntity) {
         this.busServicesEntity = busServicesEntity;
+    }
+
+
+    public int getNumberTrip() {
+        return numberTrip;
+    }
+
+    public void setNumberTrip(int numberTrip) {
+        this.numberTrip = numberTrip;
+    }
+
+    public int getNumberDay() {
+        return numberDay;
+    }
+
+    public void setNumberDay(int numberDay) {
+        this.numberDay = numberDay;
     }
 
     public int getPriceTicket() {

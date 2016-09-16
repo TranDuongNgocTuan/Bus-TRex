@@ -163,7 +163,7 @@
   <div id="page-wrapper">
     <div class="row">
       <div class="col-lg-12">
-        <h1 class="page-header">BẾN XE</h1>
+        <h1 class="page-header">TUYẾN XE</h1>
       </div>
       <!-- /.col-lg-12 -->
     </div>
@@ -172,27 +172,54 @@
       <div class="col-lg-12">
         <div class="panel panel-default">
           <div class="panel-heading">
-            Sửa thông tin bến xe
+            Thêm tuyến xe
           </div>
           <!-- /.panel-heading -->
           <div class="panel-body">
             <div class="row">
               <div class="col-md-12">
-                <form:form method="POST" commandName="busstation" action="${pageContext.request.contextPath}/busstation/edit/${busstation.id}">
+                <form:form method="POST" commandName="schedule" action="${pageContext.request.contextPath}/schedule/create">
                   <div class="form-group">
-                    <label class="control-label">Name (*)</label>
-                    <form:input path="name" type="text" class="form-control"  required="true"/>
-                    <form:errors path="name" cssStyle="color: red;"/>
-                    <label class="control-label">Address (*)</label>
-                    <form:input path="address" type="text" class="form-control"  required="true"/>
-                    <form:errors path="address" cssStyle="color: red;"/>
-                    <label class="control-label">City (*)</label>
-                    <form:input path="city" type="text" class="form-control"  required="true"/>
-                    <form:errors path="city" cssStyle="color: red;"/>
+                    <label class="control-label">Departure (*)</label>
+                    <tr class="dropdown-menu">
+                      <td>
+                        <select name="departure" class="form-control">
+                          <c:forEach var="bus" items="${busservice}">
+                            <option value="${bus.id}">${bus.name}</option>
+                          </c:forEach>
+                        </select>
+                      </td>
+                    </tr>
+                    <label class="control-label">Arrival (*)</label>
+                    <tr class="dropdown-menu">
+                      <td>
+                        <select name="arrival" class="form-control">
+                          <c:forEach var="bus" items="${busservice}">
+                            <option value="${bus.id}">${bus.name}</option>
+                          </c:forEach>
+                        </select>
+                      </td>
+                    </tr>
+                    <label class="control-label">Distance (*)</label>
+                    <form:input path="distance" type="text" class="form-control"  required="true"/>
+                    <form:errors path="distance" cssStyle="color: red;"/>
+                    <label class="control-label">Number day (*)</label>
+                    <form:input path="numberDay" type="text" class="form-control"  required="false"/>
+                    <form:errors path="numberDay" cssStyle="color: red;"/>
+                    <label class="control-label">Number trip (*)</label>
+                    <form:input path="numberTrip" type="text" class="form-control"  required="true"/>
+                    <form:errors path="numberTrip" cssStyle="color: red;"/>
+                    <label class="control-label">Date start (*)</label>
+                    <form:input path="dateStart" type="date" class="form-control"  required="true"/>
+                    <form:errors path="dateStart" cssStyle="color: red;"/>
+                    <label class="control-label">Price ticket (*)</label>
+                    <form:input path="priceTicket" type="text" class="form-control"  required="true"/>
+                    <form:errors path="priceTicket" cssStyle="color: red;"/>
                   </div>
                   <br>
-                  <button type="submit" class="btn btn-info">Lưu</button>
+                  <button type="submit" class="btn btn-info">Tạo</button>
                 </form:form>
+
               </div>
             </div>
           </div>

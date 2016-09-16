@@ -15,7 +15,7 @@
     <title>Đặt vé xe online</title>
     <meta charset="utf-8">
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
-    <link href="resource/images/vexere-ico.ico?v=4484" rel="shortcut icon" type="image/x-icon"/>
+    <link href="resource/images/vexere-ico.ico" rel="shortcut icon" type="image/x-icon"/>
     <!-- Stylesheet -->
     <link href="../../resource/css/home-styles.css?v=4484" rel="stylesheet"/>
     <link rel="stylesheet" href="/resource/css/busserviceschedule.css">
@@ -188,7 +188,7 @@
                             </div>
 
                             <div class="item">
-                                <img src="/resource/images/promotion/cyberpay_slider.png" alt="Chania">
+                                <img src="/resource/images/promotion/banner-VeXeRe-WTnaJEcvsw.jpg" alt="Chania">
                             </div>
                         </div>
 

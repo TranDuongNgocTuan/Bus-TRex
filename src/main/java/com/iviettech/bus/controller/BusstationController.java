@@ -36,8 +36,10 @@ public class BusstationController {
     }
 
     @RequestMapping(value = "/busstation/create",method = RequestMethod.POST)
-    public String createNew(BusstationEntity busServicesEntity){
+    public String createNew(BusstationEntity busServicesEntity,final RedirectAttributes redirectAttributes){
         busstationService.create(busServicesEntity);
+        String message="successfully created.";
+        redirectAttributes.addFlashAttribute("message", message);
         return "redirect:/busstation";
     }
 
@@ -63,8 +65,8 @@ public class BusstationController {
     @RequestMapping(value="/busstation/delete/{id}", method=RequestMethod.GET)
     public ModelAndView delete(@PathVariable Integer id,final RedirectAttributes redirectAttributes) throws TaiXeNotFound{
         ModelAndView mav=new ModelAndView("redirect:/busstation");
-        BusstationEntity busServicesEntity=busstationService.delete(id);
-        String message=busServicesEntity.getName()+"successfully deleted.";
+        busstationService.delete(id);
+        String message="successfully deleted.";
         redirectAttributes.addFlashAttribute("message",message);
         return mav;
     }

@@ -4,13 +4,11 @@ import com.iviettech.bus.entity.*;
 import com.iviettech.bus.repository.BusesRepository;
 import com.iviettech.bus.repository.BusstationRepository;
 import com.iviettech.bus.repository.TimeTableScheduleRepository;
-import com.iviettech.bus.service.ScheduleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;

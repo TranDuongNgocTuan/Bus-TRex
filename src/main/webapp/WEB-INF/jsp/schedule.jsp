@@ -1,13 +1,14 @@
 <%@ page import="com.iviettech.bus.entity.AdminEntity" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
 <!DOCTYPE html>
 <html>
 
 <head>
 
-  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html" charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="">
@@ -57,6 +58,7 @@
       response.sendRedirect("/login");
     }
   %>
+
   <!-- Navigation -->
   <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
     <div class="navbar-header">
@@ -104,7 +106,7 @@
             <!-- /input-group -->
           </li>
           <li>
-            <a href="admin"><i class="fa fa-home fa-fw"></i> Trang chủ</a>
+            <a href="/admin"><i class="fa fa-home fa-fw"></i> Trang chủ</a>
           </li>
           <li>
             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Quản lý<span class="fa arrow"></span></a>
@@ -163,7 +165,7 @@
   <div id="page-wrapper">
     <div class="row">
       <div class="col-lg-12">
-        <h1 class="page-header">BẾN XE</h1>
+        <h1 class="page-header">TUYẾN XE</h1>
       </div>
       <!-- /.col-lg-12 -->
     </div>
@@ -172,28 +174,66 @@
       <div class="col-lg-12">
         <div class="panel panel-default">
           <div class="panel-heading">
-            Sửa thông tin bến xe
+            Danh sách các tuyến xe
           </div>
           <!-- /.panel-heading -->
           <div class="panel-body">
+
             <div class="row">
-              <div class="col-md-12">
-                <form:form method="POST" commandName="busstation" action="${pageContext.request.contextPath}/busstation/edit/${busstation.id}">
-                  <div class="form-group">
-                    <label class="control-label">Name (*)</label>
-                    <form:input path="name" type="text" class="form-control"  required="true"/>
-                    <form:errors path="name" cssStyle="color: red;"/>
-                    <label class="control-label">Address (*)</label>
-                    <form:input path="address" type="text" class="form-control"  required="true"/>
-                    <form:errors path="address" cssStyle="color: red;"/>
-                    <label class="control-label">City (*)</label>
-                    <form:input path="city" type="text" class="form-control"  required="true"/>
-                    <form:errors path="city" cssStyle="color: red;"/>
+              <div class="col-xs-12 col-sm-8 col-md-6">
+                <form:form action="schedule/search" method="get">
+                  <div class="input-group">
+                    <input name="searchInput" type="text" class="form-control" placeholder="Search for price,arrival,departure..."/>
+                          <span class="input-group-btn">
+                              <button class="btn btn-outline btn-primary" type="submit">Search</button>
+                          </span>
                   </div>
-                  <br>
-                  <button type="submit" class="btn btn-info">Lưu</button>
                 </form:form>
               </div>
+              <div class="col-sm-3">
+                <a href="schedule/create" role="button" class="btn btn-outline btn-primary">Add</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <div class="table-responsive">
+                  <table class="table table-condensed table-hover">
+                    <thead>
+                    <tr>
+                      <th>Id</th>
+                      <th>Departure</th>
+                      <th>Arrival</th>
+                      <th>Distance</th>
+                      <th>Number day</th>
+                      <th>Number trip</th>
+                      <th>Date start</th>
+                      <th>Price ticket</th>
+                      <th></th>
+                      <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <c:forEach var="bus" items="${busList}">
+                      <tr>
+                        <td>${bus.id}</td>
+                        <td>${bus.departure.name}</td>
+                        <td>${bus.arrival.name}</td>
+                        <td>${bus.distance}</td>
+                        <td>${bus.numberDay}</td>
+                        <td>${bus.numberTrip}</td>
+                        <td>${bus.dateStart}</td>
+                        <td>${bus.priceTicket}</td>
+                        <td><button class="btn btn-sm btn-outline btn-primary" onclick="location.href='schedule/edit/${bus.id}'">Edit</button></td>
+                        <td><button class="btn btn-sm btn-outline btn-danger" onclick="location.href='schedule/delete/${bus.id}'">Delete</button></td>
+                      </tr>
+                    </c:forEach>
+                    </tbody>
+                  </table>
+                </div>
+                <i class="text-success">${message}</i><br/>
+              </div>
+              <!-- /.table-responsive -->
+
             </div>
           </div>
         </div>

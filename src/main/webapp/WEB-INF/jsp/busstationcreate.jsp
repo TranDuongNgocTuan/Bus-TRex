@@ -178,7 +178,7 @@
           <div class="panel-body">
             <div class="row">
               <div class="col-md-12">
-                <form:form method="POST" commandName="busCompany" action="${pageContext.request.contextPath}/busstation/create">
+                <form:form method="POST" commandName="busstation" action="${pageContext.request.contextPath}/busstation/create">
                   <div class="form-group">
                     <label class="control-label">Name (*)</label>
                     <form:input path="name" type="text" class="form-control"  required="true"/>

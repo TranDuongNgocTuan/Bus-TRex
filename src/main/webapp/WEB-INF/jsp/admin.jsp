@@ -104,7 +104,7 @@
                         <!-- /input-group -->
                     </li>
                     <li>
-                        <a href="admin"><i class="fa fa-home fa-fw"></i> Trang chủ</a>
+                        <a href="/admin"><i class="fa fa-home fa-fw"></i> Trang chủ</a>
                     </li>
                     <li>
                         <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Quản lý<span class="fa arrow"></span></a>
@@ -113,7 +113,7 @@
                                 <a href="/ticketinformation"><i class="fa fa-info fa-fw"></i> Thông tin vé</a>
                             </li>
                             <li>
-                                <a href="#"><i class="fa fa-bars fa-fw"></i> Tuyến xe</a>
+                                <a href="/schedule"><i class="fa fa-bars fa-fw"></i> Tuyến xe</a>
                             </li>
                             <li>
                                 <a href="/buscompany"><i class="fa fa-bus fa-fw"></i> Hãng xe</a>
@@ -125,7 +125,7 @@
                                 <a href="/promotion"><i class="fa fa-usd fa-fw" ></i> Khuyến mãi</a>
                             </li>
                             <li>
-                                <a href="/busstation"><i class="fa fa-usd fa-fw" ></i> Bến xe</a>
+                                <a href="/busstation"><i class="fa fa-home fa-fw" ></i> Bến xe</a>
                             </li>
                         </ul>
                         <!-- /.nav-second-level -->

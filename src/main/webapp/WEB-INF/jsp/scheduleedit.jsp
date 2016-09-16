@@ -178,17 +178,45 @@
           <div class="panel-body">
             <div class="row">
               <div class="col-md-12">
-                <form:form method="POST" commandName="busstation" action="${pageContext.request.contextPath}/busstation/edit/${busstation.id}">
+                <form:form method="POST" commandName="schedule" action="${pageContext.request.contextPath}/schedule/edit/${schedule.id}">
                   <div class="form-group">
-                    <label class="control-label">Name (*)</label>
-                    <form:input path="name" type="text" class="form-control"  required="true"/>
-                    <form:errors path="name" cssStyle="color: red;"/>
-                    <label class="control-label">Address (*)</label>
-                    <form:input path="address" type="text" class="form-control"  required="true"/>
-                    <form:errors path="address" cssStyle="color: red;"/>
-                    <label class="control-label">City (*)</label>
-                    <form:input path="city" type="text" class="form-control"  required="true"/>
-                    <form:errors path="city" cssStyle="color: red;"/>
+                    <label class="control-label">Departure (*)</label>
+                    <br>
+                    <tr class="dropdown-menu">
+                      <td>
+                        <select name="departure" class="form-control">
+                          <c:forEach var="bus" items="${busservice}">
+                            <option value="${bus.id}">${bus.name}</option>
+                          </c:forEach>
+                        </select>
+                      </td>
+                    </tr>
+                    <label class="control-label">Arrival (*)</label>
+                    <br>
+                    <tr class="dropdown-menu">
+                      <td>
+                        <select name="arrival" class="form-control">
+                          <c:forEach var="bus" items="${busservice}">
+                            <option value="${bus.id}">${bus.name}</option>
+                          </c:forEach>
+                        </select>
+                      </td>
+                    </tr>
+                    <label class="control-label">Distance (*)</label>
+                    <form:input path="distance" type="text" class="form-control"  required="true"/>
+                    <form:errors path="distance" cssStyle="color: red;"/>
+                    <label class="control-label">Number day (*)</label>
+                    <form:input path="numberDay" type="text" class="form-control"  required="true"/>
+                    <form:errors path="numberDay" cssStyle="color: red;"/>
+                    <label class="control-label">Number trip (*)</label>
+                    <form:input path="numberTrip" type="text" class="form-control"  required="true"/>
+                    <form:errors path="numberTrip" cssStyle="color: red;"/>
+                    <label class="control-label">Date start (*)</label>
+                    <form:input path="dateStart" type="text" class="form-control"  required="true"/>
+                    <form:errors path="dateStart" cssStyle="color: red;"/>
+                    <label class="control-label">Price ticket (*)</label>
+                    <form:input path="priceTicket" type="text" class="form-control"  required="true"/>
+                    <form:errors path="priceTicket" cssStyle="color: red;"/>
                   </div>
                   <br>
                   <button type="submit" class="btn btn-info">Lưu</button>
@@ -221,4 +249,20 @@
 
 </body>
 
+</html>
+<%--
+  Created by IntelliJ IDEA.
+  User: Admin
+  Date: 9/16/2016
+  Time: 11:27 PM
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+</body>
 </html>
