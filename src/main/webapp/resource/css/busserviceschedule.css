@@ -1,9 +1,23 @@
 *{margin:0;padding:0;}
 
-.schedulecity {padding-bottom: 70px;}
+.schedulecity {padding-bottom: 70px;padding-top: 100px;}
 
 body{
     font-family: 'Roboto', sans-serif;
+}
+
+.home-search-ticket-panel #searchForm input[type=text], .bus-oper #searchForm input[type=text]{
+    background-repeat: no-repeat;
+    background-image: url(/resource/images/Home/icon-search-location.svg);
+    background-size: 20px 20px;
+    background-position: 100% 10px;
+    padding-left: 0!important;
+}
+.home-search-ticket-panel #searchForm .date-select-row #datepicker , .bus-oper #searchForm .date-select-row #datepicker{
+    background-repeat: no-repeat;
+    background-image: url(/resource/images/Home/icon-search-date.svg);
+    background-size: 20px 20px;
+    background-position: 100% 10px;
 }
 
 .tab-content {
@@ -80,4 +94,63 @@ p.arrvialto {
     padding-top: 9px;
     font-weight: 600;
     font-size: 1.1em;
+}
+
+/* carousel */
+.media-carousel
+{
+    margin-bottom: 0;
+    padding: 0 40px 30px 40px;
+    margin-top: 30px;
+}
+/* Previous button  */
+.media-carousel .carousel-control.left
+{
+    left: -12px;
+    background-image: none;
+    background: none repeat scroll 0 0 #222222;
+    border: 4px solid #FFFFFF;
+    border-radius: 23px 23px 23px 23px;
+    height: 40px;
+    width : 40px;
+    margin-top: 80px;
+}
+/* Next button  */
+.media-carousel .carousel-control.right
+{
+    right: -12px !important;
+    background-image: none;
+    background: none repeat scroll 0 0 #222222;
+    border: 4px solid #FFFFFF;
+    border-radius: 23px 23px 23px 23px;
+    height: 40px;
+    width : 40px;
+    margin-top: 80px;
+}
+/* Changes the position of the indicators */
+.media-carousel .carousel-indicators
+{
+    right: 50%;
+    top: auto;
+    bottom: 0px;
+    margin-right: -19px;
+}
+/* Changes the colour of the indicators */
+.media-carousel .carousel-indicators li
+{
+    background: #c0c0c0;
+}
+.media-carousel .carousel-indicators .active
+{
+    background: #333333;
+}
+.media-carousel img
+{
+    width: 250px;
+    height: 100px
+}
+/* End carousel */
+
+a.thumbnail {
+    height: 200px;
 }

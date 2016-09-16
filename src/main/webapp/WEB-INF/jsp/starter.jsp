@@ -1,3 +1,4 @@
+<%@ page import="com.iviettech.bus.entity.TaiXeEntity" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
@@ -53,6 +54,14 @@ desired effect
 |---------------------------------------------------------|
 -->
 <body class="hold-transition skin-blue sidebar-mini">
+<%
+  TaiXeEntity taiXeEntity = (TaiXeEntity) session.getAttribute("taixe");
+  if (taiXeEntity == null){
+    out.print("<script>");
+    out.print("window.history.go(-2)");
+    out.print("</script>");
+  }
+%>
   <div class="wrapper">
 
     <!-- Main Header -->
@@ -110,7 +119,7 @@ desired effect
                     <a href="#" class="btn btn-default btn-flat">Profile</a>
                   </div>
                   <div class="pull-right">
-                    <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                    <a href="/signout" class="btn btn-default btn-flat">Sign out</a>
                   </div>
                 </li>
               </ul>

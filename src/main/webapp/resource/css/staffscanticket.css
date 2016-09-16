@@ -1,0 +1,8 @@
+.custom-search-form{
+    margin-bottom: 10px;
+}
+
+.custom-search-form input.form-control {
+    border: 1px solid gray;
+    border-radius: 6px;
+}

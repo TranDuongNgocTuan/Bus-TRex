@@ -6,8 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -17,9 +22,6 @@ import java.util.List;
  */
 @Controller
 public class StaffController {
-
-    @Autowired
-    TaiXeRepository taiXeRepository;
 
     @Autowired
     TicketRepository ticketRepository;
@@ -33,14 +35,28 @@ public class StaffController {
     @Autowired
     BusesRepository busesRepository;
 
+    @Autowired
+    TaiXeRepository taiXeRepository;
+
 
     @RequestMapping(value = "/loginstaff")
-    public String loginStaff(){
-        return "loginstaff";
+    public String loginStaff(@RequestParam(value = "username", required = false, defaultValue = "") String username,
+                             @RequestParam(value = "password", required = false, defaultValue = "") String password,
+                             HttpSession session){
+
+        TaiXeEntity taiXeEntity = taiXeRepository.findByUsernameAndPassword(username, password);
+        if (taiXeEntity!=null) {
+            session.setAttribute("taixe", taiXeEntity);
+            return "redirect:/adminstaff";
+        }
+        else
+            return "loginstaff";
     }
 
     @RequestMapping(value = "/adminstaff")
-    public String adminStaff(){ return "starter"; }
+    public String adminStaff(HttpSession session){
+        return "starter";
+    }
 
     @RequestMapping(value = "/showticketstaff")
     public String showTicketStaff(Model model,
@@ -72,4 +88,11 @@ public class StaffController {
 
     @RequestMapping(value = "/adminscanstaff")
     public String paymentStaff(){ return "staffscanticket"; }
+
+    @RequestMapping(value = "/signout")
+    public String singOut(HttpServletRequest request, HttpServletResponse response, HttpSession session){
+        session.invalidate();
+//        session.setAttribute("taixe", null);
+        return "starter";
+    }
 }

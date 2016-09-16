@@ -102,6 +102,8 @@ public class TransferController {
 
         String encryptedCode = aesCrypter.encrypt(text, key, iv);
 
+        encryptedCode = encryptedCode.substring(0, 8);
+
         return encryptedCode;
     }
 

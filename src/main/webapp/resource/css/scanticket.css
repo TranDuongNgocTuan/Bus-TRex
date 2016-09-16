@@ -32,3 +32,22 @@ footer.footer-scanticket {
     margin-top: 75px;
     /* background-color: #ddd; */
 }
+
+.custom-search-form{
+    margin-top: 0px;
+    padding-left: 16px;
+    margin-bottom: 10px;
+}
+
+.custom-search-form input.form-control {
+    border: 1px solid gray;
+    border-radius: 6px;
+}
+
+.scantitle{
+    margin-top:0px;
+}
+
+.notify-waring-success {
+    padding-top: 25px;
+}

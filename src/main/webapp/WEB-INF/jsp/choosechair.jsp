@@ -33,8 +33,15 @@
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse navbar-ex1-collapse">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#">Trang chủ</a></li>
-					<li><a href="#">Kiểm tra vé</a></li>
+					<li>
+						<a href="/">Trang chủ</a>
+					</li>
+					<li>
+						<a href="/scanticket">Kiểm tra vé</a>
+					</li>
+					<li>
+						<a href="<c:url value="/loginstaff"/>">Nhân viên xe</a>
+					</li>
 				</ul>
 			</div><!-- /.navbar-collapse -->
 		</div>
