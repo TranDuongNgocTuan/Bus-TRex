@@ -69,13 +69,16 @@ public class TaiXeController {
     }
 
     @RequestMapping(value="/delete/{id}", method=RequestMethod.GET)
-    public String deleteTaiXe(@PathVariable int id,final RedirectAttributes redirectAttributes, HttpServletResponse response) throws TaiXeNotFound{
-        ModelAndView mav=new ModelAndView("redirect:/taixe");
+    public String deleteTaiXe(@PathVariable int id, RedirectAttributes redirectAttributes){
         TaiXeEntity taiXeEntity = taiXeRepository.findOne(id);
-        taiXeRepository.removeTaiXe(id);
+        try {
+            taiXeRepository.removeTaiXe(id);
+        }catch (Exception e){
+            return "redirect:/taixe";
+        }
         String message="The Tai xe"+taiXeEntity.getName()+"was successfully deleted.";
         redirectAttributes.addFlashAttribute("message",message);
-        return "taixe";
+        return "redirect:/taixe";
     }
 
     @RequestMapping(value = "/search", method = GET)
