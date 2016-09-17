@@ -95,4 +95,23 @@ public class StaffController {
 //        session.setAttribute("taixe", null);
         return "starter";
     }
+
+    @RequestMapping(value = "/payticketstaff")
+    public String payticketStaff(@RequestParam(name = "codeticket") String code){
+
+        TicketEntity ticketEntity = ticketRepository.findByCodeTicket(code);
+        ticketEntity.setStatus(1);
+        ticketRepository.save(ticketEntity);
+
+        return "staffscanticket";
+    }
+
+    @RequestMapping(value = "/deleteticketstaff")
+    public String deleteticketStaff(@RequestParam(name = "codeticket") String code){
+
+        TicketEntity ticketEntity = ticketRepository.findByCodeTicket(code);
+        ticketRepository.delete(ticketEntity);
+
+        return "staffscanticket";
+    }
 }

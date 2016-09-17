@@ -25,7 +25,9 @@ $(document).ready(function(){
 			'			</tr>' +
 			'			<tr>' +
 			'			<td class="col-xs-3 col-sm-3 col-md-3 col-lg-3">Tuyến:</td>' +
-			'			<td class="col-xs-9 col-sm-9 col-md-9 col-lg-9" colspan="3">' + data.from +' đến ' + data.to +'</td>' +
+			'			<td class="col-xs-3 col-sm-3 col-md-3 col-lg-3">' + data.from +' đến ' + data.to +'</td>' +
+			'			<td class="col-xs-3 col-sm-3 col-md-3 col-lg-3">Hãng Xe</td>' +
+			'			<td>'+data.busService+'</td>' +
 			'			</tr>' +
 			'				<tr>' +
 			'					<td>Ngày đi:</td>' +
@@ -48,9 +50,7 @@ $(document).ready(function(){
 			'				</tr>' +
 			'				<tr class="sperator">' +
 			'					<td>Họ tên:</td>' +
-			'					<td>'+ data.fullName +'</td>' +
-			'					<td></td>' +
-			'					<td></td>' +
+			'					<td colspan="3">'+ data.fullName +'</td>' +
 			'				</tr>' +
 			'				<tr>' +
 			'					<td>Email:</td>' +

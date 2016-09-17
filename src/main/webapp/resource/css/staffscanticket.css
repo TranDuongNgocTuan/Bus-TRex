@@ -6,3 +6,21 @@
     border: 1px solid gray;
     border-radius: 6px;
 }
+
+.span-infoticket span{
+    border-bottom: 1px solid gray;
+    display: block;
+    padding-left: 17px;
+    font-size: 1.1em;
+    font-weight: 500;
+    height: 20px;
+}
+
+.span-infoticket label{
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.codeticket{
+    font-weight: 700;
+}

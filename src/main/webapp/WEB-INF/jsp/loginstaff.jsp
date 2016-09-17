@@ -7,7 +7,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="http://v4-alpha.getbootstrap.com/favicon.ico">
+    <%--<link rel="icon" href="http://v4-alpha.getbootstrap.com/favicon.ico">--%>
 
     <title>Login</title>
 
@@ -22,11 +22,11 @@
 
     <div class="container">
         <form Class="login-container form-signin" action="/loginstaff" method="post">
-        <h2 class="form-signin-heading">Please sign in</h2>
+        <h2 class="form-signin-heading">Đăng Nhập</h2>
         <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="text" id="inputEmail" class="form-control" placeholder="Username" required="" autofocus="" name="username">
+        <input type="text" id="inputEmail" class="form-control" placeholder="Tài Khoản" required="" autofocus="" name="username">
         <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="" name="password">
+        <input type="password" id="inputPassword" class="form-control" placeholder="Mật Khẩu" required="" name="password">
         <div class="checkbox">
           <label>
             <input type="checkbox" value="remember-me"> Remember me

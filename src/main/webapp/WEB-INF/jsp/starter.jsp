@@ -56,10 +56,8 @@ desired effect
 <body class="hold-transition skin-blue sidebar-mini">
 <%
   TaiXeEntity taiXeEntity = (TaiXeEntity) session.getAttribute("taixe");
-  if (taiXeEntity == null){
-    out.print("<script>");
-    out.print("window.history.go(-2)");
-    out.print("</script>");
+  if (taiXeEntity==null) {
+    response.sendRedirect("/loginstaff");
   }
 %>
   <div class="wrapper">

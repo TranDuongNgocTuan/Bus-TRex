@@ -112,9 +112,11 @@
                             </tr>
                             <tr>
                                 <td class="col-xs-3 col-sm-3 col-md-3 col-lg-3">Tuyến:</td>
-                                <td class="col-xs-9 col-sm-9 col-md-9 col-lg-9"
-                                    colspan="3">${ticket.busstationEntityDeparture.city}
+                                <td class="col-xs-3 col-sm-3 col-md-3 col-lg-3"
+                                    colspan="1">${ticket.busstationEntityDeparture.city}
                                     đến ${ticket.busstationEntityArrival.city}</td>
+                                <td class="col-xs-3 col-sm-3 col-md-3 col-lg-3">Hãng Xe</td>
+                                <td></td>
                             </tr>
                             <tr>
                                 <td>Ngày đi:</td>

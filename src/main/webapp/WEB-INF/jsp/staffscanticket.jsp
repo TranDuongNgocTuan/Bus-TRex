@@ -1,3 +1,4 @@
+<%@ page import="com.iviettech.bus.entity.TaiXeEntity" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
@@ -45,6 +46,13 @@
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
+
+    <%
+        TaiXeEntity taiXeEntity = (TaiXeEntity) session.getAttribute("taixe");
+        if (taiXeEntity==null) {
+            response.sendRedirect("/loginstaff");
+        }
+    %>
 
     <!-- Main Header -->
     <header class="main-header">
@@ -184,12 +192,23 @@
             </ol>
         </section>
 
+        <%-- notify --%>
+        <div class="notify-waring-success">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="notify">
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Main content -->
         <section class="content">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-5">
                         <div class="input-group custom-search-form">
+                            <input type="hidden" value="<%= taiXeEntity.getBusEntity().getBusServicesEntity().getId() %>" name="busService" class="taiXeOfBuseService">
                             <input type="text" class="form-control textcode" placeholder="Mã Vé">
                               <span class="input-group-btn">
                               <button class="btn btn-primary" type="button" id="search">
@@ -214,16 +233,16 @@
                      -->        </div>
                 <!-- /.box-header -->
                 <div class="box-body">
-                    <div class="row">
+                    <div class="row span-infoticket">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Mã vé</label>
-                                <span class="codeticket">012465789</span>
+                                <span class="codeticket"></span>
                             </div>
                             <!-- /.form-group -->
                             <div class="form-group">
                                 <label>Họ Tên</label>
-                                <span class="codeticket">012465789</span>
+                                <span class="fullname"></span>
                             </div>
                             <!-- /.form-group -->
                         </div>
@@ -231,67 +250,76 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Số điện thoại</label>
-                                <span class="codeticket">012465789</span>
+                                <span class="numberphone"></span>
                             </div>
                             <!-- /.form-group -->
                             <div class="form-group">
                                 <label>Gmail</label>
-                                <span class="codeticket">012465789</span>
+                                <span class="gmail"></span>
                             </div>
                             <!-- /.form-group -->
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Nơi xuất phát</label>
-                                <span class="codeticket">012465789</span>
+                                <span class="departure"></span>
                             </div>
                             <!-- /.form-group -->
                             <div class="form-group">
                                 <label>Nơi đến</label>
-                                <span class="codeticket">012465789</span>
+                                <span class="arrival"></span>
                             </div>
                             <!-- /.form-group -->
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Giời đi</label>
-                                <span class="codeticket">012465789</span>
+                                <span class="departuretime"></span>
                             </div>
                             <!-- /.form-group -->
                             <div class="form-group">
                                 <label>Giờ đến</label>
-                                <span class="codeticket">012465789</span>
+                                <span class="arrivaltime"></span>
                             </div>
                             <!-- /.form-group -->
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Hãng xe</label>
-                                <span class="codeticket">012465789</span>
+                                <span class="buservices"></span>
                             </div>
                             <!-- /.form-group -->
                             <div class="form-group">
                                 <label>Biển số xe</label>
-                                <span class="codeticket">012465789</span>
+                                <span class="plant"></span>
                             </div>
                             <!-- /.form-group -->
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Số ghê</label>
-                                <span class="codeticket">012465789</span>
+                                <span class="seat"></span>
                             </div>
                             <!-- /.form-group -->
                             <div class="form-group">
                                 <label>Tổng tiền</label>
-                                <span class="codeticket">012465789</span>
+                                <span class="totalprice"></span>
                             </div>
                             <!-- /.form-group -->
                         </div>
                         <!-- /.col -->
-                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                            <button type="button" class="btn btn-block btn-primary">Thanh Toán</button>
-                        </div>
+                        <form action="/payticketstaff">
+                            <input type="hidden" name="codeticket" class="codeticketform">
+                            <div class="col-xs-6 col-lg-3">
+                                <button type="submit" class="btn btn-block btn-primary btnpayment">Thanh Toán</button>
+                            </div>
+                        </form>
+                        <form action="/deleteticketstaff">
+                            <input type="hidden" name="codeticket" class="codeticketform">
+                            <div class="col-xs-6 col-lg-3">
+                            <button type="submit" class="btn btn-block btn-danger btndelete">Hủy Vé</button>
+                        </form>
+                    </div>
                     </div>
                     <!-- /.row -->
 

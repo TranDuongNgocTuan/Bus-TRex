@@ -40,10 +40,10 @@ public class CreaterTicketPdf {
         Font font = FontFactory.getFont(FontFactory.TIMES_ROMAN,30);
         font.setColor(BaseColor.RED);
 
-        Font fontcode = FontFactory.getFont(FontFactory.TIMES_ROMAN,10, Font.BOLD);
+        Font fontcode = FontFactory.getFont(FontFactory.TIMES_ROMAN,13, Font.BOLD);
         fontcode.setColor(BaseColor.BLACK);
 //        Font font2 = new Font(BaseFont.createFont("src/main/resources/font/VietFontsWeb1_ttf/vuArial.ttf", BaseFont.WINANSI, BaseFont.EMBEDDED));
-
+//        /opt/shared/webapps/ROOT/resource/fonts/VietFontsWeb1_ttf/vuArial.ttf
         FontFactory.register("/opt/shared/webapps/ROOT/resource/fonts/VietFontsWeb1_ttf/vuArial.ttf", "vuArial");
         Font font2 = FontFactory.getFont("vuArial", BaseFont.IDENTITY_H,
                 BaseFont.EMBEDDED, 10);
@@ -163,10 +163,11 @@ public class CreaterTicketPdf {
             payOk = "Chưa thanh toán";
         }
 
-        cell = new PdfPCell(new Phrase(payOk, font));
+        cell = new PdfPCell(new Phrase(payOk, font3));
         cell.setBorder(Rectangle.NO_BORDER);
         cell.setHorizontalAlignment(Element.ALIGN_RIGHT);
         cell.setBorderWidthBottom(1f);
+        cell.setPaddingRight(3f);
         cell.setBorderWidthRight(1f);
         cell.setColspan(3);
         table.addCell(cell);
