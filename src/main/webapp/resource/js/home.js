@@ -7,6 +7,7 @@ $(function(){
         .on('changeDate', function(ev){
             // $('#exampleInputName3').datepicker('hide');
             // alert(ev.date.valueOf());
+            console.log($(this));
             var date = $('#exampleInputName3').datepicker("getDate");
             var month = date.getMonth()+1;
             var day = date.getDate();

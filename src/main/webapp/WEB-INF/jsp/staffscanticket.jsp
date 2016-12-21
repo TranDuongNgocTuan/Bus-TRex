@@ -1,6 +1,12 @@
 <%@ page import="com.iviettech.bus.entity.TaiXeEntity" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    TaiXeEntity taiXeEntity = (TaiXeEntity) session.getAttribute("taixe");
+    if (taiXeEntity==null) {
+        response.sendRedirect("/loginstaff");
+    }
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,13 +52,6 @@
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
-
-    <%
-        TaiXeEntity taiXeEntity = (TaiXeEntity) session.getAttribute("taixe");
-        if (taiXeEntity==null) {
-            response.sendRedirect("/loginstaff");
-        }
-    %>
 
     <!-- Main Header -->
     <header class="main-header">

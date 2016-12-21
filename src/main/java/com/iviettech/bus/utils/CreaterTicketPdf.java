@@ -44,11 +44,12 @@ public class CreaterTicketPdf {
         fontcode.setColor(BaseColor.BLACK);
 //        Font font2 = new Font(BaseFont.createFont("src/main/resources/font/VietFontsWeb1_ttf/vuArial.ttf", BaseFont.WINANSI, BaseFont.EMBEDDED));
 //        /opt/shared/webapps/ROOT/resource/fonts/VietFontsWeb1_ttf/vuArial.ttf
-        FontFactory.register("/opt/shared/webapps/ROOT/resource/fonts/VietFontsWeb1_ttf/vuArial.ttf", "vuArial");
+//        /home/tran/Documents/Project/jv09-t-rex/src/main/webapp/resource/fonts/VietFontsWeb1_ttf
+        FontFactory.register("/home/tran/Documents/Project Java/jv09-t-rex/src/main/webapp/resource/fonts/VietFontsWeb1_ttf/vuArial.ttf", "vuArial");
         Font font2 = FontFactory.getFont("vuArial", BaseFont.IDENTITY_H,
                 BaseFont.EMBEDDED, 10);
 
-        FontFactory.register("/opt/shared/webapps/ROOT/resource/fonts/VietFontsWeb1_ttf/vuArial.ttf", "vuArial");
+        FontFactory.register("/home/tran/Documents/Project Java/jv09-t-rex/src/main/webapp/resource/fonts/VietFontsWeb1_ttf/vuArial.ttf", "vuArial");
         Font font3 = FontFactory.getFont("vuArial", BaseFont.IDENTITY_H,
                 BaseFont.EMBEDDED, 15);
         font3.setColor(BaseColor.RED);

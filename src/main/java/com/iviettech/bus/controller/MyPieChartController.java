@@ -21,7 +21,7 @@ public class MyPieChartController {
     public void drawPieChart(HttpServletResponse response){
         response.setContentType("image/png");
         PieDataset pdSet=createDataSet();
-        JFreeChart chart=createChart(pdSet,"Th?ng kê s? l??ng xe c?a các hãng");
+        JFreeChart chart=createChart(pdSet,"Th?ng kï¿½ s? l??ng xe c?a cï¿½c hï¿½ng");
         try{
             ChartUtilities.writeChartAsPNG(response.getOutputStream(),chart,750,400);
             response.getOutputStream().close();
@@ -41,8 +41,8 @@ public class MyPieChartController {
 
     private PieDataset createDataSet() {
         DefaultPieDataset dpd=new DefaultPieDataset();
-        dpd.setValue("Ph??ng Trang",3);
-        dpd.setValue("Hoàng Long",2);
+        dpd.setValue("PhÆ°Æ¡ng Trang",3);
+        dpd.setValue("HoÃ ng Long",2);
         dpd.setValue("Mai Linh",1);
         return dpd;
     }

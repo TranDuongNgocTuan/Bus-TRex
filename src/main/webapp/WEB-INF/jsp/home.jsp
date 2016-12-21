@@ -310,7 +310,7 @@
                                         <p class="ticketfare">${citySchedule.priceTicket}<sup>đ</sup>/Vé</p>
                                     </div>
                                     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                                        <button class="container-ticket text-center" type="button" class="form-control" id="exampleInputName3" placeholder=""
+                                        <button class="container-ticket text-center exampleInputName3 form-control" type="button" data-city="Hello" id="exampleInputName3" placeholder=""
                                                 name="departDate"><i class="fa fa-bus"></i><span>TÌM VÉ</span></button>
                                     </div>
                                     </form>
