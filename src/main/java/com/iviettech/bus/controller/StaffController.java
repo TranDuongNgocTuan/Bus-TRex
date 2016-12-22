@@ -63,8 +63,8 @@ public class StaffController {
                                   HttpSession session){
         Date date = new Date();
 
-//        TaiXeEntity taiXeEntity = (TaiXeEntity) session.getAttribute("taixe");
-        BusEntity busEntity = busRepository.findOne(1);
+        TaiXeEntity taiXeEntity = (TaiXeEntity) session.getAttribute("taixe");
+        BusEntity busEntity = busRepository.findOne(taiXeEntity.getBusEntity().getId());
         List<TicketEntity> ticketEntityListShow = new ArrayList<>();
 
         for (TimeTableScheduleEntity timeTable : busEntity.getTimeTableScheduleEntityList()){

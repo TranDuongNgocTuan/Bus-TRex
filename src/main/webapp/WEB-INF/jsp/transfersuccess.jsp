@@ -23,7 +23,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">DATVE</a>
+				<a class="navbar-brand" href="/">DATVE</a>
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
