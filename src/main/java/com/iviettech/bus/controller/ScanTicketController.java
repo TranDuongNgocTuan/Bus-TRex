@@ -99,7 +99,9 @@ public class ScanTicketController {
     String showTicketCodeTaiXe(HttpServletRequest request) throws GeneralSecurityException {
 
         String code = request.getParameter("code");
-
+        if (code == null){
+          code = "";
+        }
 //        String key = "TTY6I9^hQuo!a1n0";
 //        String iv =  "Iay63!2Uy*)sQZhn"; // Initialization vector
 //        String codedecrypt = aesCrypter.decrypt(code, key, iv);
@@ -111,7 +113,9 @@ public class ScanTicketController {
 
         Date date = new Date();
 
-        if (ticketEntity != null && (new java.sql.Date(date.getTime()).equals(new java.sql.Date(ticketEntity.getBookTime().getTime())))) {
+        if (ticketEntity != null
+                && ((new java.sql.Date(date.getTime()).after(new java.sql.Date(ticketEntity.getBookTime().getTime())))
+                || (new java.sql.Date(date.getTime()).equals(new java.sql.Date(ticketEntity.getBookTime().getTime()))))) {
 
             mapper = new ObjectMapper();
             hash = new HashMap<>();

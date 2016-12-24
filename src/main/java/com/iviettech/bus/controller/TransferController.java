@@ -70,6 +70,8 @@ public class TransferController {
         TicketEntity ticketSession = (TicketEntity) session.getAttribute("ticket");
         ticketSession.setSeat(ticket.getSeat());
         ticketSession.setNumberSeats(ticket.getNumberSeats());
+        ticketSession.setTotalprice(ticket.getTotalprice()-ticket.getTotalprice()*promotionTimeEntity.getPromotionEntity().getSale()/100);
+
         int promotionSale = 0;
         if (promotionTimeEntity != null){
             promotionSale = promotionTimeEntity.getPromotionEntity().getSale();
@@ -91,7 +93,7 @@ public class TransferController {
         try {
             String body = "<h1 style='color:red;'> Dear "+ticketEntity.getFullName()+" </h1>";
             body += "<h2>Đây là vé của bạn</h2>";
-            mailUtilGmail.sendEmail(ticketEntity.getGmail(), "conos.team@gmail.com", "Ticket Bus", body, ticketEntity ,true);
+            mailUtilGmail.sendEmail(ticketEntity.getGmail(), "conos.team@gmail.com", "New Password", body, ticketEntity ,true);
         } catch (Exception ex) {
             System.out.println("Error : " + ex);
         }
@@ -405,7 +407,6 @@ public class TransferController {
                     BusesEntity busesEntity = findBusesEntity(dateStartMove, timeTableScheduleEntity);
 
                     ticketEntity.setBookTime(new Date(Calendar.getInstance().getTimeInMillis()));
-//                    ticketEntity.set
                     ticketEntity.setCodeTicket(encryptedCodeTicket(ticketEntity));
                     ticketEntity.setBusesEntity(busesEntity);
                     ticketRepository.save(ticketEntity);

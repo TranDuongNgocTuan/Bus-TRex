@@ -1,4 +1,5 @@
 <%@ page import="com.iviettech.bus.entity.TaiXeEntity" %>
+<%@ page import="com.iviettech.bus.entity.AdminEntity" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
@@ -99,7 +100,14 @@ desired effect
                 <!-- The user image in the navbar-->
                 <img src="resource/adminstaff/dist/img/taxi-driver.png" class="user-image" alt="User Image">
                 <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                <span class="hidden-xs">Tran Van A</span>
+                <span class="hidden-xs"><%
+                  TaiXeEntity taixeEntity = (TaiXeEntity) session.getAttribute("taixe");
+                  AdminEntity adminEntity = (AdminEntity) session.getAttribute("admin");
+                  if (taixeEntity != null)
+                    out.print(taixeEntity.getName());
+                  else
+                    out.print(adminEntity.getName());
+                %></span>
               </a>
               <ul class="dropdown-menu">
                 <!-- The user image in the menu -->
@@ -107,7 +115,12 @@ desired effect
                   <img src="resource/adminstaff/dist/img/taxi-driver.png" class="img-circle" alt="User Image">
 
                   <p>
-                    Tran Van A - Nhan Vien Thu Tien
+                    <%
+                      if (taixeEntity != null)
+                        out.print(taixeEntity.getName());
+                      else
+                        out.print(adminEntity.getName());
+                    %>
                     <small><!-- Member since Nov. 2012 --></small>
                   </p>
                 </li>
@@ -142,7 +155,12 @@ desired effect
             <img src="resource/adminstaff/dist/img/taxi-driver.png" class="img-circle" alt="User Image">
           </div>
           <div class="pull-left info">
-            <p>Tran Van A</p>
+            <p><%
+              if (taixeEntity != null)
+                out.print(taixeEntity.getName());
+              else
+                out.print(adminEntity.getName());
+            %></p>
             <!-- Status -->
             <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
           </div>
@@ -204,22 +222,6 @@ desired effect
 
       <!-- Your Page Content Here -->
       <div class="row">
-        <!-- ./col -->
-        <div class="col-lg-12 col-xs-12">
-          <!-- small box -->
-          <div class="small-box bg-aqua">
-            <div class="inner">
-              <h3>THANH TOÁN</h3>
-
-              <p>Thanh toán bằng tiền mặt</p>
-            </div>
-            <div class="icon">
-              <i class="fa fa-money" aria-hidden="true"></i>
-            </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <!-- ./col -->
         <div class="col-lg-12 col-xs-12">
           <!-- small box -->
           <div class="small-box bg-green">
@@ -231,7 +233,39 @@ desired effect
             <div class="icon">
               <i class="fa fa-table"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="/showticketstaff" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+
+        <div class="col-lg-12 col-xs-12">
+          <!-- small box -->
+          <div class="small-box bg-aqua">
+            <div class="inner">
+              <h3>THANH TOÁN</h3>
+
+              <p>Thanh toán bằng tiền mặt</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-money" aria-hidden="true"></i>
+            </div>
+            <a href="/adminscanstaff" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+
+        <div class="col-lg-12 col-xs-12">
+          <!-- small box -->
+          <div class="small-box bg-red">
+            <div class="inner">
+              <h3>ĐẶT VÉ</h3>
+
+              <p>Đặt vé xe bus</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-plus-square-o"></i>
+            </div>
+            <a href="/bookedticketstaff" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -266,7 +300,7 @@ desired effect
         <h3 class="control-sidebar-heading">Recent Activity</h3>
         <ul class="control-sidebar-menu">
           <li>
-            <a href="javascript::;">
+            <a href="javascript:;">
               <i class="menu-icon fa fa-birthday-cake bg-red"></i>
 
               <div class="menu-info">
@@ -282,7 +316,7 @@ desired effect
         <h3 class="control-sidebar-heading">Tasks Progress</h3>
         <ul class="control-sidebar-menu">
           <li>
-            <a href="javascript::;">
+            <a href="javascript:;">
               <h4 class="control-sidebar-subheading">
                 Custom Template Design
                 <span class="pull-right-container">

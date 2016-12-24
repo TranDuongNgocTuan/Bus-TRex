@@ -3,7 +3,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     TaiXeEntity taiXeEntity = (TaiXeEntity) session.getAttribute("taixe");
-    if (taiXeEntity==null) {
+    if (taiXeEntity == null) {
         response.sendRedirect("/loginstaff");
     }
 %>
@@ -38,6 +38,7 @@
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="resource/adminstaff/dist/css/skins/_all-skins.min.css">
+
 
     <link rel="stylesheet" href="/resource/css/staffscanticket.css">
 
@@ -187,7 +188,7 @@
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i>Chức năng</a></li>
-                <li class="active">Thanh Toán</li>
+                <li class="active">Đặt vé</li>
             </ol>
         </section>
 
@@ -196,11 +197,6 @@
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="notify">
-                        <c:if test="${message == 'Success'}">
-                            <div class='alert alert-info'>
-                                <strong>Thanh toán thành công</strong>
-                            </div>
-                        </c:if>
                     </div>
                 </div>
             </div>
@@ -208,136 +204,127 @@
 
         <!-- Main content -->
         <section class="content">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-5">
-                        <div class="input-group custom-search-form">
-                            <input type="hidden" value="<%= taiXeEntity.getBusEntity().getBusServicesEntity().getId() %>" name="busService" class="taiXeOfBuseService">
-                            <input type="text" class="form-control textcode" placeholder="Mã Vé">
-                              <span class="input-group-btn">
-                              <button class="btn btn-primary" type="button" id="search">
-                                  <span class="glyphicon glyphicon-search"></span>
-                              </button>
-                             </span>
+            <form action="/bookedstaff">
+                <div class="box box-danger">
+                    <div class="box-header">
+                        <h3 class="box-title">Booked</h3>
+                    </div>
+                    <div class="box-body">
+                        <!-- phone mask -->
+                        <div class="form-group">
+                            <label>Nơi xuất phát</label>
+
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-map-marker"></i>
+                                </div>
+                                <select class="form-control select2 select2-hidden-accessible" style="width: 100%;"
+                                        tabindex="-1" aria-hidden="true" name="departure">
+                                    <option selected="selected">Alabama</option>
+                                    <option>Alaska</option>
+                                    <option>California</option>
+                                    <option>Delaware</option>
+                                    <option>Tennessee</option>
+                                    <option>Texas</option>
+                                    <option>Washington</option>
+                                </select>
+                            </div>
+                            <!-- /.input group -->
                         </div>
-                        <!-- /input-group -->
+                        <!-- /.form group -->
+
+                        <div class="form-group">
+                            <label>Nơi đến</label>
+
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-map-marker"></i>
+                                </div>
+                                <select class="form-control select2 select2-hidden-accessible" style="width: 100%;"
+                                        tabindex="-1" aria-hidden="true" name="arrival">
+                                    <option selected="selected">Alabama</option>
+                                    <option>Alaska</option>
+                                    <option>California</option>
+                                    <option>Delaware</option>
+                                    <option>Tennessee</option>
+                                    <option>Texas</option>
+                                    <option>Washington</option>
+                                </select>
+                            </div>
+                            <!-- /.input group -->
+                        </div>
+                        <!-- /.form group -->
+
+                        <!-- Date dd/mm/yyyy -->
+                        <div class="form-group">
+                            <label>Ngày xuất phát</label>
+
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>
+                                </div>
+                                <input type="text" class="form-control" data-inputmask="'alias': 'dd/mm/yyyy'" data-mask="" name="date">
+                            </div>
+                            <!-- /.input group -->
+                        </div>
+                        <!-- /.form group -->
+
+                        <div class="form-group">
+                            <label>Hãng xe</label>
+
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-briefcase" aria-hidden="true"></i>
+                                </div>
+                                <select class="form-control select2 select2-hidden-accessible" style="width: 100%;"
+                                        tabindex="-1" aria-hidden="true">
+                                    <option selected="selected">Alabama</option>
+                                    <option>Alaska</option>
+                                    <option>California</option>
+                                    <option>Delaware</option>
+                                    <option>Tennessee</option>
+                                    <option>Texas</option>
+                                    <option>Washington</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Giờ xuất phát</label>
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                </div>
+                                <select class="form-control">
+                                    <option>9h 30</option>
+                                    <option>5h 30</option>
+                                    <option>4h 30</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label style="margin-right: 70px;">
+                                <input type="radio" name="r1" class="minimal" checked>
+                                Thanh Toán
+                            </label>
+                            <label>
+                                <input type="radio" name="r1" class="minimal">
+                                Chưa Thanh Toán
+                            </label>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer">
+                        <button type="button" class="btn btn-default" style=" margin-right: 40px; width: 19%;"><a href="/adminstaff">Thoát</a></button>
+                        <button type="submit" class="btn btn-info">Đặt vé</button>
                     </div>
                 </div>
-            </div>
 
-            <!-- SELECT2 EXAMPLE -->
-            <div class="box box-default">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Thông tin vé</h3>
+            </form>
 
-                    <!--           <div class="box-tools pull-right">
-                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
-                              </div>
-                     -->        </div>
-                <!-- /.box-header -->
-                <div class="box-body">
-                    <div class="row span-infoticket">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Mã vé</label>
-                                <span class="codeticket"></span>
-                            </div>
-                            <!-- /.form-group -->
-                            <div class="form-group">
-                                <label>Họ Tên</label>
-                                <span class="fullname"></span>
-                            </div>
-                            <!-- /.form-group -->
-                        </div>
-                        <!-- /.col -->
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Số điện thoại</label>
-                                <span class="numberphone"></span>
-                            </div>
-                            <!-- /.form-group -->
-                            <div class="form-group">
-                                <label>Gmail</label>
-                                <span class="gmail"></span>
-                            </div>
-                            <!-- /.form-group -->
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Nơi xuất phát</label>
-                                <span class="departure"></span>
-                            </div>
-                            <!-- /.form-group -->
-                            <div class="form-group">
-                                <label>Nơi đến</label>
-                                <span class="arrival"></span>
-                            </div>
-                            <!-- /.form-group -->
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Giời đi</label>
-                                <span class="departuretime"></span>
-                            </div>
-                            <!-- /.form-group -->
-                            <div class="form-group">
-                                <label>Giờ đến</label>
-                                <span class="arrivaltime"></span>
-                            </div>
-                            <!-- /.form-group -->
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Hãng xe</label>
-                                <span class="buservices"></span>
-                            </div>
-                            <!-- /.form-group -->
-                            <div class="form-group">
-                                <label>Biển số xe</label>
-                                <span class="plant"></span>
-                            </div>
-                            <!-- /.form-group -->
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Số ghê</label>
-                                <span class="seat"></span>
-                            </div>
-                            <!-- /.form-group -->
-                            <div class="form-group">
-                                <label>Tổng tiền</label>
-                                <span class="totalprice"></span>
-                            </div>
-                            <!-- /.form-group -->
-                        </div>
-                        <!-- /.col -->
-                        <form action="/payticketstaff">
-                            <input type="hidden" name="codeticket" class="codeticketform">
-                            <div class="col-xs-6 col-lg-3">
-                                <button type="submit" class="btn btn-block btn-primary btnpayment">Thanh Toán</button>
-                            </div>
-                        </form>
-                        <form action="/deleteticketstaff">
-                            <input type="hidden" name="codeticket" class="codeticketform">
-                            <div class="col-xs-6 col-lg-3">
-                            <button type="submit" class="btn btn-block btn-danger btndelete">Hủy Vé</button>
-                        </form>
-                    </div>
-                    </div>
-                    <!-- /.row -->
 
-                </div>
-                <!-- /.box-body -->
-                <div class="box-footer">
-                    Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and
-                    information about
-                    the plugin.
-                </div>
-            </div>
-            <!-- /.box -->
 
-            <!-- /.row -->
 
         </section>
         <!-- /.content -->
@@ -347,8 +334,7 @@
         <div class="pull-right hidden-xs">
             <b>Version</b> 2.3.6
         </div>
-        <strong>Copyright &copy; 2014-2016 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights
-        reserved.
+        <strong>Copyright &copy; 2014-2016 <a href="http://almsaeedstudio.com"></a>.</strong> All rights reserved.
     </footer>
 
     <!-- Control Sidebar -->
@@ -380,7 +366,7 @@
 <!-- SlimScroll 1.3.0 -->
 <script src="resource/adminstaff/plugins/slimScroll/jquery.slimscroll.min.js"></script>
 <!-- iCheck 1.0.1 -->
-<script src="resource/adminstaff/plugins/iCheck/icheck.min.js"></script>
+<script src="/resource/adminstaff/plugins/iCheck/icheck.min.js"></script>
 <!-- FastClick -->
 <script src="resource/adminstaff/plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
@@ -428,16 +414,16 @@
         //   autoclose: true
         // });
 
-        // //iCheck for checkbox and radio inputs
-        // $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
-        //   checkboxClass: 'icheckbox_minimal-blue',
-        //   radioClass: 'iradio_minimal-blue'
-        // });
-        // //Red color scheme for iCheck
-        // $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
-        //   checkboxClass: 'icheckbox_minimal-red',
-        //   radioClass: 'iradio_minimal-red'
-        // });
+         //iCheck for checkbox and radio inputs
+         $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+           checkboxClass: 'icheckbox_minimal-blue',
+           radioClass: 'iradio_minimal-blue'
+         });
+         //Red color scheme for iCheck
+         $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
+           checkboxClass: 'icheckbox_minimal-red',
+           radioClass: 'iradio_minimal-red'
+         });
         // //Flat red color scheme for iCheck
         // $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
         //   checkboxClass: 'icheckbox_flat-green',
