@@ -1,6 +1,6 @@
-$(document).ready(function(){
+$(document).ready(function () {
 
-    function requestCode(code, service){
+    function requestCode(code, service) {
         $.ajax({
             type: "GET",
             contentType: "application/json",
@@ -9,7 +9,7 @@ $(document).ready(function(){
                 code: code,
                 service: service
             },
-            dataType : 'json',
+            dataType: 'json',
             timeout: 100000,
             success: function (data) {
                 console.log(data);
@@ -18,7 +18,7 @@ $(document).ready(function(){
         });
     }
 
-    function show(data){
+    function show(data) {
         $(".codeticket").html(data.codeTicket);
         $(".fullname").html(data.fullName);
         $(".numberphone").html(data.numberphone);
@@ -33,45 +33,46 @@ $(document).ready(function(){
         $(".plant").html(data.plan);
     }
 
-    function display(data){
+    function display(data) {
         var waring = "  <div class='alert alert-danger'>" +
             "		<strong>Không tìm tháy vé xe</strong>" +
             "		</div>";
         var success = "<div class='alert alert-success'>" +
             "			<strong>Vé xe tồn tại</strong>" +
             "   </div>";
-        if (data.exist == 1){
+        if (data.exist == 1) {
             show(data);
             $(".codeticketform").val(data.codeTicket);
             $("#notify").show("slow").html(success);
         }
-        else{
+        else {
             $("#notify").html(waring);
         }
 
-        if(data.status == "Chưa thanh toán"){
+        if (data.status == "Chưa thanh toán") {
             $(".btnpayment").removeClass("disabled");
             $(".btndelete").addClass("disabled");
         }
-        else{
+        else {
             $(".btnpayment").addClass("disabled");
             $(".btndelete").removeClass("disabled");
         }
 
+        setTimeout(function () {
+            $(".alert").fadeTo(500, 0, function () {
+                $(this).remove()
+            })
+        }, 5000);
+
     }
 
-    // scanAndStop = 1 clicked scan
-    // scanAndStop = 0 clicked stop
+// scanAndStop = 1 clicked scan
+// scanAndStop = 0 clicked stop
 
-    $("#search").click(function(){
+    $("#search").click(function () {
         var textcode = $(".textcode").val();
         var busService = $(".taiXeOfBuseService").val();
         requestCode(textcode, busService);
     });
-
-    window.setTimeout(function () {
-        $(".alert").fadeTo(500, 0).slideUp(500, function () {
-            $(this).remove();
-        });
-    }, 5000);
-});
+})
+;

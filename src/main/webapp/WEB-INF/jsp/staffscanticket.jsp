@@ -90,7 +90,7 @@
                             <!-- The user image in the navbar-->
                             <img src="resource/adminstaff/dist/img/taxi-driver.png" class="user-image" alt="User Image">
                             <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                            <span class="hidden-xs">Tran Van A</span>
+                            <span class="hidden-xs"><c:out value="${sessionScope.taixe.name}"/></span>
                         </a>
                         <ul class="dropdown-menu">
                             <!-- The user image in the menu -->
@@ -99,7 +99,7 @@
                                      alt="User Image">
 
                                 <p>
-                                    Tran Van A - Nhan Vien Thu Tien
+                                    <c:out value="${sessionScope.taixe.name}"/>
                                     <small><!-- Member since Nov. 2012 --></small>
                                 </p>
                             </li>
@@ -131,7 +131,7 @@
                     <img src="resource/adminstaff/dist/img/taxi-driver.png" class="img-circle" alt="User Image">
                 </div>
                 <div class="pull-left info">
-                    <p>Tran Van A</p>
+                    <p><c:out value="${sessionScope.taixe.name}"/></p>
                     <!-- Status -->
                     <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                 </div>
