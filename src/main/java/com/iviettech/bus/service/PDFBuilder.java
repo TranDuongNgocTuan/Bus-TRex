@@ -1,18 +1,17 @@
 package com.iviettech.bus.service;
 
-import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.iviettech.bus.entity.TicketEntity;
 
-public class PDFBuilder extends AbstractITextPdfView{
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.List;
+import java.util.Map;
+
+public class PDFBuilder extends AbstractITextPdfView {
     @Override
     protected void buildPdfDocument(Map<String, Object> model, Document doc,
                                     PdfWriter writer, HttpServletRequest request, HttpServletResponse response)
@@ -23,9 +22,9 @@ public class PDFBuilder extends AbstractITextPdfView{
 
         doc.add(new Paragraph("Ticket Information"));
 
-        PdfPTable table = new PdfPTable(11);
+        PdfPTable table = new PdfPTable(10);
         table.setWidthPercentage(100.0f);
-        table.setWidths(new float[]{2.0f, 3.0f, 4.0f, 4.0f, 3.0f, 3.0f, 4.0f, 3.0f, 4.0f, 4.0f, 3.0f});
+        table.setWidths(new float[]{1.5f, 3.0f, 4.0f, 3.0f, 3.0f, 3.0f, 2.0f, 4.0f, 4.0f, 4.0f});
         table.setSpacingBefore(10);
 
         // define font for table header row
@@ -37,7 +36,7 @@ public class PDFBuilder extends AbstractITextPdfView{
         // define table header cell
         PdfPCell cell = new PdfPCell();
         cell.setBackgroundColor(BaseColor.BLUE);
-        cell.setPadding(11);
+        cell.setPadding(10);
 
 
         // write table header
@@ -71,8 +70,8 @@ public class PDFBuilder extends AbstractITextPdfView{
         cell.setPhrase(new Phrase("Bus station departure", font));
         table.addCell(cell);
 
-        cell.setPhrase(new Phrase("Code ticket", font));
-        table.addCell(cell);
+//        cell.setPhrase(new Phrase("Code ticket", font));
+//        table.addCell(cell);
 
         // write table row data
         for (TicketEntity aTicket : listTickets) {
@@ -86,7 +85,7 @@ public class PDFBuilder extends AbstractITextPdfView{
             table.addCell(aTicket.getGmail());
             table.addCell(aTicket.getBusstationEntityArrival().getName());
             table.addCell(aTicket.getBusstationEntityDeparture().getName());
-            table.addCell(aTicket.getCodeTicket());
+
         }
 
         doc.add(table);

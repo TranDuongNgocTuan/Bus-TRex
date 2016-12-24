@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
@@ -58,7 +57,7 @@ public class TaiXeController {
     }
 
     @RequestMapping(value="/edit/{id}", method=RequestMethod.POST)
-    public ModelAndView edit(@ModelAttribute @Validated TaiXeEntity taiXeEntity,BindingResult result,@PathVariable Integer id,final RedirectAttributes redirectAttributes) throws TaiXeNotFound{
+    public ModelAndView edit(@ModelAttribute @Validated TaiXeEntity taiXeEntity,BindingResult result,@PathVariable Integer id,final RedirectAttributes redirectAttributes) throws TaiXeNotFound {
         if (result.hasErrors())
             return new ModelAndView("taixeedit");
         ModelAndView mav=new ModelAndView("redirect:/taixe");
@@ -70,13 +69,12 @@ public class TaiXeController {
 
     @RequestMapping(value="/delete/{id}", method=RequestMethod.GET)
     public String deleteTaiXe(@PathVariable int id, RedirectAttributes redirectAttributes){
-        TaiXeEntity taiXeEntity = taiXeRepository.findOne(id);
         try {
-            taiXeRepository.removeTaiXe(id);
+            taiXeRepository.delete(id);
         }catch (Exception e){
             return "redirect:/taixe";
         }
-        String message="The Tai xe"+taiXeEntity.getName()+"was successfully deleted.";
+        String message="successfully deleted.";
         redirectAttributes.addFlashAttribute("message",message);
         return "redirect:/taixe";
     }

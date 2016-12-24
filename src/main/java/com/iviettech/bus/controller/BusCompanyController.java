@@ -64,7 +64,7 @@ public class BusCompanyController {
     }
 
     @RequestMapping(value="/buscompany/delete/{id}", method=RequestMethod.GET)
-    public ModelAndView delete(@PathVariable Integer id,final RedirectAttributes redirectAttributes) throws TaiXeNotFound{
+    public ModelAndView delete(@PathVariable Integer id,final RedirectAttributes redirectAttributes) throws TaiXeNotFound {
         ModelAndView mav=new ModelAndView("redirect:/buscompany");
         BusServicesEntity busServicesEntity=busCompanyService.delete(id);
         String message=busServicesEntity.getName()+"successfully deleted.";

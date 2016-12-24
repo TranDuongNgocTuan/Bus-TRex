@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class PromotionServiceImpl implements PromotionService{
+public class PromotionServiceImpl implements PromotionService {
     @Resource
     public PromotionRepository promotionRepository;
     @Resource
@@ -34,7 +34,7 @@ public class PromotionServiceImpl implements PromotionService{
 
     @Override
     @Transactional(rollbackFor = TaiXeNotFound.class)
-    public PromotionEntity delete(int id) throws TaiXeNotFound{
+    public PromotionEntity delete(int id) throws TaiXeNotFound {
         PromotionEntity deleted=promotionRepository.findOne(id);
         if (deleted==null)
             throw new TaiXeNotFound();
@@ -56,12 +56,11 @@ public class PromotionServiceImpl implements PromotionService{
 
     @Override
     @Transactional(rollbackFor = TaiXeNotFound.class)
-    public PromotionEntity update(PromotionEntity promotionEntity) throws TaiXeNotFound{
+    public PromotionEntity update(PromotionEntity promotionEntity) throws TaiXeNotFound {
         PromotionEntity updated=promotionRepository.findOne(promotionEntity.getId());
-        if (updated==null)
-            throw new TaiXeNotFound();
-        updated.setName(promotionEntity.getName());
-        updated.setSale(promotionEntity.getSale());
+        promotionRepository.save(promotionEntity);
+
+
         return updated;
     }
 

@@ -180,6 +180,16 @@
                     <label class="control-label">Name (*)</label>
                     <form:input path="name" type="text" class="form-control"  required="true"/>
                     <form:errors path="name" cssStyle="color: red;"/>
+
+                    <label class="control-label">UserName (*)</label>
+                    <form:input path="username" type="text" class="form-control"  required="true"/>
+                      <%--<input name="name" type="text" class="form-control"  required="true">--%>
+                    <form:errors path="username" cssStyle="color: red;"/>
+
+                    <label class="control-label">Password (*)</label>
+                    <form:input path="password" type="text" class="form-control"  required="true"/>
+                      <%--<input name="name" type="text" class="form-control"  required="true">--%>
+                    <form:errors path="password" cssStyle="color: red;"/>
                   </div>
                   <br>
                   <button type="submit" class="btn btn-info">Tạo</button>

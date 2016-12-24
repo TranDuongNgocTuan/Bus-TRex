@@ -190,10 +190,10 @@
                     <form:input path="description" type="text" class="form-control"  required="true"/>
                     <form:errors path="description" cssStyle="color: red;"/>
                     <label class="control-label">Dob (*)</label>
-                    <form:input path="dob" type="text" class="form-control"  required="true"/>
+                    <form:input path="dob" type="date" class="form-control"  required="true"/>
                     <form:errors path="dob" cssStyle="color: red;"/>
                     <label class="control-label">Foundation (*)</label>
-                    <form:input path="foundation" type="text" class="form-control"  required="true"/>
+                    <form:input path="foundation" type="date" class="form-control"  required="true"/>
                     <form:errors path="foundation" cssStyle="color: red;"/>
                     <label class="control-label">Name (*)</label>
                     <form:input path="name" type="text" class="form-control"  required="true"/>

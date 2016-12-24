@@ -102,7 +102,7 @@ public class PromotionController {
     }
 
     @RequestMapping(value="/promotion/delete/{id}", method=RequestMethod.GET)
-    public ModelAndView delete(@PathVariable Integer id,final RedirectAttributes redirectAttributes) throws TaiXeNotFound{
+    public ModelAndView delete(@PathVariable Integer id,final RedirectAttributes redirectAttributes) throws TaiXeNotFound {
         ModelAndView mav=new ModelAndView("redirect:/promotion");
         promotionRepository.delete(id);
 

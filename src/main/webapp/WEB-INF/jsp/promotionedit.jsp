@@ -189,17 +189,20 @@
                     <label class="control-label">Sale (*)</label>
                     <form:input path="sale" type="text" class="form-control"  required="true"/>
                     <form:errors path="sale" cssStyle="color: red;"/>
-                    <label class="control-label">Start (*)</label>
-                    <input type="date" name="datestart" class="form-control" >
-                    <label class="control-label">End (*)</label>
-                    <input type="date" name="dateend" class="form-control">
                     <label class="control-label">Bus Services (*)</label>
                     <br>
                     <tr class="dropdown-menu">
                       <td>
                         <select name="typesearch" class="form-control">
                           <c:forEach var="bus" items="${busservice}">
-                            <option value="${bus.id}">${bus.name}</option>
+                            <c:choose>
+                              <c:when test="${bus.id == promotion.busServicesEntity.id}">
+                                <option value="${bus.id}" selected>${bus.name}</option>
+                              </c:when>
+                              <c:otherwise>
+                                <option value="${bus.id}">${bus.name}</option>
+                              </c:otherwise>
+                            </c:choose>
                           </c:forEach>
                         </select>
                       </td>

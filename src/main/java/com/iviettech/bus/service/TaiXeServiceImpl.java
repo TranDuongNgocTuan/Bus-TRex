@@ -12,7 +12,7 @@ import java.util.List;
 
 
 @Service
-public class TaiXeServiceImpl implements TaiXeService{
+public class TaiXeServiceImpl implements TaiXeService {
 
 
     @Resource
@@ -34,7 +34,7 @@ public class TaiXeServiceImpl implements TaiXeService{
 
     @Override
     @Transactional(rollbackFor = TaiXeNotFound.class)
-    public TaiXeEntity delete(int id) throws TaiXeNotFound{
+    public TaiXeEntity delete(int id) throws TaiXeNotFound {
         TaiXeEntity deletedTaiXe=taiXeRepository.findOne(id);
         if (deletedTaiXe==null)
             throw new TaiXeNotFound();
@@ -50,11 +50,13 @@ public class TaiXeServiceImpl implements TaiXeService{
 
     @Override
     @Transactional(rollbackFor = TaiXeNotFound.class)
-    public TaiXeEntity update(TaiXeEntity taiXeEntity) throws TaiXeNotFound{
+    public TaiXeEntity update(TaiXeEntity taiXeEntity) throws TaiXeNotFound {
         TaiXeEntity updatedTaiXe=taiXeRepository.findOne(taiXeEntity.getId());
         if (updatedTaiXe==null)
             throw new TaiXeNotFound();
         updatedTaiXe.setName(taiXeEntity.getName());
+        updatedTaiXe.setUsername(taiXeEntity.getUsername());
+        updatedTaiXe.setPassword(taiXeEntity.getPassword());
         return updatedTaiXe;
     }
 

@@ -1,12 +1,10 @@
 package com.iviettech.bus.controller;
 
 import com.iviettech.bus.entity.AdminEntity;
-import com.iviettech.bus.entity.BusServicesEntity;
 import com.iviettech.bus.service.AdminService;
 import com.iviettech.bus.service.ProfileService;
 import com.iviettech.bus.utils.TaiXeNotFound;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,7 +16,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 
 
 @Controller
@@ -36,40 +33,30 @@ public class LoginController {
         return "login";
     }
 
-//    @RequestMapping(value = "/admin", method = RequestMethod.POST)
-//    public String Admin(Model model,@ModelAttribute("adminEntity") AdminEntity adminEntity){
-//        if (adminEntity != null && adminEntity.getUsername() != null && adminEntity.getPassword() != null){
-//            if ((adminEntity.getUsername().equals("tho")) && adminEntity.getPassword().equals("123")){
-//                model.addAttribute("msg","welcome"+adminEntity.getUsername());
-//                return "admin";
-//            }else {
-//                model.addAttribute("error","Username ho?c Passwprd kh�ng ?�ng");
-//                return "login";
-//            }
-//        }else {
-//            model.addAttribute("error","Username ho?c Passwprd kh�ng ?�ng");
-//            return "login";
-//        }
-//    }
 
     @RequestMapping(value = "/admin")
-    public String admin(Model model/*, @ModelAttribute("adminEntity") AdminEntity adminEntity*/, HttpSession session
+    public String admin(Model model,HttpSession session,HttpServletRequest request
                         ,@RequestParam(name = "username", required = false, defaultValue = "")String name
                         ,@RequestParam(name = "password", required = false, defaultValue = "")String password) {
         AdminEntity test = adminService.checkAdmin(name, password);
+
         AdminEntity adminEntitySession = (AdminEntity) session.getAttribute("adminEntity");
-        if (adminEntitySession != null) {
+
+        if(adminEntitySession !=null){
             return "admin";
         } else if (test != null) {
             model.addAttribute("adminEntity", test);
             session.setAttribute("adminEntity", test);
             return "admin";
-        } else {
-            String msg = "username or pasword not corect";
+        }
+        else{
+            String msg = "Incorrect username or password!";
             model.addAttribute("msg", msg);
             return "login";
         }
     }
+
+
 
     @RequestMapping(value = "/profile")
     public String profile(Model model,HttpSession session,
@@ -106,14 +93,19 @@ public class LoginController {
 //    }
 
     @RequestMapping(value = "/logout")
-    public String logout(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
-//        Authentication authentication= SecurityContextHolder.getContext()
-//                .getAuthentication();
-//        if (authentication!=null){
-//            new SecurityContextLogoutHandler().logout(request,response,authentication);
-//        }
-        session.invalidate();
+    public String logout(HttpServletRequest request, HttpServletResponse response,Model model) {
 
-        return "redirect:"+request.getHeader("Referer");
+         request.getSession().invalidate();
+
+        String msg = "Logout successfully";
+        model.addAttribute("msg", msg);
+        return "login";
+
+
+//        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+//        if (auth != null){
+//            new SecurityContextLogoutHandler().logout(request, response, auth);
+//        }
+//        return "redirect:/login?logout";
     }
 }

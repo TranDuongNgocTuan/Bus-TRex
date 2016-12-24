@@ -181,42 +181,85 @@
           <div class="panel-body">
             <div class="row">
               <div class="col-md-12">
-                <form:form method="POST" commandName="schedule" action="${pageContext.request.contextPath}/schedule/edit/${schedule.id}">
+                <form:form method="POST" action="${pageContext.request.contextPath}/schedule/edit/${schedule.id}" modelAttribute="schedule">
                   <div class="form-group">
+
+                    <label class="control-label">BusService (*)</label>
+                    <tr class="dropdown-menu">
+                        <%--<form:select path="busservice" class="form-control">--%>
+                          <select class="form-control" name="busServicesEntity">
+                            <c:forEach var="bus" items="${busservice1}">
+                              <c:choose>
+                                <c:when test="${bus.id == schedule.busServicesEntity.id}">
+                                  <option value="${bus.id}" selected>${bus.name}</option>
+                                </c:when>
+                                <c:otherwise>
+                                  <option value="${bus.id}">${bus.name}</option>
+                                </c:otherwise>
+                              </c:choose>
+
+                            </c:forEach>
+
+                          </select>
+                        <%--</form:select>--%>
+                      </td>
+                    </tr>
+
                     <label class="control-label">Departure (*)</label>
                     <br>
                     <tr class="dropdown-menu">
                       <td>
-                        <select name="departure" class="form-control">
-                          <c:forEach var="bus" items="${busservice}">
-                            <option value="${bus.id}">${bus.name}</option>
-                          </c:forEach>
-                        </select>
+
+                          <select class="form-control" name="departure">
+
+                            <c:forEach var="bus" items="${busservice}">
+                              <c:choose>
+                                <c:when test="${bus.id == schedule.departure.id}">
+                                  <option value="${bus.id}" selected>${bus.name}</option>
+                                </c:when>
+                                <c:otherwise>
+                                  <option value="${bus.id}">${bus.name}</option>
+                                </c:otherwise>
+                              </c:choose>
+                            </c:forEach>
+                          </select>
                       </td>
                     </tr>
                     <label class="control-label">Arrival (*)</label>
                     <br>
                     <tr class="dropdown-menu">
                       <td>
-                        <select name="arrival" class="form-control">
-                          <c:forEach var="bus" items="${busservice}">
-                            <option value="${bus.id}">${bus.name}</option>
-                          </c:forEach>
+                        <select class="form-control" name="arrival">
+                            <c:forEach var="bus" items="${busservice}">
+                              <c:choose>
+                                <c:when test="${bus.id == schedule.arrival.id}">
+                                  <option value="${bus.id}" selected>${bus.name}</option>
+                                </c:when>
+                                <c:otherwise>
+                                  <option value="${bus.id}">${bus.name}</option>
+                                </c:otherwise>
+                              </c:choose>
+                            </c:forEach>
                         </select>
                       </td>
                     </tr>
+
                     <label class="control-label">Distance (*)</label>
                     <form:input path="distance" type="text" class="form-control"  required="true"/>
                     <form:errors path="distance" cssStyle="color: red;"/>
+
                     <label class="control-label">Number day (*)</label>
                     <form:input path="numberDay" type="text" class="form-control"  required="true"/>
                     <form:errors path="numberDay" cssStyle="color: red;"/>
+
                     <label class="control-label">Number trip (*)</label>
                     <form:input path="numberTrip" type="text" class="form-control"  required="true"/>
                     <form:errors path="numberTrip" cssStyle="color: red;"/>
+
                     <label class="control-label">Date start (*)</label>
-                    <form:input path="dateStart" type="text" class="form-control"  required="true"/>
+                    <form:input path="dateStart" type="date" class="form-control"  required="true"/>
                     <form:errors path="dateStart" cssStyle="color: red;"/>
+
                     <label class="control-label">Price ticket (*)</label>
                     <form:input path="priceTicket" type="text" class="form-control"  required="true"/>
                     <form:errors path="priceTicket" cssStyle="color: red;"/>

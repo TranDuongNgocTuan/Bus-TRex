@@ -1,22 +1,18 @@
 package com.iviettech.bus.service;
 
 
-import com.iviettech.bus.entity.BusstationEntity;
-import com.iviettech.bus.entity.InfoTicket;
 import com.iviettech.bus.entity.ScheduleEntity;
 import com.iviettech.bus.repository.ScheduleRepository;
 import com.iviettech.bus.utils.TaiXeNotFound;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class ScheduleServiceImpl implements ScheduleService{
+public class ScheduleServiceImpl implements ScheduleService {
     @Resource
     public ScheduleRepository scheduleRepository;
 
@@ -35,7 +31,7 @@ public class ScheduleServiceImpl implements ScheduleService{
 
     @Override
     @Transactional(rollbackFor = TaiXeNotFound.class)
-    public ScheduleEntity delete(int id) throws TaiXeNotFound{
+    public ScheduleEntity delete(int id) throws TaiXeNotFound {
         ScheduleEntity deleted=scheduleRepository.findOne(id);
         if (deleted==null)
             throw new TaiXeNotFound();
@@ -51,16 +47,16 @@ public class ScheduleServiceImpl implements ScheduleService{
 
     @Override
     @Transactional(rollbackFor = TaiXeNotFound.class)
-    public ScheduleEntity update(ScheduleEntity scheduleEntity) throws TaiXeNotFound{
+    public ScheduleEntity update(ScheduleEntity scheduleEntity) throws TaiXeNotFound {
         ScheduleEntity updated=scheduleRepository.findOne(scheduleEntity.getId());
         if (updated==null)
             throw new TaiXeNotFound();
-
+        updated.setDistance(scheduleEntity.getDistance());
         updated.setNumberDay(scheduleEntity.getNumberDay());
         updated.setNumberTrip(scheduleEntity.getNumberTrip());
         updated.setDateStart(scheduleEntity.getDateStart());
         updated.setPriceTicket(scheduleEntity.getPriceTicket());
-        updated.setDistance(scheduleEntity.getDistance());
+
         return updated;
     }
 

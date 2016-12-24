@@ -189,10 +189,6 @@
                     <label class="control-label">Sale (*)</label>
                     <form:input path="sale" type="text" class="form-control"  required="true"/>
                     <form:errors path="sale" cssStyle="color: red;"/>
-                    <label class="control-label">Start (*)</label>
-                    <input type="date" name="datestart" class="form-control" >
-                    <label class="control-label">End (*)</label>
-                    <input type="date" name="dateend" class="form-control">
                     <label class="control-label">Bus Services (*)</label>
                     <br>
                     <tr class="dropdown-menu">
