@@ -1,50 +1,120 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: tran
+  Date: 22/12/16
+  Time: 21:33
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!DOCTYPE html>
-<!-- saved from url=(0049)http://v4-alpha.getbootstrap.com/examples/signin/ -->
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <%--<link rel="icon" href="http://v4-alpha.getbootstrap.com/favicon.ico">--%>
-
+<html>
+<head>
     <title>Login</title>
+    <style>
+        /* 'Open Sans' font from Google Fonts */
+        @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
 
-    <!-- Bootstrap core CSS -->
-    <link href="/resource/vendor/bootstrap.css" rel="stylesheet">
+        body {
+            background: #456;
+            font-family: 'Open Sans', sans-serif;
+        }
 
-    <!-- Custom styles for this template -->
-    <link href="/resource/css/signin.css" rel="stylesheet">
-  </head>
+        .login {
+            width: 400px;
+            margin: 16px auto;
+            font-size: 16px;
+        }
 
-<body class="align">
+        /* Reset top and bottom margins from certain elements */
+        .login-header,
+        .login p {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
 
-<div class="grid">
+        /* The triangle form is achieved by a CSS hack */
+        .login-triangle {
+            width: 0;
+            margin-right: auto;
+            margin-left: auto;
+            border: 12px solid transparent;
+            border-bottom-color: #28d;
+        }
 
-    <form action="/loginstaff" method="POST" class="form login">
+        .login-header {
+            background: #28d;
+            padding: 20px;
+            font-size: 1.4em;
+            font-weight: normal;
+            text-align: center;
+            text-transform: uppercase;
+            color: #fff;
+        }
 
-        <div class="form__field">
-            <label for="login__username"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user"></use></svg><span class="hidden">Username</span></label>
-            <input id="login__username" type="text" name="username" class="form__input" placeholder="Username" required>
-        </div>
+        .login-container {
+            background: #ebebeb;
+            padding: 12px;
+        }
 
-        <div class="form__field">
-            <label for="login__password"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#lock"></use></svg><span class="hidden">Password</span></label>
-            <input id="login__password" type="password" name="password" class="form__input" placeholder="Password" required>
-        </div>
+        /* Every row inside .login-container is defined with p tags */
+        .login p {
+            padding: 12px;
+        }
 
-        <div class="form__field">
-            <input type="submit" value="Sign In">
-        </div>
+        .login input {
+            box-sizing: border-box;
+            display: block;
+            width: 100%;
+            border-width: 1px;
+            border-style: solid;
+            padding: 16px;
+            outline: 0;
+            font-family: inherit;
+            font-size: 0.95em;
+        }
 
+        .login input[type="email"],
+        .login input[type="password"] {
+            background: #fff;
+            border-color: #bbb;
+            color: #555;
+        }
+
+        /* Text fields' focus effect */
+        .login input[type="email"]:focus,
+        .login input[type="password"]:focus {
+            border-color: #888;
+        }
+
+        .login input[type="submit"] {
+            background: #28d;
+            border-color: transparent;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .login input[type="submit"]:hover {
+            background: #17c;
+        }
+
+        /* Buttons' focus effect */
+        .login input[type="submit"]:focus {
+            border-color: #05a;
+        }
+    </style>
+</head>
+<body>
+
+<div class="login">
+    <div class="login-triangle"></div>
+
+    <h2 class="login-header">Log in</h2>
+
+    <form class="login-container" action="/loginstaff" method="post">
+        <p><input type="text" placeholder="Username" name="username"></p>
+        <p><input type="password" placeholder="Password" name="password"></p>
+        <p><input type="submit" value="Log in"></p>
     </form>
-
-    <p class="text--center">Not a member? <a href="#">Sign up now</a> <svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="assets/images/icons.svg#arrow-right"></use></svg></p>
-
 </div>
-
-<svg xmlns="http://www.w3.org/2000/svg" class="icons"><symbol id="arrow-right" viewBox="0 0 1792 1792"><path d="M1600 960q0 54-37 91l-651 651q-39 37-91 37-51 0-90-37l-75-75q-38-38-38-91t38-91l293-293H245q-52 0-84.5-37.5T128 1024V896q0-53 32.5-90.5T245 768h704L656 474q-38-36-38-90t38-90l75-75q38-38 90-38 53 0 91 38l651 651q37 35 37 90z"/></symbol><symbol id="lock" viewBox="0 0 1792 1792"><path d="M640 768h512V576q0-106-75-181t-181-75-181 75-75 181v192zm832 96v576q0 40-28 68t-68 28H416q-40 0-68-28t-28-68V864q0-40 28-68t68-28h32V576q0-184 132-316t316-132 316 132 132 316v192h32q40 0 68 28t28 68z"/></symbol><symbol id="user" viewBox="0 0 1792 1792"><path d="M1600 1405q0 120-73 189.5t-194 69.5H459q-121 0-194-69.5T192 1405q0-53 3.5-103.5t14-109T236 1084t43-97.5 62-81 85.5-53.5T538 832q9 0 42 21.5t74.5 48 108 48T896 971t133.5-21.5 108-48 74.5-48 42-21.5q61 0 111.5 20t85.5 53.5 62 81 43 97.5 26.5 108.5 14 109 3.5 103.5zm-320-893q0 159-112.5 271.5T896 896 624.5 783.5 512 512t112.5-271.5T896 128t271.5 112.5T1280 512z"/></symbol></svg>
 
 </body>
 </html>

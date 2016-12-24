@@ -68,4 +68,10 @@ $(document).ready(function(){
         var busService = $(".taiXeOfBuseService").val();
         requestCode(textcode, busService);
     });
+
+    window.setTimeout(function () {
+        $(".alert").fadeTo(500, 0).slideUp(500, function () {
+            $(this).remove();
+        });
+    }, 5000);
 });

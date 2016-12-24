@@ -70,6 +70,7 @@ public class TransferController {
         TicketEntity ticketSession = (TicketEntity) session.getAttribute("ticket");
         ticketSession.setSeat(ticket.getSeat());
         ticketSession.setNumberSeats(ticket.getNumberSeats());
+
         int promotionSale = 0;
         if (promotionTimeEntity != null){
             promotionSale = promotionTimeEntity.getPromotionEntity().getSale();

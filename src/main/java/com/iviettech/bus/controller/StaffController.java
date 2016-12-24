@@ -8,11 +8,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -93,16 +91,22 @@ public class StaffController {
     public String singOut(HttpServletRequest request, HttpServletResponse response, HttpSession session){
         session.invalidate();
 //        session.setAttribute("taixe", null);
-        return "starter";
+        return "loginstaff";
+    }
+
+    @RequestMapping(value = "/bookedticketstaff")
+    public String bookedTicket(HttpServletRequest request, HttpServletResponse response, HttpSession session){
+        return "bookedticketstaff";
     }
 
     @RequestMapping(value = "/payticketstaff")
-    public String payticketStaff(@RequestParam(name = "codeticket") String code){
+    public String payticketStaff(@RequestParam(name = "codeticket") String code, Model model ){
 
         TicketEntity ticketEntity = ticketRepository.findByCodeTicket(code);
         ticketEntity.setStatus(1);
         ticketRepository.save(ticketEntity);
 
+        model.addAttribute("message", "Success");
         return "staffscanticket";
     }
 

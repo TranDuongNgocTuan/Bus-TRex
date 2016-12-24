@@ -16,6 +16,8 @@ public class AdminEntity {
 
     private String password;
 
+    private String name;
+
     @ManyToOne
     @JoinColumn(name = "roleId")
     private RoleEntity roleEntity;
@@ -23,7 +25,13 @@ public class AdminEntity {
     public AdminEntity() {
     }
 
+    public String getName() {
+        return name;
+    }
 
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public int getId() {
         return id;
