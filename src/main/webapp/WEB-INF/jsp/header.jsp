@@ -82,8 +82,8 @@
           <li><a href="profile"><i class="fa fa-user fa-fw"></i> Hồ sơ Admin</a>
           </li>
           <li class="divider"></li>
-          <c:url value="/logout" var="logoutUrl" ></c:url>
-          <li><a href="${logoutUrl}"><i class="fa fa-sign-out fa-fw"></i>Đăng xuất</a>
+          <%--<c:url value="/logout" var="logoutUrl" ></c:url>--%>
+          <li><a href="/logout"><i class="fa fa-sign-out fa-fw"></i>Đăng xuất</a>
           </li>
         </ul>
         <!-- /.dropdown-user -->

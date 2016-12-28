@@ -93,10 +93,10 @@ public class LoginController {
 //    }
 
     @RequestMapping(value = "/logout")
-    public String logout(HttpServletRequest request, HttpServletResponse response,Model model) {
+    public String logout(HttpServletRequest request, HttpServletResponse response,Model model,HttpSession session) {
 
-         request.getSession().invalidate();
-
+        request.getSession().removeAttribute("adminEntity");
+//        session.removeAttribute("adminEntity");
         String msg = "Logout successfully";
         model.addAttribute("msg", msg);
         return "login";

@@ -1,3 +1,8 @@
+<%@ page import="com.iviettech.bus.entity.TicketEntity" %>
+<%@ page import="com.iviettech.bus.service.TicketInfomationService" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="com.iviettech.bus.entity.AdminEntity" %>
 <%--
   Created by IntelliJ IDEA.
   User: Admin
@@ -18,34 +23,34 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <title>AMIN</title>
-  <link href="../../resource/admin/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <%--<link href="../../resource/admin/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">--%>
 
-  <!-- MetisMenu CSS -->
-  <link href="../../resource/admin/bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+  <%--<!-- MetisMenu CSS -->--%>
+  <%--<link href="../../resource/admin/bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">--%>
 
-  <!-- Timeline CSS -->
-  <link href="../../resource/admin/dist/css/timeline.css" rel="stylesheet">
+  <%--<!-- Timeline CSS -->--%>
+  <%--<link href="../../resource/admin/dist/css/timeline.css" rel="stylesheet">--%>
 
-  <!-- Custom CSS -->
-  <link href="../../resource/admin/dist/css/sb-admin-2.css" rel="stylesheet">
+  <%--<!-- Custom CSS -->--%>
+  <%--<link href="../../resource/admin/dist/css/sb-admin-2.css" rel="stylesheet">--%>
 
-  <!-- Morris Charts CSS -->
-  <link href="../../resource/admin/bower_components/morrisjs/morris.css" rel="stylesheet">
+  <%--<!-- Morris Charts CSS -->--%>
+  <%--<link href="../../resource/admin/bower_components/morrisjs/morris.css" rel="stylesheet">--%>
 
-  <!-- Custom Fonts -->
-  <link href="../../resource/admin/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <%--<!-- Custom Fonts -->--%>
+  <%--<link href="../../resource/admin/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">--%>
 
-  <!-- DataTables CSS -->
-  <link href="../../resource/admin/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet">
+  <%--<!-- DataTables CSS -->--%>
+  <%--<link href="../../resource/admin/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet">--%>
 
-  <!-- DataTables Responsive CSS -->
-  <link href="../../resource/admin/bower_components/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet">
+  <%--<!-- DataTables Responsive CSS -->--%>
+  <%--<link href="../../resource/admin/bower_components/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet">--%>
 
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <%--<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->--%>
+  <%--<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->--%>
+  <%--<!--[if lt IE 9]>--%>
+  <%--<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>--%>
+  <%--<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>--%>
   <![endif]-->
 </head>
 <body>
@@ -81,6 +86,7 @@
                   <th>Gmail</th>
                   <th>Bus station arrival</th>
                   <th>Bus station departure</th>
+                  <th>Status</th>
                 </tr>
                 <tbody>
                 <c:forEach var="ticket" items="${tho}">
@@ -95,6 +101,11 @@
                     <td>${ticket.gmail}</td>
                     <td>${ticket.busstationEntityArrival.name}</td>
                     <td>${ticket.busstationEntityDeparture.name}</td>
+                      <td>${ticket.status == 1 ? "Đã thanh toán":"Chưa thanh toán"}</td>
+
+
+
+
                   </tr>
                 </c:forEach>
                 </tbody>
