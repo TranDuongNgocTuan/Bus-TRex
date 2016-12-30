@@ -1,6 +1,10 @@
 package com.iviettech.bus.controller;
 
-import com.iviettech.bus.entity.AdminEntity;
+import com.iviettech.bus.entity.*;
+import com.iviettech.bus.repository.BusstationRepository;
+import com.iviettech.bus.repository.InfoTicketRepository;
+import com.iviettech.bus.repository.ScheduleRepository;
+import com.iviettech.bus.repository.TimeTableScheduleRepository;
 import com.iviettech.bus.service.AdminService;
 import com.iviettech.bus.service.ProfileService;
 import com.iviettech.bus.utils.TaiXeNotFound;
@@ -16,6 +20,12 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 
 @Controller
@@ -25,6 +35,18 @@ public class LoginController {
 
     @Autowired
     AdminService adminService;
+
+    @Autowired
+    ScheduleRepository scheduleRepository;
+
+    @Autowired
+    InfoTicketRepository infoTicketRepository;
+
+    @Autowired
+    BusstationRepository busstationRepository;
+
+    @Autowired
+    TimeTableScheduleRepository timeTableScheduleRepository;
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String Login(Model model, HttpSession session) {
@@ -39,7 +61,21 @@ public class LoginController {
                         ,@RequestParam(name = "username", required = false, defaultValue = "")String name
                         ,@RequestParam(name = "password", required = false, defaultValue = "")String password) {
         AdminEntity test = adminService.checkAdmin(name, password);
+//        TicketEntity ticketEntity=new TicketEntity();
+//        BusstationEntity busstationEntityFrom = busstationRepository.findByCity(ticketEntity.getBusstationEntityDeparture().getCity()); // Form
+//        BusstationEntity busstationEntityTo = busstationRepository.findByCity(ticketEntity.getBusstationEntityArrival().getCity());   // To
+//        DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+//        Date date = null;
+//        try {
+//            date = dateFormat.parse(String.valueOf(ticketEntity.getBusesEntity().getDate()));
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
+//        assert date != null;
+//        List<InfoTicket> scheduleEntityList =
+//                infoTicketRepository.findAllInfoTicket(busstationEntityFrom.getId(), busstationEntityTo.getId(), new java.sql.Date(date.getTime()));
 
+        List<TimeTableScheduleEntity> timeTableScheduleEntities= (List<TimeTableScheduleEntity>) timeTableScheduleRepository.findAll();
         AdminEntity adminEntitySession = (AdminEntity) session.getAttribute("adminEntity");
 
         if(adminEntitySession !=null){
@@ -47,6 +83,8 @@ public class LoginController {
         } else if (test != null) {
             model.addAttribute("adminEntity", test);
             session.setAttribute("adminEntity", test);
+            model.addAttribute("tableschedule", timeTableScheduleEntities);
+//            model.addAttribute("ticket",scheduleEntityList);
             return "admin";
         }
         else{

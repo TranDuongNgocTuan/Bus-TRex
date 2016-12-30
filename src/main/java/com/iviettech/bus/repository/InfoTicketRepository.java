@@ -140,4 +140,13 @@ public class InfoTicketRepository{
         }
         return sumSeat;
     }
+
+    public int daBan(BusesEntity busesEntity){
+        int sumSeat = 0;
+        for (TicketEntity ticket : busesEntity.getTicketEntityList()){
+            if (ticket.getStatus() == 1)
+                sumSeat+= ticket.getNumberSeats();
+        }
+        return sumSeat;
+    }
 }

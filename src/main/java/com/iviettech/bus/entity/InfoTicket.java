@@ -17,6 +17,10 @@ public class InfoTicket{
 
     private int sumNumberOfSeat;
 
+    private int daBan;
+
+
+
     private float rankBehavior;
 
     private float rankBus;
@@ -30,18 +34,27 @@ public class InfoTicket{
     public InfoTicket() {
     }
 
-    public InfoTicket(ScheduleEntity scheduleEntity, int numberTicket, TimeTableScheduleEntity timeTableScheduleEntity, int numberSeat, int busesId, int sumNumberOfSeat, float rankBehavior, float rankBus, float rankOverall, float rankPunctuality, int sell) {
+    public InfoTicket(ScheduleEntity scheduleEntity, int numberTicket, TimeTableScheduleEntity timeTableScheduleEntity, int numberSeat, int busesId, int sumNumberOfSeat, int daBan, float rankBehavior, float rankBus, float rankOverall, float rankPunctuality, int sell) {
         this.scheduleEntity = scheduleEntity;
         this.numberTicket = numberTicket;
         this.timeTableScheduleEntity = timeTableScheduleEntity;
         this.numberSeat = numberSeat;
         this.busesId = busesId;
         this.sumNumberOfSeat = sumNumberOfSeat;
+        this.daBan = daBan;
         this.rankBehavior = rankBehavior;
         this.rankBus = rankBus;
         this.rankOverall = rankOverall;
         this.rankPunctuality = rankPunctuality;
         this.sell = sell;
+    }
+
+    public int getDaBan() {
+        return daBan;
+    }
+
+    public void setDaBan(int daBan) {
+        this.daBan = daBan;
     }
 
     public ScheduleEntity getScheduleEntity() {

@@ -23,35 +23,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <title>AMIN</title>
-  <%--<link href="../../resource/admin/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">--%>
 
-  <%--<!-- MetisMenu CSS -->--%>
-  <%--<link href="../../resource/admin/bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">--%>
-
-  <%--<!-- Timeline CSS -->--%>
-  <%--<link href="../../resource/admin/dist/css/timeline.css" rel="stylesheet">--%>
-
-  <%--<!-- Custom CSS -->--%>
-  <%--<link href="../../resource/admin/dist/css/sb-admin-2.css" rel="stylesheet">--%>
-
-  <%--<!-- Morris Charts CSS -->--%>
-  <%--<link href="../../resource/admin/bower_components/morrisjs/morris.css" rel="stylesheet">--%>
-
-  <%--<!-- Custom Fonts -->--%>
-  <%--<link href="../../resource/admin/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">--%>
-
-  <%--<!-- DataTables CSS -->--%>
-  <%--<link href="../../resource/admin/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet">--%>
-
-  <%--<!-- DataTables Responsive CSS -->--%>
-  <%--<link href="../../resource/admin/bower_components/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet">--%>
-
-  <%--<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->--%>
-  <%--<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->--%>
-  <%--<!--[if lt IE 9]>--%>
-  <%--<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>--%>
-  <%--<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>--%>
-  <![endif]-->
 </head>
 <body>
 <jsp:include page="header.jsp"></jsp:include>
@@ -76,17 +48,16 @@
 
                 <thead>
                 <tr>
-                  <th>Id</th>
-                  <th>Full name</th>
-                  <th>Booked time</th>
-                  <th>Number phone</th>
-                  <th>Total price</th>
-                  <th>Seat</th>
-                  <th>Number seats</th>
+                  <th>STT</th>
+                  <th>TÊN</th>
+                  <th>THỜI GIAN ĐẶT</th>
+                  <th>SĐT</th>
+
+                  <th>CHI TIẾT</th>
                   <th>Gmail</th>
-                  <th>Bus station arrival</th>
-                  <th>Bus station departure</th>
-                  <th>Status</th>
+
+                  <th>TỔNG TIỀN</th>
+                  <th>TÌNH TRẠNG</th>
                 </tr>
                 <tbody>
                 <c:forEach var="ticket" items="${tho}">
@@ -95,13 +66,73 @@
                     <td>${ticket.fullName}</td>
                     <td>${ticket.bookTime}</td>
                     <td>${ticket.numberphone}</td>
-                    <td>${ticket.totalprice}</td>
-                    <td>${ticket.seat}</td>
-                    <td>${ticket.numberSeats}</td>
+
                     <td>${ticket.gmail}</td>
-                    <td>${ticket.busstationEntityArrival.name}</td>
-                    <td>${ticket.busstationEntityDeparture.name}</td>
-                      <td>${ticket.status == 1 ? "Đã thanh toán":"Chưa thanh toán"}</td>
+                    <td>${ticket.totalprice}</td>
+                    <td>${ticket.status == 1 ? "Đã thanh toán":"Chưa thanh toán"}</td>
+
+                    <td class="btncenter">
+                      <a class="btn btn-default" data-toggle="modal" href="#modal-id-${ticket.id}"><i class="fa fa-eye" aria-hidden="true"></i> Xem Chi tiết</a>
+                      <div class="modal fade" id="modal-id-${ticket.id}">
+                        <div class="modal-dialog" style="min-width: 400px; width: 60%;">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                              <div class="modal-title text-center">Thông tin chi tiết </div>
+                            </div>
+                            <div class="modal-body">
+                              <div class="toppad">
+                                <div class="panel panel-info">
+                                  <div class="panel-heading" style="background-color: #BD4419;">
+                                    <h3 class="panel-title" style="font-weight: 500;">${ticket.id}</h3>
+                                  </div>
+                                  <div class="panel-body">
+                                    <div class="row">
+                                      <div class="col-md-9 col-lg-9">
+                                        <table class="table table-user-information table-hover">
+                                          <tbody>
+                                          <tr>
+                                            <td>Nơi đến:</td>
+                                            <td>${ticket.busstationEntityDeparture.name}</td>
+                                          </tr>
+                                          <tr>
+                                            <td>Nơi đi:</td>
+                                            <td>
+                                                ${ticket.busstationEntityArrival.name}
+                                            </td>
+                                          </tr>
+                                          <tr>
+                                            <td>Hãng xe:</td>
+                                            <td>
+                                                ${ticket.busesEntity.timeTableScheduleEntity.busEntity.busServicesEntity.name}
+                                            </td>
+                                          </tr>
+                                          <tr>
+                                            <td>Ký hiệu xe:</td>
+                                            <td>
+                                                ${ticket.busesEntity.timeTableScheduleEntity.busEntity.licensePlate}
+                                            </td>
+                                          </tr>
+                                          <tr>
+                                            <td>Chỗ:</td>
+                                            <td>${ticket.seat}</td>
+                                          </tr>
+                                          </tbody>
+                                        </table>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-close" aria-hidden="true"></i> Đóng</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+
 
 
 
@@ -123,10 +154,7 @@
 
 </div>
 <jsp:include page="footer.jsp"></jsp:include>
-<script src="../../resource/admin/bower_components/jquery/dist/jquery.min.js"></script>
 
-<!-- Bootstrap Core JavaScript -->
-<script src="../../resource/admin/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
 <!-- Metis Menu Plugin JavaScript -->
 <script src="../../resource/admin/bower_components/metisMenu/dist/metisMenu.min.js"></script>

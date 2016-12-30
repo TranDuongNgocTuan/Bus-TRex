@@ -58,7 +58,6 @@ public class FindTicketController {
         Date date = null;
         try {
             date = dateFormat.parse(dateInput);
-//            System.out.println(dateFormat.format(date));
         } catch (ParseException e) {
             e.printStackTrace();
         }

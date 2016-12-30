@@ -48,9 +48,7 @@
     <%
         AdminEntity adminEntity = (AdminEntity) session.getAttribute("adminEntity");
         if (adminEntity == null){
-            out.print("<script>");
-            out.print("window.history.go(-2)");
-            out.print("</script>");
+            response.sendRedirect("login.jsp");
         }
     %>
   <%--<jsp:include page="home.jsp"/>--%>
